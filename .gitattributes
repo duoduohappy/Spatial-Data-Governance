@@ -15,3 +15,6 @@
 # Preserve the exact pre-inference frozen holdout bytes and its recorded manifest digest.
 eval/heldout-v1/** -text
 acceptance/stage-4/local-model/heldout-v1/** -text
+
+# Downloaded attachments must retain the exact bytes recorded by the browser.
+acceptance/stage-3/iab-downloads/report.* -text
