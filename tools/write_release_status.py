@@ -36,10 +36,14 @@ checks={'frozen_examples':6,'core_probes':core,'compare_probes':compare,'applica
     'local_json_inference':read('acceptance/stage-4/local-model/json-smoke.json')['status'],
     'real_local_quality_pipeline':{'passed':12,'cases':12,'scope':'developer-visible templates; includes evidence compiler fail-closed behavior'},
     'developer_holdout':heldout['metrics'],'actual_iab_attachment_save':'PASS','local_http_workflow':'PASS'}
+remote=read('acceptance/stage-5/remote-ci/results.json')
+assert remote['conclusion']=='success' and len(remote['jobs'])==5 and all(j['conclusion']=='success' for j in remote['jobs'])
+checks['remote_ci']='PASS'
+checks['docker_build_and_http_smoke']='PASS'
 status={'version':'0.5.0-rc1','created_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
     'kind':'local-source-release-candidate','implementation':'Stage 2-5 implementation and candidate artifacts prepared',
-    'acceptance':'LOCAL_FUNCTIONAL_CHECKS_PASS; full external acceptance pending Docker/remote CI and independent business review',
-    'checks':checks,'not_run':['Docker build/run','GitHub remote CI','independent human/business annotations','human efficiency study','live single-agent vs multi-agent'],
+    'acceptance':'ENGINEERING_CHECKS_PASS; independent business review and human outcome measurements pending',
+    'remote_ci':remote,'checks':checks,'not_run':['independent human/business annotations','human efficiency study','live single-agent vs multi-agent'],
     'local_model_full_latest':full,'local_model_reviewed_workflow':{'status':review['status'],'edits':len(review['changes']),'reviewer':review['reviewer'],'limitation':review['limitation']},
     'local_model_quality':{'acceptance':'AUTOMATED_PIPELINE_PASS_REVIEW_REQUIRED','latest':latest['source'],
         'scope':quality['kind'],'prior_failures_preserved':True,'raw_model_zero_error_claim':False},
@@ -48,7 +52,7 @@ status={'version':'0.5.0-rc1','created_at':datetime.datetime.now(datetime.timezo
 bodies={2:'Real local model/evidence compiler pipeline passed 12/12 developer-visible checks. An unchanged clear synthetic proposal was reviewed by implementing Codex and executed PASS/FAIL/PASS. Manual approval remains mandatory. Cloud Qwen previously returned HTTP 403; no new cloud model calls.',
 3:'Local UI/API tests and real Chromium desktop/mobile checks passed. Actual user-requested in-app-browser JSON and HTML downloads succeeded; archived bytes match server reports. Separate sandboxed Chromium downloads remain permission-blocked; see iab-downloads/results.json.',
 4:'Frozen developer holdout: 8 new specifications / 80 atomic clauses, compiled complete mapping 75/80, raw semantic mapping 74/80, coverage 80/80; unknown-clause errors and lineage problems zero. These are developer-authored labels, not independent human gold labels or a generalization guarantee. Prior failures and the interrupted 11-case third run remain archived.',
-5:'Local functional checks passed. Candidate source, startup scripts, Docker and CI definitions are prepared. Actual local HTTP workflow passed, including positive closure and duplicate-identity non-closure. Docker engine is unavailable locally. The target GitHub repository has been supplied; source publication and remote checks are in progress, with no remote pass claimed yet.'}
+5:'Local functional checks passed. Candidate source, startup scripts, Docker and CI definitions are prepared. Actual local HTTP workflow passed, including positive closure and duplicate-identity non-closure. Source published to duoduohappy/Spatial-Data-Governance. All five actual GitHub Actions jobs passed, including Linux/Windows tests, DOM, browser and Docker build/start/HTTP workflow; see remote-ci/results.json and logs. Independent business acceptance remains pending.'}
 for stage,body in bodies.items():
     text=f'# Stage {stage} handoff\n\n2026-10-27. {body}\n\nImplementation self-check; independent external/business acceptance remains pending.\n'
     if stage==5:text+=f'\nEvidence: STATUS.json; {app} application/HTTP tests; {core} core probes; {compare} compare/input probes; stage-3/iab-downloads; stage-4/local-model. Dependencies previously installed in a clean Python 3.13.14 venv; no new Python dependency was added. Source ZIP excludes work/, credentials, model weights, browser binaries and .venv.\n'

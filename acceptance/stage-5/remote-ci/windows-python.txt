@@ -1,0 +1,514 @@
+﻿2026-10-27T07:03:21.7574373Z Current runner version: '2.338.0'
+2026-10-27T07:03:21.7606133Z ##[group]Runner Image Provisioner
+2026-10-27T07:03:21.7607094Z Hosted Compute Agent
+2026-10-27T07:03:21.7607683Z Version: 20261021.618
+2026-10-27T07:03:21.7608295Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-27T07:03:21.7609038Z Build Date: 2026-10-21T00:45:21Z
+2026-10-27T07:03:21.7609701Z Worker ID: {3148b899-2f93-42df-b934-9a9256509d54}
+2026-10-27T07:03:21.7610574Z Region: westus
+2026-10-27T07:03:21.7611307Z Cloud: Azure
+2026-10-27T07:03:21.7612166Z ##[endgroup]
+2026-10-27T07:03:21.7613731Z ##[group]Operating System
+2026-10-27T07:03:21.7614388Z Microsoft Windows Server 2025
+2026-10-27T07:03:21.7615002Z 10.0.26100
+2026-10-27T07:03:21.7615503Z Datacenter
+2026-10-27T07:03:21.7615995Z ##[endgroup]
+2026-10-27T07:03:21.7616534Z ##[group]Runner Image
+2026-10-27T07:03:21.7617099Z Image: windows-2025-vs2026
+2026-10-27T07:03:21.7617663Z Version: 20261021.278.1
+2026-10-27T07:03:21.7619232Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261021.278/images/windows/Windows2025-VS2026-Readme.md
+2026-10-27T07:03:21.7620901Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261021.278
+2026-10-27T07:03:21.7621885Z ##[endgroup]
+2026-10-27T07:03:21.7623090Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T07:03:21.7625294Z Contents: read
+2026-10-27T07:03:21.7625995Z Metadata: read
+2026-10-27T07:03:21.7626560Z ##[endgroup]
+2026-10-27T07:03:21.7629204Z Secret source: Actions
+2026-10-27T07:03:21.7631289Z Cache mode: write
+2026-10-27T07:03:21.7632794Z Prepare workflow directory
+2026-10-27T07:03:21.8088868Z Prepare all required actions
+2026-10-27T07:03:21.8160646Z Getting action download info
+2026-10-27T07:03:22.1992937Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T07:03:22.3379503Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-27T07:03:22.6335430Z Complete job name: python (windows-latest)
+2026-10-27T07:03:22.7888246Z ##[group]Run actions/checkout@v4
+2026-10-27T07:03:22.7889403Z with:
+2026-10-27T07:03:22.7889905Z   repository: duoduohappy/Spatial-Data-Governance
+2026-10-27T07:03:22.7894444Z   token: ***
+2026-10-27T07:03:22.7894875Z   ssh-strict: true
+2026-10-27T07:03:22.7895296Z   ssh-user: git
+2026-10-27T07:03:22.7895710Z   persist-credentials: true
+2026-10-27T07:03:22.7896179Z   clean: true
+2026-10-27T07:03:22.7896595Z   sparse-checkout-cone-mode: true
+2026-10-27T07:03:22.7897089Z   fetch-depth: 1
+2026-10-27T07:03:22.7897638Z   fetch-tags: false
+2026-10-27T07:03:22.7898166Z   show-progress: true
+2026-10-27T07:03:22.7898598Z   lfs: false
+2026-10-27T07:03:22.7898985Z   submodules: false
+2026-10-27T07:03:22.7899412Z   set-safe-directory: true
+2026-10-27T07:03:22.7899892Z   allow-unsafe-pr-checkout: false
+2026-10-27T07:03:22.7900659Z ##[endgroup]
+2026-10-27T07:03:22.9808773Z Syncing repository: duoduohappy/Spatial-Data-Governance
+2026-10-27T07:03:22.9811114Z ##[group]Getting Git version info
+2026-10-27T07:03:22.9812199Z Working directory is 'D:\a\Spatial-Data-Governance\Spatial-Data-Governance'
+2026-10-27T07:03:23.0794921Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-27T07:03:23.3978537Z git version 2.56.0.windows.2
+2026-10-27T07:03:23.4036755Z ##[endgroup]
+2026-10-27T07:03:23.4058113Z Temporarily overriding HOME='D:\a\_temp\1917157b-f3f8-4d59-9577-c9ecbe689eb2' before making global git config changes
+2026-10-27T07:03:23.4059707Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T07:03:23.4069509Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\Spatial-Data-Governance\Spatial-Data-Governance
+2026-10-27T07:03:23.4744973Z Deleting the contents of 'D:\a\Spatial-Data-Governance\Spatial-Data-Governance'
+2026-10-27T07:03:23.4751811Z ##[group]Initializing the repository
+2026-10-27T07:03:23.4761243Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\Spatial-Data-Governance\Spatial-Data-Governance
+2026-10-27T07:03:23.5733669Z Initialized empty Git repository in D:/a/Spatial-Data-Governance/Spatial-Data-Governance/.git/
+2026-10-27T07:03:23.5788943Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/duoduohappy/Spatial-Data-Governance
+2026-10-27T07:03:23.6590058Z ##[endgroup]
+2026-10-27T07:03:23.6591399Z ##[group]Disabling automatic garbage collection
+2026-10-27T07:03:23.6597438Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-10-27T07:03:23.7001532Z ##[endgroup]
+2026-10-27T07:03:23.7002719Z ##[group]Setting up auth
+2026-10-27T07:03:23.7014014Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T07:03:23.7431936Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-27T07:03:25.2368748Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T07:03:25.2796469Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-27T07:03:25.8763138Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T07:03:25.9180376Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-27T07:03:26.5608249Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-10-27T07:03:26.6041457Z ##[endgroup]
+2026-10-27T07:03:26.6042947Z ##[group]Fetching the repository
+2026-10-27T07:03:26.6057662Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9d1e3170d5559a32e1ce83f5158d4c2bbbdd5b10:refs/remotes/origin/main
+2026-10-27T07:03:29.6798690Z From https://github.com/duoduohappy/Spatial-Data-Governance
+2026-10-27T07:03:29.6799757Z  * [new ref]         9d1e3170d5559a32e1ce83f5158d4c2bbbdd5b10 -> origin/main
+2026-10-27T07:03:29.6847388Z ##[endgroup]
+2026-10-27T07:03:29.6848020Z ##[group]Determining the checkout info
+2026-10-27T07:03:29.6850439Z ##[endgroup]
+2026-10-27T07:03:29.6866682Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-10-27T07:03:29.7429277Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-10-27T07:03:29.7867041Z ##[group]Checking out the ref
+2026-10-27T07:03:29.7883250Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+2026-10-27T07:03:30.1992752Z Switched to a new branch 'main'
+2026-10-27T07:03:30.2018169Z branch 'main' set up to track 'origin/main'.
+2026-10-27T07:03:30.2102838Z ##[endgroup]
+2026-10-27T07:03:30.2599703Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-10-27T07:03:30.3023891Z 9d1e3170d5559a32e1ce83f5158d4c2bbbdd5b10
+2026-10-27T07:03:30.3622397Z ##[group]Run actions/setup-python@v5
+2026-10-27T07:03:30.3622857Z with:
+2026-10-27T07:03:30.3623118Z   python-version: 3.13
+2026-10-27T07:03:30.3623426Z   check-latest: false
+2026-10-27T07:03:30.3627859Z   token: ***
+2026-10-27T07:03:30.3628135Z   update-environment: true
+2026-10-27T07:03:30.3628452Z   allow-prereleases: false
+2026-10-27T07:03:30.3628750Z   freethreaded: false
+2026-10-27T07:03:30.3629011Z ##[endgroup]
+2026-10-27T07:03:30.5298755Z ##[group]Installed versions
+2026-10-27T07:03:30.5484776Z (node:8520) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T07:03:30.5486177Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T07:03:30.5488479Z Successfully set up CPython (3.13.16)
+2026-10-27T07:03:30.5503339Z ##[endgroup]
+2026-10-27T07:03:30.5887877Z ##[group]Run python -m pip install -r requirements.lock.txt
+2026-10-27T07:03:30.5888445Z [36;1mpython -m pip install -r requirements.lock.txt[0m
+2026-10-27T07:03:30.6612014Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-27T07:03:30.6612499Z env:
+2026-10-27T07:03:30.6612856Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:03:30.6613506Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.16\x64/lib/pkgconfig
+2026-10-27T07:03:30.6614107Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:03:30.6614665Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:03:30.6615218Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:03:30.6615641Z ##[endgroup]
+2026-10-27T07:03:35.3805704Z Collecting annotated-types==0.8.0 (from -r requirements.lock.txt (line 7))
+2026-10-27T07:03:35.4252688Z   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+2026-10-27T07:03:35.4884815Z Collecting attrs==26.1.0 (from -r requirements.lock.txt (line 8))
+2026-10-27T07:03:35.5020276Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-10-27T07:03:35.5668357Z Collecting certifi==2026.10.23 (from -r requirements.lock.txt (line 9))
+2026-10-27T07:03:35.5788417Z   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+2026-10-27T07:03:35.6388371Z Collecting geopandas==1.2.0 (from -r requirements.lock.txt (line 10))
+2026-10-27T07:03:35.6514454Z   Downloading geopandas-1.2.0-py3-none-any.whl.metadata (2.0 kB)
+2026-10-27T07:03:35.7147106Z Collecting jsonschema==4.26.0 (from -r requirements.lock.txt (line 11))
+2026-10-27T07:03:35.7416481Z   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+2026-10-27T07:03:35.7972918Z Collecting jsonschema-specifications==2025.9.1 (from -r requirements.lock.txt (line 12))
+2026-10-27T07:03:35.8100310Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-10-27T07:03:36.0875361Z Collecting numpy==2.5.4 (from -r requirements.lock.txt (line 13))
+2026-10-27T07:03:36.1003042Z   Downloading numpy-2.5.4-cp313-cp313-win_amd64.whl.metadata (6.6 kB)
+2026-10-27T07:03:36.1686560Z Collecting packaging==26.3 (from -r requirements.lock.txt (line 14))
+2026-10-27T07:03:36.1810077Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-10-27T07:03:36.3637617Z Collecting pandas==3.1.0 (from -r requirements.lock.txt (line 15))
+2026-10-27T07:03:36.3771853Z   Downloading pandas-3.1.0-cp313-cp313-win_amd64.whl.metadata (18 kB)
+2026-10-27T07:03:36.5427833Z Collecting pydantic==2.14.1 (from -r requirements.lock.txt (line 16))
+2026-10-27T07:03:36.5575397Z   Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+2026-10-27T07:03:37.3877841Z Collecting pydantic_core==2.50.1 (from -r requirements.lock.txt (line 17))
+2026-10-27T07:03:37.4009315Z   Downloading pydantic_core-2.50.1-cp313-cp313-win_amd64.whl.metadata (6.7 kB)
+2026-10-27T07:03:37.4782816Z Collecting pyogrio==0.13.0 (from -r requirements.lock.txt (line 18))
+2026-10-27T07:03:37.4907227Z   Downloading pyogrio-0.13.0-cp311-abi3-win_amd64.whl.metadata (6.0 kB)
+2026-10-27T07:03:37.6054506Z Collecting pyproj==3.8.0 (from -r requirements.lock.txt (line 19))
+2026-10-27T07:03:37.6183972Z   Downloading pyproj-3.8.0-cp313-cp313-win_amd64.whl.metadata (40 kB)
+2026-10-27T07:03:37.6865177Z Collecting python-dateutil==3.0.0 (from -r requirements.lock.txt (line 20))
+2026-10-27T07:03:37.7006398Z   Downloading python_dateutil-3.0.0-py2.py3-none-any.whl.metadata (8.2 kB)
+2026-10-27T07:03:37.7817251Z Collecting PyYAML==6.0.3 (from -r requirements.lock.txt (line 21))
+2026-10-27T07:03:37.7942793Z   Downloading pyyaml-6.0.3-cp313-cp313-win_amd64.whl.metadata (2.4 kB)
+2026-10-27T07:03:37.8570338Z Collecting referencing==0.37.0 (from -r requirements.lock.txt (line 22))
+2026-10-27T07:03:37.8695852Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2026-10-27T07:03:38.2590850Z Collecting rpds-py==2026.9.1 (from -r requirements.lock.txt (line 23))
+2026-10-27T07:03:38.2746282Z   Downloading rpds_py-2026.9.1-cp313-cp313-win_amd64.whl.metadata (4.2 kB)
+2026-10-27T07:03:38.4067702Z Collecting shapely==2.2.0 (from -r requirements.lock.txt (line 24))
+2026-10-27T07:03:38.4198646Z   Downloading shapely-2.2.0-cp313-cp313-win_amd64.whl.metadata (6.8 kB)
+2026-10-27T07:03:38.5069186Z Collecting six==1.17.0 (from -r requirements.lock.txt (line 25))
+2026-10-27T07:03:38.5186958Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-10-27T07:03:38.5734315Z Collecting typing-inspection==0.4.4 (from -r requirements.lock.txt (line 26))
+2026-10-27T07:03:38.5850783Z   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+2026-10-27T07:03:38.6433473Z Collecting typing_extensions==4.16.0 (from -r requirements.lock.txt (line 27))
+2026-10-27T07:03:38.6551678Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-27T07:03:38.7106706Z Collecting tzdata==2026.5 (from -r requirements.lock.txt (line 28))
+2026-10-27T07:03:38.7231514Z   Downloading tzdata-2026.5-py2.py3-none-any.whl.metadata (1.4 kB)
+2026-10-27T07:03:38.7812089Z Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+2026-10-27T07:03:38.8359547Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-10-27T07:03:38.8733525Z Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+2026-10-27T07:03:38.9050026Z Downloading geopandas-1.2.0-py3-none-any.whl (368 kB)
+2026-10-27T07:03:38.9507938Z Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+2026-10-27T07:03:38.9801410Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-10-27T07:03:39.0162916Z Downloading numpy-2.5.4-cp313-cp313-win_amd64.whl (12.6 MB)
+2026-10-27T07:03:39.1275986Z    ---------------------------------------- 12.6/12.6 MB 114.9 MB/s  0:00:00
+2026-10-27T07:03:39.1391480Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+2026-10-27T07:03:39.1756635Z Downloading pandas-3.1.0-cp313-cp313-win_amd64.whl (10.7 MB)
+2026-10-27T07:03:39.2517437Z    ---------------------------------------- 10.7/10.7 MB 144.1 MB/s  0:00:00
+2026-10-27T07:03:39.2642527Z Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+2026-10-27T07:03:39.3002902Z Downloading pydantic_core-2.50.1-cp313-cp313-win_amd64.whl (2.2 MB)
+2026-10-27T07:03:39.3361305Z    ---------------------------------------- 2.2/2.2 MB 61.7 MB/s  0:00:00
+2026-10-27T07:03:39.3493983Z Downloading pyogrio-0.13.0-cp311-abi3-win_amd64.whl (23.8 MB)
+2026-10-27T07:03:39.5677400Z    ---------------------------------------- 23.8/23.8 MB 109.7 MB/s  0:00:00
+2026-10-27T07:03:39.5860003Z Downloading pyproj-3.8.0-cp313-cp313-win_amd64.whl (6.7 MB)
+2026-10-27T07:03:39.6392271Z    ---------------------------------------- 6.7/6.7 MB 130.3 MB/s  0:00:00
+2026-10-27T07:03:39.6510962Z Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+2026-10-27T07:03:39.6818582Z Downloading pyyaml-6.0.3-cp313-cp313-win_amd64.whl (154 kB)
+2026-10-27T07:03:39.7164049Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-10-27T07:03:39.7492168Z Downloading rpds_py-2026.9.1-cp313-cp313-win_amd64.whl (222 kB)
+2026-10-27T07:03:39.7817086Z Downloading shapely-2.2.0-cp313-cp313-win_amd64.whl (1.8 MB)
+2026-10-27T07:03:40.1120782Z    ---------------------------------------- 1.8/1.8 MB 4.7 MB/s  0:00:00
+2026-10-27T07:03:40.1237239Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-10-27T07:03:40.1549994Z Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+2026-10-27T07:03:40.1818852Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-27T07:03:40.2162587Z Downloading tzdata-2026.5-py2.py3-none-any.whl (347 kB)
+2026-10-27T07:03:40.5986125Z Installing collected packages: tzdata, typing_extensions, six, rpds-py, PyYAML, packaging, numpy, certifi, attrs, annotated-types, typing-inspection, shapely, referencing, python-dateutil, pyproj, pyogrio, pydantic_core, pydantic, pandas, jsonschema-specifications, jsonschema, geopandas
+2026-10-27T07:04:01.9913661Z 
+2026-10-27T07:04:01.9953887Z Successfully installed PyYAML-6.0.3 annotated-types-0.8.0 attrs-26.1.0 certifi-2026.10.23 geopandas-1.2.0 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 numpy-2.5.4 packaging-26.3 pandas-3.1.0 pydantic-2.14.1 pydantic_core-2.50.1 pyogrio-0.13.0 pyproj-3.8.0 python-dateutil-3.0.0 referencing-0.37.0 rpds-py-2026.9.1 shapely-2.2.0 six-1.17.0 typing-inspection-0.4.4 typing_extensions-4.16.0 tzdata-2026.5
+2026-10-27T07:04:02.6386242Z ##[group]Run python tools/stage0_gate.py
+2026-10-27T07:04:02.6386628Z [36;1mpython tools/stage0_gate.py[0m
+2026-10-27T07:04:02.6463881Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-27T07:04:02.6464244Z env:
+2026-10-27T07:04:02.6464523Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:02.6465010Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.16\x64/lib/pkgconfig
+2026-10-27T07:04:02.6465461Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:02.6465870Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:02.6466280Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:02.6466603Z ##[endgroup]
+2026-10-27T07:04:03.6204156Z [PASS] clean      aggregate=PASS          findings=1   -> D:\a\Spatial-Data-Governance\Spatial-Data-Governance\work\stage0\clean
+2026-10-27T07:04:03.6205219Z [PASS] defective  aggregate=FAIL          findings=11  -> D:\a\Spatial-Data-Governance\Spatial-Data-Governance\work\stage0\defective
+2026-10-27T07:04:03.6206101Z [PASS] corrected  aggregate=PASS          findings=1   -> D:\a\Spatial-Data-Governance\Spatial-Data-Governance\work\stage0\corrected
+2026-10-27T07:04:03.6206991Z [PASS] ambiguous  aggregate=INDETERMINATE findings=1   -> D:\a\Spatial-Data-Governance\Spatial-Data-Governance\work\stage0\ambiguous
+2026-10-27T07:04:03.6207877Z [PASS] blocked    aggregate=FAIL          findings=1   -> D:\a\Spatial-Data-Governance\Spatial-Data-Governance\work\stage0\blocked
+2026-10-27T07:04:03.6208768Z [PASS] crs_same_unit_wrong aggregate=FAIL          findings=1   -> D:\a\Spatial-Data-Governance\Spatial-Data-Governance\work\stage0\crs_same_unit_wrong
+2026-10-27T07:04:03.6209317Z 
+2026-10-27T07:04:03.6209390Z ALL_OK=true
+2026-10-27T07:04:03.8162339Z ##[group]Run python tools/recheck_probes.py
+2026-10-27T07:04:03.8162731Z [36;1mpython tools/recheck_probes.py[0m
+2026-10-27T07:04:03.8234902Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-27T07:04:03.8235245Z env:
+2026-10-27T07:04:03.8235504Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:03.8235950Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.16\x64/lib/pkgconfig
+2026-10-27T07:04:03.8236399Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:03.8236816Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:03.8237202Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:03.8237505Z ##[endgroup]
+2026-10-27T07:04:05.4608738Z ==============================================================================
+2026-10-27T07:04:05.4609583Z Stage 0 重验：独立反例回归（预期先手写，再跑实现）
+2026-10-27T07:04:05.4609974Z ==============================================================================
+2026-10-27T07:04:05.4610428Z [PASS] GA01_clause_without_rule               GA-01
+2026-10-27T07:04:05.4611465Z       反例：clean 副本删除 R09（C1 仍为必检且 SUPPORTED），C1 无规则映射
+2026-10-27T07:04:05.4612252Z       预期：总体结论 == INDETERMINATE，且 clause_coverage 中 C1 的 coverage_state == UNMAPPED
+2026-10-27T07:04:05.4614278Z       实测：{"C1_coverage_state": "UNMAPPED", "C1_reason": "CLAUSE_NOT_COVERED_BY_RULE", "aggregate": "INDETERMINATE"}
+2026-10-27T07:04:05.4615511Z [PASS] GA03_missing_crs_declaration           GA-03
+2026-10-27T07:04:05.4618123Z       反例：clean 副本移除 crs.json 的 declared_crs（缺证据，不是错误声明）
+2026-10-27T07:04:05.4619140Z       预期：总体结论 == INDETERMINATE（**不是** FAIL）；R06/R08/R10 为 INDETERMINATE/BLOCKED
+2026-10-27T07:04:05.4620375Z       实测：{"aggregate": "INDETERMINATE", "spatial": {"R06": ["INDETERMINATE", "BLOCKED"], "R08": ["INDETERMINATE", "BLOCKED"], "R10": ["INDETERMINATE", "BLOCKED"]}}
+2026-10-27T07:04:05.4621771Z [PASS] GA03_unexpected_crs_degree             GA-03
+2026-10-27T07:04:05.4622387Z       反例：clean 副本声明改为 EPSG:4490，单位仍 degree（与要求同为 degree，量级无法区分）
+2026-10-27T07:04:05.4623112Z       预期：R07 verdict == FAIL 且 reason_code/ finding 含 CRS_DECLARATION_MISMATCH；总体 != PASS
+2026-10-27T07:04:05.4623949Z       实测：{"R07": "FAIL", "aggregate": "FAIL", "finding_codes": ["CRS_DECLARATION_MISMATCH"]}
+2026-10-27T07:04:05.4624554Z [PASS] GA04_unknown_dependency                GA-04
+2026-10-27T07:04:05.4625082Z       反例：clean 副本的 R01.preconditions 增加 NONEXISTENT_RULE
+2026-10-27T07:04:05.4625709Z       预期：config_rejections 含 UNKNOWN_PRECONDITION；总体 != PASS（不得再静默过滤）
+2026-10-27T07:04:05.4626462Z       实测：{"aggregate": "INDETERMINATE", "rejection_codes": ["UNKNOWN_PRECONDITION"]}
+2026-10-27T07:04:05.4626864Z [PASS] GA05_substring_threshold               GA-05
+2026-10-27T07:04:05.4627230Z       反例：R09 的 max_age_days 由 30 改为 3（'3' 是 '30' 的子串）
+2026-10-27T07:04:05.4627606Z       预期：verify_parameter_sources() 返回非空（token 边界匹配，子串不算命中）
+2026-10-27T07:04:05.4628521Z       实测：{"problems": ["[PARAMETER_VALUE_MISMATCH] R09：参数 max_age_days 的实际值 3 与其批准来源记录的值 30 不一致", "[PARAMETER_SOURCE_NOT_FOUND] R09：参数 max_age_days 取值 3 在 C1 的批准引用中找不到来源（token 边界匹配，禁止子串包含）"]}
+2026-10-27T07:04:05.4629258Z [PASS] GA05_wrong_document_hash               GA-05
+2026-10-27T07:04:05.4629610Z       反例：clean 副本的条款 document_sha256 改为 64 个 0
+2026-10-27T07:04:05.4629952Z       预期：verify_quotes() 返回非空（含 DOCUMENT_HASH_MISMATCH）
+2026-10-27T07:04:05.4630487Z       实测：{"problems": ["[DOCUMENT_HASH_MISMATCH] A1 声明的文档哈希与实际不一致\n  声明: 00000000000000000000000000000000"]}
+2026-10-27T07:04:05.4630957Z [PASS] GA06_no_invalid_verdicts               GA-06
+2026-10-27T07:04:05.4631284Z       反例：blocked 包全部规则结果的 verdict 合法性
+2026-10-27T07:04:05.4631603Z       预期：verdict 不在三态词汇表内的结果数 == 0（修复前为 3 条 UNKNOWN）
+2026-10-27T07:04:05.4631937Z       实测：{"illegal_combos": [], "invalid_verdicts": []}
+2026-10-27T07:04:05.4632236Z [PASS] GA07_candidate_counts                  GA-07
+2026-10-27T07:04:05.4634772Z       反例：clean 包 R10（重复候选）的统计口径
+2026-10-27T07:04:05.4635610Z       预期：total=12, evaluated=12, failed=0, indeterminate=2, skipped_upstream=0, uninterpretable=0, findings=1（修复前为 evaluated=11 / blocked=1）
+2026-10-27T07:04:05.4636921Z       实测：{"summary_counts": {"findings": 1, "records_blocked": 0, "records_evaluated": 12, "records_failed": 0, "records_indeterminate": 2, "records_skipped_upstream": 0, "records_total": 12, "records_uninterpretable": 0}}
+2026-10-27T07:04:05.4637747Z [PASS] GA08_exclusive_boundary                GA-08
+2026-10-27T07:04:05.4638164Z       反例：单位正方形四边中点，point_in_ring_or_boundary(..., inclusive=False)
+2026-10-27T07:04:05.4638570Z       预期：四个点全部为 False（修复前左/下边为 True，不对称）
+2026-10-27T07:04:05.4639255Z       实测：{"exclusive": {"(0, 0.5)": false, "(0.5, 0)": false, "(0.5, 1)": false, "(1, 0.5)": false}, "inclusive": {"(0, 0.5)": true, "(0.5, 0)": true, "(0.5, 1)": true, "(1, 0.5)": true}}
+2026-10-27T07:04:05.4639857Z [PASS] GA02_clause_downgraded                 GA-02
+2026-10-27T07:04:05.4640287Z       反例：defective 副本把 R09.required_for_release 改为 false，并注入一条过期记录
+2026-10-27T07:04:05.4641156Z       预期：总体 != PASS；config_rejections 含 CLAUSE_POLICY_DOWNGRADED_BY_RULE（规则不得降级条款）
+2026-10-27T07:04:05.4641856Z       实测：{"aggregate": "INDETERMINATE", "rejection_codes": ["CLAUSE_POLICY_DOWNGRADED_BY_RULE"]}
+2026-10-27T07:04:05.4642309Z [PASS] INPUT_MANIFEST                         GA-09
+2026-10-27T07:04:05.4642653Z       反例：按 INPUT_MANIFEST.json 逐文件核对 sha256
+2026-10-27T07:04:05.4642928Z       预期：不一致文件数 == 0
+2026-10-27T07:04:05.4643165Z       实测：{"checked": 60, "mismatches": []}
+2026-10-27T07:04:05.4643666Z [PASS] NEW_crs_magnitude_only_signal          GA-03/A3
+2026-10-27T07:04:05.4644201Z       反例：clean 副本：声明 CRS 仍为要求的 EPSG:4326，但 declared_unit 改为 metre，坐标仍为经纬度量级（合法小值投影坐标也可能长这样）
+2026-10-27T07:04:05.4644925Z       预期：R07 verdict != FAIL（只比对声明，不按量级猜）；产出 risk signal CRS_MAGNITUDE_RISK（含 degree_like_records）；R06/R08 不被阻断（仍 COMPLETED）
+2026-10-27T07:04:05.4646129Z       实测：{"R06_status": "COMPLETED", "R07": "PASS", "R08_status": "COMPLETED", "aggregate": "PASS", "magnitude_evidence": [{"degree_like_records": 12}], "risk_codes": ["PARAMETER_VALUE_MAPPED_BY_INTERPRETATION", "CRS_MAGNITUDE_RISK"]}
+2026-10-27T07:04:05.4647065Z [PASS] NEW_timezone_undeclared_fails_closed   A2/本轮一行修复
+2026-10-27T07:04:05.4647557Z       反例：① 六个包在严格 RFC3339 子集下是否会产生 TIMEZONE_UNDECLARED；② 强行放宽解析使该分支可达后，规则级结论是否仍不得为 PASS
+2026-10-27T07:04:05.4649132Z       预期：① 六包产生 0 条（该分支不可达，本轮改动零影响）；② 放宽后 verdict == INDETERMINATE、execution_status == PARTIAL（不是 FAILED：没有执行异常；不是 BLOCKED：记录已解析并评估；更不是 COMPLETED：存在不可解释行就不能宣称执行完整）、reason_code == TIMEZONE_UNDECLARED、records_uninterpretable >= 1（缺证据类 finding 计入 uninterpretable，§7.1/§7.2），绝不为 PASS（不得放行，也不得给出「已按未定处理」的假象——见 OPEN_ISSUES）
+2026-10-27T07:04:05.4651633Z       实测：{"forced_branch": {"detail": null, "execution_status": "PARTIAL", "finding_codes": ["DUPLICATE_CANDIDATE", "TIMEZONE_UNDECLARED"], "reason_code": "TIMEZONE_UNDECLARED", "records_uninterpretable": 1, "verdict": "INDETERMINATE"}, "timezone_findings_in_examples": 0}
+2026-10-27T07:04:05.4652771Z [PASS] NEW_expected_tamper_detected           契约 §9.4
+2026-10-27T07:04:05.4653344Z       反例：把 clean 包复制到临时目录后对 expected 做四类篡改：命中错行但数量相同 / 多一条 finding / 少一条 finding / 统计字段被篡改；再加一次「无变异」反向确认
+2026-10-27T07:04:05.4653949Z       预期：四类篡改**全部**被 compare_expected() 判为真实差异（FIELD/COUNT/MISSING/EXTRA），无变异时真实差异 == 0
+2026-10-27T07:04:05.4655301Z       实测：{"variants": {"命中错行但数量相同": [{"field": "record_locator.line", "kind": "FIELD", "scope": "findings[R10|DUPLICATE_CANDIDATE|12|longitude/latitude]"}], "多一条 finding": [{"field": "finding", "kind": "MISSING", "scope": "findings[R09|STALE_RECORD|3|source_time]"}], "少一条 finding": [{"field": "finding", "kin
+2026-10-27T07:04:05.4656467Z [PASS] NEW_gate_exit_code_on_reject           契约 §9.1
+2026-10-27T07:04:05.4656815Z       反例：跑真实门禁入口：正常包 / 注入重复 rule_id / 注入未知依赖
+2026-10-27T07:04:05.4657148Z       预期：正常包退出码 0 且无 [REJECT]；两个注入包退出码 == 1 且打印 [REJECT]
+2026-10-27T07:04:05.4658385Z       实测：{"runs": {"clean": {"exit_code": 0, "first_line": "[PASS] clean      aggregate=PASS          findings=1   -> D:\\a\\Spatial-Data-Governance\\Spatial-Data-Governance\\work\\negatives\\probe_gate_out\\clean", "reject": false}, "neg_dup_rule": {"exit_code": 1, "first_line": "[REJECT] neg_dup_rule 配置校验未
+2026-10-27T07:04:05.4659486Z [PASS] NEW_risk_signals_write_only            契约 A3
+2026-10-27T07:04:05.4659874Z       反例：在 run() 的判定窗口内（通过包装 R07 处理器插桩）读取 Kernel.risk_signals
+2026-10-27T07:04:05.4660293Z       预期：读取必须抛 ContractViolation（不得静默成功）；run() 结束后可读且为普通 list
+2026-10-27T07:04:05.4660738Z       实测：{"after_len": 2, "after_type": "list", "during": "ContractViolation"}
+2026-10-27T07:04:05.4661843Z [PASS] NEW_i7_i9_counterexamples              契约 §3.5.1 / I7–I9
+2026-10-27T07:04:07.9519533Z       反例：自建矛盾组合，不复用工程师输出：① 直接调 assert_reason_compat 的 11 组；② 经 make_result() 构造 FAIL+OK / FAIL+候选码 / INDETERMINATE+OK；③ 端到端注入一条 reason_code=OK 的 finding，看 run() 是否失败关闭
+2026-10-27T07:04:07.9522471Z       预期：① PASS+OK / FAIL+FAIL 类码 / INDETERMINATE+非 FAIL 类非 OK 码 → 不抛；PASS+非OK / FAIL+OK / FAIL+候选码 / FAIL+缺证据码 / INDETERMINATE+OK / INDETERMINATE+FAIL 类码 → 抛 ContractViolation；② make_result 三例全部抛；③ 该规则登记为 INDETERMINATE/FAILED/CONTRACT_VIOLATION，总体 != PASS（失败关闭）
+2026-10-27T07:04:07.9527202Z       实测：{"assert_reason_compat": [{"got": "NO_RAISE", "ok": true, "reason_code": "OK", "verdict": "PASS", "want": "NO_RAISE"}, {"got": "ContractViolation", "ok": true, "reason_code": "EMPTY_VALUE", "verdict": "PASS", "want": "ContractViolation"}, {"got": "ContractViolation", "ok": true, "reason_code": "DUPL
+2026-10-27T07:04:07.9529345Z [PASS] NEW_reason_code_arrays                 契约 §3.5.2
+2026-10-27T07:04:07.9530762Z       反例：① _unique_ordered 去重且保留首次出现顺序；② 端到端按「行号 9→3→7、码 EMPTY_VALUE→ENUM_VIOLATION→EMPTY_VALUE」注入，验证「第一条」取的是排放顺序而不是行号重排；③ 六包全量核对 I7–I9 与数组自洽
+2026-10-27T07:04:07.9533604Z       预期：① [A,B,A,C,B,A] → [A,B,C]；② failure_reason_codes == [EMPTY_VALUE, ENUM_VIOLATION]、reason_code == EMPTY_VALUE（行号升序会错成 ENUM_VIOLATION）；③ 六包全部 0 条违反，且 FAIL 的 failure_reason_codes[0] == reason_code、数组无重复、全部元素属 FAIL 类
+2026-10-27T07:04:07.9535429Z       实测：{"R02": {"emission_lines": [10, 4, 8], "emission_order": ["EMPTY_VALUE", "ENUM_VIOLATION", "EMPTY_VALUE"], "failure_reason_codes": ["EMPTY_VALUE", "ENUM_VIOLATION"], "reason_code": "EMPTY_VALUE", "verdict": "FAIL"}, "corpus": {"ambiguous": {"clauses": 11, "results": 12, "violations": []}, "blocked":
+2026-10-27T07:04:07.9536566Z [PASS] NEW_schema_registry_parity             契约 §3.5.2(4)
+2026-10-27T07:04:07.9537065Z       反例：check_result.schema.json 是否登记了两个新字段；并**篡改 Schema** 反证一致性校验真的在查
+2026-10-27T07:04:07.9537859Z       预期：两字段均已登记且 uniqueItems=true；基线 SCHEMA_CONSISTENT=true 退出码 0；从 failure_reason_codes 枚举删掉一个码后必须报 [REGISTRY_PARITY] 且退出码 != 0；篡改文件必须还原（哈希回到原值）
+2026-10-27T07:04:07.9539373Z       实测：{"baseline": {"consistent": true, "exit_code": 0}, "declared": {"advisory_reason_codes": "array", "failure_reason_codes": "array"}, "enum_advisory": ["CRS_MISSING_DECLARATION", "CRS_EXPECTED_NOT_APPROVED", "TIMEZONE_UNDECLARED"], "enum_fail_n": 15, "removed_code": "FUTURE_TIMESTAMP", "restored": tru
+2026-10-27T07:04:07.9540622Z [PASS] NEW_single_official_interface          契约 §3.5.1 / 判据 15 / 判据 17 / Stage 1 第 5 条
+2026-10-27T07:04:07.9541728Z       反例：① 以旧二参签名 aggregate(results, n_rows) 调用；② 检查 _coverage_from_results 是否仍存在；③ 手工构造六类结果走**唯一正式接口** build_clause_coverage → aggregate(coverage, rejections, n_rows)：仅候选 / 无码可取 / 正常 PASS / I9 违反 / I7 违反 / I8 违反；④ 六包唯一接口自洽
+2026-10-27T07:04:07.9543309Z       预期：① 必须抛 TypeError 且提示迁移到 build_clause_coverage（**不得**静默走另一条判定路径）；② 兼容辅助函数必须已删除；③ 仅候选 ⇒ DUPLICATE_CANDIDATE（不是 OK）；无码可取 ⇒ CONTRACT_VIOLATION（禁止回退 OK）；正常 PASS+OK ⇒ PASS；I7/I8/I9 三类违反**均不抛栈**且结论 != PASS（失败关闭）；④ 六包 aggregate 的 FAIL 条款集合与 clause_coverage 中的 FAIL 集合一致
+2026-10-27T07:04:07.9545342Z       实测：{"S1_仅候选": {"clause": {"coverage_state": "COVERED", "execution_status": "COMPLETED", "reason_code": "DUPLICATE_CANDIDATE", "verdict": "INDETERMINATE"}, "raised": null, "reason": "存在必检条款未通过：A1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A2(COVERED/DUPLICATE_CANDIDATE),A3(MISSING_RESULT/RESULT_MISSING_F
+2026-10-27T07:04:07.9546515Z [PASS] RC01_clause_coverage_result_set        契约 §3.2 / RC-01
+2026-10-27T07:04:07.9547170Z       反例：clean 副本复制 R09 为 R09b（C1 同时映射两条应执行规则），对结果集做六组故障注入：全齐 / 部分缺失（丢 R09b）/ 零结果 / 重复（R09 两条相同结果）/ 冲突（重复的那条改判 FAIL）/ 已知 FAIL + 部分缺失
+2026-10-27T07:04:07.9548702Z       预期：① 全齐 → COVERED + PASS（证明不是一律拒绝）；②③ 缺结果 → MISSING_RESULT + INDETERMINATE，missing_rule_ids 分别 == [R09b]、[R09,R09b]，总体 != PASS；④⑤ 重复/冲突 → INDETERMINATE + CONTRACT_VIOLATION，conflicting_rule_ids == [R09]，**不得**取最后一条、也**不得**因此判 FAIL，总体 != PASS；⑥ 已知 FAIL + 缺 R09b → 保留 FAIL、reason == STALE_RECORD、missing_rule_ids == [R09b]（不隐藏），总体 == FAIL
+2026-10-27T07:04:07.9550725Z       实测：{"S1_全齐": {"aggregate": "PASS", "conflicting": null, "fail_codes": null, "missing": null, "reason": "OK", "state": "COVERED", "status": "COMPLETED", "verdict": "PASS"}, "S2_部分缺失": {"aggregate": "INDETERMINATE", "conflicting": null, "fail_codes": null, "missing": ["R09b"], "reason": "RESULT_MISSING_F
+2026-10-27T07:04:07.9551951Z [PASS] RC02_unsupported_clause_approved_rule  契约 §2.4 / RC-02
+2026-10-27T07:04:07.9552714Z       反例：clean 副本把 C1 的 support_status 依次改为 UNSUPPORTED / NEEDS_CLARIFICATION / 未知取值 SUPPORTED_TYPO / 缺失(None)，保留原 APPROVED 的 R09；再加一次改回 SUPPORTED 的反向确认
+2026-10-27T07:04:07.9554360Z       预期：四种状态**全部** config_rejections 含 APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE、C1 verdict != PASS、总体 != PASS；未知取值与缺失还须报 CLAUSE_SUPPORT_STATUS_UNKNOWN（枚举校验在执行入口，不只靠 Schema 脚本）；改回 SUPPORTED 时 rejections 为空且总体 PASS
+2026-10-27T07:04:07.9556119Z       实测：{"NEEDS_CLARIFICATION": {"C1_reason": "UPSTREAM_CONFIG_REJECTED", "C1_state": "CONFIG_REJECTED", "C1_verdict": "INDETERMINATE", "aggregate": "INDETERMINATE", "rejection_codes": ["APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE"]}, "UNSUPPORTED": {"C1_reason": "UPSTREAM_CONFIG_REJECTED", "C1_state": "CONFIG_REJ
+2026-10-27T07:04:07.9557329Z [PASS] RC03_subprocess_encoding               RC-03（工程）
+2026-10-27T07:04:07.9557869Z       反例：从环境里删掉 PYTHONUTF8/PYTHONIOENCODING（模拟调用方未设置），子进程打印中文并按固定 utf-8 解码；一致性校验器同样走该通道
+2026-10-27T07:04:07.9558985Z       预期：子进程退出 0、中文可完整解码、sys.stdout.encoding 以 utf 开头；校验器退出 0 且输出含 SCHEMA_CONSISTENT=true；旧路径反证必须**以 bytes 接收原始输出**、在当前线程显式 decode：utf-8 往返成功、ascii（不匹配编码）必须抛 UnicodeDecodeError 且被正常捕获；禁止用 errors="ignore" 掩盖，也禁止靠子进程读取线程的 traceback 取证
+2026-10-27T07:04:07.9560744Z       实测：{"checker_consistent": true, "checker_exit": 0, "child_exit": 0, "child_stdout_encoding": "utf-8", "decoded_ok": true, "env_scrubbed": true, "legacy_locale_decode_note": "UnicodeDecodeError：'charmap' codec can't decode byte 0x90 in position 17: character maps to <undefined>", "legacy_mismatch_decode
+2026-10-27T07:04:07.9562868Z [PASS] RC04_repeat_run_determinism            RC-04（工程）
+2026-10-27T07:04:07.9563265Z       反例：clean / defective 各建一个 Kernel，同一实例连续 run() 两次
+2026-10-27T07:04:07.9563925Z       预期：两个包的 results、findings、risk_signals 三次比较**全等**（修复前 findings 不等：finding_seq 未复位，finding_id 从上一轮末尾继续编号），且两次运行的规则级结论一致、findings 数量非零
+2026-10-27T07:04:07.9565350Z       实测：{"clean": {"finding_ids_r1": ["F0001"], "finding_ids_r2": ["F0001"], "findings_equal": true, "findings_n": [1, 1], "results_equal": true, "risk_n": [1, 1], "risk_signals_equal": true, "verdicts": true}, "defective": {"finding_ids_r1": ["F0001", "F0002", "F0003"], "finding_ids_r2": ["F0001", "F0002",
+2026-10-27T07:04:07.9566451Z [PASS] S1_input_schema_validation             契约 §2.4 / Stage 1 第 5 条
+2026-10-27T07:04:07.9567334Z       反例：① 六个真实包走执行入口的 Pydantic(strict) 校验；② 对 clean 包 A1 做四类篡改：required_for_release="yes"(类型收敛) / support_status=SUPPORTED_X(枚举越界) / document_sha256=abc(哈希格式) / source_line_start=0(行号越界)
+2026-10-27T07:04:07.9568253Z       预期：① 六个包**均不得**产生 INPUT_SCHEMA_INVALID（不得误杀）；② 四类篡改**全部**登记 INPUT_SCHEMA_INVALID 且总体 != PASS（整包拒绝执行）
+2026-10-27T07:04:10.6785895Z       实测：{"哈希格式错_document_sha256=abc": {"aggregate": "INDETERMINATE", "blocked": true, "codes": ["INPUT_SCHEMA_INVALID"]}, "枚举越界_support_status=SUPPORTED_X": {"aggregate": "INDETERMINATE", "blocked": true, "codes": ["APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE", "CLAUSE_SUPPORT_STATUS_UNKNOWN", "INPUT_SCHEMA_INVALI
+2026-10-27T07:04:10.6787783Z [PASS] S1_uncovered_coverage_branches         契约 §3.2 / Stage 1 第 7 条
+2026-10-27T07:04:10.6789625Z       反例：补齐 Stage 0 无正例的分支：① R09 的 rule_type 改成未知类型——第三轮起入口校验受控拒绝未知 rule_type（S1-R2-01），条款级走 CONFIG_REJECTED（比 NO_IMPLEMENTATION 更早更严；schema 十类与内核实现同步时 NO_IMPLEMENTATION 不可达，保留给 「schema 先行扩展」场景）；② R09 的 status 改成 DRAFT (UNAPPROVED)；③ 删除 crs.json 的 declared_crs，产生缺证据类 finding (advisory_reason_codes)
+2026-10-27T07:04:10.6793698Z       预期：① 登记 INPUT_SCHEMA_INVALID（target=R09）且整包拒绝执行：规则级 INDETERMINATE/REJECTED/CONFIG_REJECTED，条款级 coverage_state=CONFIG_REJECTED，总体 != PASS；② 规则级 INDETERMINATE/NOT_EXECUTED/RULE_NOT_APPROVED，条款级 coverage_state=UNAPPROVED，总体 != PASS；③ 至少一条规则的 advisory_reason_codes 非空、码全部属 INDETERMINATE 类、规则级结论为 INDETERMINATE（不是 FAIL）、总体 != PASS
+2026-10-27T07:04:10.6800004Z       实测：{"UNAPPROVED": {"aggregate": "INDETERMINATE", "clause": {"reason": "RULE_NOT_APPROVED", "state": "UNAPPROVED", "status": "NOT_EXECUTED", "verdict": "INDETERMINATE"}, "rule": {"reason": "RULE_NOT_APPROVED", "status": "NOT_EXECUTED", "verdict": "INDETERMINATE"}}, "UNKNOWN_RULE_TYPE": {"aggregate": "IN
+2026-10-27T07:04:10.6802728Z [PASS] S1_cli_smoke                           Stage 1 第 6 条（内核/CLI/报告）
+2026-10-27T07:04:10.6804217Z       反例：真实子进程跑 CLI：`run --bundle clean --html`、`report --from-json ... --out ...`、`compare --before defective --after corrected`
+2026-10-27T07:04:10.6805730Z       预期：run 退出 0 且 work/stage0/clean/report.html 落盘并含结论与条款覆盖表（不含脚本注入）；report 退出 0 且输出文件存在；compare 打印结构化结果
+2026-10-27T07:04:10.6808424Z       实测：{"compare": {"exit_code": 2, "out_exists": true, "printed": true}, "html_escaped": true, "html_has_verdict": true, "old_run_removed": true, "regress": {"exit_code": 0, "html_exists": true}, "report": {"exit_code": 0, "out_exists": true}, "validate": {"exit_code": 0, "html_exists": true, "json_exists
+2026-10-27T07:04:10.6809685Z [PASS] S1_compare_identity                    Stage 1 第 8 条（整改 compare 身份）
+2026-10-27T07:04:10.6810319Z       反例：① defective → corrected；② clean → clean（无差异）；③ 副本把 R02.version 改为 2；④ 包路径 ../..（路径穿越）
+2026-10-27T07:04:10.6811346Z       预期：① 真实修复项判 closed、批次内重复 ID 的那条判 not_comparable、总体 LEDGER_INDETERMINATE（有不可比较项不得宣称整改完成）；② LEDGER_CLOSED_ACCEPTED 且无差异；③ 涉及 R02 的条目全部 not_comparable（规则语义指纹不同）；④ 路径穿越必须抛 InputGuardError
+2026-10-27T07:04:10.6812987Z       实测：{"defective_to_corrected": {"counts": {"closed": 8, "not_comparable": 1}, "fixed": [], "not_comparable": [["SD-0005", "R05"]], "overall": "LEDGER_INDETERMINATE"}, "path_traversal": {"blocked": true, "error": "包路径越出项目根目录：D:\\a\\Spatial-Data-Governance（root=D:\\a\\Spatial-Data-Governance\\Spatial-Data
+2026-10-27T07:04:10.6814227Z [PASS] S1_validate_entry_new_bundle           外部复核 §七（正式检查入口与 expected 回归分离）
+2026-10-27T07:04:10.6814711Z       反例：examples 之外新建两个包：干净副本、注入过期时间的副本；再删掉 poi.csv
+2026-10-27T07:04:10.6816005Z       预期：① 干净副本 PASS（executed=true、expected_used=false）；② 过期副本 FAIL 且 findings_by_class.FAIL ≥ 1、expected_used=false（结论来自内核判定，不是 expected 比对）；③ 缺输入文件必须 InputGuardError
+2026-10-27T07:04:10.6817710Z       实测：{"clean_copy": {"executed": true, "expected_used": false, "schema_version": "stage1-validate-2", "verdict": "PASS"}, "missing_input": {"blocked": true, "error": "批次缺少输入文件 poi.csv：D:\\a\\Spatial-Data-Governance\\Spatial-Data-Governance\\work\\negatives\\probe_validate_new\\missing_file_bun"}, "stale_
+2026-10-27T07:04:10.6819023Z [PASS] S1_compare_closure_evidence            外部复核 S1-EXT-01 / EXT-02 / EXT-03（compare 关闭证据）
+2026-10-27T07:04:10.6819520Z       反例：① 整改后删掉缺陷实体；② 数据不变但 R09 改 DRAFT；③ 唯一实体同时有两条 FAIL
+2026-10-27T07:04:10.6820371Z       预期：① removed_pending_review，不得 closed；② unresolved_unknown、台账 INDETERMINATE；③ 两批 duplicated 均为空（不得把 finding 条数当成实体重复），两条均 closed 且 closure_evidence 的 execution_status=COMPLETED
+2026-10-27T07:04:10.6823033Z       实测：{"entity_deleted": {"ledger": "INDETERMINATE", "overall": "LEDGER_INDETERMINATE", "removed": ["SD-0001"], "statuses": ["removed_pending_review"]}, "rule_unapproved": {"ledger": "INDETERMINATE", "overall": "LEDGER_INDETERMINATE", "reasons": [["整改后该规则状态为 'DRAFT'（非 APPROVED）：检查资格不具备，不得按'无失败'推定已修复", "规则
+2026-10-27T07:04:10.6824080Z 
+2026-10-27T07:04:10.6824254Z ------------------------------------------------------------------------------
+2026-10-27T07:04:10.6824735Z 对拍：原独立探针 stage0_independent_probes.py 跑在当前仓库
+2026-10-27T07:04:10.6825490Z   [SKIP] 未提供原独立探针脚本路径（--probes-script）
+2026-10-27T07:04:10.6825951Z   对拍结论：未执行（本轮已由人工执行，证据见 acceptance/stage-0-recheck/）
+2026-10-27T07:04:10.6826169Z 
+2026-10-27T07:04:10.6826280Z ==============================================================================
+2026-10-27T07:04:10.6827311Z RECHECK_PROBES_OK=true（30/30 通过，输出：D:\a\Spatial-Data-Governance\Spatial-Data-Governance\acceptance\stage-0-recheck\independent-results.json）
+2026-10-27T07:04:10.6827948Z ==============================================================================
+2026-10-27T07:04:10.8435574Z ##[group]Run python tools/compare_probes.py
+2026-10-27T07:04:10.8435981Z [36;1mpython tools/compare_probes.py[0m
+2026-10-27T07:04:10.8545243Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-27T07:04:10.8545603Z env:
+2026-10-27T07:04:10.8545866Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:10.8546312Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.16\x64/lib/pkgconfig
+2026-10-27T07:04:10.8546777Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:10.8547195Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:10.8547591Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:10.8547921Z ##[endgroup]
+2026-10-27T07:04:13.9580230Z [PASS] C00-identical 正例对照：clean → clean（无失败项）
+2026-10-27T07:04:13.9581145Z       overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={}
+2026-10-27T07:04:13.9582523Z [PASS] C01-canonical 正例对照：defective → corrected（8 关闭 + SD-0005 重复不可比）
+2026-10-27T07:04:13.9583935Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'closed': 8, 'not_comparable': 1}
+2026-10-27T07:04:13.9585576Z [PASS] EXT01-1      数据集级失败未修：blocked → blocked（CRS 声明错误没改）
+2026-10-27T07:04:13.9586554Z       overall=LEDGER_OPEN ledger=OPEN after=FAIL counts={'still_open': 1}
+2026-10-27T07:04:13.9587648Z [PASS] EXT01-2      整改后缺证据：clean → ambiguous（阈值与精度依据不足）
+2026-10-27T07:04:13.9588678Z       overall=LEDGER_CLOSED_NOT_ACCEPTED ledger=CLOSED after=INDETERMINATE counts={}
+2026-10-27T07:04:13.9589784Z [PASS] EXT01-3      规则未批准：同数据但 R09 改 DRAFT（检查资格不具备）
+2026-10-27T07:04:13.9590765Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'unresolved_unknown': 1}
+2026-10-27T07:04:13.9591603Z [PASS] EXT02-1      删除缺陷实体：整改后直接删掉这条记录（故障实体删除）
+2026-10-27T07:04:13.9592256Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'removed_pending_review': 1}
+2026-10-27T07:04:13.9593010Z [PASS] EXT03-1      唯一实体多条 finding：不构成实体重复（两条都真实修复）
+2026-10-27T07:04:13.9593542Z       overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={'closed': 2}
+2026-10-27T07:04:13.9594199Z [PASS] EXT04-1      同版本改参数：R02 trim=true→false（放宽尺子制造“修复”）
+2026-10-27T07:04:13.9594876Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'not_comparable': 1}
+2026-10-27T07:04:13.9595657Z [PASS] EXT04-2      改判定阈值：R09 max_age_days 30→365（来源对不上 ⇒ 配置拒绝）
+2026-10-27T07:04:13.9596190Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'not_comparable': 1}
+2026-10-27T07:04:13.9597236Z [PASS] EXT04-3      改数据字典：把非法类别加进枚举（字典变了就不是同一把尺子）
+2026-10-27T07:04:13.9597717Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'not_comparable': 1}
+2026-10-27T07:04:13.9598263Z [PASS] EXT04-4      改项目范围：把 area.geojson 放大 4 倍让越界点“变合法”
+2026-10-27T07:04:13.9598735Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'not_comparable': 1}
+2026-10-27T07:04:13.9599286Z [PASS] EXT04-5      改基准时间：R09 reference_time 前移（来源同步改 ⇒ 拒绝执行）
+2026-10-27T07:04:13.9599767Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=FAIL counts={'not_comparable': 12}
+2026-10-27T07:04:13.9600270Z [PASS] EXT04-6      规则删除：整改后批次没有 R09（尺子被撤走）
+2026-10-27T07:04:13.9600735Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'not_comparable': 1}
+2026-10-27T07:04:13.9601280Z [PASS] EXT04-7      依赖失效：上游 R03 改 DRAFT ⇒ 下游未完整执行
+2026-10-27T07:04:13.9601765Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'unresolved_unknown': 1}
+2026-10-27T07:04:13.9602763Z [PASS] EXT04-8      批准来源变化：数据修好了但 R09 被重新批准
+2026-10-27T07:04:13.9603177Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'not_comparable': 1}
+2026-10-27T07:04:13.9603692Z [PASS] EXT02-2      新增实体必须披露（不比较没出现过失败的实体是不够的）
+2026-10-27T07:04:13.9607021Z       overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={}
+2026-10-27T07:04:13.9607730Z [PASS] EXT04-9      新增规则必须披露（R11 只存在于整改后批次）
+2026-10-27T07:04:13.9608138Z       overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={'closed': 1}
+2026-10-27T07:04:13.9608643Z [PASS] R202-1       干净实体删除：无缺陷记录消失也必须待审核，不得整体放行
+2026-10-27T07:04:13.9609116Z       overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'removed_pending_review': 1}
+2026-10-27T07:04:13.9609686Z [PASS] R202-2       行序打乱：身份按 record_id 而非行号，结论不得变化
+2026-10-27T07:04:13.9610051Z       overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={}
+2026-10-27T07:04:13.9610538Z [PASS] PARAM-01     required_field_present：空必需数组（fields=[]）
+2026-10-27T07:04:13.9611101Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R01')]
+2026-10-27T07:04:13.9611672Z [PASS] PARAM-02     non_empty：错误类型（trim='yes' 字符串）
+2026-10-27T07:04:13.9612188Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R02')]
+2026-10-27T07:04:13.9612732Z [PASS] PARAM-03     type_parse：fields 不是数组
+2026-10-27T07:04:13.9613204Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R03')]
+2026-10-27T07:04:13.9613745Z [PASS] PARAM-04     enum_value：缺必填参数（allow_alias）
+2026-10-27T07:04:13.9614228Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R04')]
+2026-10-27T07:04:13.9614755Z [PASS] PARAM-05     id_unique：field 不是字符串
+2026-10-27T07:04:13.9615214Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R05')]
+2026-10-27T07:04:13.9615755Z [PASS] PARAM-06     coord_range：lon_range 少于 2 个数
+2026-10-27T07:04:13.9616346Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R06'), ('PARAMETER_VALUE_MISMATCH', 'R06')]
+2026-10-27T07:04:13.9617520Z [PASS] PARAM-07     crs_declaration：expected_crs 含非法字符
+2026-10-27T07:04:13.9618161Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R07'), ('PARAMETER_VALUE_MISMATCH', 'R07')]
+2026-10-27T07:04:13.9618860Z [PASS] PARAM-08     within_project_area：boundary_policy 非法枚举
+2026-10-27T07:04:13.9619497Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R08'), ('BOUNDARY_POLICY_UNKNOWN', 'R08')]
+2026-10-27T07:04:13.9620139Z [PASS] PARAM-09     freshness：max_age_days 为负
+2026-10-27T07:04:13.9620743Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R09'), ('PARAMETER_VALUE_MISMATCH', 'R09')]
+2026-10-27T07:04:13.9621432Z [PASS] PARAM-10     duplicate_candidate：未知参数键（extra）
+2026-10-27T07:04:13.9622082Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R10'), ('PARAMETER_SOURCE_UNCLASSIFIED', 'R10')]
+2026-10-27T07:04:13.9622756Z [PASS] PARAM-11     未知 rule_type：magic_check
+2026-10-27T07:04:13.9623229Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R05')]
+2026-10-27T07:04:13.9623808Z [PASS] PARAM-12     缺 parameters：不得按默认值继续执行
+2026-10-27T07:04:13.9624272Z       executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R01')]
+2026-10-27T07:04:13.9624807Z [PASS] PARAM-00     有效输入正向对照：clean 照常执行（不误杀）
+2026-10-27T07:04:13.9625135Z       executed=True verdict=PASS clauses_required=9 rejections=[]
+2026-10-27T07:04:13.9625566Z [PASS] VALIDATE-1   正式入口 validate：新包无 expected 也能给出结论
+2026-10-27T07:04:13.9626081Z       verdict=FAIL expected_used=False findings={'FAIL': 1, 'CANDIDATE': 1} schema_err=[]
+2026-10-27T07:04:13.9626653Z 
+2026-10-27T07:04:13.9626804Z COMPARE_PROBES_OK=true（33/33）
+2026-10-27T07:04:13.9627363Z 结构化结果：D:\a\Spatial-Data-Governance\Spatial-Data-Governance\work\stage1-compare\compare-probe-results.json
+2026-10-27T07:04:14.1336636Z ##[group]Run python tests/test_application.py
+2026-10-27T07:04:14.1337282Z [36;1mpython tests/test_application.py[0m
+2026-10-27T07:04:14.1413313Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-27T07:04:14.1413692Z env:
+2026-10-27T07:04:14.1413975Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:14.1414445Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.16\x64/lib/pkgconfig
+2026-10-27T07:04:14.1414905Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:14.1415329Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:14.1415747Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:14.1416415Z ##[endgroup]
+2026-10-27T07:04:15.2621243Z test_all_sample_drafts_default_unapproved (__main__.AppTests.test_all_sample_drafts_default_unapproved) ... ok
+2026-10-27T07:04:15.8158184Z test_clean_defective_and_unknown (__main__.AppTests.test_clean_defective_and_unknown) ... ok
+2026-10-27T07:04:16.1310150Z test_correction_and_compare (__main__.AppTests.test_correction_and_compare) ... ok
+2026-10-27T07:04:16.2341482Z test_crlf_source_hash_is_raw_bytes (__main__.AppTests.test_crlf_source_hash_is_raw_bytes) ... ok
+2026-10-27T07:04:16.4796477Z test_deepseek_profile_and_currency_contract (__main__.AppTests.test_deepseek_profile_and_currency_contract) ... ok
+2026-10-27T07:04:16.6015459Z test_failed_draft_does_not_erase_previous_approval (__main__.AppTests.test_failed_draft_does_not_erase_previous_approval) ... ok
+2026-10-27T07:04:16.6134641Z test_geojson_no_silent_skipping (__main__.AppTests.test_geojson_no_silent_skipping) ... ok
+2026-10-27T07:04:16.8249928Z test_idempotency_and_input_immutability (__main__.AppTests.test_idempotency_and_input_immutability) ... ok
+2026-10-27T07:04:17.2844675Z test_kernel_package_import_has_no_script_path_dependency (__main__.AppTests.test_kernel_package_import_has_no_script_path_dependency) ... ok
+2026-10-27T07:04:17.3014219Z test_live_case_scorer_catches_bad_parameters (__main__.AppTests.test_live_case_scorer_catches_bad_parameters) ... ok
+2026-10-27T07:04:17.7005680Z test_local_evidence_compiler_preserves_values_and_quarantines_invalid_rules (__main__.AppTests.test_local_evidence_compiler_preserves_values_and_quarantines_invalid_rules) ... ok
+2026-10-27T07:04:18.2605772Z test_local_output_schema_is_valid_and_preserves_contract_bounds (__main__.AppTests.test_local_output_schema_is_valid_and_preserves_contract_bounds) ... ok
+2026-10-27T07:04:18.2823834Z test_local_provider_never_uses_cloud_credentials (__main__.AppTests.test_local_provider_never_uses_cloud_credentials) ... ok
+2026-10-27T07:04:18.8795206Z test_loopback_transport_bypasses_proxy_environment (__main__.AppTests.test_loopback_transport_bypasses_proxy_environment) ... ok
+2026-10-27T07:04:18.9218639Z test_missing_clause_and_downgrade_cannot_disappear (__main__.AppTests.test_missing_clause_and_downgrade_cannot_disappear) ... ok
+2026-10-27T07:04:18.9332022Z test_no_external_records_in_preview (__main__.AppTests.test_no_external_records_in_preview) ... ok
+2026-10-27T07:04:18.9408584Z test_nonfinite_prices_and_invalid_usage (__main__.AppTests.test_nonfinite_prices_and_invalid_usage) ... ok
+2026-10-27T07:04:18.9508659Z test_omitted_model_requirements_preserved_as_unknown (__main__.AppTests.test_omitted_model_requirements_preserved_as_unknown) ... ok
+2026-10-27T07:04:18.9568907Z test_path_upload_rejected (__main__.AppTests.test_path_upload_rejected) ... ok
+2026-10-27T07:04:19.0242415Z test_private_key_file_is_literal_and_not_distributed (__main__.AppTests.test_private_key_file_is_literal_and_not_distributed) ... ok
+2026-10-27T07:04:19.0322042Z test_provider_auth_failure_preserves_safe_status_without_retry (__main__.AppTests.test_provider_auth_failure_preserves_safe_status_without_retry) ... ok
+2026-10-27T07:04:19.0398784Z test_provider_retry_budget_and_usage_unknown (__main__.AppTests.test_provider_retry_budget_and_usage_unknown) ... ok
+2026-10-27T07:04:19.1470996Z test_quality_scorer_rejects_observed_local_errors (__main__.AppTests.test_quality_scorer_rejects_observed_local_errors) ... ok
+2026-10-27T07:04:19.1593613Z test_qwen_beijing_profile_and_launcher (__main__.AppTests.test_qwen_beijing_profile_and_launcher) ... ok
+2026-10-27T07:04:19.2784788Z test_reproposal_invalidates_old_approval (__main__.AppTests.test_reproposal_invalidates_old_approval) ... ok
+2026-10-27T07:04:19.2899060Z test_restart_marks_running_interrupted (__main__.AppTests.test_restart_marks_running_interrupted) ... ok
+2026-10-27T07:04:19.4032629Z test_review_can_correct_model_misclassified_advisory (__main__.AppTests.test_review_can_correct_model_misclassified_advisory) ... ok
+2026-10-27T07:04:19.5376474Z test_snapshot_changed_after_approval (__main__.AppTests.test_snapshot_changed_after_approval) ... ok
+2026-10-27T07:04:19.6477032Z test_stale_review (__main__.AppTests.test_stale_review) ... ok
+2026-10-27T07:04:19.6551881Z test_storage_owner_is_exclusive (__main__.AppTests.test_storage_owner_is_exclusive) ... ok
+2026-10-27T07:04:19.7466114Z test_tampered_quote_and_threshold (__main__.AppTests.test_tampered_quote_and_threshold) ... ok
+2026-10-27T07:04:19.7531038Z test_unconfigured_live_fails_honestly (__main__.AppTests.test_unconfigured_live_fails_honestly) ... ok
+2026-10-27T07:04:20.3318318Z test_http_security_and_api (__main__.HttpTests.test_http_security_and_api) ... ok
+2026-10-27T07:04:20.3319013Z 
+2026-10-27T07:04:20.3319316Z ----------------------------------------------------------------------
+2026-10-27T07:04:20.3320111Z Ran 33 tests in 5.346s
+2026-10-27T07:04:20.3320310Z 
+2026-10-27T07:04:20.3320401Z OK
+2026-10-27T07:04:20.5120754Z ##[group]Run python tools/release_check.py
+2026-10-27T07:04:20.5121154Z [36;1mpython tools/release_check.py[0m
+2026-10-27T07:04:20.5191207Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-27T07:04:20.5191560Z env:
+2026-10-27T07:04:20.5191832Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:20.5192313Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.16\x64/lib/pkgconfig
+2026-10-27T07:04:20.5192789Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:20.5193209Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:20.5193626Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.16\x64
+2026-10-27T07:04:20.5193954Z ##[endgroup]
+2026-10-27T07:04:21.0409430Z {
+2026-10-27T07:04:21.0409839Z   "source_files": 560,
+2026-10-27T07:04:21.0410171Z   "issues": [],
+2026-10-27T07:04:21.0410455Z   "status": "PASS",
+2026-10-27T07:04:21.0411213Z   "scope": "Heuristic current source scan only. Not a guarantee; Git history is not distributed in ZIP."
+2026-10-27T07:04:21.0412280Z }
+2026-10-27T07:04:21.1762696Z Post job cleanup.
+2026-10-27T07:04:21.3225707Z (node:8060) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T07:04:21.3226983Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T07:04:21.3578065Z Post job cleanup.
+2026-10-27T07:04:21.5877306Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-27T07:04:21.6366734Z git version 2.56.0.windows.2
+2026-10-27T07:04:21.6453861Z Temporarily overriding HOME='D:\a\_temp\5e1a98c8-a987-4a3c-b198-81314ca147d0' before making global git config changes
+2026-10-27T07:04:21.6455186Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T07:04:21.6467032Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\Spatial-Data-Governance\Spatial-Data-Governance
+2026-10-27T07:04:21.6899837Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T07:04:21.7305645Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-27T07:04:22.3515060Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T07:04:22.3865104Z http.https://github.com/.extraheader
+2026-10-27T07:04:22.3915812Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T07:04:22.4324264Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-27T07:04:23.0080689Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T07:04:23.0495885Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-27T07:04:23.6547250Z Cleaning up orphan processes
+2026-10-27T07:04:23.6653175Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

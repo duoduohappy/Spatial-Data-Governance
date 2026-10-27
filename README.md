@@ -53,7 +53,7 @@ py -3.13 -m venv .venv
 
 ## 尚未完成的外部验收
 
-Docker 配置及实际工作流 CI 已准备，但本机没有 Docker 引擎；目标 GitHub 仓库已提供，正在上传并等待 Actions 实际结果。独立人工标注、真实业务审核时间与收益也尚未测量。没有多 Agent 优越性、通用准确率、零幻觉或生产认证的结论。**本地功能通过不等于 Stage 2–5 全部独立验收通过。**
+已上传至 [GitHub](https://github.com/duoduohappy/Spatial-Data-Governance)，[实际 Actions](https://github.com/duoduohappy/Spatial-Data-Governance/actions/runs/40464781772) 的 5 个作业全部通过：Linux、Windows、DOM、真实浏览器及 Docker 构建／启动／HTTP 工作流。详见 acceptance/stage-5/remote-ci/results.json。独立人工标注、真实业务审核时间与收益也尚未测量。没有多 Agent 优越性、通用准确率、零幻觉或生产认证的结论。**本地功能通过不等于 Stage 2–5 全部独立验收通过。**
 
 离线基线、50 批合成注入与 USGS 公开点案例的历史结果见 [评测说明](docs/EVALUATION_RESULTS.md)，与模型成绩分开报告。
 
@@ -64,6 +64,6 @@ Docker 配置及实际工作流 CI 已准备，但本机没有 Docker 引擎；�
 - [真实模型质量流程](docs/LIVE_ACCEPTANCE.md)：包括调用用量、原始输出、输出契约、版本摘要和未通过记录。
 - [API](docs/API.md) · [许可及第三方来源](THIRD_PARTY.md) · [演示脚本](docs/DEMO.md)
 
-English: A local spatial-delivery assurance workbench. Models propose; people review; deterministic tools decide. Local functional checks pass, while Docker/remote CI and independent business validation remain pending. Developer-visible results are not blind accuracy, measured ROI or multi-agent superiority.
+English: A local spatial-delivery assurance workbench. Models propose; people review; deterministic tools decide. Local and remote engineering checks pass, including Docker; independent business validation remains pending. Developer-visible results are not blind accuracy, measured ROI or multi-agent superiority.
 
-MIT licensed. Models, dependencies and public data retain their own terms. Target repository: duoduohappy/Spatial-Data-Governance; remote acceptance is in progress.
+MIT licensed. Models, dependencies and public data retain their own terms. Repository: [duoduohappy/Spatial-Data-Governance](https://github.com/duoduohappy/Spatial-Data-Governance). Large recording transport is described in docs/REMOTE_ARTIFACTS.md.

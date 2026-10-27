@@ -1,6 +1,6 @@
 # Stage 5 handoff
 
-2026-10-27. Local functional checks passed. Candidate source, startup scripts, Docker and CI definitions are prepared. Actual local HTTP workflow passed, including positive closure and duplicate-identity non-closure. Docker engine is unavailable locally. The target GitHub repository has been supplied; source publication and remote checks are in progress, with no remote pass claimed yet.
+2026-10-27. Local functional checks passed. Candidate source, startup scripts, Docker and CI definitions are prepared. Actual local HTTP workflow passed, including positive closure and duplicate-identity non-closure. Source published to duoduohappy/Spatial-Data-Governance. All five actual GitHub Actions jobs passed, including Linux/Windows tests, DOM, browser and Docker build/start/HTTP workflow; see remote-ci/results.json and logs. Independent business acceptance remains pending.
 
 Implementation self-check; independent external/business acceptance remains pending.
 
