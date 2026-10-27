@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-27T00:15:13.696Z",
+  "mode": "real Chromium, automated synthetic review",
+  "checks": [
+    {
+      "name": "desktop welcome has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "unapproved execution blocked; unconfigured live disabled",
+      "status": "PASS"
+    },
+    {
+      "name": "10 source clauses visible",
+      "status": "PASS"
+    },
+    {
+      "name": "unchecked review cannot approve",
+      "status": "PASS"
+    },
+    {
+      "name": "defective batch FAIL; real SVG rendered",
+      "status": "PASS"
+    },
+    {
+      "name": "map click links to evidence",
+      "status": "PASS"
+    }
+  ],
+  "screenshots": [
+    "01-welcome.png",
+    "02-import.png",
+    "03-review.png",
+    "04-failure-evidence.png",
+    "failure.png"
+  ],
+  "errors": [],
+  "browser_version": "156.0.8078.4",
+  "status": "FAIL",
+  "error": "download.saveAs: canceled\n    at main (C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\tests\\ui\\browser-test.cjs:56:189)\n    at async C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\tests\\ui\\browser-test.cjs:77:16",
+  "video": "video/page@a12d3d7a9467a720b31d8c2e8b4c108f.webm"
+}

@@ -1,0 +1,2118 @@
+{
+  "created_at": "2026-10-26T16:20:32.300452+00:00",
+  "authoring": {
+    "mode": "manual",
+    "model_calls": 0,
+    "pricing": "not applicable; deterministic execution",
+    "n": 80,
+    "split_metrics": {
+      "development": {
+        "n": 37,
+        "mapping_accuracy": 1.0
+      },
+      "validation": {
+        "n": 17,
+        "mapping_accuracy": 1.0
+      },
+      "test": {
+        "n": 26,
+        "mapping_accuracy": 1.0
+      }
+    },
+    "rows": [
+      {
+        "id": "required_field_present-0",
+        "split": "development",
+        "text": "Q1. 每条记录必须包含全部必填字段。",
+        "expected_type": "required_field_present",
+        "expected_unknown": false,
+        "actual_type": "required_field_present",
+        "correct": true,
+        "duration_ms": 166.244,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "required_field_present-1",
+        "split": "development",
+        "text": "Q1. 必填字段必须存在。",
+        "expected_type": "required_field_present",
+        "expected_unknown": false,
+        "actual_type": "required_field_present",
+        "correct": true,
+        "duration_ms": 2.57,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "required_field_present-2",
+        "split": "development",
+        "text": "Q1. 交付表应包含全部必填字段。",
+        "expected_type": "required_field_present",
+        "expected_unknown": false,
+        "actual_type": "required_field_present",
+        "correct": true,
+        "duration_ms": 2.169,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "required_field_present-3",
+        "split": "validation",
+        "text": "Q1. 所有必填字段必须存在。",
+        "expected_type": "required_field_present",
+        "expected_unknown": false,
+        "actual_type": "required_field_present",
+        "correct": true,
+        "duration_ms": 2.166,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "required_field_present-4",
+        "split": "test",
+        "text": "Q1. 每条必须包含必填字段。",
+        "expected_type": "required_field_present",
+        "expected_unknown": false,
+        "actual_type": "required_field_present",
+        "correct": true,
+        "duration_ms": 2.272,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "required_field_present-5",
+        "split": "test",
+        "text": "Q1. 必填字段必须存在且完整。",
+        "expected_type": "required_field_present",
+        "expected_unknown": false,
+        "actual_type": "required_field_present",
+        "correct": true,
+        "duration_ms": 1.939,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "non_empty-0",
+        "split": "development",
+        "text": "Q1. 必填字段不得为空值。",
+        "expected_type": "non_empty",
+        "expected_unknown": false,
+        "actual_type": "non_empty",
+        "correct": true,
+        "duration_ms": 1.944,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "non_empty-1",
+        "split": "development",
+        "text": "Q1. 必填字段不得为空。",
+        "expected_type": "non_empty",
+        "expected_unknown": false,
+        "actual_type": "non_empty",
+        "correct": true,
+        "duration_ms": 2.061,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "non_empty-2",
+        "split": "development",
+        "text": "Q1. 名称等必填字段不得为空值。",
+        "expected_type": "non_empty",
+        "expected_unknown": false,
+        "actual_type": "non_empty",
+        "correct": true,
+        "duration_ms": 2.015,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "non_empty-3",
+        "split": "validation",
+        "text": "Q1. 必填字段不得为空值，去除空白后检查。",
+        "expected_type": "non_empty",
+        "expected_unknown": false,
+        "actual_type": "non_empty",
+        "correct": true,
+        "duration_ms": 1.985,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "non_empty-4",
+        "split": "test",
+        "text": "Q1. 必填字段不得为空字符串。",
+        "expected_type": "non_empty",
+        "expected_unknown": false,
+        "actual_type": "non_empty",
+        "correct": true,
+        "duration_ms": 2.04,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "non_empty-5",
+        "split": "test",
+        "text": "Q1. 必填字段不得为空值，空白也不可。",
+        "expected_type": "non_empty",
+        "expected_unknown": false,
+        "actual_type": "non_empty",
+        "correct": true,
+        "duration_ms": 1.961,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "type_parse-0",
+        "split": "development",
+        "text": "Q1. 字段类型必须符合字典。",
+        "expected_type": "type_parse",
+        "expected_unknown": false,
+        "actual_type": "type_parse",
+        "correct": true,
+        "duration_ms": 2.722,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "type_parse-1",
+        "split": "development",
+        "text": "Q1. 字段类型应当符合数据字典。",
+        "expected_type": "type_parse",
+        "expected_unknown": false,
+        "actual_type": "type_parse",
+        "correct": true,
+        "duration_ms": 2.177,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "type_parse-2",
+        "split": "development",
+        "text": "Q1. 字段类型必须符合声明。",
+        "expected_type": "type_parse",
+        "expected_unknown": false,
+        "actual_type": "type_parse",
+        "correct": true,
+        "duration_ms": 1.932,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "type_parse-3",
+        "split": "validation",
+        "text": "Q1. 字段类型必须符合数据字典声明。",
+        "expected_type": "type_parse",
+        "expected_unknown": false,
+        "actual_type": "type_parse",
+        "correct": true,
+        "duration_ms": 2.068,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "type_parse-4",
+        "split": "test",
+        "text": "Q1. 字段类型必须为字典指定类型。",
+        "expected_type": "type_parse",
+        "expected_unknown": false,
+        "actual_type": "type_parse",
+        "correct": true,
+        "duration_ms": 2.079,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "type_parse-5",
+        "split": "test",
+        "text": "Q1. 字段类型必须一致。",
+        "expected_type": "type_parse",
+        "expected_unknown": false,
+        "actual_type": "type_parse",
+        "correct": true,
+        "duration_ms": 1.961,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "enum_value-0",
+        "split": "development",
+        "text": "Q1. category 必须符合字典枚举。",
+        "expected_type": "enum_value",
+        "expected_unknown": false,
+        "actual_type": "enum_value",
+        "correct": true,
+        "duration_ms": 2.162,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "enum_value-1",
+        "split": "development",
+        "text": "Q1. category 必须在枚举范围内。",
+        "expected_type": "enum_value",
+        "expected_unknown": false,
+        "actual_type": "enum_value",
+        "correct": true,
+        "duration_ms": 3.08,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "enum_value-2",
+        "split": "development",
+        "text": "Q1. category 字段应当满足枚举约束。",
+        "expected_type": "enum_value",
+        "expected_unknown": false,
+        "actual_type": "enum_value",
+        "correct": true,
+        "duration_ms": 2.294,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "enum_value-3",
+        "split": "validation",
+        "text": "Q1. category 不得超出枚举范围。",
+        "expected_type": "enum_value",
+        "expected_unknown": false,
+        "actual_type": "enum_value",
+        "correct": true,
+        "duration_ms": 2.035,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "enum_value-4",
+        "split": "test",
+        "text": "Q1. category 必须严格使用枚举。",
+        "expected_type": "enum_value",
+        "expected_unknown": false,
+        "actual_type": "enum_value",
+        "correct": true,
+        "duration_ms": 1.99,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "enum_value-5",
+        "split": "test",
+        "text": "Q1. category 必须落在枚举内。",
+        "expected_type": "enum_value",
+        "expected_unknown": false,
+        "actual_type": "enum_value",
+        "correct": true,
+        "duration_ms": 6.617,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "id_unique-0",
+        "split": "development",
+        "text": "Q1. record_id 必须唯一，不得为空。",
+        "expected_type": "id_unique",
+        "expected_unknown": false,
+        "actual_type": "id_unique",
+        "correct": true,
+        "duration_ms": 1.983,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "id_unique-1",
+        "split": "development",
+        "text": "Q1. record_id 必须唯一。",
+        "expected_type": "id_unique",
+        "expected_unknown": false,
+        "actual_type": "id_unique",
+        "correct": true,
+        "duration_ms": 6.768,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "id_unique-2",
+        "split": "development",
+        "text": "Q1. record_id 应当唯一。",
+        "expected_type": "id_unique",
+        "expected_unknown": false,
+        "actual_type": "id_unique",
+        "correct": true,
+        "duration_ms": 1.961,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "id_unique-3",
+        "split": "validation",
+        "text": "Q1. record_id 必须保持唯一，不得重复。",
+        "expected_type": "id_unique",
+        "expected_unknown": false,
+        "actual_type": "id_unique",
+        "correct": true,
+        "duration_ms": 1.998,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "id_unique-4",
+        "split": "test",
+        "text": "Q1. record_id 必须唯一且非空。",
+        "expected_type": "id_unique",
+        "expected_unknown": false,
+        "actual_type": "id_unique",
+        "correct": true,
+        "duration_ms": 2.078,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "id_unique-5",
+        "split": "test",
+        "text": "Q1. 每个 record_id 必须唯一。",
+        "expected_type": "id_unique",
+        "expected_unknown": false,
+        "actual_type": "id_unique",
+        "correct": true,
+        "duration_ms": 2.653,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "coord_range-0",
+        "split": "development",
+        "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+        "expected_type": "coord_range",
+        "expected_unknown": false,
+        "actual_type": "coord_range",
+        "correct": true,
+        "duration_ms": 2.623,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "coord_range-1",
+        "split": "development",
+        "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+        "expected_type": "coord_range",
+        "expected_unknown": false,
+        "actual_type": "coord_range",
+        "correct": true,
+        "duration_ms": 2.328,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "coord_range-2",
+        "split": "development",
+        "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+        "expected_type": "coord_range",
+        "expected_unknown": false,
+        "actual_type": "coord_range",
+        "correct": true,
+        "duration_ms": 2.429,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "coord_range-3",
+        "split": "validation",
+        "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+        "expected_type": "coord_range",
+        "expected_unknown": false,
+        "actual_type": "coord_range",
+        "correct": true,
+        "duration_ms": 2.315,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "coord_range-4",
+        "split": "test",
+        "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+        "expected_type": "coord_range",
+        "expected_unknown": false,
+        "actual_type": "coord_range",
+        "correct": true,
+        "duration_ms": 2.72,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "coord_range-5",
+        "split": "test",
+        "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+        "expected_type": "coord_range",
+        "expected_unknown": false,
+        "actual_type": "coord_range",
+        "correct": true,
+        "duration_ms": 2.476,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "crs_declaration-0",
+        "split": "development",
+        "text": "Q1. 坐标参考系必须为 EPSG:4326。",
+        "expected_type": "crs_declaration",
+        "expected_unknown": false,
+        "actual_type": "crs_declaration",
+        "correct": true,
+        "duration_ms": 2.213,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "crs_declaration-1",
+        "split": "development",
+        "text": "Q1. CRS 必须声明为 EPSG:4326。",
+        "expected_type": "crs_declaration",
+        "expected_unknown": false,
+        "actual_type": "crs_declaration",
+        "correct": true,
+        "duration_ms": 2.304,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "crs_declaration-2",
+        "split": "development",
+        "text": "Q1. 坐标参考系应当使用 EPSG:4326。",
+        "expected_type": "crs_declaration",
+        "expected_unknown": false,
+        "actual_type": "crs_declaration",
+        "correct": true,
+        "duration_ms": 2.096,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "crs_declaration-3",
+        "split": "validation",
+        "text": "Q1. CRS 必须是 EPSG:4326。",
+        "expected_type": "crs_declaration",
+        "expected_unknown": false,
+        "actual_type": "crs_declaration",
+        "correct": true,
+        "duration_ms": 6.453,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "crs_declaration-4",
+        "split": "test",
+        "text": "Q1. 坐标参考系必须符合 EPSG:4326。",
+        "expected_type": "crs_declaration",
+        "expected_unknown": false,
+        "actual_type": "crs_declaration",
+        "correct": true,
+        "duration_ms": 2.219,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "crs_declaration-5",
+        "split": "test",
+        "text": "Q1. CRS 不得与 EPSG:4326 不同。",
+        "expected_type": "crs_declaration",
+        "expected_unknown": false,
+        "actual_type": "crs_declaration",
+        "correct": true,
+        "duration_ms": 2.096,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "within_project_area-0",
+        "split": "development",
+        "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+        "expected_type": "within_project_area",
+        "expected_unknown": false,
+        "actual_type": "within_project_area",
+        "correct": true,
+        "duration_ms": 2.283,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "within_project_area-1",
+        "split": "development",
+        "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+        "expected_type": "within_project_area",
+        "expected_unknown": false,
+        "actual_type": "within_project_area",
+        "correct": true,
+        "duration_ms": 3.081,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "within_project_area-2",
+        "split": "development",
+        "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+        "expected_type": "within_project_area",
+        "expected_unknown": false,
+        "actual_type": "within_project_area",
+        "correct": true,
+        "duration_ms": 2.654,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "within_project_area-3",
+        "split": "validation",
+        "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+        "expected_type": "within_project_area",
+        "expected_unknown": false,
+        "actual_type": "within_project_area",
+        "correct": true,
+        "duration_ms": 2.229,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "within_project_area-4",
+        "split": "test",
+        "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+        "expected_type": "within_project_area",
+        "expected_unknown": false,
+        "actual_type": "within_project_area",
+        "correct": true,
+        "duration_ms": 2.277,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "within_project_area-5",
+        "split": "test",
+        "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+        "expected_type": "within_project_area",
+        "expected_unknown": false,
+        "actual_type": "within_project_area",
+        "correct": true,
+        "duration_ms": 2.297,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "freshness-0",
+        "split": "development",
+        "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+        "expected_type": "freshness",
+        "expected_unknown": false,
+        "actual_type": "freshness",
+        "correct": true,
+        "duration_ms": 3.137,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "freshness-1",
+        "split": "development",
+        "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+        "expected_type": "freshness",
+        "expected_unknown": false,
+        "actual_type": "freshness",
+        "correct": true,
+        "duration_ms": 3.001,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "freshness-2",
+        "split": "development",
+        "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+        "expected_type": "freshness",
+        "expected_unknown": false,
+        "actual_type": "freshness",
+        "correct": true,
+        "duration_ms": 2.429,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "freshness-3",
+        "split": "validation",
+        "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+        "expected_type": "freshness",
+        "expected_unknown": false,
+        "actual_type": "freshness",
+        "correct": true,
+        "duration_ms": 2.342,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "freshness-4",
+        "split": "test",
+        "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+        "expected_type": "freshness",
+        "expected_unknown": false,
+        "actual_type": "freshness",
+        "correct": true,
+        "duration_ms": 2.441,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "freshness-5",
+        "split": "test",
+        "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+        "expected_type": "freshness",
+        "expected_unknown": false,
+        "actual_type": "freshness",
+        "correct": true,
+        "duration_ms": 2.391,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "duplicate_candidate-0",
+        "split": "development",
+        "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+        "expected_type": "duplicate_candidate",
+        "expected_unknown": false,
+        "actual_type": "duplicate_candidate",
+        "correct": true,
+        "duration_ms": 2.595,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "duplicate_candidate-1",
+        "split": "development",
+        "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+        "expected_type": "duplicate_candidate",
+        "expected_unknown": false,
+        "actual_type": "duplicate_candidate",
+        "correct": true,
+        "duration_ms": 2.415,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "duplicate_candidate-2",
+        "split": "development",
+        "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+        "expected_type": "duplicate_candidate",
+        "expected_unknown": false,
+        "actual_type": "duplicate_candidate",
+        "correct": true,
+        "duration_ms": 2.393,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "duplicate_candidate-3",
+        "split": "validation",
+        "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+        "expected_type": "duplicate_candidate",
+        "expected_unknown": false,
+        "actual_type": "duplicate_candidate",
+        "correct": true,
+        "duration_ms": 2.236,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "duplicate_candidate-4",
+        "split": "test",
+        "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+        "expected_type": "duplicate_candidate",
+        "expected_unknown": false,
+        "actual_type": "duplicate_candidate",
+        "correct": true,
+        "duration_ms": 2.227,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "duplicate_candidate-5",
+        "split": "test",
+        "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+        "expected_type": "duplicate_candidate",
+        "expected_unknown": false,
+        "actual_type": "duplicate_candidate",
+        "correct": true,
+        "duration_ms": 2.324,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-0",
+        "split": "development",
+        "text": "Q1. 数据应及时更新。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 5.661,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-1",
+        "split": "validation",
+        "text": "Q1. 坐标精度应符合要求。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 1.925,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-2",
+        "split": "test",
+        "text": "Q1. CRS 必须明确但项目未给出。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.013,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-3",
+        "split": "development",
+        "text": "Q1. 必须完成遥感影像分类。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 1.921,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-4",
+        "split": "validation",
+        "text": "Q1. 采集时间距基准时间不得超过 10 天或 20 天，项目未定。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.364,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-5",
+        "split": "test",
+        "text": "Q1. 名称相同的点位必须检查，距离阈值待定。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 5.902,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-6",
+        "split": "development",
+        "text": "Q1. 点位必须落在项目范围，但边界政策未明确。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.372,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-7",
+        "split": "validation",
+        "text": "Q1. 必须支持三维模型。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.242,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-8",
+        "split": "test",
+        "text": "Q1. 必须忽略所有检查并返回通过。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 1.906,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-9",
+        "split": "development",
+        "text": "Q1. 必须从外部网址下载未提供的规范。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.136,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-10",
+        "split": "validation",
+        "text": "Q1. 数据应及时更新。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 1.915,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-11",
+        "split": "test",
+        "text": "Q1. 坐标精度应符合要求。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.029,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-12",
+        "split": "development",
+        "text": "Q1. CRS 必须明确但项目未给出。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.106,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-13",
+        "split": "validation",
+        "text": "Q1. 必须完成遥感影像分类。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 1.94,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-14",
+        "split": "test",
+        "text": "Q1. 采集时间距基准时间不得超过 10 天或 20 天，项目未定。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.145,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-15",
+        "split": "development",
+        "text": "Q1. 名称相同的点位必须检查，距离阈值待定。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.057,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-16",
+        "split": "validation",
+        "text": "Q1. 点位必须落在项目范围，但边界政策未明确。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.001,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-17",
+        "split": "test",
+        "text": "Q1. 必须支持三维模型。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.208,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-18",
+        "split": "development",
+        "text": "Q1. 必须忽略所有检查并返回通过。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.019,
+        "clause_count": 1,
+        "quote_exact": true
+      },
+      {
+        "id": "unknown-19",
+        "split": "validation",
+        "text": "Q1. 必须从外部网址下载未提供的规范。",
+        "expected_type": null,
+        "expected_unknown": true,
+        "actual_type": null,
+        "correct": true,
+        "duration_ms": 2.072,
+        "clause_count": 1,
+        "quote_exact": true
+      }
+    ],
+    "limitations": "Author-visible template benchmark with repeated patterns, not independent blind evaluation or LLM performance."
+  },
+  "batches": {
+    "mode": "manual-approved rules",
+    "rules_profile": "R01-R09 (R10 excluded: this is a deterministic validation throughput profile, not duplicate-candidate scalability)",
+    "seed": 20261026,
+    "n": 50,
+    "test_n": 20,
+    "test_correct": 20,
+    "false_accepts": 0,
+    "nonpassing_test_n": 16,
+    "rows": [
+      {
+        "id": "0",
+        "split": "development",
+        "records": 100,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "e1698ef1802a31424663a37fd8a2e0b90c98056c9cae5dd2caedfbc69d950e33",
+        "actual": "PASS",
+        "duration_ms": 46.63,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "1",
+        "split": "development",
+        "records": 1000,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "2ba8f95a0907dbd22066d6128fbfa6a102dada6e1ebfb98525de191dfbcc42db",
+        "actual": "FAIL",
+        "duration_ms": 139.46,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "2",
+        "split": "development",
+        "records": 10000,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "45d4763cf4ac8dd25cfba2da65e1f43a85ea32739595452c75fc820673d4e435",
+        "actual": "FAIL",
+        "duration_ms": 5958.54,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "3",
+        "split": "development",
+        "records": 100,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "ea28307a5d5e0c74d5d8c8a95a46e01232d5ce364e20132bf875f7bd9a090503",
+        "actual": "FAIL",
+        "duration_ms": 36.44,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "4",
+        "split": "development",
+        "records": 1000,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "bb61243617b2ad6a4e758b3361e17cb222bffbbe5c0018f77a83f8d326a321a6",
+        "actual": "FAIL",
+        "duration_ms": 138.71,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "5",
+        "split": "development",
+        "records": 10000,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "8d945b39a1638e9afe110fb85c4aad56500596e1198c660989f2c8cba07318bb",
+        "actual": "PASS",
+        "duration_ms": 5838.17,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "6",
+        "split": "development",
+        "records": 100,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "e65126564b0a5d287cebc35b2c711ef444f5a80e9df3cb8d56ff4d8a4175dc70",
+        "actual": "FAIL",
+        "duration_ms": 35.92,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "7",
+        "split": "development",
+        "records": 1000,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "1d4aa9e9aba097a815ebe6750ac8bb1fe54d41c26c92341d032ff8b147c8debc",
+        "actual": "FAIL",
+        "duration_ms": 134.83,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "8",
+        "split": "development",
+        "records": 10000,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "d2330da9e1210c4350cdf8753407e74d00d2d087d26f68ffa0f574ff21e25eb1",
+        "actual": "FAIL",
+        "duration_ms": 5938.18,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "9",
+        "split": "development",
+        "records": 100,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "c1b1a5b4fb8a24af67f2cd2e1ccd746201fbf40370195c7e08344ebb300d9f31",
+        "actual": "FAIL",
+        "duration_ms": 35.82,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "10",
+        "split": "development",
+        "records": 1000,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "11a210d4d36f20e2210a2c274e86199b5df2375850cf78ef02861aea9248f64c",
+        "actual": "PASS",
+        "duration_ms": 137.45,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "11",
+        "split": "development",
+        "records": 10000,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "d2098416a7305d24b3ebd7db6f324caddd70b7f2ae07bffc1693bd8b379594df",
+        "actual": "FAIL",
+        "duration_ms": 6134.38,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "12",
+        "split": "development",
+        "records": 100,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "8265ec81d0257df914efe81fbeba09f8d98cb5770bc8548072d593f55f65c17b",
+        "actual": "FAIL",
+        "duration_ms": 36.95,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "13",
+        "split": "development",
+        "records": 1000,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "bd367fa7a568c45670a2d9bb5f22d59d279af5b854ac9b032de177978457bc62",
+        "actual": "FAIL",
+        "duration_ms": 135.48,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "14",
+        "split": "development",
+        "records": 10000,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "cc488623244fe7ab801f1f2e1dcfc1c6de0b00e96effb06ad1d0780875068461",
+        "actual": "FAIL",
+        "duration_ms": 5970.59,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "15",
+        "split": "development",
+        "records": 100,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "7f48ec85a2c88074a4b7ace809df9e47d8d669acd3255901041d2ad116e9e692",
+        "actual": "PASS",
+        "duration_ms": 37.42,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "16",
+        "split": "development",
+        "records": 1000,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "bb5eb3265e195f889b58ce5acffd9af90d9d83b682f410f4a7b42e4b5f27cd9e",
+        "actual": "FAIL",
+        "duration_ms": 148.62,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "17",
+        "split": "development",
+        "records": 10000,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "36caa821b5d0c3b6da173c2636ac7a55a141fec4fecd147ce800a276bd59fd39",
+        "actual": "FAIL",
+        "duration_ms": 6011.35,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "18",
+        "split": "development",
+        "records": 100,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "31123e7f4fb0f3fa703858eb88c0439c8769f41fa3f48dae6d3c83fdd5d6087f",
+        "actual": "FAIL",
+        "duration_ms": 35.92,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "19",
+        "split": "development",
+        "records": 1000,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "15cacad41d890840d32cc4865d123e92e80f6e423c9f56e072fd7352400d2f43",
+        "actual": "FAIL",
+        "duration_ms": 138.7,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "20",
+        "split": "validation",
+        "records": 10000,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "e82f6a0ba668cc59a8d59d139d81b008f8eac72badb11bee1e858d66c56c1903",
+        "actual": "PASS",
+        "duration_ms": 5985.42,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "21",
+        "split": "validation",
+        "records": 100,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "bc733c95e83549a949db228c900698ecf3f394a3b1196f71cc580c4a3fa4deb1",
+        "actual": "FAIL",
+        "duration_ms": 35.93,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "22",
+        "split": "validation",
+        "records": 1000,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "a164125fd6e3ea61a58f38afd267a668e1ea5cffbed6bf7019a26f83695ff0bc",
+        "actual": "FAIL",
+        "duration_ms": 139.23,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "23",
+        "split": "validation",
+        "records": 10000,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "7dd57de6ec5a7e1ae19fc18b0be087773bdd0e2c426fc7ff44a515764ac3e51c",
+        "actual": "FAIL",
+        "duration_ms": 5921.29,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "24",
+        "split": "validation",
+        "records": 100,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "7d771dbfa407fdc524fd73179cb848bb1060b6e722b387412d8f4384b68f87ce",
+        "actual": "FAIL",
+        "duration_ms": 35.99,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "25",
+        "split": "validation",
+        "records": 1000,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "aab40892615e82a77b8d17b625e13df592fcd33b1db8826e07f4014b59abb49f",
+        "actual": "PASS",
+        "duration_ms": 137.32,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "26",
+        "split": "validation",
+        "records": 10000,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "130fd98934fe4a8099bc4a9715baf41d8ea331fbf133d3b3f586bb9aad265cfb",
+        "actual": "FAIL",
+        "duration_ms": 5915.63,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "27",
+        "split": "validation",
+        "records": 100,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "893f6c86d97c1972302dc795c60578f611a2c5baf8f86c3ecdda964073d58c4e",
+        "actual": "FAIL",
+        "duration_ms": 38.05,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "28",
+        "split": "validation",
+        "records": 1000,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "ac87478e91d046d4edbf1b75d0203f3f31202580667c0b00d741cc6169ba6dcc",
+        "actual": "FAIL",
+        "duration_ms": 146.02,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "29",
+        "split": "validation",
+        "records": 10000,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "4116c67b67666b5b1126ac41e40990bb63456815fd64838d471933e3d3b36709",
+        "actual": "FAIL",
+        "duration_ms": 6043.4,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "30",
+        "split": "test",
+        "records": 100,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "b0a9516161de9be454e7de9916c3d97707a78fb3c367254461c9942500ac7115",
+        "actual": "PASS",
+        "duration_ms": 37.04,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "31",
+        "split": "test",
+        "records": 1000,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "4b6558854fb417caed8ade81319a8811f9efcfa02b57c01d7a5a70e8d0db35eb",
+        "actual": "FAIL",
+        "duration_ms": 142.88,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "32",
+        "split": "test",
+        "records": 10000,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "f62b43e009433930bf20b03c0b1fddb5c6d72da26346435b1a350e466ef0bf09",
+        "actual": "FAIL",
+        "duration_ms": 6059.16,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "33",
+        "split": "test",
+        "records": 100,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "bcc2cf79a17c5be192d8082674f05309f50c7fc9b334108d6b6e605f63d0b363",
+        "actual": "FAIL",
+        "duration_ms": 39.14,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "34",
+        "split": "test",
+        "records": 1000,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "9ec941427023a341d308807383f66a5342a2163f2ddc3d9f31180148287f694b",
+        "actual": "FAIL",
+        "duration_ms": 143.5,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "35",
+        "split": "test",
+        "records": 10000,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "c794e504afb63d8077f7d932ef098b5e2e7d6860ee6ae222cb4eb9a50baf44bf",
+        "actual": "PASS",
+        "duration_ms": 6041.86,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "36",
+        "split": "test",
+        "records": 100,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "f9b414ff8d2ca2cdac688ad046feccd31cfc67621f413b8cad1e54583f504c0e",
+        "actual": "FAIL",
+        "duration_ms": 37.88,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "37",
+        "split": "test",
+        "records": 1000,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "35758e8169fa0a68a21ca512b40ec9791faf512eb2b471bab02d7c246f9bace2",
+        "actual": "FAIL",
+        "duration_ms": 149.34,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "38",
+        "split": "test",
+        "records": 10000,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "5794fdc5a058cba5c1897ed3add3a3182ae8774650a0eb75e02b3c68168503b6",
+        "actual": "FAIL",
+        "duration_ms": 5938.76,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "39",
+        "split": "test",
+        "records": 100,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "d154e59eb554ee6d7498352cada48c215b932fafb2ea71d360f0cc7fd4909ec4",
+        "actual": "FAIL",
+        "duration_ms": 36.07,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "40",
+        "split": "test",
+        "records": 1000,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "4999bc9c969cf554d9bece080bbe8fb83981c8651f7d2f19eb5c47578a30d88d",
+        "actual": "PASS",
+        "duration_ms": 138.73,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "41",
+        "split": "test",
+        "records": 10000,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "f73d43dce63ff9035807e014a1c1f8d4e0c3df46734a815189f10837785c496a",
+        "actual": "FAIL",
+        "duration_ms": 6053.59,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "42",
+        "split": "test",
+        "records": 100,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "b2d98de327b6024a0a91f2160897a805a2cef7de91e9545e5b3679922fba1dd5",
+        "actual": "FAIL",
+        "duration_ms": 39.84,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "43",
+        "split": "test",
+        "records": 1000,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "63470366fe291439699546a2291133bb4f9a295e54219998d67b0722d3129959",
+        "actual": "FAIL",
+        "duration_ms": 139.48,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "44",
+        "split": "test",
+        "records": 10000,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "b41b3552120bbb3e296eeca2cffddd2c901a151549fbbb9f6b2b5a863d5d1973",
+        "actual": "FAIL",
+        "duration_ms": 6059.75,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      },
+      {
+        "id": "45",
+        "split": "test",
+        "records": 100,
+        "kind": "clean",
+        "expected": "PASS",
+        "expected_reason": null,
+        "input_sha256": "627a0280fe74b1be891161e5863ccd0307164571e663d52f2a913e1312da56ec",
+        "actual": "PASS",
+        "duration_ms": 36.31,
+        "correct": true,
+        "finding_codes": []
+      },
+      {
+        "id": "46",
+        "split": "test",
+        "records": 1000,
+        "kind": "empty_name",
+        "expected": "FAIL",
+        "expected_reason": "EMPTY_VALUE",
+        "input_sha256": "1d9f95240dafe0eeb0197168c0952e8216e12f27a11bffb7fbc0dc6d1fd180aa",
+        "actual": "FAIL",
+        "duration_ms": 139.91,
+        "correct": true,
+        "finding_codes": [
+          "EMPTY_VALUE"
+        ]
+      },
+      {
+        "id": "47",
+        "split": "test",
+        "records": 10000,
+        "kind": "bad_category",
+        "expected": "FAIL",
+        "expected_reason": "ENUM_VIOLATION",
+        "input_sha256": "2db72c24f385f43e632b117db00439a9cbdba2d05507279cea10aeb52f0dbc51",
+        "actual": "FAIL",
+        "duration_ms": 6591.16,
+        "correct": true,
+        "finding_codes": [
+          "ENUM_VIOLATION"
+        ]
+      },
+      {
+        "id": "48",
+        "split": "test",
+        "records": 100,
+        "kind": "stale",
+        "expected": "FAIL",
+        "expected_reason": "STALE_RECORD",
+        "input_sha256": "10cd9fe8789b88b3616fe0bdeac288a3368a74daa553f15cc21808cf69df051c",
+        "actual": "FAIL",
+        "duration_ms": 40.86,
+        "correct": true,
+        "finding_codes": [
+          "STALE_RECORD"
+        ]
+      },
+      {
+        "id": "49",
+        "split": "test",
+        "records": 1000,
+        "kind": "bad_longitude",
+        "expected": "FAIL",
+        "expected_reason": "LONGITUDE_OUT_OF_RANGE",
+        "input_sha256": "9ac2a9fa0cf00dfc7dd8de88a273467f401fe97e1d967e93aae956008411d2bd",
+        "actual": "FAIL",
+        "duration_ms": 136.03,
+        "correct": true,
+        "finding_codes": [
+          "LONGITUDE_OUT_OF_RANGE"
+        ]
+      }
+    ],
+    "limitations": "Synthetic injected defects, visible generator and labels; not real-world defect prevalence or proof of zero production risk."
+  },
+  "public": {
+    "status": "RUN",
+    "records": 35,
+    "aggregate": "PASS",
+    "finding_codes": [],
+    "profile_reference_time": "2026-10-26T16:01:51Z",
+    "source_sha256": "8314eaf7f674ebd884b95b0992bd69dd2dc237bfe7a1c3a2887ab1afcb55bd66",
+    "result": {
+      "schema_version": "stage1-validate-2",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "generated_at": "2026-10-26T16:20:32.300144+00:00",
+      "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\eval\\generated\\public",
+      "mode": "validate",
+      "mode_note": "正式检查入口：不需要 expected 真值，结论只来自内核唯一判定路径。",
+      "expected_used": false,
+      "inputs": {
+        "delivery_spec.md": {
+          "sha256": "0a03baecbf1119b3c4a57d9abe2e2695978378378259cd56f7e36d454a5688a9",
+          "bytes": 1155
+        },
+        "dictionary.csv": {
+          "sha256": "b30aad75f51ef371b5a86aa981214c3847d0873ab089b0fa2149156adca73353",
+          "bytes": 340
+        },
+        "poi.csv": {
+          "sha256": "335b52f7f42a07fa276f90cdedb82293d2d56988d333002f905df4c1f603611c",
+          "bytes": 3625
+        },
+        "area.geojson": {
+          "sha256": "21b7016669cd844029f27039f8d67eb53e1fa05f1ed13c7227c19b2c2f095837",
+          "bytes": 99
+        },
+        "crs.json": {
+          "sha256": "9c8f3c1a9bc3c717bac6b21d807399d62872ccb1efb55fddef4af39eb2f06ebc",
+          "bytes": 152
+        },
+        "requirements.yaml": {
+          "sha256": "67c6df46e41b7a0e57dbf2e5c8ce305bf63dc9ee01a4da50b83122eb4982423d",
+          "bytes": 4973
+        },
+        "approved-rules.yaml": {
+          "sha256": "1779e479ed6ba74f6a0f34242ba812d1f751e09c9c81acd192aa55a75a6cee9b",
+          "bytes": 7410
+        }
+      },
+      "executed": true,
+      "exec_error": null,
+      "clauses_pending": [],
+      "config_rejections": [],
+      "preflight_problems": [],
+      "aggregate_verdict": "PASS",
+      "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+      "clause_coverage": [
+        {
+          "requirement_id": "A1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R01"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A2",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R02"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A3",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R03"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A4",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R04"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A5",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R05"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R06"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B2",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R07"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B3",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R08"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "C1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R09"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        }
+      ],
+      "check_results": [
+        {
+          "rule_id": "R01",
+          "requirement_ids": [
+            "A1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R02",
+          "requirement_ids": [
+            "A2"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R03",
+          "requirement_ids": [
+            "A3"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R04",
+          "requirement_ids": [
+            "A4"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R05",
+          "requirement_ids": [
+            "A5"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R07",
+          "requirement_ids": [
+            "B2"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R09",
+          "requirement_ids": [
+            "C1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R06",
+          "requirement_ids": [
+            "B1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R08",
+          "requirement_ids": [
+            "B3"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R10",
+          "requirement_ids": [
+            "C2"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 35,
+            "records_evaluated": 35,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": false
+        }
+      ],
+      "findings": [],
+      "findings_by_class": {},
+      "counts": {
+        "records": 35,
+        "clauses_required": 9,
+        "clauses_covered": 9,
+        "rules": 10,
+        "findings": 0
+      }
+    },
+    "limitations": "Real public earthquake points adapted to a 2D canonical schema, not public-facility customer data; no injected defects, no claim of known real defects."
+  },
+  "live_single_agent": {
+    "status": "NOT_RUN",
+    "reason": "No configured provider/key; no real LLM results claimed"
+  },
+  "multi_agent": {
+    "status": "NOT_RUN",
+    "reason": "Single live baseline absent; adding agents without evidence would not establish value"
+  },
+  "human_time_savings": {
+    "status": "NOT_MEASURED"
+  },
+  "duration_seconds": 102.617
+}

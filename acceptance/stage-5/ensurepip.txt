@@ -1,0 +1,4 @@
+Looking in links: c:\Users\TempAdmin\Documents\Codex\2026-10-26\mu\outputs\GeoAcceptance\work\install-temp\tmpyse3s9ox
+Processing .\work\install-temp\tmpyse3s9ox\pip-26.1.2-py3-none-any.whl
+Installing collected packages: pip
+Successfully installed pip-26.1.2

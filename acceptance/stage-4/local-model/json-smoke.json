@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "response": {
+    "ready": true
+  },
+  "calls": [
+    {
+      "attempt": 1,
+      "model": "geoacceptance-qwen3:4b",
+      "currency": "CNY",
+      "reserved_cost": 0.0,
+      "reserved_usd": null,
+      "usage": {
+        "prompt_tokens": 31,
+        "completion_tokens": 9,
+        "total_tokens": 40
+      },
+      "cost": 0.0,
+      "cost_usd": null,
+      "cost_basis": "estimate at configured rates; not provider invoice",
+      "status": "OK",
+      "duration_ms": 65368.76
+    }
+  ],
+  "seconds": 65.369,
+  "scope": "Local Qwen3 4B JSON connectivity, not extraction quality"
+}

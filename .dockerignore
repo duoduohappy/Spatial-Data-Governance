@@ -1,0 +1,14 @@
+.git
+.venv
+work
+eval/generated
+**/__pycache__
+.env
+*.key
+node_modules
+tests/ui/node_modules
+
+acceptance/
+eval/
+.github/
+tests/

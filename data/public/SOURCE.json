@@ -1,0 +1,10 @@
+{
+  "source_url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson",
+  "retrieved_at": "2026-10-26T16:01:57.804788+00:00",
+  "sha256": "8314eaf7f674ebd884b95b0992bd69dd2dc237bfe7a1c3a2887ab1afcb55bd66",
+  "feature_count": 35,
+  "provider": "US Geological Survey",
+  "rights": "USGS-authored data generally public domain; review source-specific third-party credits before reuse.",
+  "rights_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+  "use": "Real public point IO/quality case, not a known-defect benchmark. Depth is deliberately excluded by the canonical 2D CSV mapping."
+}

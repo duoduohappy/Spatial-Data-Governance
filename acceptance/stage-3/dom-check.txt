@@ -1,0 +1,2 @@
+DOM_OK=true
+DOM simulation with linkedom, not a real-browser visual screenshot.

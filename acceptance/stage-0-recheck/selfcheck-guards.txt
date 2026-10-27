@@ -1,0 +1,15 @@
+[PASS] A 伪造引用必须被拦截：拦截信息：A1 引用内容与第 7 行不一致
+  期望: A1. 必填字段必须存在（改写后的伪引用）。
+  实际: A1. 每条记录必须包含全部必填字段
+[PASS] A 反向确认：未变异包不得报错：clean 原始包前置校验为空
+[PASS] B 无来源阈值必须被拦截：拦截信息：[PARAMETER_VALUE_MISMATCH] R09：参数 max_age_days 的实际值 365 与其批准来源记录的值 30 
+[PASS] C 产物 mode 一致性检查（已产出 manifest 全部为 manual）：检查 manifest 6 个，非 manual 的 0 个
+[PASS] C2 注入 mode=live 的产物必须被拦截：扫描 work/negatives 命中非 manual 1 个：['neg_live_mode']
+[PASS] C2 mode=live 的 manifest 对象必须被政策校验拒绝：拦截信息：mode='live'，Stage 0 只允许 manual（本阶段无模型调用，不得标示为 live）
+[PASS] C2 反向确认：改回 manual 后不得报错：manual manifest 的政策校验为空
+[PASS] D 空数据不得判定通过：实际=INDETERMINATE（零记录/零必检条款不得判定通过）
+[PASS] E 缺 CRS 声明不得判 FAIL（必须 INDETERMINATE）：总体=INDETERMINATE（存在必检条款未通过：B1(COVERED/ALL_RECORDS_BLOCKED),B2(COVERED/CRS_MISSING_DECLARATION),B3(COVERED/ALL_RECORDS_BLOCKED)）；空间规则={'R06': ('INDETERMINATE', 'BLOCKED'), 'R08': ('INDETERMINATE', 'BLOCKED'), 'R10': ('INDETERMINATE', 'BLOCKED')}
+[PASS] F 候选不得计入失败（clean R10 failed=0 / indeterminate=2）：R10 summary_counts={"findings": 1, "records_blocked": 0, "records_evaluated": 12, "records_failed": 0, "records_indeterminate": 2, "records_skipped_upstream": 0, "records_total": 12, "records_uninterpretable": 0}
+[PASS] G 未知依赖必须被拒（不得静默过滤）：config_rejections 原因码=['UNKNOWN_PRECONDITION']
+
+GUARDS_OK=true

@@ -1,0 +1,20 @@
+整改复验 compare：C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\examples\defective → C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\examples\corrected
+  整改前：FAIL（findings=11 {'FAIL': 10, 'CANDIDATE': 1}）　整改后：PASS（findings=1 {'CANDIDATE': 1}）
+  身份：整改前 15 条/14 个标识（重复=['SD-0005'] 无标识=0）；整改后 15 条/15 个（重复=无 无标识=0）
+  尺子：一致（规则语义指纹 + 批次制品指纹）
+  实体：整改后新增 SD-0012（1 个）
+  候选（不参与关闭，仅供参考）：record:SD-0011|R10=DUPLICATE_CANDIDATE
+  台账：INDETERMINATE　条目 9　汇总 closed=8, not_comparable=1
+  整改后批次自身验收结论：PASS
+  结论：LEDGER_INDETERMINATE
+
+  台账键                      规则       status                 before → after
+  record:SD-0002|R03       R03      closed                 TYPE_PARSE_ERROR → -
+  record:SD-0003|R04       R04      closed                 ENUM_VIOLATION → -
+  record:SD-0005|R05       R05      not_comparable         DUPLICATE_ID → -  ← 记录标识 SD-0005 在批次内重复，身份不可用（拒绝按行号匹配）
+  record:SD-0006|R09       R09      closed                 STALE_RECORD → -
+  record:SD-0007|R02       R02      closed                 EMPTY_VALUE → -
+  record:SD-0009|R06       R06      closed                 LATITUDE_OUT_OF_RANGE → -
+  record:SD-0010|R02       R02      closed                 EMPTY_VALUE → -
+  record:SD-0011|R08       R08      closed                 OUTSIDE_PROJECT_AREA → -
+  record:SD-0013|R03       R03      closed                 TYPE_PARSE_ERROR → -

@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:8766",
+  "modelLabel": "本地模型，无云端 API 调用费",
+  "browser": "156.0.8078.4",
+  "modelCalls": 0
+}

@@ -1,0 +1,91 @@
+name: checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  python:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements.lock.txt
+      - run: python tools/stage0_gate.py
+      - run: python tools/recheck_probes.py
+      - run: python tools/compare_probes.py
+      - run: python tests/test_application.py
+      - run: python tools/release_check.py
+  ui-dom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --prefix tests/ui --no-audit --no-fund
+      - run: node tests/ui/dom-test.cjs
+
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install -r requirements.lock.txt
+      - run: npm ci --prefix tests/ui --no-audit --no-fund
+      - run: node tests/ui/node_modules/playwright-core/cli.js install --with-deps chromium --only-shell
+      - run: node tests/ui/browser-test.cjs
+        env:
+          GA_TEST_PYTHON: python
+          GA_TEST_BROWSER: bundled
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          path: acceptance/stage-3/browser/
+
+  docker-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: docker build --tag geoacceptance-ci .
+      - run: docker run --detach --name geoacceptance-ci --publish 127.0.0.1:8765:8765 geoacceptance-ci
+      - name: Wait for container HTTP server
+        run: |
+          python - <<'PY'
+          import time, urllib.request
+          for _ in range(120):
+              try:
+                  with urllib.request.urlopen('http://127.0.0.1:8765/api/config', timeout=2) as response:
+                      assert response.status == 200
+                  break
+              except OSError:
+                  time.sleep(1)
+          else:
+              raise SystemExit('Container HTTP startup timed out')
+          PY
+      - run: python tools/http_workflow_probe.py --out acceptance/stage-5/docker-http-probe.json
+      - name: Save container diagnostics
+        if: always()
+        run: |
+          mkdir -p acceptance/stage-5
+          docker inspect geoacceptance-ci > acceptance/stage-5/docker-inspect.json || true
+          docker logs geoacceptance-ci > acceptance/stage-5/docker-logs.txt 2>&1 || true
+          docker rm --force geoacceptance-ci || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: docker-evidence
+          path: acceptance/stage-5/docker-*

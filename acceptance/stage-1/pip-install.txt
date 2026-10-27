@@ -1,0 +1,7 @@
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in .\.venv\Lib\site-packages (from jsonschema==4.26.0->-r requirements.txt (line 15)) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in .\.venv\Lib\site-packages (from jsonschema==4.26.0->-r requirements.txt (line 15)) (0.37.0)
+Requirement already satisfied: rpds-py>=0.25.0 in .\.venv\Lib\site-packages (from jsonschema==4.26.0->-r requirements.txt (line 15)) (2026.9.1)
+Requirement already satisfied: python-dateutil>=2.9.0 in .\.venv\Lib\site-packages (from pandas>=2.2.0->geopandas==1.2.0->-r requirements.txt (line 10)) (3.0.0)
+Requirement already satisfied: tzdata in .\.venv\Lib\site-packages (from pandas>=2.2.0->geopandas==1.2.0->-r requirements.txt (line 10)) (2026.5)
+Requirement already satisfied: six>=1.6 in .\.venv\Lib\site-packages (from python-dateutil>=2.9.0->pandas>=2.2.0->geopandas==1.2.0->-r requirements.txt (line 10)) (1.17.0)
+No broken requirements found.

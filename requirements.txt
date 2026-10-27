@@ -1,0 +1,23 @@
+# Stage 1 直接依赖（精确锁定见 requirements.lock.txt，由 .venv 内 pip freeze 导出）
+#
+# Python 版本支持范围（**实测**，未实测的版本一律不算支持）：
+#   已实测可安装锁定文件：Python 3.13.14（全新 venv，pip install -r requirements.lock.txt 退出 0）
+#   实测**装不上**      ：Python 3.11.9（numpy==2.5.4 无 3.11 wheel，pip 退出 1）
+#   代码在 3.11.9 上也能跑通（不锁版本装核心五库时门禁 ALL_OK=true、回归全绿），
+#   但**代码兼容 ≠ 锁文件可复现**，不得据此声称"任意 Python 3 可复现"。
+#   证据：acceptance/stage-1-verify/raw/09-install-py313-lock.txt、
+#         raw/10-install-py311-lock-failed.txt、raw/11-install-py311-unpinned.txt
+#
+# 用途：把 Stage 0 的自研实现替换为专业库
+#   shapely   → 替换自研射线法（点在多边形内 / 边界判定）
+#   pyproj    → 替换自研 haversine 球面近似（测地距离）
+#   PyYAML    → 替换自研极简 YAML 解析器
+#   pydantic  → 执行入口的结构化输入校验
+#   jsonschema→ 标准 Schema 校验（替代自研子集校验器）
+#   geopandas → Stage 1 后续矢量 IO（本批仅做运行验证，未进入判定链路）
+geopandas==1.2.0
+shapely==2.2.0
+pyproj==3.8.0
+PyYAML==6.0.3
+pydantic==2.14.1
+jsonschema==4.26.0

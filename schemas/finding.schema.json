@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Finding",
+  "type": "object",
+  "required": ["finding_id", "stable_key", "record_locator", "rule_id", "reason_code", "review_state"],
+  "properties": {
+    "finding_id": {"type": "string"},
+    "stable_key": {"type": "string", "description": "规则|原因码|位置|字段，用于跨批次比较"},
+    "record_locator": {
+      "type": "object",
+      "required": ["file"],
+      "properties": {
+        "file": {"type": "string"},
+        "line": {"type": ["integer", "null"], "description": "数据集级缺陷不带行号"},
+        "record_id": {"type": ["string", "null"]}
+      }
+    },
+    "record_id": {"type": ["string", "null"]},
+    "rule_id": {"type": "string"},
+    "field": {"type": ["string", "null"]},
+    "observed_value": {"description": "原值保留，不做静默纠正"},
+    "expected_constraint": {"type": "string"},
+    "geometry_ref": {"type": ["string", "null"]},
+    "reason_code": {
+      "type": "string",
+      "description": "取值清单；新增码必须同步登记到本清单，禁止使用未登记的自定义原因码",
+      "enum": [
+        "FIELD_COLUMN_MISSING",
+        "FIELD_COUNT_MISMATCH",
+        "EMPTY_VALUE",
+        "EMPTY_ID",
+        "TYPE_PARSE_ERROR",
+        "NON_FINITE_NUMBER",
+        "UNSUPPORTED_DATA_TYPE",
+        "ENUM_VIOLATION",
+        "DUPLICATE_ID",
+        "LONGITUDE_OUT_OF_RANGE",
+        "LATITUDE_OUT_OF_RANGE",
+        "CRS_MISSING_DECLARATION",
+        "CRS_DECLARATION_MISMATCH",
+        "CRS_EXPECTED_NOT_APPROVED",
+        "OUTSIDE_PROJECT_AREA",
+        "TIMEZONE_UNDECLARED",
+        "STALE_RECORD",
+        "FUTURE_TIMESTAMP",
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    "evidence": {"type": "object", "description": "结构化证据，如距离、同源行号、字典行号"},
+    "review_state": {"type": "string", "enum": ["OPEN", "CONFIRMED", "REJECTED", "RESOLVED", "NOT_COMPARABLE"]}
+  }
+}

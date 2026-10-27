@@ -1,0 +1,10 @@
+- Please include all dictionary-required columns in every record.
+- Trim both ends of required strings before checking that they are nonempty.
+- Validate types for every dictionary field, with timezone-bearing RFC3339 timestamps.
+- category must use the dictionary enum codes without aliases.
+- Each record_id must occur exactly once in the batch.
+- Finite coordinates are required: longitude [-135,135], latitude [-45,45].
+- Use EPSG:4326 as the declared coordinate reference system.
+- All points must be inside the project area, including its boundary.
+- Source age must be at most 16 days, but the reference timestamp has not been supplied and needs clarification.
+- Equal-name points at a distance of at most 22 metres should be duplicate candidates; advisory only, not a release condition.

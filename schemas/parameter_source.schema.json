@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ParameterSource",
+  "description": "参与判定的参数值的批准来源（契约 §6.1）。Stage 0 只做到「字面可追溯」，未做到「语义正确可证」。",
+  "type": "object",
+  "required": [
+    "parameter",
+    "requirement_id",
+    "document_id",
+    "document_sha256",
+    "source_line_start",
+    "source_line_end",
+    "source_quote",
+    "value_literal",
+    "interpretation",
+    "reviewer",
+    "approved_at"
+  ],
+  "properties": {
+    "parameter": {
+      "type": "string",
+      "description": "规则 parameters 中的键名，如 max_age_days"
+    },
+    "value": {
+      "description": "实际使用值；类型必须与 parameters 中同名参数一致"
+    },
+    "requirement_id": {
+      "type": "string",
+      "description": "来源条款，必须存在且在该规则的 requirement_ids 中"
+    },
+    "document_id": {
+      "type": "string",
+      "description": "来源文档文件名，必须指向交付包内存在的文件"
+    },
+    "document_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "来源文档哈希，必须与实际文件的 sha256 一致"
+    },
+    "source_line_start": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_line_end": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "与 source_line_start 组成闭合范围，范围内拼出的文本必须逐字等于 source_quote"
+    },
+    "source_quote": {
+      "type": "string",
+      "description": "冻结引用；不得跨 unequal 行号，不得省略中间行"
+    },
+    "value_literal": {
+      "type": ["string", "array"],
+      "items": {"type": "string"},
+      "minItems": 1,
+      "description": "在 source_quote 中出现的字面量；校验采用 token 边界匹配（禁止子串包含）。区间类参数可给多个字面量。"
+    },
+    "unit": {
+      "type": ["string", "null"],
+      "description": "无单位则 null；非空时必须与参数语义相容（如 max_age_days 只能是 day）"
+    },
+    "interpretation": {
+      "type": "string",
+      "minLength": 1,
+      "description": "如何从原文得到该值；需要解释/推导时必须写明（机器不校验其正确性）"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1,
+      "description": "记录批准人；Stage 0 无法证明「人工真的读过并认可」"
+    },
+    "approved_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "批准日期"
+    }
+  }
+}

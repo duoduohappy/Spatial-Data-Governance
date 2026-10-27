@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "at": "2026-10-27T04:28:00.438259+00:00",
+  "browser": "Codex in-app browser via cua_repl; user explicitly requested operation",
+  "job_id": "4f8df9fa7a4e47be83e1125b1754edf0",
+  "files": [
+    {
+      "type": "json",
+      "source_path": "C:\\Users\\TempAdmin\\Downloads\\report.json",
+      "bytes": 7822,
+      "sha256": "368f3240e47ca65abaf25be0e1882f3a8baf0e3ba45fa86335cf59019a250df9",
+      "matches_server": true
+    },
+    {
+      "type": "html",
+      "source_path": "C:\\Users\\TempAdmin\\Downloads\\report.html",
+      "bytes": 4948,
+      "sha256": "0d0120aa0bbf9d47d0b94a0374de28b0f70b4e921412a67aadebb684aed2687a",
+      "matches_server": true
+    }
+  ],
+  "scope": "Actual browser download events returned local paths; saved bytes match server. Separate headless Chromium tests remain permission-blocked."
+}

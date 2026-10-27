@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AuditEvent",
+  "type": "object",
+  "required": ["actor", "action", "timestamp"],
+  "properties": {
+    "actor": {"type": "string"},
+    "action": {"type": "string", "enum": ["create", "approve", "reject", "modify", "review", "run", "compare"]},
+    "timestamp": {"type": "string", "description": "ISO8601，带时区"},
+    "target_type": {"type": "string", "enum": ["requirement", "rule", "finding", "run", "bundle"]},
+    "target_id": {"type": "string"},
+    "old_version": {"type": ["integer", "null"]},
+    "new_version": {"type": ["integer", "null"]},
+    "reason": {"type": "string"}
+  }
+}

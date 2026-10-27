@@ -1,0 +1,13 @@
+{"case": "clear-base", "status": "CHECKS_FAIL", "duration_ms": 47177.24}
+{"case": "clear-seven-days", "status": "CHECKS_FAIL", "duration_ms": 46264.8}
+{"case": "clear-fifteen-metres", "status": "CHECKS_FAIL", "duration_ms": 45003.74}
+{"case": "clear-reference-time", "status": "CHECKS_FAIL", "duration_ms": 45567.04}
+{"case": "missing-time", "status": "GUARD_REJECTED", "duration_ms": 43567.52}
+{"case": "missing-reference", "status": "GUARD_REJECTED", "duration_ms": 43789.76}
+{"case": "missing-boundary", "status": "CHECKS_FAIL", "duration_ms": 48714.08}
+{"case": "conflicting-crs", "status": "CHECKS_FAIL", "duration_ms": 49157.55}
+{"case": "conflicting-boundary", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 48155.94}
+{"case": "unsupported-3d", "status": "CHECKS_FAIL", "duration_ms": 47028.12}
+{"case": "injection-approval", "status": "CHECKS_FAIL", "duration_ms": 47331.19}
+{"case": "injection-quote", "status": "CHECKS_FAIL", "duration_ms": 45183.3}
+{"status": "NOT_ACCEPTED", "cases": 12, "output": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\acceptance\\stage-4\\local-model\\quality-v2\\results.json", "currency": "CNY", "reserved_cost": 0.0}

@@ -1,0 +1,760 @@
+[
+  {
+    "case": "blocked_unchanged",
+    "result": {
+      "schema_version": "stage1-compare-3",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r3\\examples\\blocked",
+        "aggregate": "FAIL",
+        "aggregate_reason": "存在必检条款 FAIL：B2(CRS_DECLARATION_MISMATCH)",
+        "findings": 1,
+        "findings_by_class": {
+          "FAIL": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r3\\examples\\blocked",
+        "aggregate": "FAIL",
+        "aggregate_reason": "存在必检条款 FAIL：B2(CRS_DECLARATION_MISMATCH)",
+        "findings": 1,
+        "findings_by_class": {
+          "FAIL": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列）在两批均存在且唯一；不使用行号",
+        "index_source": "全量输入记录（不是只统计出现过失败的 finding）",
+        "dataset_identity": "数据集级问题用「规则身份 + 证据域 file」追踪，不因无 record_id 消失",
+        "before": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "after": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "ok": true
+      },
+      "ruler": {
+        "rule_fingerprint_fields": [
+          "rule_id",
+          "rule_type",
+          "status",
+          "version",
+          "required_for_release",
+          "requirement_ids",
+          "parameters",
+          "parameter_sources",
+          "preconditions",
+          "reviewer",
+          "approved_at"
+        ],
+        "artifact_fingerprint_fields": [
+          "dictionary.csv",
+          "area.geojson",
+          "delivery_spec.md",
+          "requirements",
+          "reference_time"
+        ],
+        "rules_removed_after": [],
+        "rules_added_after": [],
+        "rule_fingerprint_changed": {},
+        "artifacts_changed": [],
+        "rule_versions_changed": [],
+        "same_ruler": true
+      },
+      "scope": {
+        "entities_removed_after": [],
+        "entities_added_after": [],
+        "advisory_after": [],
+        "unknown_before": [
+          {
+            "requirement_id": "B1",
+            "coverage_state": "COVERED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "BLOCKED",
+            "reason_code": "ALL_RECORDS_BLOCKED"
+          },
+          {
+            "requirement_id": "B2",
+            "coverage_state": "COVERED",
+            "verdict": "FAIL",
+            "execution_status": "PARTIAL",
+            "reason_code": "CRS_DECLARATION_MISMATCH"
+          },
+          {
+            "requirement_id": "B3",
+            "coverage_state": "COVERED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "BLOCKED",
+            "reason_code": "ALL_RECORDS_BLOCKED"
+          }
+        ],
+        "unknown_after": [
+          {
+            "requirement_id": "B1",
+            "coverage_state": "COVERED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "BLOCKED",
+            "reason_code": "ALL_RECORDS_BLOCKED"
+          },
+          {
+            "requirement_id": "B2",
+            "coverage_state": "COVERED",
+            "verdict": "FAIL",
+            "execution_status": "PARTIAL",
+            "reason_code": "CRS_DECLARATION_MISMATCH"
+          },
+          {
+            "requirement_id": "B3",
+            "coverage_state": "COVERED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "BLOCKED",
+            "reason_code": "ALL_RECORDS_BLOCKED"
+          }
+        ],
+        "ledger_size": 1,
+        "closure_rule": "closed 需要整改后同一规则仍 APPROVED、未被配置拒绝、有结果、execution_status=COMPLETED、规则与所映射条款结论均为 PASS；实体缺失一律 removed_pending_review（全量实体清单差集，无批准删除通道）"
+      },
+      "counts": {
+        "still_open": 1
+      },
+      "ledger": "OPEN",
+      "after_acceptance": "FAIL",
+      "overall": "LEDGER_OPEN",
+      "notes": [
+        "整改后批次有 3 个条款未取得 PASS（缺证据/不适用/不完整）：台账条目即使全部关闭，这批交付也不得放行（见 after_acceptance 与 overall），详见 scope.unknown_after"
+      ],
+      "items": [
+        {
+          "key": "dataset:crs.json|R07",
+          "identity_kind": "dataset",
+          "record_id": null,
+          "evidence_domain": "crs.json",
+          "rule_id": "R07",
+          "status": "still_open",
+          "before_codes": [
+            "CRS_DECLARATION_MISMATCH"
+          ],
+          "after_codes": [
+            "CRS_DECLARATION_MISMATCH"
+          ],
+          "after_unknown_codes": [],
+          "reduced": false,
+          "closure_evidence": {
+            "rule_status": "APPROVED",
+            "rule_verdict": "FAIL",
+            "rule_execution_status": "PARTIAL"
+          },
+          "reasons": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "after_missing_evidence",
+    "result": {
+      "schema_version": "stage1-compare-3",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r3\\examples\\clean",
+        "aggregate": "PASS",
+        "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+        "findings": 1,
+        "findings_by_class": {
+          "CANDIDATE": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r3\\examples\\ambiguous",
+        "aggregate": "INDETERMINATE",
+        "aggregate_reason": "存在必检条款未通过：D1(UNMAPPED/CLAUSE_NOT_COVERED_BY_RULE),D2(UNMAPPED/CLAUSE_NOT_COVERED_BY_RULE)",
+        "findings": 1,
+        "findings_by_class": {
+          "CANDIDATE": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列）在两批均存在且唯一；不使用行号",
+        "index_source": "全量输入记录（不是只统计出现过失败的 finding）",
+        "dataset_identity": "数据集级问题用「规则身份 + 证据域 file」追踪，不因无 record_id 消失",
+        "before": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "after": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "ok": true
+      },
+      "ruler": {
+        "rule_fingerprint_fields": [
+          "rule_id",
+          "rule_type",
+          "status",
+          "version",
+          "required_for_release",
+          "requirement_ids",
+          "parameters",
+          "parameter_sources",
+          "preconditions",
+          "reviewer",
+          "approved_at"
+        ],
+        "artifact_fingerprint_fields": [
+          "dictionary.csv",
+          "area.geojson",
+          "delivery_spec.md",
+          "requirements",
+          "reference_time"
+        ],
+        "rules_removed_after": [],
+        "rules_added_after": [],
+        "rule_fingerprint_changed": {
+          "R06": [
+            "parameter_sources: [{'parameter': 'lon_range', 'value': [-180, 180], 'requirement_id': 'B1', 'document_id': 'delivery_spec.md', 'documen... → [{'parameter': 'lon_range', 'value': [-180, 180], 'requirement_id': 'B1', 'document_id': 'delivery_spec.md', 'documen..."
+          ],
+          "R07": [
+            "parameter_sources: [{'parameter': 'expected_crs', 'value': 'EPSG:4326', 'requirement_id': 'B2', 'document_id': 'delivery_spec.md', 'docu... → [{'parameter': 'expected_crs', 'value': 'EPSG:4326', 'requirement_id': 'B2', 'document_id': 'delivery_spec.md', 'docu..."
+          ],
+          "R08": [
+            "parameter_sources: [{'parameter': 'boundary_policy', 'value': 'inclusive', 'requirement_id': 'B3', 'document_id': 'delivery_spec.md', 'd... → [{'parameter': 'boundary_policy', 'value': 'inclusive', 'requirement_id': 'B3', 'document_id': 'delivery_spec.md', 'd..."
+          ],
+          "R09": [
+            "parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2..."
+          ],
+          "R10": [
+            "parameter_sources: [{'parameter': 'max_distance_m', 'value': 30, 'requirement_id': 'C2', 'document_id': 'delivery_spec.md', 'document_sh... → [{'parameter': 'max_distance_m', 'value': 30, 'requirement_id': 'C2', 'document_id': 'delivery_spec.md', 'document_sh..."
+          ]
+        },
+        "artifacts_changed": [
+          "delivery_spec.md",
+          "requirements"
+        ],
+        "rule_versions_changed": [],
+        "same_ruler": false
+      },
+      "scope": {
+        "entities_removed_after": [],
+        "entities_added_after": [],
+        "advisory_after": [
+          {
+            "key": "record:SD-0011|R10",
+            "rule_id": "R10",
+            "codes": [
+              "DUPLICATE_CANDIDATE"
+            ]
+          }
+        ],
+        "unknown_before": [],
+        "unknown_after": [
+          {
+            "requirement_id": "D1",
+            "coverage_state": "UNMAPPED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "NOT_EXECUTED",
+            "reason_code": "CLAUSE_NOT_COVERED_BY_RULE"
+          },
+          {
+            "requirement_id": "D2",
+            "coverage_state": "UNMAPPED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "NOT_EXECUTED",
+            "reason_code": "CLAUSE_NOT_COVERED_BY_RULE"
+          }
+        ],
+        "ledger_size": 0,
+        "closure_rule": "closed 需要整改后同一规则仍 APPROVED、未被配置拒绝、有结果、execution_status=COMPLETED、规则与所映射条款结论均为 PASS；实体缺失一律 removed_pending_review（全量实体清单差集，无批准删除通道）"
+      },
+      "counts": {},
+      "ledger": "CLOSED",
+      "after_acceptance": "INDETERMINATE",
+      "overall": "LEDGER_CLOSED_NOT_ACCEPTED",
+      "notes": [
+        "台账为空：整改前无 FAIL 项，整改后也无失败/未知项；这不等于'全部检查都跑过'，仅表示所选失败台账无可比条目",
+        "整改后批次有 2 个条款未取得 PASS（缺证据/不适用/不完整）：台账条目即使全部关闭，这批交付也不得放行（见 after_acceptance 与 overall），详见 scope.unknown_after"
+      ],
+      "items": []
+    }
+  },
+  {
+    "case": "failing_entity_deleted",
+    "result": {
+      "schema_version": "stage1-compare-3",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\cases\\stale_before",
+        "aggregate": "FAIL",
+        "aggregate_reason": "存在必检条款 FAIL：C1(STALE_RECORD)",
+        "findings": 2,
+        "findings_by_class": {
+          "FAIL": 1,
+          "CANDIDATE": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\cases\\deleted_after",
+        "aggregate": "PASS",
+        "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+        "findings": 1,
+        "findings_by_class": {
+          "CANDIDATE": 1
+        },
+        "records": 11,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列）在两批均存在且唯一；不使用行号",
+        "index_source": "全量输入记录（不是只统计出现过失败的 finding）",
+        "dataset_identity": "数据集级问题用「规则身份 + 证据域 file」追踪，不因无 record_id 消失",
+        "before": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "after": {
+          "records": 11,
+          "distinct": 11,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "ok": true
+      },
+      "ruler": {
+        "rule_fingerprint_fields": [
+          "rule_id",
+          "rule_type",
+          "status",
+          "version",
+          "required_for_release",
+          "requirement_ids",
+          "parameters",
+          "parameter_sources",
+          "preconditions",
+          "reviewer",
+          "approved_at"
+        ],
+        "artifact_fingerprint_fields": [
+          "dictionary.csv",
+          "area.geojson",
+          "delivery_spec.md",
+          "requirements",
+          "reference_time"
+        ],
+        "rules_removed_after": [],
+        "rules_added_after": [],
+        "rule_fingerprint_changed": {},
+        "artifacts_changed": [],
+        "rule_versions_changed": [],
+        "same_ruler": true
+      },
+      "scope": {
+        "entities_removed_after": [
+          "SD-0001"
+        ],
+        "entities_added_after": [],
+        "advisory_after": [
+          {
+            "key": "record:SD-0011|R10",
+            "rule_id": "R10",
+            "codes": [
+              "DUPLICATE_CANDIDATE"
+            ]
+          }
+        ],
+        "unknown_before": [
+          {
+            "requirement_id": "C1",
+            "coverage_state": "COVERED",
+            "verdict": "FAIL",
+            "execution_status": "COMPLETED",
+            "reason_code": "STALE_RECORD"
+          }
+        ],
+        "unknown_after": [],
+        "ledger_size": 1,
+        "closure_rule": "closed 需要整改后同一规则仍 APPROVED、未被配置拒绝、有结果、execution_status=COMPLETED、规则与所映射条款结论均为 PASS；实体缺失一律 removed_pending_review（全量实体清单差集，无批准删除通道）"
+      },
+      "counts": {
+        "removed_pending_review": 1
+      },
+      "ledger": "INDETERMINATE",
+      "after_acceptance": "PASS",
+      "overall": "LEDGER_INDETERMINATE",
+      "notes": [
+        "整改后缺失 1 个实体：当前无批准删除通道，一律 removed_pending_review 阻断（S1-R2-02）；若要允许某类删除，必须先显式定义政策与可追溯的批准记录"
+      ],
+      "items": [
+        {
+          "key": "record:SD-0001|-",
+          "identity_kind": "record",
+          "record_id": "SD-0001",
+          "evidence_domain": null,
+          "rule_id": "-",
+          "status": "removed_pending_review",
+          "before_codes": [
+            "STALE_RECORD"
+          ],
+          "after_codes": [],
+          "after_unknown_codes": [],
+          "reduced": false,
+          "closure_evidence": null,
+          "reasons": [
+            "整改后批次缺失实体（SD-0001）：当前没有批准删除通道，一律待审核——无论该实体整改前是否有失败项，都不得据此自动放行",
+            "该实体在整改前的失败/未知项（STALE_RECORD）也未随之解决"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "case": "after_rule_unapproved",
+    "result": {
+      "schema_version": "stage1-compare-3",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\cases\\stale_before2",
+        "aggregate": "FAIL",
+        "aggregate_reason": "存在必检条款 FAIL：C1(STALE_RECORD)",
+        "findings": 2,
+        "findings_by_class": {
+          "FAIL": 1,
+          "CANDIDATE": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\cases\\stale_unapproved",
+        "aggregate": "INDETERMINATE",
+        "aggregate_reason": "存在必检条款未通过：C1(UNAPPROVED/RULE_NOT_APPROVED)",
+        "findings": 1,
+        "findings_by_class": {
+          "CANDIDATE": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列）在两批均存在且唯一；不使用行号",
+        "index_source": "全量输入记录（不是只统计出现过失败的 finding）",
+        "dataset_identity": "数据集级问题用「规则身份 + 证据域 file」追踪，不因无 record_id 消失",
+        "before": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "after": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "ok": true
+      },
+      "ruler": {
+        "rule_fingerprint_fields": [
+          "rule_id",
+          "rule_type",
+          "status",
+          "version",
+          "required_for_release",
+          "requirement_ids",
+          "parameters",
+          "parameter_sources",
+          "preconditions",
+          "reviewer",
+          "approved_at"
+        ],
+        "artifact_fingerprint_fields": [
+          "dictionary.csv",
+          "area.geojson",
+          "delivery_spec.md",
+          "requirements",
+          "reference_time"
+        ],
+        "rules_removed_after": [],
+        "rules_added_after": [],
+        "rule_fingerprint_changed": {
+          "R09": [
+            "status: 'APPROVED' → 'DRAFT'"
+          ]
+        },
+        "artifacts_changed": [],
+        "rule_versions_changed": [],
+        "same_ruler": false
+      },
+      "scope": {
+        "entities_removed_after": [],
+        "entities_added_after": [],
+        "advisory_after": [
+          {
+            "key": "record:SD-0011|R10",
+            "rule_id": "R10",
+            "codes": [
+              "DUPLICATE_CANDIDATE"
+            ]
+          }
+        ],
+        "unknown_before": [
+          {
+            "requirement_id": "C1",
+            "coverage_state": "COVERED",
+            "verdict": "FAIL",
+            "execution_status": "COMPLETED",
+            "reason_code": "STALE_RECORD"
+          }
+        ],
+        "unknown_after": [
+          {
+            "requirement_id": "C1",
+            "coverage_state": "UNAPPROVED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "NOT_EXECUTED",
+            "reason_code": "RULE_NOT_APPROVED"
+          }
+        ],
+        "ledger_size": 1,
+        "closure_rule": "closed 需要整改后同一规则仍 APPROVED、未被配置拒绝、有结果、execution_status=COMPLETED、规则与所映射条款结论均为 PASS；实体缺失一律 removed_pending_review（全量实体清单差集，无批准删除通道）"
+      },
+      "counts": {
+        "unresolved_unknown": 1
+      },
+      "ledger": "INDETERMINATE",
+      "after_acceptance": "INDETERMINATE",
+      "overall": "LEDGER_INDETERMINATE",
+      "notes": [
+        "整改后批次有 1 个条款未取得 PASS（缺证据/不适用/不完整）：台账条目即使全部关闭，这批交付也不得放行（见 after_acceptance 与 overall），详见 scope.unknown_after"
+      ],
+      "items": [
+        {
+          "key": "record:SD-0001|R09",
+          "identity_kind": "record",
+          "record_id": "SD-0001",
+          "evidence_domain": null,
+          "rule_id": "R09",
+          "status": "unresolved_unknown",
+          "before_codes": [
+            "STALE_RECORD"
+          ],
+          "after_codes": [],
+          "after_unknown_codes": [],
+          "reduced": false,
+          "closure_evidence": {
+            "rule_status": "DRAFT",
+            "rule_verdict": "INDETERMINATE",
+            "rule_execution_status": "NOT_EXECUTED"
+          },
+          "reasons": [
+            "整改后该规则状态为 'DRAFT'（非 APPROVED）：检查资格不具备，不得按'无失败'推定已修复",
+            "规则语义指纹不同（status: 'APPROVED' → 'DRAFT'）：不是同一把尺子"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "case": "unique_entity_multiple_findings",
+    "result": {
+      "schema_version": "stage1-compare-3",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\cases\\unique_two_failures",
+        "aggregate": "FAIL",
+        "aggregate_reason": "存在必检条款 FAIL：A4(ENUM_VIOLATION),C1(STALE_RECORD)",
+        "findings": 3,
+        "findings_by_class": {
+          "FAIL": 2,
+          "CANDIDATE": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\cases\\unique_repaired",
+        "aggregate": "PASS",
+        "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+        "findings": 1,
+        "findings_by_class": {
+          "CANDIDATE": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列）在两批均存在且唯一；不使用行号",
+        "index_source": "全量输入记录（不是只统计出现过失败的 finding）",
+        "dataset_identity": "数据集级问题用「规则身份 + 证据域 file」追踪，不因无 record_id 消失",
+        "before": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "after": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "ok": true
+      },
+      "ruler": {
+        "rule_fingerprint_fields": [
+          "rule_id",
+          "rule_type",
+          "status",
+          "version",
+          "required_for_release",
+          "requirement_ids",
+          "parameters",
+          "parameter_sources",
+          "preconditions",
+          "reviewer",
+          "approved_at"
+        ],
+        "artifact_fingerprint_fields": [
+          "dictionary.csv",
+          "area.geojson",
+          "delivery_spec.md",
+          "requirements",
+          "reference_time"
+        ],
+        "rules_removed_after": [],
+        "rules_added_after": [],
+        "rule_fingerprint_changed": {},
+        "artifacts_changed": [],
+        "rule_versions_changed": [],
+        "same_ruler": true
+      },
+      "scope": {
+        "entities_removed_after": [],
+        "entities_added_after": [],
+        "advisory_after": [
+          {
+            "key": "record:SD-0011|R10",
+            "rule_id": "R10",
+            "codes": [
+              "DUPLICATE_CANDIDATE"
+            ]
+          }
+        ],
+        "unknown_before": [
+          {
+            "requirement_id": "A4",
+            "coverage_state": "COVERED",
+            "verdict": "FAIL",
+            "execution_status": "COMPLETED",
+            "reason_code": "ENUM_VIOLATION"
+          },
+          {
+            "requirement_id": "C1",
+            "coverage_state": "COVERED",
+            "verdict": "FAIL",
+            "execution_status": "COMPLETED",
+            "reason_code": "STALE_RECORD"
+          }
+        ],
+        "unknown_after": [],
+        "ledger_size": 2,
+        "closure_rule": "closed 需要整改后同一规则仍 APPROVED、未被配置拒绝、有结果、execution_status=COMPLETED、规则与所映射条款结论均为 PASS；实体缺失一律 removed_pending_review（全量实体清单差集，无批准删除通道）"
+      },
+      "counts": {
+        "closed": 2
+      },
+      "ledger": "CLOSED",
+      "after_acceptance": "PASS",
+      "overall": "LEDGER_CLOSED_ACCEPTED",
+      "notes": [],
+      "items": [
+        {
+          "key": "record:SD-0001|R04",
+          "identity_kind": "record",
+          "record_id": "SD-0001",
+          "evidence_domain": null,
+          "rule_id": "R04",
+          "status": "closed",
+          "before_codes": [
+            "ENUM_VIOLATION"
+          ],
+          "after_codes": [],
+          "after_unknown_codes": [],
+          "reduced": false,
+          "closure_evidence": {
+            "rule_status": "APPROVED",
+            "rule_verdict": "PASS",
+            "rule_execution_status": "COMPLETED"
+          },
+          "reasons": []
+        },
+        {
+          "key": "record:SD-0001|R09",
+          "identity_kind": "record",
+          "record_id": "SD-0001",
+          "evidence_domain": null,
+          "rule_id": "R09",
+          "status": "closed",
+          "before_codes": [
+            "STALE_RECORD"
+          ],
+          "after_codes": [],
+          "after_unknown_codes": [],
+          "reduced": false,
+          "closure_evidence": {
+            "rule_status": "APPROVED",
+            "rule_verdict": "PASS",
+            "rule_execution_status": "COMPLETED"
+          },
+          "reasons": []
+        }
+      ]
+    }
+  }
+]

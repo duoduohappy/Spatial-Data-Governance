@@ -1,0 +1,1258 @@
+{
+  "schema_version": "stage0-2",
+  "generated_at": "2026-10-26T15:06:00.497591+00:00",
+  "repo_root": "C:\\Users\\TempAdmin\\WorkBuddy\\2026-10-26-13-17-35\\geoacceptance",
+  "python": "3.13.14",
+  "baseline_source": "work\\stage0-recheck\\baseline-independent-results.json",
+  "total": 30,
+  "passed": 30,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "GA01_clause_without_rule",
+      "ga": "GA-01",
+      "origin": "原独立验收",
+      "desc": "clean 副本删除 R09（C1 仍为必检且 SUPPORTED），C1 无规则映射",
+      "expected": "总体结论 == INDETERMINATE，且 clause_coverage 中 C1 的 coverage_state == UNMAPPED",
+      "before_fix": "PASS",
+      "after_fix": {
+        "aggregate": "INDETERMINATE",
+        "C1_coverage_state": "UNMAPPED",
+        "C1_reason": "CLAUSE_NOT_COVERED_BY_RULE"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA03_missing_crs_declaration",
+      "ga": "GA-03",
+      "origin": "原独立验收",
+      "desc": "clean 副本移除 crs.json 的 declared_crs（缺证据，不是错误声明）",
+      "expected": "总体结论 == INDETERMINATE（**不是** FAIL）；R06/R08/R10 为 INDETERMINATE/BLOCKED",
+      "before_fix": "FAIL",
+      "after_fix": {
+        "aggregate": "INDETERMINATE",
+        "spatial": {
+          "R06": [
+            "INDETERMINATE",
+            "BLOCKED"
+          ],
+          "R08": [
+            "INDETERMINATE",
+            "BLOCKED"
+          ],
+          "R10": [
+            "INDETERMINATE",
+            "BLOCKED"
+          ]
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA03_unexpected_crs_degree",
+      "ga": "GA-03",
+      "origin": "原独立验收",
+      "desc": "clean 副本声明改为 EPSG:4490，单位仍 degree（与要求同为 degree，量级无法区分）",
+      "expected": "R07 verdict == FAIL 且 reason_code/ finding 含 CRS_DECLARATION_MISMATCH；总体 != PASS",
+      "before_fix": "PASS",
+      "after_fix": {
+        "aggregate": "FAIL",
+        "R07": "FAIL",
+        "finding_codes": [
+          "CRS_DECLARATION_MISMATCH"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA04_unknown_dependency",
+      "ga": "GA-04",
+      "origin": "原独立验收",
+      "desc": "clean 副本的 R01.preconditions 增加 NONEXISTENT_RULE",
+      "expected": "config_rejections 含 UNKNOWN_PRECONDITION；总体 != PASS（不得再静默过滤）",
+      "before_fix": "PASS",
+      "after_fix": {
+        "aggregate": "INDETERMINATE",
+        "rejection_codes": [
+          "UNKNOWN_PRECONDITION"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA05_substring_threshold",
+      "ga": "GA-05",
+      "origin": "原独立验收",
+      "desc": "R09 的 max_age_days 由 30 改为 3（'3' 是 '30' 的子串）",
+      "expected": "verify_parameter_sources() 返回非空（token 边界匹配，子串不算命中）",
+      "before_fix": [],
+      "after_fix": {
+        "problems": [
+          "[PARAMETER_VALUE_MISMATCH] R09：参数 max_age_days 的实际值 3 与其批准来源记录的值 30 不一致",
+          "[PARAMETER_SOURCE_NOT_FOUND] R09：参数 max_age_days 取值 3 在 C1 的批准引用中找不到来源（token 边界匹配，禁止子串包含）"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA05_wrong_document_hash",
+      "ga": "GA-05",
+      "origin": "原独立验收",
+      "desc": "clean 副本的条款 document_sha256 改为 64 个 0",
+      "expected": "verify_quotes() 返回非空（含 DOCUMENT_HASH_MISMATCH）",
+      "before_fix": [],
+      "after_fix": {
+        "problems": [
+          "[DOCUMENT_HASH_MISMATCH] A1 声明的文档哈希与实际不一致\n  声明: 00000000000000000000000000000000"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA06_no_invalid_verdicts",
+      "ga": "GA-06",
+      "origin": "原独立验收",
+      "desc": "blocked 包全部规则结果的 verdict 合法性",
+      "expected": "verdict 不在三态词汇表内的结果数 == 0（修复前为 3 条 UNKNOWN）",
+      "before_fix": [
+        {
+          "rule_id": "R06",
+          "requirement_ids": [
+            "B1"
+          ],
+          "verdict": "UNKNOWN",
+          "execution_status": "BLOCKED",
+          "reason_code": "ALL_RECORDS_BLOCKED",
+          "summary_counts": {
+            "findings": 0,
+            "records_evaluated": 0,
+            "records_blocked": 12
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R08",
+          "requirement_ids": [
+            "B3"
+          ],
+          "verdict": "UNKNOWN",
+          "execution_status": "BLOCKED",
+          "reason_code": "ALL_RECORDS_BLOCKED",
+          "summary_counts": {
+            "findings": 0,
+            "records_evaluated": 0,
+            "records_blocked": 12
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R10",
+          "requirement_ids": [
+            "C2"
+          ],
+          "verdict": "UNKNOWN",
+          "execution_status": "BLOCKED",
+          "reason_code": "ALL_RECORDS_BLOCKED",
+          "summary_counts": {
+            "findings": 0,
+            "records_evaluated": 0,
+            "records_blocked": 12
+          },
+          "required_for_release": false
+        }
+      ],
+      "after_fix": {
+        "invalid_verdicts": [],
+        "illegal_combos": []
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA07_candidate_counts",
+      "ga": "GA-07",
+      "origin": "原独立验收",
+      "desc": "clean 包 R10（重复候选）的统计口径",
+      "expected": "total=12, evaluated=12, failed=0, indeterminate=2, skipped_upstream=0, uninterpretable=0, findings=1（修复前为 evaluated=11 / blocked=1）",
+      "before_fix": {
+        "rule_id": "R10",
+        "requirement_ids": [
+          "C2"
+        ],
+        "verdict": "INDETERMINATE",
+        "execution_status": "PARTIAL",
+        "reason_code": "OK",
+        "summary_counts": {
+          "findings": 1,
+          "records_evaluated": 11,
+          "records_blocked": 1
+        },
+        "required_for_release": false
+      },
+      "after_fix": {
+        "summary_counts": {
+          "records_total": 12,
+          "records_evaluated": 12,
+          "records_failed": 0,
+          "records_indeterminate": 2,
+          "records_skipped_upstream": 0,
+          "records_uninterpretable": 0,
+          "records_blocked": 0,
+          "findings": 1
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA08_exclusive_boundary",
+      "ga": "GA-08",
+      "origin": "原独立验收",
+      "desc": "单位正方形四边中点，point_in_ring_or_boundary(..., inclusive=False)",
+      "expected": "四个点全部为 False（修复前左/下边为 True，不对称）",
+      "before_fix": {
+        "(0, 0.5)": true,
+        "(1, 0.5)": false,
+        "(0.5, 0)": true,
+        "(0.5, 1)": false
+      },
+      "after_fix": {
+        "exclusive": {
+          "(0, 0.5)": false,
+          "(1, 0.5)": false,
+          "(0.5, 0)": false,
+          "(0.5, 1)": false
+        },
+        "inclusive": {
+          "(0, 0.5)": true,
+          "(1, 0.5)": true,
+          "(0.5, 0)": true,
+          "(0.5, 1)": true
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "GA02_clause_downgraded",
+      "ga": "GA-02",
+      "origin": "原独立验收",
+      "desc": "defective 副本把 R09.required_for_release 改为 false，并注入一条过期记录",
+      "expected": "总体 != PASS；config_rejections 含 CLAUSE_POLICY_DOWNGRADED_BY_RULE（规则不得降级条款）",
+      "before_fix": "PASS",
+      "after_fix": {
+        "aggregate": "INDETERMINATE",
+        "rejection_codes": [
+          "CLAUSE_POLICY_DOWNGRADED_BY_RULE"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "INPUT_MANIFEST",
+      "ga": "GA-09",
+      "origin": "原独立验收",
+      "desc": "按 INPUT_MANIFEST.json 逐文件核对 sha256",
+      "expected": "不一致文件数 == 0",
+      "before_fix": [],
+      "after_fix": {
+        "mismatches": [],
+        "checked": 60
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_crs_magnitude_only_signal",
+      "ga": "GA-03/A3",
+      "origin": "本轮新增",
+      "desc": "clean 副本：声明 CRS 仍为要求的 EPSG:4326，但 declared_unit 改为 metre，坐标仍为经纬度量级（合法小值投影坐标也可能长这样）",
+      "expected": "R07 verdict != FAIL（只比对声明，不按量级猜）；产出 risk signal CRS_MAGNITUDE_RISK（含 degree_like_records）；R06/R08 不被阻断（仍 COMPLETED）",
+      "before_fix": null,
+      "after_fix": {
+        "aggregate": "PASS",
+        "R07": "PASS",
+        "risk_codes": [
+          "PARAMETER_VALUE_MAPPED_BY_INTERPRETATION",
+          "CRS_MAGNITUDE_RISK"
+        ],
+        "magnitude_evidence": [
+          {
+            "degree_like_records": 12
+          }
+        ],
+        "R06_status": "COMPLETED",
+        "R08_status": "COMPLETED"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_timezone_undeclared_fails_closed",
+      "ga": "A2/本轮一行修复",
+      "origin": "本轮新增",
+      "desc": "① 六个包在严格 RFC3339 子集下是否会产生 TIMEZONE_UNDECLARED；② 强行放宽解析使该分支可达后，规则级结论是否仍不得为 PASS",
+      "expected": "① 六包产生 0 条（该分支不可达，本轮改动零影响）；② 放宽后 verdict == INDETERMINATE、execution_status == PARTIAL（不是 FAILED：没有执行异常；不是 BLOCKED：记录已解析并评估；更不是 COMPLETED：存在不可解释行就不能宣称执行完整）、reason_code == TIMEZONE_UNDECLARED、records_uninterpretable >= 1（缺证据类 finding 计入 uninterpretable，§7.1/§7.2），绝不为 PASS（不得放行，也不得给出「已按未定处理」的假象——见 OPEN_ISSUES）",
+      "before_fix": null,
+      "after_fix": {
+        "timezone_findings_in_examples": 0,
+        "forced_branch": {
+          "verdict": "INDETERMINATE",
+          "execution_status": "PARTIAL",
+          "reason_code": "TIMEZONE_UNDECLARED",
+          "detail": null,
+          "records_uninterpretable": 1,
+          "finding_codes": [
+            "DUPLICATE_CANDIDATE",
+            "TIMEZONE_UNDECLARED"
+          ]
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_expected_tamper_detected",
+      "ga": "契约 §9.4",
+      "origin": "本轮新增",
+      "desc": "把 clean 包复制到临时目录后对 expected 做四类篡改：命中错行但数量相同 / 多一条 finding / 少一条 finding / 统计字段被篡改；再加一次「无变异」反向确认",
+      "expected": "四类篡改**全部**被 compare_expected() 判为真实差异（FIELD/COUNT/MISSING/EXTRA），无变异时真实差异 == 0",
+      "before_fix": null,
+      "after_fix": {
+        "variants": {
+          "无变异（反向确认）": [],
+          "命中错行但数量相同": [
+            {
+              "kind": "FIELD",
+              "scope": "findings[R10|DUPLICATE_CANDIDATE|12|longitude/latitude]",
+              "field": "record_locator.line"
+            }
+          ],
+          "多一条 finding": [
+            {
+              "kind": "MISSING",
+              "scope": "findings[R09|STALE_RECORD|3|source_time]",
+              "field": "finding"
+            }
+          ],
+          "少一条 finding": [
+            {
+              "kind": "EXTRA",
+              "scope": "findings[R10|DUPLICATE_CANDIDATE|12|longitude/latitude]",
+              "field": "finding"
+            }
+          ],
+          "统计字段被篡改": [
+            {
+              "kind": "COUNT",
+              "scope": "R10",
+              "field": "records_indeterminate"
+            }
+          ]
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_gate_exit_code_on_reject",
+      "ga": "契约 §9.1",
+      "origin": "本轮新增",
+      "desc": "跑真实门禁入口：正常包 / 注入重复 rule_id / 注入未知依赖",
+      "expected": "正常包退出码 0 且无 [REJECT]；两个注入包退出码 == 1 且打印 [REJECT]",
+      "before_fix": null,
+      "after_fix": {
+        "runs": {
+          "clean": {
+            "exit_code": 0,
+            "reject": false,
+            "first_line": "[PASS] clean      aggregate=PASS          findings=1   -> C:\\Users\\TempAdmin\\WorkBuddy\\2026-10-26-13-17-35\\geoacceptance\\work\\negatives\\probe_gate_out\\clean"
+          },
+          "neg_dup_rule": {
+            "exit_code": 1,
+            "reject": true,
+            "first_line": "[REJECT] neg_dup_rule 配置校验未通过，拒绝执行（1 项）："
+          },
+          "neg_unknown_dep": {
+            "exit_code": 1,
+            "reject": true,
+            "first_line": "[REJECT] neg_unknown_dep 配置校验未通过，拒绝执行（1 项）："
+          }
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_risk_signals_write_only",
+      "ga": "契约 A3",
+      "origin": "本轮新增",
+      "desc": "在 run() 的判定窗口内（通过包装 R07 处理器插桩）读取 Kernel.risk_signals",
+      "expected": "读取必须抛 ContractViolation（不得静默成功）；run() 结束后可读且为普通 list",
+      "before_fix": null,
+      "after_fix": {
+        "during": "ContractViolation",
+        "after_type": "list",
+        "after_len": 2
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_i7_i9_counterexamples",
+      "ga": "契约 §3.5.1 / I7–I9",
+      "origin": "最终回归轮新增",
+      "desc": "自建矛盾组合，不复用工程师输出：① 直接调 assert_reason_compat 的 11 组；② 经 make_result() 构造 FAIL+OK / FAIL+候选码 / INDETERMINATE+OK；③ 端到端注入一条 reason_code=OK 的 finding，看 run() 是否失败关闭",
+      "expected": "① PASS+OK / FAIL+FAIL 类码 / INDETERMINATE+非 FAIL 类非 OK 码 → 不抛；PASS+非OK / FAIL+OK / FAIL+候选码 / FAIL+缺证据码 / INDETERMINATE+OK / INDETERMINATE+FAIL 类码 → 抛 ContractViolation；② make_result 三例全部抛；③ 该规则登记为 INDETERMINATE/FAILED/CONTRACT_VIOLATION，总体 != PASS（失败关闭）",
+      "before_fix": null,
+      "after_fix": {
+        "assert_reason_compat": [
+          {
+            "verdict": "PASS",
+            "reason_code": "OK",
+            "got": "NO_RAISE",
+            "want": "NO_RAISE",
+            "ok": true
+          },
+          {
+            "verdict": "PASS",
+            "reason_code": "EMPTY_VALUE",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "PASS",
+            "reason_code": "DUPLICATE_CANDIDATE",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "FAIL",
+            "reason_code": "OK",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "FAIL",
+            "reason_code": "DUPLICATE_CANDIDATE",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "FAIL",
+            "reason_code": "CRS_MISSING_DECLARATION",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "FAIL",
+            "reason_code": "EMPTY_VALUE",
+            "got": "NO_RAISE",
+            "want": "NO_RAISE",
+            "ok": true
+          },
+          {
+            "verdict": "INDETERMINATE",
+            "reason_code": "OK",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "INDETERMINATE",
+            "reason_code": "EMPTY_VALUE",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "INDETERMINATE",
+            "reason_code": "DUPLICATE_CANDIDATE",
+            "got": "NO_RAISE",
+            "want": "NO_RAISE",
+            "ok": true
+          },
+          {
+            "verdict": "INDETERMINATE",
+            "reason_code": "ALL_RECORDS_BLOCKED",
+            "got": "NO_RAISE",
+            "want": "NO_RAISE",
+            "ok": true
+          },
+          {
+            "verdict": "INDETERMINATE",
+            "reason_code": "CRS_MISSING_DECLARATION",
+            "got": "NO_RAISE",
+            "want": "NO_RAISE",
+            "ok": true
+          }
+        ],
+        "make_result": [
+          {
+            "verdict": "FAIL",
+            "reason_code": "OK",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "FAIL",
+            "reason_code": "DUPLICATE_CANDIDATE",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          },
+          {
+            "verdict": "INDETERMINATE",
+            "reason_code": "OK",
+            "got": "ContractViolation",
+            "want": "ContractViolation",
+            "ok": true
+          }
+        ],
+        "e2e_fail_ok": {
+          "verdict": "INDETERMINATE",
+          "execution_status": "FAILED",
+          "reason_code": "CONTRACT_VIOLATION",
+          "aggregate": "INDETERMINATE"
+        },
+        "finding_guard_on_OK": "ContractViolation"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_reason_code_arrays",
+      "ga": "契约 §3.5.2",
+      "origin": "最终回归轮新增",
+      "desc": "① _unique_ordered 去重且保留首次出现顺序；② 端到端按「行号 9→3→7、码 EMPTY_VALUE→ENUM_VIOLATION→EMPTY_VALUE」注入，验证「第一条」取的是排放顺序而不是行号重排；③ 六包全量核对 I7–I9 与数组自洽",
+      "expected": "① [A,B,A,C,B,A] → [A,B,C]；② failure_reason_codes == [EMPTY_VALUE, ENUM_VIOLATION]、reason_code == EMPTY_VALUE（行号升序会错成 ENUM_VIOLATION）；③ 六包全部 0 条违反，且 FAIL 的 failure_reason_codes[0] == reason_code、数组无重复、全部元素属 FAIL 类",
+      "before_fix": null,
+      "after_fix": {
+        "unique_ordered": [
+          "A",
+          "B",
+          "C"
+        ],
+        "R02": {
+          "verdict": "FAIL",
+          "reason_code": "EMPTY_VALUE",
+          "failure_reason_codes": [
+            "EMPTY_VALUE",
+            "ENUM_VIOLATION"
+          ],
+          "emission_order": [
+            "EMPTY_VALUE",
+            "ENUM_VIOLATION",
+            "EMPTY_VALUE"
+          ],
+          "emission_lines": [
+            10,
+            4,
+            8
+          ]
+        },
+        "corpus": {
+          "clean": {
+            "results": 10,
+            "clauses": 9,
+            "violations": []
+          },
+          "defective": {
+            "results": 10,
+            "clauses": 9,
+            "violations": []
+          },
+          "corrected": {
+            "results": 10,
+            "clauses": 9,
+            "violations": []
+          },
+          "ambiguous": {
+            "results": 12,
+            "clauses": 11,
+            "violations": []
+          },
+          "blocked": {
+            "results": 10,
+            "clauses": 9,
+            "violations": []
+          },
+          "crs_same_unit_wrong": {
+            "results": 10,
+            "clauses": 9,
+            "violations": []
+          }
+        },
+        "corpus_violation_bundles": []
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_schema_registry_parity",
+      "ga": "契约 §3.5.2(4)",
+      "origin": "最终回归轮新增",
+      "desc": "check_result.schema.json 是否登记了两个新字段；并**篡改 Schema** 反证一致性校验真的在查",
+      "expected": "两字段均已登记且 uniqueItems=true；基线 SCHEMA_CONSISTENT=true 退出码 0；从 failure_reason_codes 枚举删掉一个码后必须报 [REGISTRY_PARITY] 且退出码 != 0；篡改文件必须还原（哈希回到原值）",
+      "before_fix": null,
+      "after_fix": {
+        "declared": {
+          "failure_reason_codes": "array",
+          "advisory_reason_codes": "array"
+        },
+        "unique_items": {
+          "failure_reason_codes": true,
+          "advisory_reason_codes": true
+        },
+        "enum_fail_n": 15,
+        "enum_advisory": [
+          "CRS_MISSING_DECLARATION",
+          "CRS_EXPECTED_NOT_APPROVED",
+          "TIMEZONE_UNDECLARED"
+        ],
+        "baseline": {
+          "exit_code": 0,
+          "consistent": true
+        },
+        "removed_code": "FUTURE_TIMESTAMP",
+        "tampered": {
+          "exit_code": 1,
+          "parity_problem": true,
+          "consistent": false,
+          "problem_line": "- [REGISTRY_PARITY] check_result.schema.json 的 failure_reason_codes 枚举与 FAIL 类 ∩ FINDING_REASON_CODES 不一致：仅 Schema 有=[]；仅代码有=['FUTURE_TIMESTAMP']"
+        },
+        "restored": true
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEW_single_official_interface",
+      "ga": "契约 §3.5.1 / 判据 15 / 判据 17 / Stage 1 第 5 条",
+      "origin": "最终回归轮新增（Stage 1 改写）",
+      "desc": "① 以旧二参签名 aggregate(results, n_rows) 调用；② 检查 _coverage_from_results 是否仍存在；③ 手工构造六类结果走**唯一正式接口** build_clause_coverage → aggregate(coverage, rejections, n_rows)：仅候选 / 无码可取 / 正常 PASS / I9 违反 / I7 违反 / I8 违反；④ 六包唯一接口自洽",
+      "expected": "① 必须抛 TypeError 且提示迁移到 build_clause_coverage（**不得**静默走另一条判定路径）；② 兼容辅助函数必须已删除；③ 仅候选 ⇒ DUPLICATE_CANDIDATE（不是 OK）；无码可取 ⇒ CONTRACT_VIOLATION（禁止回退 OK）；正常 PASS+OK ⇒ PASS；I7/I8/I9 三类违反**均不抛栈**且结论 != PASS（失败关闭）；④ 六包 aggregate 的 FAIL 条款集合与 clause_coverage 中的 FAIL 集合一致",
+      "before_fix": null,
+      "after_fix": {
+        "legacy_2arg": {
+          "raised": "TypeError",
+          "msg": "aggregate() 只接受三参数正式签名 aggregate(clause_coverage, config_rejections, n_rows)；二参数兼容路径（以及 _coverage_from_results）已在 Stage 1 删除。迁移方式：先 kernel.build_clause_coverage"
+        },
+        "legacy_helper_removed": true,
+        "S1_仅候选": {
+          "raised": null,
+          "verdict": "INDETERMINATE",
+          "reason": "存在必检条款未通过：A1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A2(COVERED/DUPLICATE_CANDIDATE),A3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A4(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A5(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B2(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),C1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE)",
+          "clause": {
+            "coverage_state": "COVERED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "COMPLETED",
+            "reason_code": "DUPLICATE_CANDIDATE"
+          }
+        },
+        "S5_无码可取的兜底": {
+          "raised": null,
+          "verdict": "INDETERMINATE",
+          "reason": "存在必检条款未通过：A1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A2(COVERED/CONTRACT_VIOLATION),A3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A4(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A5(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B2(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),C1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE)",
+          "clause": {
+            "coverage_state": "COVERED",
+            "verdict": "INDETERMINATE",
+            "execution_status": "COMPLETED",
+            "reason_code": "CONTRACT_VIOLATION"
+          }
+        },
+        "S6_正常": {
+          "raised": null,
+          "verdict": "INDETERMINATE",
+          "reason": "存在必检条款未通过：A1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A4(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A5(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B2(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),C1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE)",
+          "clause": {
+            "coverage_state": "COVERED",
+            "verdict": "PASS",
+            "execution_status": "COMPLETED",
+            "reason_code": "OK"
+          }
+        },
+        "violations": {
+          "S2_I9违反_INDETERMINATE+FAIL类码": {
+            "raised": null,
+            "verdict": "INDETERMINATE",
+            "reason": "存在必检条款未通过：A1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A2(COVERED/CONTRACT_VIOLATION),A3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A4(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A5(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B2(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),C1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE)",
+            "clause": {
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "FAILED",
+              "reason_code": "CONTRACT_VIOLATION"
+            }
+          },
+          "S3_I7违反_PASS+非OK码": {
+            "raised": null,
+            "verdict": "INDETERMINATE",
+            "reason": "存在必检条款未通过：A1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A2(COVERED/CONTRACT_VIOLATION),A3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A4(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A5(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B2(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),B3(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),C1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE)",
+            "clause": {
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "FAILED",
+              "reason_code": "CONTRACT_VIOLATION"
+            }
+          },
+          "S4_I8违反_FAIL+OK": {
+            "raised": null,
+            "verdict": "FAIL",
+            "reason": "存在必检条款 FAIL：A2(CONTRACT_VIOLATION)",
+            "clause": {
+              "coverage_state": "COVERED",
+              "verdict": "FAIL",
+              "execution_status": "COMPLETED",
+              "reason_code": "CONTRACT_VIOLATION"
+            }
+          }
+        },
+        "bundles": {
+          "clean": {
+            "aggregate": "PASS",
+            "fail_in_coverage": [],
+            "fail_in_reason": [],
+            "consistent": true
+          },
+          "defective": {
+            "aggregate": "FAIL",
+            "fail_in_coverage": [
+              "A2",
+              "A3",
+              "A4",
+              "A5",
+              "B1",
+              "B3",
+              "C1"
+            ],
+            "fail_in_reason": [
+              "A2",
+              "A3",
+              "A4",
+              "A5",
+              "B1",
+              "B3",
+              "C1"
+            ],
+            "consistent": true
+          },
+          "corrected": {
+            "aggregate": "PASS",
+            "fail_in_coverage": [],
+            "fail_in_reason": [],
+            "consistent": true
+          },
+          "ambiguous": {
+            "aggregate": "INDETERMINATE",
+            "fail_in_coverage": [],
+            "fail_in_reason": [],
+            "consistent": true
+          },
+          "blocked": {
+            "aggregate": "FAIL",
+            "fail_in_coverage": [
+              "B2"
+            ],
+            "fail_in_reason": [
+              "B2"
+            ],
+            "consistent": true
+          },
+          "crs_same_unit_wrong": {
+            "aggregate": "FAIL",
+            "fail_in_coverage": [
+              "B2"
+            ],
+            "fail_in_reason": [
+              "B2"
+            ],
+            "consistent": true
+          }
+        },
+        "bundles_all_consistent": true
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "RC01_clause_coverage_result_set",
+      "ga": "契约 §3.2 / RC-01",
+      "origin": "二次验收独立反例",
+      "desc": "clean 副本复制 R09 为 R09b（C1 同时映射两条应执行规则），对结果集做六组故障注入：全齐 / 部分缺失（丢 R09b）/ 零结果 / 重复（R09 两条相同结果）/ 冲突（重复的那条改判 FAIL）/ 已知 FAIL + 部分缺失",
+      "expected": "① 全齐 → COVERED + PASS（证明不是一律拒绝）；②③ 缺结果 → MISSING_RESULT + INDETERMINATE，missing_rule_ids 分别 == [R09b]、[R09,R09b]，总体 != PASS；④⑤ 重复/冲突 → INDETERMINATE + CONTRACT_VIOLATION，conflicting_rule_ids == [R09]，**不得**取最后一条、也**不得**因此判 FAIL，总体 != PASS；⑥ 已知 FAIL + 缺 R09b → 保留 FAIL、reason == STALE_RECORD、missing_rule_ids == [R09b]（不隐藏），总体 == FAIL",
+      "before_fix": null,
+      "after_fix": {
+        "S1_全齐": {
+          "state": "COVERED",
+          "verdict": "PASS",
+          "status": "COMPLETED",
+          "reason": "OK",
+          "missing": null,
+          "conflicting": null,
+          "fail_codes": null,
+          "aggregate": "PASS"
+        },
+        "S2_部分缺失": {
+          "state": "MISSING_RESULT",
+          "verdict": "INDETERMINATE",
+          "status": "NOT_EXECUTED",
+          "reason": "RESULT_MISSING_FOR_CLAUSE",
+          "missing": [
+            "R09b"
+          ],
+          "conflicting": null,
+          "fail_codes": null,
+          "aggregate": "INDETERMINATE"
+        },
+        "S3_零结果": {
+          "state": "MISSING_RESULT",
+          "verdict": "INDETERMINATE",
+          "status": "NOT_EXECUTED",
+          "reason": "RESULT_MISSING_FOR_CLAUSE",
+          "missing": [
+            "R09",
+            "R09b"
+          ],
+          "conflicting": null,
+          "fail_codes": null,
+          "aggregate": "INDETERMINATE"
+        },
+        "S4_重复": {
+          "state": "MISSING_RESULT",
+          "verdict": "INDETERMINATE",
+          "status": "FAILED",
+          "reason": "CONTRACT_VIOLATION",
+          "missing": [],
+          "conflicting": [
+            "R09"
+          ],
+          "fail_codes": null,
+          "aggregate": "INDETERMINATE"
+        },
+        "S5_冲突": {
+          "state": "MISSING_RESULT",
+          "verdict": "INDETERMINATE",
+          "status": "FAILED",
+          "reason": "CONTRACT_VIOLATION",
+          "missing": [],
+          "conflicting": [
+            "R09"
+          ],
+          "fail_codes": null,
+          "aggregate": "INDETERMINATE"
+        },
+        "S6_已知FAIL且缺结果": {
+          "state": "MISSING_RESULT",
+          "verdict": "FAIL",
+          "status": "PARTIAL",
+          "reason": "STALE_RECORD",
+          "missing": [
+            "R09b"
+          ],
+          "conflicting": null,
+          "fail_codes": [
+            "STALE_RECORD"
+          ],
+          "aggregate": "FAIL"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "RC02_unsupported_clause_approved_rule",
+      "ga": "契约 §2.4 / RC-02",
+      "origin": "二次验收独立反例",
+      "desc": "clean 副本把 C1 的 support_status 依次改为 UNSUPPORTED / NEEDS_CLARIFICATION / 未知取值 SUPPORTED_TYPO / 缺失(None)，保留原 APPROVED 的 R09；再加一次改回 SUPPORTED 的反向确认",
+      "expected": "四种状态**全部** config_rejections 含 APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE、C1 verdict != PASS、总体 != PASS；未知取值与缺失还须报 CLAUSE_SUPPORT_STATUS_UNKNOWN（枚举校验在执行入口，不只靠 Schema 脚本）；改回 SUPPORTED 时 rejections 为空且总体 PASS",
+      "before_fix": null,
+      "after_fix": {
+        "UNSUPPORTED": {
+          "rejection_codes": [
+            "APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE"
+          ],
+          "aggregate": "INDETERMINATE",
+          "C1_state": "CONFIG_REJECTED",
+          "C1_verdict": "INDETERMINATE",
+          "C1_reason": "UPSTREAM_CONFIG_REJECTED"
+        },
+        "NEEDS_CLARIFICATION": {
+          "rejection_codes": [
+            "APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE"
+          ],
+          "aggregate": "INDETERMINATE",
+          "C1_state": "CONFIG_REJECTED",
+          "C1_verdict": "INDETERMINATE",
+          "C1_reason": "UPSTREAM_CONFIG_REJECTED"
+        },
+        "未知取值": {
+          "rejection_codes": [
+            "APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE",
+            "CLAUSE_SUPPORT_STATUS_UNKNOWN",
+            "INPUT_SCHEMA_INVALID"
+          ],
+          "aggregate": "INDETERMINATE",
+          "C1_state": "CONFIG_REJECTED",
+          "C1_verdict": "INDETERMINATE",
+          "C1_reason": "UPSTREAM_CONFIG_REJECTED"
+        },
+        "状态缺失": {
+          "rejection_codes": [
+            "APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE",
+            "CLAUSE_SUPPORT_STATUS_UNKNOWN",
+            "INPUT_SCHEMA_INVALID"
+          ],
+          "aggregate": "INDETERMINATE",
+          "C1_state": "CONFIG_REJECTED",
+          "C1_verdict": "INDETERMINATE",
+          "C1_reason": "UPSTREAM_CONFIG_REJECTED"
+        },
+        "反向确认_SUPPORTED": {
+          "rejection_codes": [],
+          "aggregate": "PASS",
+          "C1_state": "COVERED",
+          "C1_verdict": "PASS",
+          "C1_reason": "OK"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "RC03_subprocess_encoding",
+      "ga": "RC-03（工程）",
+      "origin": "二次验收独立反例",
+      "desc": "从环境里删掉 PYTHONUTF8/PYTHONIOENCODING（模拟调用方未设置），子进程打印中文并按固定 utf-8 解码；一致性校验器同样走该通道",
+      "expected": "子进程退出 0、中文可完整解码、sys.stdout.encoding 以 utf 开头；校验器退出 0 且输出含 SCHEMA_CONSISTENT=true；旧路径反证必须**以 bytes 接收原始输出**、在当前线程显式 decode：utf-8 往返成功、ascii（不匹配编码）必须抛 UnicodeDecodeError 且被正常捕获；禁止用 errors=\"ignore\" 掩盖，也禁止靠子进程读取线程的 traceback 取证",
+      "before_fix": null,
+      "after_fix": {
+        "child_exit": 0,
+        "decoded_ok": true,
+        "child_stdout_encoding": "utf-8",
+        "env_scrubbed": true,
+        "stderr_tail": "",
+        "checker_exit": 0,
+        "checker_consistent": true,
+        "legacy_raw_is_bytes": true,
+        "legacy_utf8_roundtrip": true,
+        "legacy_mismatch_decode": {
+          "raised": true,
+          "error": "UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal not in range(128)"
+        },
+        "legacy_locale_decode_note": "未抛异常（当前 locale 恰好兼容，不能据此认为安全）"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "RC04_repeat_run_determinism",
+      "ga": "RC-04（工程）",
+      "origin": "二次验收独立反例",
+      "desc": "clean / defective 各建一个 Kernel，同一实例连续 run() 两次",
+      "expected": "两个包的 results、findings、risk_signals 三次比较**全等**（修复前 findings 不等：finding_seq 未复位，finding_id 从上一轮末尾继续编号），且两次运行的规则级结论一致、findings 数量非零",
+      "before_fix": null,
+      "after_fix": {
+        "clean": {
+          "results_equal": true,
+          "findings_equal": true,
+          "risk_signals_equal": true,
+          "findings_n": [
+            1,
+            1
+          ],
+          "risk_n": [
+            1,
+            1
+          ],
+          "finding_ids_r1": [
+            "F0001"
+          ],
+          "finding_ids_r2": [
+            "F0001"
+          ],
+          "verdicts": true
+        },
+        "defective": {
+          "results_equal": true,
+          "findings_equal": true,
+          "risk_signals_equal": true,
+          "findings_n": [
+            11,
+            11
+          ],
+          "risk_n": [
+            1,
+            1
+          ],
+          "finding_ids_r1": [
+            "F0001",
+            "F0002",
+            "F0003"
+          ],
+          "finding_ids_r2": [
+            "F0001",
+            "F0002",
+            "F0003"
+          ],
+          "verdicts": true
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "S1_input_schema_validation",
+      "ga": "契约 §2.4 / Stage 1 第 5 条",
+      "origin": "Stage 1 新增",
+      "desc": "① 六个真实包走执行入口的 Pydantic(strict) 校验；② 对 clean 包 A1 做四类篡改：required_for_release=\"yes\"(类型收敛) / support_status=SUPPORTED_X(枚举越界) / document_sha256=abc(哈希格式) / source_line_start=0(行号越界)",
+      "expected": "① 六个包**均不得**产生 INPUT_SCHEMA_INVALID（不得误杀）；② 四类篡改**全部**登记 INPUT_SCHEMA_INVALID 且总体 != PASS（整包拒绝执行）",
+      "before_fix": null,
+      "after_fix": {
+        "正常包被误杀": [],
+        "类型收敛_required_for_release=\"yes\"": {
+          "codes": [
+            "INPUT_SCHEMA_INVALID"
+          ],
+          "aggregate": "INDETERMINATE",
+          "blocked": true
+        },
+        "枚举越界_support_status=SUPPORTED_X": {
+          "codes": [
+            "APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE",
+            "CLAUSE_SUPPORT_STATUS_UNKNOWN",
+            "INPUT_SCHEMA_INVALID"
+          ],
+          "aggregate": "INDETERMINATE",
+          "blocked": true
+        },
+        "哈希格式错_document_sha256=abc": {
+          "codes": [
+            "INPUT_SCHEMA_INVALID"
+          ],
+          "aggregate": "INDETERMINATE",
+          "blocked": true
+        },
+        "行号越界_source_line_start=0": {
+          "codes": [
+            "INPUT_SCHEMA_INVALID"
+          ],
+          "aggregate": "INDETERMINATE",
+          "blocked": true
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "S1_uncovered_coverage_branches",
+      "ga": "契约 §3.2 / Stage 1 第 7 条",
+      "origin": "Stage 1 新增",
+      "desc": "补齐 Stage 0 无正例的三个分支：① R09 的 rule_type 改成内核未实现的类型 (NO_IMPLEMENTATION)；② R09 的 status 改成 DRAFT (UNAPPROVED)；③ 删除 crs.json 的 declared_crs，产生缺证据类 finding (advisory_reason_codes)",
+      "expected": "① 规则级 INDETERMINATE/NOT_IMPLEMENTED/NO_IMPLEMENTATION，条款级 coverage_state=NO_IMPLEMENTATION，总体 != PASS；② 规则级 INDETERMINATE/NOT_EXECUTED/RULE_NOT_APPROVED，条款级 coverage_state=UNAPPROVED，总体 != PASS；③ 至少一条规则的 advisory_reason_codes 非空、码全部属 INDETERMINATE 类、规则级结论为 INDETERMINATE（不是 FAIL）、总体 != PASS",
+      "before_fix": null,
+      "after_fix": {
+        "NO_IMPLEMENTATION": {
+          "rule": {
+            "verdict": "INDETERMINATE",
+            "status": "NOT_IMPLEMENTED",
+            "reason": "NO_IMPLEMENTATION"
+          },
+          "clause": {
+            "state": "NO_IMPLEMENTATION",
+            "verdict": "INDETERMINATE",
+            "status": "NOT_IMPLEMENTED",
+            "reason": "NO_IMPLEMENTATION"
+          },
+          "aggregate": "INDETERMINATE"
+        },
+        "UNAPPROVED": {
+          "rule": {
+            "verdict": "INDETERMINATE",
+            "status": "NOT_EXECUTED",
+            "reason": "RULE_NOT_APPROVED"
+          },
+          "clause": {
+            "state": "UNAPPROVED",
+            "verdict": "INDETERMINATE",
+            "status": "NOT_EXECUTED",
+            "reason": "RULE_NOT_APPROVED"
+          },
+          "aggregate": "INDETERMINATE"
+        },
+        "缺证据_finding": {
+          "rules_with_advisory": [
+            "R07"
+          ],
+          "advisory_codes": [
+            "CRS_MISSING_DECLARATION"
+          ],
+          "all_indeterminate_class": true,
+          "rule_verdicts": {
+            "R07": "INDETERMINATE"
+          },
+          "finding_codes": [
+            "CRS_MISSING_DECLARATION"
+          ],
+          "aggregate": "INDETERMINATE"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "S1_cli_smoke",
+      "ga": "Stage 1 第 6 条（内核/CLI/报告）",
+      "origin": "Stage 1 新增",
+      "desc": "真实子进程跑 CLI：`run --bundle clean --html`、`report --from-json ... --out ...`、`compare --before defective --after corrected`",
+      "expected": "run 退出 0 且 work/stage0/clean/report.html 落盘并含结论与条款覆盖表（不含脚本注入）；report 退出 0 且输出文件存在；compare 打印结构化结果",
+      "before_fix": null,
+      "after_fix": {
+        "validate": {
+          "exit_code": 0,
+          "json_exists": true,
+          "html_exists": true
+        },
+        "validate_expected_used": false,
+        "html_has_verdict": true,
+        "html_escaped": true,
+        "regress": {
+          "exit_code": 0,
+          "html_exists": true
+        },
+        "old_run_removed": true,
+        "report": {
+          "exit_code": 0,
+          "out_exists": true
+        },
+        "compare": {
+          "exit_code": 2,
+          "out_exists": true,
+          "printed": true
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "S1_compare_identity",
+      "ga": "Stage 1 第 8 条（整改 compare 身份）",
+      "origin": "Stage 1 新增",
+      "desc": "① defective → corrected；② clean → clean（无差异）；③ 副本把 R02.version 改为 2；④ 包路径 ../..（路径穿越）",
+      "expected": "① 真实修复项判 closed、批次内重复 ID 的那条判 not_comparable、总体 LEDGER_INDETERMINATE（有不可比较项不得宣称整改完成）；② LEDGER_CLOSED_ACCEPTED 且无差异；③ 涉及 R02 的条目全部 not_comparable（规则语义指纹不同）；④ 路径穿越必须抛 InputGuardError",
+      "before_fix": null,
+      "after_fix": {
+        "defective_to_corrected": {
+          "overall": "LEDGER_INDETERMINATE",
+          "counts": {
+            "closed": 8,
+            "not_comparable": 1
+          },
+          "fixed": [],
+          "not_comparable": [
+            [
+              "SD-0005",
+              "R05"
+            ]
+          ]
+        },
+        "same_bundle": {
+          "overall": "LEDGER_CLOSED_ACCEPTED",
+          "counts": {}
+        },
+        "rule_version_changed": {
+          "changed": [
+            "R02"
+          ],
+          "r02_fingerprint_changed": true,
+          "r02_statuses": [
+            "not_comparable"
+          ],
+          "overall": "LEDGER_INDETERMINATE"
+        },
+        "path_traversal": {
+          "blocked": true,
+          "error": "包路径越出项目根目录：C:\\Users\\TempAdmin\\WorkBuddy\\2026-10-26-13-17-35（root=C:\\Users\\TempAdmin\\WorkBuddy\\2026-10-26-13-17-35\\geoacc"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "S1_validate_entry_new_bundle",
+      "ga": "外部复核 §七（正式检查入口与 expected 回归分离）",
+      "origin": "外部复核新增",
+      "desc": "examples 之外新建两个包：干净副本、注入过期时间的副本；再删掉 poi.csv",
+      "expected": "① 干净副本 PASS（executed=true、expected_used=false）；② 过期副本 FAIL 且 findings_by_class.FAIL ≥ 1、expected_used=false（结论来自内核判定，不是 expected 比对）；③ 缺输入文件必须 InputGuardError",
+      "before_fix": null,
+      "after_fix": {
+        "clean_copy": {
+          "verdict": "PASS",
+          "executed": true,
+          "expected_used": false,
+          "schema_version": "stage1-validate-1"
+        },
+        "stale_bundle": {
+          "verdict": "FAIL",
+          "expected_used": false,
+          "findings_by_class": {
+            "FAIL": 1,
+            "CANDIDATE": 1
+          },
+          "covered": 9
+        },
+        "missing_input": {
+          "blocked": true,
+          "error": "批次缺少输入文件 poi.csv：C:\\Users\\TempAdmin\\WorkBuddy\\2026-10-26-13-17-35\\geoacceptance\\work\\negatives\\probe_validate_new\\missin"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "S1_compare_closure_evidence",
+      "ga": "外部复核 S1-EXT-01 / EXT-02 / EXT-03（compare 关闭证据）",
+      "origin": "外部复核新增",
+      "desc": "① 整改后删掉缺陷实体；② 数据不变但 R09 改 DRAFT；③ 唯一实体同时有两条 FAIL",
+      "expected": "① removed_pending_review，不得 closed；② unresolved_unknown、台账 INDETERMINATE；③ 两批 duplicated 均为空（不得把 finding 条数当成实体重复），两条均 closed 且 closure_evidence 的 execution_status=COMPLETED",
+      "before_fix": null,
+      "after_fix": {
+        "entity_deleted": {
+          "statuses": [
+            "removed_pending_review"
+          ],
+          "overall": "LEDGER_INDETERMINATE",
+          "ledger": "INDETERMINATE",
+          "removed": [
+            "SD-0001"
+          ]
+        },
+        "rule_unapproved": {
+          "statuses": [
+            "unresolved_unknown"
+          ],
+          "overall": "LEDGER_INDETERMINATE",
+          "ledger": "INDETERMINATE",
+          "reasons": [
+            [
+              "整改后该规则状态为 'DRAFT'（非 APPROVED）：检查资格不具备，不得按'无失败'推定已修复",
+              "规则语义指纹不同（status: 'APPROVED' → 'DRAFT'）：不是同一把尺子"
+            ]
+          ]
+        },
+        "unique_entity_two_findings": {
+          "dup_before": [],
+          "dup_after": [],
+          "statuses": [
+            "closed"
+          ],
+          "counts": {
+            "closed": 2
+          },
+          "overall": "LEDGER_CLOSED_ACCEPTED",
+          "closure": [
+            {
+              "rule_status": "APPROVED",
+              "rule_verdict": "PASS",
+              "rule_execution_status": "COMPLETED"
+            },
+            {
+              "rule_status": "APPROVED",
+              "rule_verdict": "PASS",
+              "rule_execution_status": "COMPLETED"
+            }
+          ]
+        }
+      },
+      "result": "PASS"
+    }
+  ],
+  "cross_check_original_probes": {
+    "ran": false,
+    "reason": "未提供原独立探针脚本路径（--probes-script）"
+  },
+  "overall": "PASS"
+}

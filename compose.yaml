@@ -1,0 +1,22 @@
+services:
+  geoacceptance:
+    build: .
+    ports:
+      - "127.0.0.1:8765:8765"
+    volumes:
+      - ./work/app:/app/work/app
+    environment:
+      GA_PROVIDER: ${GA_PROVIDER:-compatible}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      GA_CURRENCY: ${GA_CURRENCY:-}
+      GA_INPUT_PRICE_PER_MILLION: ${GA_INPUT_PRICE_PER_MILLION:-}
+      GA_OUTPUT_PRICE_PER_MILLION: ${GA_OUTPUT_PRICE_PER_MILLION:-}
+      GA_JOB_BUDGET: ${GA_JOB_BUDGET:-}
+      GA_THINKING: ${GA_THINKING:-disabled}
+      GA_BASE_URL: ${GA_BASE_URL:-}
+      GA_MODEL: ${GA_MODEL:-}
+      GA_API_KEY: ${GA_API_KEY:-}
+      GA_INPUT_USD_PER_MILLION: ${GA_INPUT_USD_PER_MILLION:-}
+      GA_OUTPUT_USD_PER_MILLION: ${GA_OUTPUT_USD_PER_MILLION:-}
+    restart: unless-stopped

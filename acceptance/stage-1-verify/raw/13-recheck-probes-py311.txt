@@ -1,0 +1,124 @@
+==============================================================================
+Stage 0 重验：独立反例回归（预期先手写，再跑实现）
+==============================================================================
+[PASS] GA01_clause_without_rule               GA-01
+      反例：clean 副本删除 R09（C1 仍为必检且 SUPPORTED），C1 无规则映射
+      预期：总体结论 == INDETERMINATE，且 clause_coverage 中 C1 的 coverage_state == UNMAPPED
+      实测：{"C1_coverage_state": "UNMAPPED", "C1_reason": "CLAUSE_NOT_COVERED_BY_RULE", "aggregate": "INDETERMINATE"}
+[PASS] GA03_missing_crs_declaration           GA-03
+      反例：clean 副本移除 crs.json 的 declared_crs（缺证据，不是错误声明）
+      预期：总体结论 == INDETERMINATE（**不是** FAIL）；R06/R08/R10 为 INDETERMINATE/BLOCKED
+      实测：{"aggregate": "INDETERMINATE", "spatial": {"R06": ["INDETERMINATE", "BLOCKED"], "R08": ["INDETERMINATE", "BLOCKED"], "R10": ["INDETERMINATE", "BLOCKED"]}}
+[PASS] GA03_unexpected_crs_degree             GA-03
+      反例：clean 副本声明改为 EPSG:4490，单位仍 degree（与要求同为 degree，量级无法区分）
+      预期：R07 verdict == FAIL 且 reason_code/ finding 含 CRS_DECLARATION_MISMATCH；总体 != PASS
+      实测：{"R07": "FAIL", "aggregate": "FAIL", "finding_codes": ["CRS_DECLARATION_MISMATCH"]}
+[PASS] GA04_unknown_dependency                GA-04
+      反例：clean 副本的 R01.preconditions 增加 NONEXISTENT_RULE
+      预期：config_rejections 含 UNKNOWN_PRECONDITION；总体 != PASS（不得再静默过滤）
+      实测：{"aggregate": "INDETERMINATE", "rejection_codes": ["UNKNOWN_PRECONDITION"]}
+[PASS] GA05_substring_threshold               GA-05
+      反例：R09 的 max_age_days 由 30 改为 3（'3' 是 '30' 的子串）
+      预期：verify_parameter_sources() 返回非空（token 边界匹配，子串不算命中）
+      实测：{"problems": ["[PARAMETER_VALUE_MISMATCH] R09：参数 max_age_days 的实际值 3 与其批准来源记录的值 30 不一致", "[PARAMETER_SOURCE_NOT_FOUND] R09：参数 max_age_days 取值 3 在 C1 的批准引用中找不到来源（token 边界匹配，禁止子串包含）"]}
+[PASS] GA05_wrong_document_hash               GA-05
+      反例：clean 副本的条款 document_sha256 改为 64 个 0
+      预期：verify_quotes() 返回非空（含 DOCUMENT_HASH_MISMATCH）
+      实测：{"problems": ["[DOCUMENT_HASH_MISMATCH] A1 声明的文档哈希与实际不一致\n  声明: 00000000000000000000000000000000"]}
+[PASS] GA06_no_invalid_verdicts               GA-06
+      反例：blocked 包全部规则结果的 verdict 合法性
+      预期：verdict 不在三态词汇表内的结果数 == 0（修复前为 3 条 UNKNOWN）
+      实测：{"illegal_combos": [], "invalid_verdicts": []}
+[PASS] GA07_candidate_counts                  GA-07
+      反例：clean 包 R10（重复候选）的统计口径
+      预期：total=12, evaluated=12, failed=0, indeterminate=2, skipped_upstream=0, uninterpretable=0, findings=1（修复前为 evaluated=11 / blocked=1）
+      实测：{"summary_counts": {"findings": 1, "records_blocked": 0, "records_evaluated": 12, "records_failed": 0, "records_indeterminate": 2, "records_skipped_upstream": 0, "records_total": 12, "records_uninterpretable": 0}}
+[PASS] GA08_exclusive_boundary                GA-08
+      反例：单位正方形四边中点，point_in_ring_or_boundary(..., inclusive=False)
+      预期：四个点全部为 False（修复前左/下边为 True，不对称）
+      实测：{"exclusive": {"(0, 0.5)": false, "(0.5, 0)": false, "(0.5, 1)": false, "(1, 0.5)": false}, "inclusive": {"(0, 0.5)": true, "(0.5, 0)": true, "(0.5, 1)": true, "(1, 0.5)": true}}
+[PASS] GA02_clause_downgraded                 GA-02
+      反例：defective 副本把 R09.required_for_release 改为 false，并注入一条过期记录
+      预期：总体 != PASS；config_rejections 含 CLAUSE_POLICY_DOWNGRADED_BY_RULE（规则不得降级条款）
+      实测：{"aggregate": "INDETERMINATE", "rejection_codes": ["CLAUSE_POLICY_DOWNGRADED_BY_RULE"]}
+[PASS] INPUT_MANIFEST                         GA-09
+      反例：按 INPUT_MANIFEST.json 逐文件核对 sha256
+      预期：不一致文件数 == 0
+      实测：{"checked": 60, "mismatches": []}
+[PASS] NEW_crs_magnitude_only_signal          GA-03/A3
+      反例：clean 副本：声明 CRS 仍为要求的 EPSG:4326，但 declared_unit 改为 metre，坐标仍为经纬度量级（合法小值投影坐标也可能长这样）
+      预期：R07 verdict != FAIL（只比对声明，不按量级猜）；产出 risk signal CRS_MAGNITUDE_RISK（含 degree_like_records）；R06/R08 不被阻断（仍 COMPLETED）
+      实测：{"R06_status": "COMPLETED", "R07": "PASS", "R08_status": "COMPLETED", "aggregate": "PASS", "magnitude_evidence": [{"degree_like_records": 12}], "risk_codes": ["PARAMETER_VALUE_MAPPED_BY_INTERPRETATION", "CRS_MAGNITUDE_RISK"]}
+[PASS] NEW_timezone_undeclared_fails_closed   A2/本轮一行修复
+      反例：① 六个包在严格 RFC3339 子集下是否会产生 TIMEZONE_UNDECLARED；② 强行放宽解析使该分支可达后，规则级结论是否仍不得为 PASS
+      预期：① 六包产生 0 条（该分支不可达，本轮改动零影响）；② 放宽后 verdict == INDETERMINATE、execution_status == PARTIAL（不是 FAILED：没有执行异常；不是 BLOCKED：记录已解析并评估；更不是 COMPLETED：存在不可解释行就不能宣称执行完整）、reason_code == TIMEZONE_UNDECLARED、records_uninterpretable >= 1（缺证据类 finding 计入 uninterpretable，§7.1/§7.2），绝不为 PASS（不得放行，也不得给出「已按未定处理」的假象——见 OPEN_ISSUES）
+      实测：{"forced_branch": {"detail": null, "execution_status": "PARTIAL", "finding_codes": ["DUPLICATE_CANDIDATE", "TIMEZONE_UNDECLARED"], "reason_code": "TIMEZONE_UNDECLARED", "records_uninterpretable": 1, "verdict": "INDETERMINATE"}, "timezone_findings_in_examples": 0}
+[PASS] NEW_expected_tamper_detected           契约 §9.4
+      反例：把 clean 包复制到临时目录后对 expected 做四类篡改：命中错行但数量相同 / 多一条 finding / 少一条 finding / 统计字段被篡改；再加一次「无变异」反向确认
+      预期：四类篡改**全部**被 compare_expected() 判为真实差异（FIELD/COUNT/MISSING/EXTRA），无变异时真实差异 == 0
+      实测：{"variants": {"命中错行但数量相同": [{"field": "record_locator.line", "kind": "FIELD", "scope": "findings[R10|DUPLICATE_CANDIDATE|12|longitude/latitude]"}], "多一条 finding": [{"field": "finding", "kind": "MISSING", "scope": "findings[R09|STALE_RECORD|3|source_time]"}], "少一条 finding": [{"field": "finding", "kin
+[PASS] NEW_gate_exit_code_on_reject           契约 §9.1
+      反例：跑真实门禁入口：正常包 / 注入重复 rule_id / 注入未知依赖
+      预期：正常包退出码 0 且无 [REJECT]；两个注入包退出码 == 1 且打印 [REJECT]
+      实测：{"runs": {"clean": {"exit_code": 0, "first_line": "[PASS] clean      aggregate=PASS          findings=1   -> C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-verify\\work\\negatives\\probe_gate_out\\clean", "reject": false}, "neg_dup_rule": {"exit_code": 1, "first_line": "[REJECT] neg_dup_rule 配置校验未通过
+[PASS] NEW_risk_signals_write_only            契约 A3
+      反例：在 run() 的判定窗口内（通过包装 R07 处理器插桩）读取 Kernel.risk_signals
+      预期：读取必须抛 ContractViolation（不得静默成功）；run() 结束后可读且为普通 list
+      实测：{"after_len": 2, "after_type": "list", "during": "ContractViolation"}
+[PASS] NEW_i7_i9_counterexamples              契约 §3.5.1 / I7–I9
+      反例：自建矛盾组合，不复用工程师输出：① 直接调 assert_reason_compat 的 11 组；② 经 make_result() 构造 FAIL+OK / FAIL+候选码 / INDETERMINATE+OK；③ 端到端注入一条 reason_code=OK 的 finding，看 run() 是否失败关闭
+      预期：① PASS+OK / FAIL+FAIL 类码 / INDETERMINATE+非 FAIL 类非 OK 码 → 不抛；PASS+非OK / FAIL+OK / FAIL+候选码 / FAIL+缺证据码 / INDETERMINATE+OK / INDETERMINATE+FAIL 类码 → 抛 ContractViolation；② make_result 三例全部抛；③ 该规则登记为 INDETERMINATE/FAILED/CONTRACT_VIOLATION，总体 != PASS（失败关闭）
+      实测：{"assert_reason_compat": [{"got": "NO_RAISE", "ok": true, "reason_code": "OK", "verdict": "PASS", "want": "NO_RAISE"}, {"got": "ContractViolation", "ok": true, "reason_code": "EMPTY_VALUE", "verdict": "PASS", "want": "ContractViolation"}, {"got": "ContractViolation", "ok": true, "reason_code": "DUPL
+[PASS] NEW_reason_code_arrays                 契约 §3.5.2
+      反例：① _unique_ordered 去重且保留首次出现顺序；② 端到端按「行号 9→3→7、码 EMPTY_VALUE→ENUM_VIOLATION→EMPTY_VALUE」注入，验证「第一条」取的是排放顺序而不是行号重排；③ 六包全量核对 I7–I9 与数组自洽
+      预期：① [A,B,A,C,B,A] → [A,B,C]；② failure_reason_codes == [EMPTY_VALUE, ENUM_VIOLATION]、reason_code == EMPTY_VALUE（行号升序会错成 ENUM_VIOLATION）；③ 六包全部 0 条违反，且 FAIL 的 failure_reason_codes[0] == reason_code、数组无重复、全部元素属 FAIL 类
+      实测：{"R02": {"emission_lines": [10, 4, 8], "emission_order": ["EMPTY_VALUE", "ENUM_VIOLATION", "EMPTY_VALUE"], "failure_reason_codes": ["EMPTY_VALUE", "ENUM_VIOLATION"], "reason_code": "EMPTY_VALUE", "verdict": "FAIL"}, "corpus": {"ambiguous": {"clauses": 11, "results": 12, "violations": []}, "blocked":
+[PASS] NEW_schema_registry_parity             契约 §3.5.2(4)
+      反例：check_result.schema.json 是否登记了两个新字段；并**篡改 Schema** 反证一致性校验真的在查
+      预期：两字段均已登记且 uniqueItems=true；基线 SCHEMA_CONSISTENT=true 退出码 0；从 failure_reason_codes 枚举删掉一个码后必须报 [REGISTRY_PARITY] 且退出码 != 0；篡改文件必须还原（哈希回到原值）
+      实测：{"baseline": {"consistent": true, "exit_code": 0}, "declared": {"advisory_reason_codes": "array", "failure_reason_codes": "array"}, "enum_advisory": ["CRS_MISSING_DECLARATION", "CRS_EXPECTED_NOT_APPROVED", "TIMEZONE_UNDECLARED"], "enum_fail_n": 15, "removed_code": "FUTURE_TIMESTAMP", "restored": tru
+[PASS] NEW_single_official_interface          契约 §3.5.1 / 判据 15 / 判据 17 / Stage 1 第 5 条
+      反例：① 以旧二参签名 aggregate(results, n_rows) 调用；② 检查 _coverage_from_results 是否仍存在；③ 手工构造六类结果走**唯一正式接口** build_clause_coverage → aggregate(coverage, rejections, n_rows)：仅候选 / 无码可取 / 正常 PASS / I9 违反 / I7 违反 / I8 违反；④ 六包唯一接口自洽
+      预期：① 必须抛 TypeError 且提示迁移到 build_clause_coverage（**不得**静默走另一条判定路径）；② 兼容辅助函数必须已删除；③ 仅候选 ⇒ DUPLICATE_CANDIDATE（不是 OK）；无码可取 ⇒ CONTRACT_VIOLATION（禁止回退 OK）；正常 PASS+OK ⇒ PASS；I7/I8/I9 三类违反**均不抛栈**且结论 != PASS（失败关闭）；④ 六包 aggregate 的 FAIL 条款集合与 clause_coverage 中的 FAIL 集合一致
+      实测：{"S1_仅候选": {"clause": {"coverage_state": "COVERED", "execution_status": "COMPLETED", "reason_code": "DUPLICATE_CANDIDATE", "verdict": "INDETERMINATE"}, "raised": null, "reason": "存在必检条款未通过：A1(MISSING_RESULT/RESULT_MISSING_FOR_CLAUSE),A2(COVERED/DUPLICATE_CANDIDATE),A3(MISSING_RESULT/RESULT_MISSING_F
+[PASS] RC01_clause_coverage_result_set        契约 §3.2 / RC-01
+      反例：clean 副本复制 R09 为 R09b（C1 同时映射两条应执行规则），对结果集做六组故障注入：全齐 / 部分缺失（丢 R09b）/ 零结果 / 重复（R09 两条相同结果）/ 冲突（重复的那条改判 FAIL）/ 已知 FAIL + 部分缺失
+      预期：① 全齐 → COVERED + PASS（证明不是一律拒绝）；②③ 缺结果 → MISSING_RESULT + INDETERMINATE，missing_rule_ids 分别 == [R09b]、[R09,R09b]，总体 != PASS；④⑤ 重复/冲突 → INDETERMINATE + CONTRACT_VIOLATION，conflicting_rule_ids == [R09]，**不得**取最后一条、也**不得**因此判 FAIL，总体 != PASS；⑥ 已知 FAIL + 缺 R09b → 保留 FAIL、reason == STALE_RECORD、missing_rule_ids == [R09b]（不隐藏），总体 == FAIL
+      实测：{"S1_全齐": {"aggregate": "PASS", "conflicting": null, "fail_codes": null, "missing": null, "reason": "OK", "state": "COVERED", "status": "COMPLETED", "verdict": "PASS"}, "S2_部分缺失": {"aggregate": "INDETERMINATE", "conflicting": null, "fail_codes": null, "missing": ["R09b"], "reason": "RESULT_MISSING_F
+[PASS] RC02_unsupported_clause_approved_rule  契约 §2.4 / RC-02
+      反例：clean 副本把 C1 的 support_status 依次改为 UNSUPPORTED / NEEDS_CLARIFICATION / 未知取值 SUPPORTED_TYPO / 缺失(None)，保留原 APPROVED 的 R09；再加一次改回 SUPPORTED 的反向确认
+      预期：四种状态**全部** config_rejections 含 APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE、C1 verdict != PASS、总体 != PASS；未知取值与缺失还须报 CLAUSE_SUPPORT_STATUS_UNKNOWN（枚举校验在执行入口，不只靠 Schema 脚本）；改回 SUPPORTED 时 rejections 为空且总体 PASS
+      实测：{"NEEDS_CLARIFICATION": {"C1_reason": "UPSTREAM_CONFIG_REJECTED", "C1_state": "CONFIG_REJECTED", "C1_verdict": "INDETERMINATE", "aggregate": "INDETERMINATE", "rejection_codes": ["APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE"]}, "UNSUPPORTED": {"C1_reason": "UPSTREAM_CONFIG_REJECTED", "C1_state": "CONFIG_REJ
+[PASS] RC03_subprocess_encoding               RC-03（工程）
+      反例：从环境里删掉 PYTHONUTF8/PYTHONIOENCODING（模拟调用方未设置），子进程打印中文并按固定 utf-8 解码；一致性校验器同样走该通道
+      预期：子进程退出 0、中文可完整解码、sys.stdout.encoding 以 utf 开头；校验器退出 0 且输出含 SCHEMA_CONSISTENT=true；旧路径反证必须**以 bytes 接收原始输出**、在当前线程显式 decode：utf-8 往返成功、ascii（不匹配编码）必须抛 UnicodeDecodeError 且被正常捕获；禁止用 errors="ignore" 掩盖，也禁止靠子进程读取线程的 traceback 取证
+      实测：{"checker_consistent": true, "checker_exit": 0, "child_exit": 0, "child_stdout_encoding": "utf-8", "decoded_ok": true, "env_scrubbed": true, "legacy_locale_decode_note": "未抛异常（当前 locale 恰好兼容，不能据此认为安全）", "legacy_mismatch_decode": {"error": "UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in 
+[PASS] RC04_repeat_run_determinism            RC-04（工程）
+      反例：clean / defective 各建一个 Kernel，同一实例连续 run() 两次
+      预期：两个包的 results、findings、risk_signals 三次比较**全等**（修复前 findings 不等：finding_seq 未复位，finding_id 从上一轮末尾继续编号），且两次运行的规则级结论一致、findings 数量非零
+      实测：{"clean": {"finding_ids_r1": ["F0001"], "finding_ids_r2": ["F0001"], "findings_equal": true, "findings_n": [1, 1], "results_equal": true, "risk_n": [1, 1], "risk_signals_equal": true, "verdicts": true}, "defective": {"finding_ids_r1": ["F0001", "F0002", "F0003"], "finding_ids_r2": ["F0001", "F0002",
+[PASS] S1_input_schema_validation             契约 §2.4 / Stage 1 第 5 条
+      反例：① 六个真实包走执行入口的 Pydantic(strict) 校验；② 对 clean 包 A1 做四类篡改：required_for_release="yes"(类型收敛) / support_status=SUPPORTED_X(枚举越界) / document_sha256=abc(哈希格式) / source_line_start=0(行号越界)
+      预期：① 六个包**均不得**产生 INPUT_SCHEMA_INVALID（不得误杀）；② 四类篡改**全部**登记 INPUT_SCHEMA_INVALID 且总体 != PASS（整包拒绝执行）
+      实测：{"哈希格式错_document_sha256=abc": {"aggregate": "INDETERMINATE", "blocked": true, "codes": ["INPUT_SCHEMA_INVALID"]}, "枚举越界_support_status=SUPPORTED_X": {"aggregate": "INDETERMINATE", "blocked": true, "codes": ["APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE", "CLAUSE_SUPPORT_STATUS_UNKNOWN", "INPUT_SCHEMA_INVALI
+[PASS] S1_uncovered_coverage_branches         契约 §3.2 / Stage 1 第 7 条
+      反例：补齐 Stage 0 无正例的三个分支：① R09 的 rule_type 改成内核未实现的类型 (NO_IMPLEMENTATION)；② R09 的 status 改成 DRAFT (UNAPPROVED)；③ 删除 crs.json 的 declared_crs，产生缺证据类 finding (advisory_reason_codes)
+      预期：① 规则级 INDETERMINATE/NOT_IMPLEMENTED/NO_IMPLEMENTATION，条款级 coverage_state=NO_IMPLEMENTATION，总体 != PASS；② 规则级 INDETERMINATE/NOT_EXECUTED/RULE_NOT_APPROVED，条款级 coverage_state=UNAPPROVED，总体 != PASS；③ 至少一条规则的 advisory_reason_codes 非空、码全部属 INDETERMINATE 类、规则级结论为 INDETERMINATE（不是 FAIL）、总体 != PASS
+      实测：{"NO_IMPLEMENTATION": {"aggregate": "INDETERMINATE", "clause": {"reason": "NO_IMPLEMENTATION", "state": "NO_IMPLEMENTATION", "status": "NOT_IMPLEMENTED", "verdict": "INDETERMINATE"}, "rule": {"reason": "NO_IMPLEMENTATION", "status": "NOT_IMPLEMENTED", "verdict": "INDETERMINATE"}}, "UNAPPROVED": {"ag
+[PASS] S1_cli_smoke                           Stage 1 第 6 条（内核/CLI/报告）
+      反例：真实子进程跑 CLI：`run --bundle clean --html`、`report --from-json ... --out ...`、`compare --before defective --after corrected`
+      预期：run 退出 0 且 work/stage0/clean/report.html 落盘并含结论与条款覆盖表（不含脚本注入）；report 退出 0 且输出文件存在；compare 打印结构化结果
+      实测：{"compare": {"exit_code": 2, "out_exists": true, "printed": true}, "html_escaped": true, "html_has_verdict": true, "report": {"exit_code": 0, "out_exists": true}, "run": {"exit_code": 0, "html_exists": true, "stderr_tail": ""}}
+[PASS] S1_compare_identity                    Stage 1 第 8 条（整改 compare 身份）
+      反例：① defective → corrected；② clean → clean（无差异）；③ 副本把 R02.version 改为 2；④ 包路径 ../..（路径穿越）
+      预期：① 失败项判 fixed、批次内重复 ID 的那条判 not_comparable、总体 INDETERMINATE（有不可比较项不得宣称整改完成）；② COMPLETE 且无差异；③ 涉及 R02 的条目全部 not_comparable（规则版本不同）；④ 路径穿越必须抛 InputGuardError
+      实测：{"defective_to_corrected": {"counts": {"fixed": 8, "not_comparable": 1}, "fixed": ["SD-0002", "SD-0003", "SD-0006", "SD-0007", "SD-0009", "SD-0010", "SD-0011", "SD-0013"], "not_comparable": [["SD-0005", "R05"]], "overall": "INDETERMINATE"}, "path_traversal": {"blocked": true, "error": "包路径越出项目根目录：C:
+
+------------------------------------------------------------------------------
+对拍：原独立探针 stage0_independent_probes.py 跑在当前仓库
+  [SKIP] 未提供原独立探针脚本路径（--probes-script）
+  对拍结论：未执行（本轮已由人工执行，证据见 acceptance/stage-0-recheck/）
+
+==============================================================================
+RECHECK_PROBES_OK=true（28/28 通过，输出：C:\Users\TempAdmin\AppData\Local\Temp\ga-verify\acceptance\stage-0-recheck\independent-results.json）
+==============================================================================

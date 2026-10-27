@@ -1,0 +1,7 @@
+[OK] 快照已写入 C:\Users\TEMPAD~1\AppData\Local\Temp\r2\snap.json（六包 + 边界矩阵 12 点 + 距离样本 3 组）
+     clean                PASS
+     defective            FAIL
+     corrected            PASS
+     ambiguous            INDETERMINATE
+     blocked              FAIL
+     crs_same_unit_wrong  FAIL

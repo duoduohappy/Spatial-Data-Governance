@@ -1,0 +1,2067 @@
+{
+  "schema_version": "stage1-compare-probes-1",
+  "python": "3.13.14",
+  "cases": 18,
+  "passed": 18,
+  "all_ok": true,
+  "results": [
+    {
+      "case": "C00-identical",
+      "title": "正例对照：clean → clean（无失败项）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\clean",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\clean",
+      "expected": {
+        "overall_in": [
+          "LEDGER_CLOSED_ACCEPTED"
+        ],
+        "ledger_in": [
+          "CLOSED"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_CLOSED_ACCEPTED",
+        "ledger": "CLOSED",
+        "after_acceptance": "PASS",
+        "counts": {},
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": true
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 0
+        },
+        "items": []
+      },
+      "errors": []
+    },
+    {
+      "case": "C01-canonical",
+      "title": "正例对照：defective → corrected（8 关闭 + SD-0005 重复不可比）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\defective",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\corrected",
+      "expected": {
+        "overall_in": [
+          "LEDGER_INDETERMINATE"
+        ],
+        "counts_eq": {
+          "closed": 8,
+          "not_comparable": 1
+        }
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "PASS",
+        "counts": {
+          "closed": 8,
+          "not_comparable": 1
+        },
+        "identity": {
+          "before": {
+            "records": 15,
+            "distinct": 14,
+            "unidentified": 0,
+            "duplicated": [
+              "SD-0005"
+            ]
+          },
+          "after": {
+            "records": 15,
+            "distinct": 15,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": true
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [
+            "SD-0012"
+          ],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 9
+        },
+        "items": [
+          {
+            "key": "record:SD-0002|R03",
+            "rule_id": "R03",
+            "status": "closed",
+            "before_codes": [
+              "TYPE_PARSE_ERROR"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          },
+          {
+            "key": "record:SD-0003|R04",
+            "rule_id": "R04",
+            "status": "closed",
+            "before_codes": [
+              "ENUM_VIOLATION"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          },
+          {
+            "key": "record:SD-0005|R05",
+            "rule_id": "R05",
+            "status": "not_comparable",
+            "before_codes": [
+              "DUPLICATE_ID"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "记录标识 SD-0005 在批次内重复，身份不可用（拒绝按行号匹配）"
+            ]
+          },
+          {
+            "key": "record:SD-0006|R09",
+            "rule_id": "R09",
+            "status": "closed",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          },
+          {
+            "key": "record:SD-0007|R02",
+            "rule_id": "R02",
+            "status": "closed",
+            "before_codes": [
+              "EMPTY_VALUE"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          },
+          {
+            "key": "record:SD-0009|R06",
+            "rule_id": "R06",
+            "status": "closed",
+            "before_codes": [
+              "LATITUDE_OUT_OF_RANGE"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          },
+          {
+            "key": "record:SD-0010|R02",
+            "rule_id": "R02",
+            "status": "closed",
+            "before_codes": [
+              "EMPTY_VALUE"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          },
+          {
+            "key": "record:SD-0011|R08",
+            "rule_id": "R08",
+            "status": "closed",
+            "before_codes": [
+              "OUTSIDE_PROJECT_AREA"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          },
+          {
+            "key": "record:SD-0013|R03",
+            "rule_id": "R03",
+            "status": "closed",
+            "before_codes": [
+              "TYPE_PARSE_ERROR"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT01-1",
+      "title": "数据集级失败未修：blocked → blocked（CRS 声明错误没改）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\blocked",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\blocked",
+      "expected": {
+        "no_closed": true,
+        "ledger_in": [
+          "OPEN"
+        ],
+        "status_of": {
+          "R07": "still_open"
+        },
+        "identity_kinds": [
+          "dataset"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_OPEN",
+        "ledger": "OPEN",
+        "after_acceptance": "FAIL",
+        "counts": {
+          "still_open": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": true
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [],
+          "unknown_after": [
+            {
+              "requirement_id": "B1",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "BLOCKED",
+              "reason_code": "ALL_RECORDS_BLOCKED"
+            },
+            {
+              "requirement_id": "B2",
+              "coverage_state": "COVERED",
+              "verdict": "FAIL",
+              "execution_status": "PARTIAL",
+              "reason_code": "CRS_DECLARATION_MISMATCH"
+            },
+            {
+              "requirement_id": "B3",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "BLOCKED",
+              "reason_code": "ALL_RECORDS_BLOCKED"
+            }
+          ],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "dataset:crs.json|R07",
+            "rule_id": "R07",
+            "status": "still_open",
+            "before_codes": [
+              "CRS_DECLARATION_MISMATCH"
+            ],
+            "after_codes": [
+              "CRS_DECLARATION_MISMATCH"
+            ],
+            "after_unknown_codes": [],
+            "reasons": []
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT01-2",
+      "title": "整改后缺证据：clean → ambiguous（阈值与精度依据不足）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\clean",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\ambiguous",
+      "expected": {
+        "no_closed": true,
+        "overall_not_in": [
+          "LEDGER_CLOSED_ACCEPTED"
+        ],
+        "after_acceptance_in": [
+          "INDETERMINATE"
+        ],
+        "scope_nonempty": [
+          "unknown_after"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_CLOSED_NOT_ACCEPTED",
+        "ledger": "CLOSED",
+        "after_acceptance": "INDETERMINATE",
+        "counts": {},
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {
+            "R06": [
+              "parameter_sources: [{'parameter': 'lon_range', 'value': [-180, 180], 'requirement_id': 'B1', 'document_id': 'delivery_spec.md', 'documen... → [{'parameter': 'lon_range', 'value': [-180, 180], 'requirement_id': 'B1', 'document_id': 'delivery_spec.md', 'documen..."
+            ],
+            "R07": [
+              "parameter_sources: [{'parameter': 'expected_crs', 'value': 'EPSG:4326', 'requirement_id': 'B2', 'document_id': 'delivery_spec.md', 'docu... → [{'parameter': 'expected_crs', 'value': 'EPSG:4326', 'requirement_id': 'B2', 'document_id': 'delivery_spec.md', 'docu..."
+            ],
+            "R08": [
+              "parameter_sources: [{'parameter': 'boundary_policy', 'value': 'inclusive', 'requirement_id': 'B3', 'document_id': 'delivery_spec.md', 'd... → [{'parameter': 'boundary_policy', 'value': 'inclusive', 'requirement_id': 'B3', 'document_id': 'delivery_spec.md', 'd..."
+            ],
+            "R09": [
+              "parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2..."
+            ],
+            "R10": [
+              "parameter_sources: [{'parameter': 'max_distance_m', 'value': 30, 'requirement_id': 'C2', 'document_id': 'delivery_spec.md', 'document_sh... → [{'parameter': 'max_distance_m', 'value': 30, 'requirement_id': 'C2', 'document_id': 'delivery_spec.md', 'document_sh..."
+            ]
+          },
+          "artifacts_changed": [
+            "delivery_spec.md",
+            "requirements"
+          ],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [
+            {
+              "requirement_id": "D1",
+              "coverage_state": "UNMAPPED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "NOT_EXECUTED",
+              "reason_code": "CLAUSE_NOT_COVERED_BY_RULE"
+            },
+            {
+              "requirement_id": "D2",
+              "coverage_state": "UNMAPPED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "NOT_EXECUTED",
+              "reason_code": "CLAUSE_NOT_COVERED_BY_RULE"
+            }
+          ],
+          "ledger_size": 0
+        },
+        "items": []
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT01-3",
+      "title": "规则未批准：同数据但 R09 改 DRAFT（检查资格不具备）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext01_rule_unapproved_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext01_rule_unapproved_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R09": "unresolved_unknown"
+        },
+        "ledger_in": [
+          "INDETERMINATE"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "INDETERMINATE",
+        "counts": {
+          "unresolved_unknown": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {
+            "R09": [
+              "status: 'APPROVED' → 'DRAFT'"
+            ]
+          },
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [
+            {
+              "requirement_id": "C1",
+              "coverage_state": "UNAPPROVED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "NOT_EXECUTED",
+              "reason_code": "RULE_NOT_APPROVED"
+            }
+          ],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R09",
+            "rule_id": "R09",
+            "status": "unresolved_unknown",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "整改后该规则状态为 'DRAFT'（非 APPROVED）：检查资格不具备，不得按'无失败'推定已修复",
+              "规则语义指纹不同（status: 'APPROVED' → 'DRAFT'）：不是同一把尺子"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT02-1",
+      "title": "删除缺陷实体：整改后直接删掉这条记录",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext02_deleted_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext02_deleted_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R09": "removed_pending_review"
+        },
+        "scope_eq": {
+          "entities_removed_after": [
+            "SD-0001"
+          ]
+        },
+        "ledger_in": [
+          "INDETERMINATE"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "PASS",
+        "counts": {
+          "removed_pending_review": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 11,
+            "distinct": 11,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": true
+        },
+        "scope": {
+          "entities_removed_after": [
+            "SD-0001"
+          ],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R09",
+            "rule_id": "R09",
+            "status": "removed_pending_review",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "整改后批次不存在该实体（SD-0001）：交付对象消失不等于检查通过，需批准的删除记录才能结案"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT03-1",
+      "title": "唯一实体多条 finding：不构成实体重复（两条都真实修复）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext03_multi_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext03_multi_after",
+      "expected": {
+        "identity_dup_before": [],
+        "identity_dup_after": [],
+        "status_of": {
+          "R04": "closed",
+          "R09": "closed"
+        },
+        "counts_eq": {
+          "closed": 2
+        },
+        "overall_in": [
+          "LEDGER_CLOSED_ACCEPTED"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_CLOSED_ACCEPTED",
+        "ledger": "CLOSED",
+        "after_acceptance": "PASS",
+        "counts": {
+          "closed": 2
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": true
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 2
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R04",
+            "rule_id": "R04",
+            "status": "closed",
+            "before_codes": [
+              "ENUM_VIOLATION"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          },
+          {
+            "key": "record:SD-0001|R09",
+            "rule_id": "R09",
+            "status": "closed",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-1",
+      "title": "同版本改参数：R02 trim=true→false（放宽尺子制造“修复”）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_trim_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_trim_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R02": "not_comparable"
+        },
+        "ruler_fp_changed_include": [
+          "R02"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "INDETERMINATE",
+        "counts": {
+          "not_comparable": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {
+            "R02": [
+              "parameters: {'fields': ['record_id', 'name', 'category', 'longitude', 'latitude', 'source_time'], 'trim': True, 'allowed_missing_... → {'fields': ['record_id', 'name', 'category', 'longitude', 'latitude', 'source_time'], 'trim': False, 'allowed_missing..."
+            ]
+          },
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [
+            {
+              "requirement_id": "A3",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "PARTIAL",
+              "reason_code": "ALL_RECORDS_BLOCKED"
+            },
+            {
+              "requirement_id": "A4",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "PARTIAL",
+              "reason_code": "ALL_RECORDS_BLOCKED"
+            },
+            {
+              "requirement_id": "B1",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "PARTIAL",
+              "reason_code": "ALL_RECORDS_BLOCKED"
+            },
+            {
+              "requirement_id": "B3",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "PARTIAL",
+              "reason_code": "ALL_RECORDS_BLOCKED"
+            },
+            {
+              "requirement_id": "C1",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "PARTIAL",
+              "reason_code": "ALL_RECORDS_BLOCKED"
+            }
+          ],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R02",
+            "rule_id": "R02",
+            "status": "not_comparable",
+            "before_codes": [
+              "EMPTY_VALUE"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'fields': ['record_id', 'name', 'category', 'longitude', 'latitude', 'source_time'], 'trim': True, 'allowed_missing_... → {'fields': ['record_id', 'name', 'category', 'longitude', 'latitude', 'source_time'], 'trim': False, 'allowed_missing...）：不是同一把尺子"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-2",
+      "title": "改判定阈值：R09 max_age_days 30→365（来源对不上 ⇒ 配置拒绝）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_threshold_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_threshold_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R09": "not_comparable"
+        },
+        "ruler_fp_changed_include": [
+          "R09"
+        ],
+        "after_rejections_nonempty": true
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "INDETERMINATE",
+        "counts": {
+          "not_comparable": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {
+            "R09": [
+              "parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 365, 'reference_time': '2026-10-01T00:00:00Z'}"
+            ]
+          },
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [],
+          "unknown_after": [],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 365, 'reference_time': '2026-10-01T00:00:00Z'}）：不是同一把尺子"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-3",
+      "title": "改数据字典：把非法类别加进枚举（字典变了就不是同一把尺子）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_dict_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_dict_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R04": "not_comparable"
+        },
+        "artifacts_changed_include": [
+          "dictionary.csv"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "PASS",
+        "counts": {
+          "not_comparable": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [
+            "dictionary.csv"
+          ],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R04",
+            "rule_id": "R04",
+            "status": "not_comparable",
+            "before_codes": [
+              "ENUM_VIOLATION"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "批次制品指纹不同（dictionary.csv）：判定所依赖的字典/范围/规范/基准时间变了"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-4",
+      "title": "改项目范围：把 area.geojson 放大 4 倍让越界点“变合法”",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_area_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_area_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R08": "not_comparable"
+        },
+        "artifacts_changed_include": [
+          "area.geojson"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "PASS",
+        "counts": {
+          "not_comparable": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [
+            "area.geojson"
+          ],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R08",
+            "rule_id": "R08",
+            "status": "not_comparable",
+            "before_codes": [
+              "OUTSIDE_PROJECT_AREA"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "批次制品指纹不同（area.geojson）：判定所依赖的字典/范围/规范/基准时间变了"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-5",
+      "title": "改基准时间：R09 reference_time 前移（来源同步改 ⇒ 拒绝执行）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_reftime_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_reftime_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R09": "not_comparable"
+        },
+        "ruler_fp_changed_include": [
+          "R09"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "FAIL",
+        "counts": {
+          "not_comparable": 12
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {
+            "R09": [
+              "parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}",
+              "parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2..."
+            ]
+          },
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [
+            {
+              "requirement_id": "C1",
+              "coverage_state": "COVERED",
+              "verdict": "FAIL",
+              "execution_status": "COMPLETED",
+              "reason_code": "FUTURE_TIMESTAMP"
+            }
+          ],
+          "ledger_size": 12
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0002|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0003|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0004|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0005|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0006|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0007|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0008|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0009|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0010|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0011|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          },
+          {
+            "key": "record:SD-0012|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [],
+            "after_codes": [
+              "FUTURE_TIMESTAMP"
+            ],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（parameters: {'max_age_days': 30, 'reference_time': '2026-10-01T00:00:00Z'} → {'max_age_days': 30, 'reference_time': '2026-08-15T00:00:00Z'}; parameter_sources: [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2... → [{'parameter': 'max_age_days', 'value': 30, 'requirement_id': 'C1', 'document_id': 'delivery_spec.md', 'document_sha2...）：不是同一把尺子"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-6",
+      "title": "规则删除：整改后批次没有 R09（尺子被撤走）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_rule_removed_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_rule_removed_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R09": "not_comparable"
+        },
+        "ruler_removed_include": [
+          "R09"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "INDETERMINATE",
+        "counts": {
+          "not_comparable": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [
+            "R09"
+          ],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [
+            {
+              "requirement_id": "C1",
+              "coverage_state": "UNMAPPED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "NOT_EXECUTED",
+              "reason_code": "CLAUSE_NOT_COVERED_BY_RULE"
+            }
+          ],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "整改后批次不存在该规则：尺子被撤走，无法证明同一检查已通过"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-7",
+      "title": "依赖失效：上游 R03 改 DRAFT ⇒ 下游未完整执行",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_dep_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_dep_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R04": "unresolved_unknown"
+        },
+        "ledger_in": [
+          "INDETERMINATE"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "INDETERMINATE",
+        "counts": {
+          "unresolved_unknown": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {
+            "R03": [
+              "status: 'APPROVED' → 'DRAFT'"
+            ]
+          },
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [],
+          "unknown_after": [
+            {
+              "requirement_id": "A3",
+              "coverage_state": "UNAPPROVED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "NOT_EXECUTED",
+              "reason_code": "RULE_NOT_APPROVED"
+            },
+            {
+              "requirement_id": "A4",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "BLOCKED",
+              "reason_code": "UPSTREAM_NOT_APPROVED"
+            },
+            {
+              "requirement_id": "B1",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "BLOCKED",
+              "reason_code": "UPSTREAM_NOT_APPROVED"
+            },
+            {
+              "requirement_id": "B3",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "BLOCKED",
+              "reason_code": "UPSTREAM_NOT_APPROVED"
+            },
+            {
+              "requirement_id": "C1",
+              "coverage_state": "COVERED",
+              "verdict": "INDETERMINATE",
+              "execution_status": "BLOCKED",
+              "reason_code": "UPSTREAM_NOT_APPROVED"
+            }
+          ],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R04",
+            "rule_id": "R04",
+            "status": "unresolved_unknown",
+            "before_codes": [
+              "ENUM_VIOLATION"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "整改后该规则未完整执行：execution_status='BLOCKED'",
+              "整改后该规则结论为 'INDETERMINATE'（非 PASS）：证据不足，不得关闭",
+              "整改后条款 A4 结论为 'INDETERMINATE'"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-8",
+      "title": "批准来源变化：数据修好了但 R09 被重新批准",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_reapproval_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\ext04_reapproval_after",
+      "expected": {
+        "no_closed": true,
+        "status_of": {
+          "R09": "not_comparable"
+        },
+        "ruler_fp_changed_include": [
+          "R09"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_INDETERMINATE",
+        "ledger": "INDETERMINATE",
+        "after_acceptance": "PASS",
+        "counts": {
+          "not_comparable": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {
+            "R09": [
+              "reviewer: 'stage0-人工批准（示例）' → 'stage1-复核人B'",
+              "approved_at: '2026-10-26' → '2026-10-27'"
+            ]
+          },
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": false
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R09",
+            "rule_id": "R09",
+            "status": "not_comparable",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": [
+              "规则语义指纹不同（reviewer: 'stage0-人工批准（示例）' → 'stage1-复核人B'; approved_at: '2026-10-26' → '2026-10-27'）：不是同一把尺子"
+            ]
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT02-2",
+      "title": "新增实体必须披露（不比较没出现过失败的实体是不够的）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\disc_add_entity_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\disc_add_entity_after",
+      "expected": {
+        "scope_nonempty": [
+          "entities_added_after"
+        ],
+        "overall_in": [
+          "LEDGER_CLOSED_ACCEPTED"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_CLOSED_ACCEPTED",
+        "ledger": "CLOSED",
+        "after_acceptance": "PASS",
+        "counts": {},
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 13,
+            "distinct": 13,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": true
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [
+            "SD-9001"
+          ],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 0
+        },
+        "items": []
+      },
+      "errors": []
+    },
+    {
+      "case": "EXT04-9",
+      "title": "新增规则必须披露（R11 只存在于整改后批次）",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\disc_add_rule_before",
+      "after": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\disc_add_rule_after",
+      "expected": {
+        "ruler_added_include": [
+          "R11"
+        ],
+        "status_of": {
+          "R09": "closed"
+        },
+        "overall_in": [
+          "LEDGER_CLOSED_ACCEPTED"
+        ]
+      },
+      "actual": {
+        "overall": "LEDGER_CLOSED_ACCEPTED",
+        "ledger": "CLOSED",
+        "after_acceptance": "PASS",
+        "counts": {
+          "closed": 1
+        },
+        "identity": {
+          "before": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          },
+          "after": {
+            "records": 12,
+            "distinct": 12,
+            "unidentified": 0,
+            "duplicated": []
+          }
+        },
+        "ruler": {
+          "rule_fingerprint_fields": [
+            "rule_id",
+            "rule_type",
+            "status",
+            "version",
+            "required_for_release",
+            "requirement_ids",
+            "parameters",
+            "parameter_sources",
+            "preconditions",
+            "reviewer",
+            "approved_at"
+          ],
+          "artifact_fingerprint_fields": [
+            "dictionary.csv",
+            "area.geojson",
+            "delivery_spec.md",
+            "requirements",
+            "reference_time"
+          ],
+          "rules_removed_after": [],
+          "rules_added_after": [
+            "R11"
+          ],
+          "rule_fingerprint_changed": {},
+          "artifacts_changed": [],
+          "rule_versions_changed": [],
+          "same_ruler": true
+        },
+        "scope": {
+          "entities_removed_after": [],
+          "entities_added_after": [],
+          "advisory_after": [
+            {
+              "key": "record:SD-0011|R10",
+              "rule_id": "R10",
+              "codes": [
+                "DUPLICATE_CANDIDATE"
+              ]
+            }
+          ],
+          "unknown_after": [],
+          "ledger_size": 1
+        },
+        "items": [
+          {
+            "key": "record:SD-0001|R09",
+            "rule_id": "R09",
+            "status": "closed",
+            "before_codes": [
+              "STALE_RECORD"
+            ],
+            "after_codes": [],
+            "after_unknown_codes": [],
+            "reasons": []
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "case": "VALIDATE-1",
+      "title": "正式入口 validate：新包无 expected 也能给出结论",
+      "ok": true,
+      "before": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\work\\stage1-compare\\cases\\validate_probe_bundle",
+      "after": "",
+      "expected": {
+        "aggregate_verdict": "FAIL",
+        "expected_used": false
+      },
+      "actual": {
+        "aggregate_verdict": "FAIL",
+        "expected_used": false,
+        "findings_by_class": {
+          "FAIL": 1,
+          "CANDIDATE": 1
+        },
+        "counts": {
+          "records": 12,
+          "clauses_required": 9,
+          "clauses_covered": 9,
+          "rules": 10,
+          "findings": 2
+        },
+        "schema_errors": []
+      },
+      "errors": []
+    }
+  ]
+}

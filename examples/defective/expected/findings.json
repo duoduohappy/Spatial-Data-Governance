@@ -1,0 +1,156 @@
+{
+  "schema_version": "stage0-2",
+  "truth_source": "人工推导",
+  "truth_review": {
+    "reviewer": "严过关（QA，Stage 0 重验）",
+    "date": "2026-10-26",
+    "method": "人工逐条推导：以 examples/README.md 缺陷真值表 + docs/stage0-recheck-contract.md （§1 三态 / §4 CRS 四类 / §7 统计口径 / §9.4 记录级比对）为唯一依据，先写出期望值再执行实现；实现输出与推导不一致即视为实现缺陷并上报。",
+    "basis": "examples/*/delivery_spec.md 冻结条款行 + INPUT_MANIFEST.json 哈希 + examples/README.md 缺陷真值表；每条数字可回溯到具体数据行号。",
+    "reviewed_fields": "per_rule 的 verdict / execution_status / reason_code / 六个统计字段 / findings；expected/findings.json 的 stable_key / reason_code / field / observed_value / review_state / execution_status / record_locator；expected/clause_coverage.json 的 coverage_state / verdict / execution_status / reason_code。"
+  },
+  "findings": [
+    {
+      "stable_key": "R02|EMPTY_VALUE|8|category",
+      "reason_code": "EMPTY_VALUE",
+      "field": "category",
+      "observed_value": "",
+      "review_state": "OPEN",
+      "execution_status": "COMPLETED",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 8,
+        "record_id": "SD-0007"
+      }
+    },
+    {
+      "stable_key": "R02|EMPTY_VALUE|11|longitude",
+      "reason_code": "EMPTY_VALUE",
+      "field": "longitude",
+      "observed_value": "",
+      "review_state": "OPEN",
+      "execution_status": "COMPLETED",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 11,
+        "record_id": "SD-0010"
+      }
+    },
+    {
+      "stable_key": "R03|TYPE_PARSE_ERROR|3|source_time",
+      "reason_code": "TYPE_PARSE_ERROR",
+      "field": "source_time",
+      "observed_value": "2026-09-22 09:30",
+      "review_state": "OPEN",
+      "execution_status": "PARTIAL",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 3,
+        "record_id": "SD-0002"
+      }
+    },
+    {
+      "stable_key": "R03|TYPE_PARSE_ERROR|14|longitude",
+      "reason_code": "TYPE_PARSE_ERROR",
+      "field": "longitude",
+      "observed_value": "abc",
+      "review_state": "OPEN",
+      "execution_status": "PARTIAL",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 14,
+        "record_id": "SD-0013"
+      }
+    },
+    {
+      "stable_key": "R04|ENUM_VIOLATION|4|category",
+      "reason_code": "ENUM_VIOLATION",
+      "field": "category",
+      "observed_value": "公共厕所",
+      "review_state": "OPEN",
+      "execution_status": "PARTIAL",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 4,
+        "record_id": "SD-0003"
+      }
+    },
+    {
+      "stable_key": "R05|DUPLICATE_ID|6|record_id",
+      "reason_code": "DUPLICATE_ID",
+      "field": "record_id",
+      "observed_value": "SD-0005",
+      "review_state": "OPEN",
+      "execution_status": "COMPLETED",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 6,
+        "record_id": "SD-0005"
+      }
+    },
+    {
+      "stable_key": "R05|DUPLICATE_ID|13|record_id",
+      "reason_code": "DUPLICATE_ID",
+      "field": "record_id",
+      "observed_value": "SD-0005",
+      "review_state": "OPEN",
+      "execution_status": "COMPLETED",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 13,
+        "record_id": "SD-0005"
+      }
+    },
+    {
+      "stable_key": "R09|STALE_RECORD|7|source_time",
+      "reason_code": "STALE_RECORD",
+      "field": "source_time",
+      "observed_value": "2026-08-01T00:00:00Z",
+      "review_state": "OPEN",
+      "execution_status": "PARTIAL",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 7,
+        "record_id": "SD-0006"
+      }
+    },
+    {
+      "stable_key": "R06|LATITUDE_OUT_OF_RANGE|10|latitude",
+      "reason_code": "LATITUDE_OUT_OF_RANGE",
+      "field": "latitude",
+      "observed_value": "91.5000",
+      "review_state": "OPEN",
+      "execution_status": "PARTIAL",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 10,
+        "record_id": "SD-0009"
+      }
+    },
+    {
+      "stable_key": "R08|OUTSIDE_PROJECT_AREA|12|longitude/latitude",
+      "reason_code": "OUTSIDE_PROJECT_AREA",
+      "field": "longitude/latitude",
+      "observed_value": "116.36,39.9185",
+      "review_state": "OPEN",
+      "execution_status": "PARTIAL",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 12,
+        "record_id": "SD-0011"
+      }
+    },
+    {
+      "stable_key": "R10|DUPLICATE_CANDIDATE|15|longitude/latitude",
+      "reason_code": "DUPLICATE_CANDIDATE",
+      "field": "longitude/latitude",
+      "observed_value": "116.313,39.9145 与 116.3131,39.9146",
+      "review_state": "OPEN",
+      "execution_status": "PARTIAL",
+      "record_locator": {
+        "file": "poi.csv",
+        "line": 15,
+        "record_id": "SD-0014"
+      }
+    }
+  ]
+}

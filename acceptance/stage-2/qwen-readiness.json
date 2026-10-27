@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-27T00:47:18.405196+00:00",
+  "configured": true,
+  "endpoint_configured": true,
+  "provider": "qwen",
+  "model": "qwen-plus",
+  "endpoint_origin": "https://dashscope.aliyuncs.com",
+  "key_present": true,
+  "pricing_configured": true,
+  "currency": "CNY",
+  "thinking": "disabled",
+  "cloud_authentication": "NOT_VERIFIED",
+  "live_smoke": "FAILED; old client omitted HTTP status; diagnostic fix requires local server restart"
+}

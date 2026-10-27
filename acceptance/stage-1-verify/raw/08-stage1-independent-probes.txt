@@ -1,0 +1,87 @@
+==============================================================================
+Stage 1 独立复验探针（仓库：C:\Users\TempAdmin\AppData\Local\Temp\ga-final）
+解释器：3.13.14
+==============================================================================
+
+[PASS] S1-P01  —— 几何谓词 ⇔ 精确有理数算术真值
+      依据：多边形边界=闭线段；点在闭线段上 ⇔ 叉积为 0 且在包围盒内（精确）；严格内部用射线法精确比较。1e-13 量级扰动点由精确算术给出真值。
+      输入：单位正方形 13 点 + 凹多边形（L 形）10 点，含顶点、边中点、凹顶点、1e-13 内外扰动
+      预期：gate 的 exclusive/inclusive/on_boundary 与精确真值**逐点一致**（旧 1e-12 容差会把多边形外的点算进 inclusive，替换后必须纠正）
+      实测：{"ok": true, "cases": 23, "mismatches": [], "near_boundary_truth": [{"poly": "unit", "point": [0.5, 0.0], "truth": {"exclusive": false, "inclusive": true, "on_boundary": true}}, {"poly": "unit", "point": [0.0, 0.0], "truth": {"exclusive": false, "inclusive": true, "on_boundary": true}}, {"poly": "unit", "point": [1.0, 1.0], "truth": {"exclusive": false, "inclusive": true, "on_boundary": true}}, {"poly": "unit", "point": [0.5, -1e-09], "truth": {"exclusive": false, "inclusive": false, "on_boundary": false}}, {"poly": "unit", "point": [0.5, 1e-09], "truth": {"exclusive": true, "inclusive": true, "on_boundary": false}}, {"poly": "unit", "point": [1e-13, 0.5], "truth": {"exclusive": true, "inclusive": true, "on_boundary": false}}, {"poly": "unit", "point": [-1e-13, 0.5], "truth": {"exclusive": false, "inclusive": false, "on_boundary": false}}, {"poly": "unit", "point": [0.9999999999999, 0.5], "truth": {"exclusive": true, "inclusive": true, "on_boundary": false}}, {"poly": "unit", "point": [1.0000000000001, 0.5], "truth": {"exclusive": false, "inclusive": false, "on_boundary": false}}, {"poly": "unit", "point": [0.0, 1.0], "truth": {"exclusive": false, "inclusive": true, "on_boundary": 
+
+[PASS] S1-P02  —— 测地距离 ⇔ 独立解析参考
+      依据：赤道弧长 = a·Δλ（a=6378137，精确）；子午线弧长 = ∫M(φ)dφ，M(φ)=a(1-e²)/(1-e²sin²φ)^1.5，Simpson 积分独立求得；球近似 R=6371008.8 与椭球的相对差应在 1e-3%~1% 量级。
+      输入：(0,0)→(1,0)、(0,0)→(0,1) 与冻结的三组点对
+      预期：赤道相对误差 <1e-12、子午线 <1e-9；与 haversine 相对差落在 0.001%~1%（替换确实生效）
+      实测：{"ok": true, "equator_m": 111319.490793, "equator_ref_m": 111319.490793, "rel_err_equator": 1.307220786285356e-16, "meridian_m": 110574.388558, "meridian_ref_m": 110574.388558, "rel_err_meridian": 7.10655905568101e-15, "vs_haversine": [{"pair": [[116.3912, 39.9075], [116.3975, 39.9087]], "geodesic": 554.93458, "haversine": 553.676964, "rel_pct": 0.227139}, {"pair": [[116.0, 39.0], [117.0, 40.0]], "geodesic": 140442.94774, "haversine": 140447.461861, "rel_pct": 0.003214}, {"pair": [[0.0, 0.0], [0.0, 1.0]], "geodesic": 110574.388558, "haversine": 111195.080234, "rel_pct": 0.558201}]}
+
+[PASS] S1-P03  —— PyYAML 解析 ⇔ 手写期望结构
+      依据：YAML 1.1 语义：锚点/合并键/块标量/引号保留字符串类型；空值归一（GA-09）；多文档必须显式报错而不是静默取首个（静默取首文档=证据被吞）。
+      输入：自造 tricky.yaml（锚点+<<合并+块标量+引号数字+'yes'+空值+嵌套序列+中文）与 multi.yaml
+      预期：解析结果 == 手写期望；multi.yaml 必须抛错（不得 NO_RAISE）
+      实测：{"ok": true, "parsed": {"base": {"unit": "m", "tol": 0.5}, "items": [{"unit": "m", "tol": 0.5, "name": "a"}, {"unit": "m", "tol": 1.5, "name": "b"}], "text": "第一行\n第二行\n", "quoted_num": "42", "bool_like": "yes", "empty": null, "preconditions": [], "nested": [[1, 2]], "unicode": "中文 ✓", "float_seq": [1, 2.5, -3]}, "expected": {"base": {"unit": "m", "tol": 0.5}, "items": [{"name": "a", "unit": "m", "tol": 0.5}, {"name": "b", "unit": "m", "tol": 1.5}], "text": "第一行\n第二行\n", "quoted_num": "42", "bool_like": "yes", "empty": null, "preconditions": [], "nested": [[1, 2]], "unicode": "中文 ✓", "float_seq": [1, 2.5, -3]}, "multi_document": "ComposerError: expected a single document in the stream\n  in \"<unicode string>\", line 1, column"}
+
+[PASS] S1-P04  —— 执行入口 Pydantic strict 校验
+      依据：零隐式类型收敛：strict 下 bool 字段不接受 'yes'；support_status 只允许三值枚举；校验失败 ⇒ 登记 INPUT_SCHEMA_INVALID ⇒ 整包拒绝执行（契约 §2.4/§9.1）。反向确认：lax 会把 'yes' 收敛成 True，故入口必须 strict。
+      输入：clean 包的两份变体：① required_for_release 改成字符串 "yes"；② support_status=MAYBE
+      预期：两种变体都出现 INPUT_SCHEMA_INVALID 且总体 != PASS；lax 反向确认为 True
+      实测：{"ok": true, "string_bool": {"rejections": ["INPUT_SCHEMA_INVALID"], "aggregate": "INDETERMINATE"}, "unknown_enum": {"rejections": ["APPROVED_RULE_FOR_UNSUPPORTED_CLAUSE", "CLAUSE_SUPPORT_STATUS_UNKNOWN", "INPUT_SCHEMA_INVALID"], "aggregate": "INDETERMINATE"}, "lax_reverse_confirm": {"input": "yes", "lax_value": true}}
+
+[PASS] S1-P05  —— 判定接口唯一性
+      依据：最终复验 Stage 1 第 5 条：删除/收敛旧二参兼容路径，测试迁到唯一正式接口（build_clause_coverage → aggregate(coverage, rejections, n_rows)）。
+      输入：inspect.signature(aggregate)、hasattr(_coverage_from_results)、二参调用
+      预期：签名为三参且含 clause_coverage；兼容辅助函数不存在；二参调用抛 TypeError
+      实测：{"ok": true, "signature": "(clause_coverage, config_rejections, n_rows=None)", "legacy_helper_present": false, "two_arg_call": "TypeError: aggregate() 只接受三参数正式签名 aggregate(clause_coverage, config_rej"}
+
+[PASS] S1-P06  —— CLI 跨目录与路径穿越失败关闭
+      依据：CLI 内部应以绝对 ROOT 定位资源（换 cwd 仍可跑）；safe_bundle_path 必须拒绝越出根目录；包名不存在必须报错退出（不得静默跑默认包）。
+      输入：在仓库外目录执行：run --bundle clean / run --bundle ../clean / run --bundle no_such_bundle
+      预期：clean ⇒ rc=0；穿越与不存在的包 ⇒ rc != 0
+      实测：{"ok": true, "run_other_cwd": {"rc": 0, "tail": " aggregate=PASS          findings=1   -> C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-final\\work\\stage0\\clean\r\n\r\nALL_OK=true"}, "traversal": {"rc": 2, "tail": "[ERR] 输入不合规：包路径越出项目根目录：C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-final\\clean（root=C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-final\\examples）"}, "missing_bundle": {"rc": 2, "tail": "[ERR] 输入不合规：包目录不存在：C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-final\\examples\\no_such_bundle"}}
+
+[PASS] S1-P07  —— HTML 报告转义
+      依据：S0-09 遗留项：报告中的条款原文、观测值来自外部文件，渲染必须 html.escape，否则交付报告本身就是注入载体。
+      输入：构造含 <script>alert("x")</script> 与 & 的 report.json 字段
+      预期：输出中不含未转义 <script，且含 &lt;script&gt; 与 &amp;
+      实测：{"ok": true, "raw_script_tag_present": false, "escaped_present": true, "amp_escaped": true, "html_len": 2971}
+
+[PASS] S1-P08  —— 整改 compare 的身份策略
+      依据：最终复验 Stage 1 第 8 条：身份不要只靠行号；缺稳定标识或重复 ⇒ not_comparable ⇒ 不得宣称整改完成（总体 INDETERMINATE）。
+      输入：defective→corrected 基线；整改后批次 poi.csv 行序打乱；再复制一行制造重复 record_id
+      预期：乱序后 counts/overall 与基线**完全一致**（证明按 record_id 而非行号）；重复 ID ⇒ 出现 not_comparable 且 overall=INDETERMINATE
+      实测：{"ok": [{"record_id": "SD-0001", "rule_id": "R05", "status": "not_comparable", "before_codes": [], "after_codes": ["DUPLICATE_ID"], "reduced": false, "reasons": ["记录稳定标识不可用（缺失或批次内重复），拒绝按行号匹配"]}, {"record_id": "SD-0005", "rule_id": "R05", "status": "not_comparable", "before_codes": ["DUPLICATE_ID"], "after_codes": [], "reduced": false, "reasons": ["记录稳定标识不可用（缺失或批次内重复），拒绝按行号匹配"]}], "baseline_counts": {"fixed": 8, "not_comparable": 1}, "baseline_overall": "INDETERMINATE", "shuffled_counts": {"fixed": 8, "not_comparable": 1}, "shuffled_overall": "INDETERMINATE", "identity": {"strategy": "record_id（poi.csv 首列），要求两批均存在且唯一；不使用行号", "ok": false, "missing_record_id": {"before": 0, "after": 0}, "duplicated_record_id": {"before": ["SD-0005"], "after": []}}, "dup_overall": "INDETERMINATE", "dup_not_comparable_n": 2, "dup_sample": {"record_id": "SD-0001", "rule_id": "R05", "status": "not_comparable", "before_codes": [], "after_codes": ["DUPLICATE_ID"], "reduced": false, "reasons": ["记录稳定标识不可用（缺失或批次内重复），拒绝按行号匹配"]}}
+
+[PASS] S1-P09  —— 重跑确定性（RC-04 回归）
+      依据：同一实例/跨实例重跑必须产生相同 findings；运行局部状态必须在 run() 开头复位。
+      输入：defective 包：同实例 run() 两次 + 新实例 run() 一次，比较 stable_key 排序
+      预期：三者完全相同
+      实测：{"ok": true, "n": 11, "same_instance_equal": true, "cross_instance_equal": true}
+
+[PASS] S1-P10  —— 依赖缺失失败关闭
+      依据：Stage 1 起几何/距离/YAML 依赖专业库；缺失时若静默回退到旧实现，等于拿近似结果冒充权威结果（A2：缺证据不得放行）。
+      输入：PYTHONPATH 注入 shapely.py / pyproj.py / yaml.py，import 即抛 ImportError
+      预期：三者均：退出码 != 0、输出含安装命令、且不得出现 ALL_OK=true
+      实测：{"ok": true, "shapely": {"rc": 1, "mentions_install_cmd": true, "head": "缺少 Shapely：Stage 1 起几何判定依赖专业库。请在项目虚拟环境内执行：\r\n  python -m venv .venv && ./.venv/Scripts/python.exe -m pip install -r requirements.txt\r\n（原始错误：blocked by verifier）"}, "pyproj": {"rc": 1, "mentions_install_cmd": true, "head": "缺少 pyproj：Stage 1 起距离计算依赖 WGS84 测地线。请在项目虚拟环境内执行：\r\n  python -m venv .venv && ./.venv/Scripts/python.exe -m pip install -r requirements.txt\r\n（原始错误：blocked by veri"}, "yaml": {"rc": 1, "mentions_install_cmd": true, "head": "缺少 PyYAML：Stage 1 起配置读取依赖 PyYAML。请在项目虚拟环境内执行：\r\n  python -m venv .venv && ./.venv/Scripts/python.exe -m pip install -r requirements.txt\r\n（原始错误：blocked by verifie"}}
+
+[PASS] S1-P11  —— 终端编码独立性
+      依据：最终复验 A 项：脚本不得依赖调用方设置 PYTHONUTF8；在 GBK 终端/重定向下中途崩溃会让证据链断在中途（连结果 JSON 都写不出来）。
+      输入：不设 PYTHONUTF8/PYTHONIOENCODING、stdout 重定向到管道跑 recheck_probes.py；再用 -X utf8 跑一次对照
+      预期：两种调用都应 rc=0（或至少给出可诊断的明确报错）；-X utf8 下 28/28
+      实测：{"ok": true, "plain_rc": 0, "plain_tail": "============================================\r\nRECHECK_PROBES_OK=true（28/28 通过，输出：C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-final\\acceptance\\stage-0-recheck\\independent-results.json）\r\n==============================================================================", "utf8_rc": 0, "utf8_ok": true, "utf8_tail": "tage-0-recheck\\independent-results.json）\r\n=============================================================================="}
+
+[PASS] S1-P12  —— 冻结快照可复现（自实现比对）
+      依据：最终复验 Stage 1 第 4 条：替换后逐项比较，差异必须有数学或业务依据。
+      输入：acceptance/stage-1/baseline-frozen.json 与新生成快照（六包 + 边界矩阵 + 距离）
+      预期：六包规则/条款/总体/findings **零差异**；边界差异恰为 2 个扰动点（共 4 个字段翻转，均由精确谓词纠正）、距离差异恰为 3 组（椭球 vs 球，相对差 0.003%~0.56%）
+      实测：{"ok": true, "judgement_diffs": {"rule": [], "clause": [], "aggregate": [], "findings": []}, "boundary_points_changed": ["边界内侧1e-13", "边界外侧1e-13"], "boundary_field_flips": 4, "distance_diffs": [{"pair": [116.3912, 39.9075, 116.3975, 39.9087], "before": 553.676964, "after": 554.93458, "rel_pct": 0.227139}, {"pair": [116.0, 39.0, 117.0, 40.0], "before": 140447.461861, "after": 140442.94774, "rel_pct": 0.003214}, {"pair": [0.0, 0.0, 0.0, 1.0], "before": 111195.080234, "after": 110574.388558, "rel_pct": 0.558201}], "distance_fn": "geodesic_m"}
+
+[PASS] S1-P13  —— 文档现状与实现一致性
+      依据：最终复验 B 项：材料之间不得互相矛盾；Stage 1 已引入第三方依赖后，『零第三方依赖』『(stdlib)』『五个示例包』等旧表述必须随之更新。
+      输入：README.md / acceptance/stage-0/OPEN_ISSUES.md / gate.TOOL_VERSION
+      预期：五项一致性检查全部为『无矛盾』
+      实测：{"ok": true, "checks": {"README 出现未限定范围的『零第三方依赖』": {"actual": false, "want": false}, "内核 TOOL_VERSION 仍标 (stdlib)（Stage 1 起已非纯标准库）": {"actual": false, "want": false}, "README 版本号与代码 TOOL_VERSION 一致": {"actual": true, "want": true}, "README 仍写『五个示例包』（实际六包）": {"actual": false, "want": false}, "Stage 0 OPEN_ISSUES 仍写『五个示例包』": {"actual": false, "want": false}}, "inconsistent": []}
+
+结果 JSON：C:\Users\TEMPAD~1\AppData\Local\Temp\f-results.json
+==============================================================================
+STAGE1_PROBES_OK=true（13/13 通过）
+==============================================================================

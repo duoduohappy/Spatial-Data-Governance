@@ -1,0 +1,7 @@
+field_name,description,data_type,required,enum_values
+record_id,记录唯一标识,string,true,
+name,设施名称,string,true,
+category,设施类别,string,true,"[""学校"",""医院"",""公园"",""公交站""]"
+longitude,经度（WGS84 十进制度）,number,true,
+latitude,纬度（WGS84 十进制度）,number,true,
+source_time,数据采集时间,datetime,true,

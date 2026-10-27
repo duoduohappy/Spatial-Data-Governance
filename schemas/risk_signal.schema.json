@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RiskSignal",
+  "description": "风险信号（契约 A3）：只作提示，永不参与 verdict，不产生阻断性 finding。code 只能取 RISK_SIGNAL_CODES 中的成员；新增码必须同步 tools/stage0_gate.py 的 RISK_SIGNAL_CODES 与本文件，否则登记期即报错。",
+  "type": "object",
+  "required": [
+    "code",
+    "severity",
+    "message"
+  ],
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": [
+        "PARAMETER_VALUE_MAPPED_BY_INTERPRETATION",
+        "IMPLICIT_REQUIRED_FOR_RELEASE",
+        "CRS_MAGNITUDE_RISK"
+      ],
+      "description": "风险信号码；必须与 tools/stage0_gate.py 的 RISK_SIGNAL_CODES 完全一致"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "INFO",
+        "WARN"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "object",
+      "description": "证据对象；不得携带 verdict / execution_status / reason_code 等判定字段（契约 A3）"
+    }
+  },
+  "additionalProperties": false
+}

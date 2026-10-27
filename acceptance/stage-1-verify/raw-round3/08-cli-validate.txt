@@ -1,0 +1,18 @@
+正式检查 validate：C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\examples\clean
+  结论：PASS　全部必检条款均有完整有效的 PASS 证据
+  记录 12 条　必检条款 9（已覆盖 9）　规则结果 10　findings 1 {'CANDIDATE': 1}
+  expected 真值：未使用（本入口不需要 expected）
+
+  条款     覆盖状态             结论             执行状态           原因码
+  A1     COVERED          PASS           COMPLETED      OK
+  A2     COVERED          PASS           COMPLETED      OK
+  A3     COVERED          PASS           COMPLETED      OK
+  A4     COVERED          PASS           COMPLETED      OK
+  A5     COVERED          PASS           COMPLETED      OK
+  B1     COVERED          PASS           COMPLETED      OK
+  B2     COVERED          PASS           COMPLETED      OK
+  B3     COVERED          PASS           COMPLETED      OK
+  C1     COVERED          PASS           COMPLETED      OK
+
+  缺陷清单（前 20 条）：
+    F0001 R10    SD-0011                DUPLICATE_CANDIDATE    116.314,39.9185 与 116.3142,39.9186

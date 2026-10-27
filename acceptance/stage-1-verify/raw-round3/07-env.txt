@@ -1,0 +1,80 @@
+C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\tools\verify_env.py:54: DeprecationWarning: Accessing jsonschema.__version__ is deprecated and will be removed in a future release. Use importlib.metadata directly to query for jsonschema's version.
+  versions[mod] = getattr(m, "__version__", "unknown")
+
+==========================================================================
+1. 解释器与环境
+==========================================================================
+executable : C:\Users\TEMPAD~1\AppData\Local\Temp\ga-r3-venv\Scripts\python.exe
+version    : 3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]
+platform   : Windows-11-10.0.26200-SP0
+in venv    : True
+prefix     : C:\Users\TEMPAD~1\AppData\Local\Temp\ga-r3-venv
+
+==========================================================================
+2. 依赖版本（真实 import，非文件扫描）
+==========================================================================
+shapely      2.2.0
+pyproj       3.8.0
+yaml         6.0.3
+pydantic     2.14.1
+jsonschema   4.26.0
+geopandas    1.2.0
+pandas       3.1.0
+numpy        2.5.4
+
+==========================================================================
+3. Shapely 运行验证：单位正方形的内点/边界/外点
+==========================================================================
+点            contains   touches    covers    
+内点(0.5,0.5)  True       False      True      
+左边界中点(0.0,0.5) False      True       True      
+右边界中点(1.0,0.5) False      True       True      
+下边界中点(0.5,0.0) False      True       True      
+上边界中点(0.5,1.0) False      True       True      
+顶点(0.0,0.0)  False      True       True      
+外点(1.5,0.5)  False      False      False     
+
+结论：inclusive（含边界）= covers = contains or touches；exclusive = contains。
+      Stage 0 自研实现的等价口径：point_in_ring_or_boundary(..., inclusive=True/False)。
+
+==========================================================================
+4. pyproj 运行验证：测地距离 vs Stage 0 自研 haversine
+==========================================================================
+点对                           pyproj( geodesic ) haversine(旧)   相对差       
+(116.3912, 39.9075)→(116.3975, 39.9087) 554.935        553.676        0.00227   
+(116.0, 39.0)→(117.0, 40.0)  140442.948     140447.268     0.00003   
+(0.0, 0.0)→(0.0, 1.0)        110574.389     111194.927     0.00561   
+
+结论：测地距离以 WGS84 椭球为准（pyproj）；haversine 用 R=6371000 球近似，
+      典型相对差 1e-3 ~ 1e-2 量级。替换后阈值判定结果可能变化，必须逐条给依据。
+
+==========================================================================
+5. GeoPandas / PyYAML / Pydantic / jsonschema 运行验证
+==========================================================================
+GeoPandas 读入 clean/area.geojson：type=Polygon, area=0.000400, bounds=(116.3, 39.9, 116.32, 39.92)
+GeoPandas + Shapely 判定示例：centroid(116.310000,39.910000) contains=True / boundary touches=False
+
+PyYAML vs 自研解析器（对 examples/* 全部 yaml 逐文件对拍）：
+  [SAME] examples\ambiguous\requirements.yaml
+  [SAME] examples\blocked\requirements.yaml
+  [SAME] examples\clean\requirements.yaml
+  [SAME] examples\corrected\requirements.yaml
+  [SAME] examples\crs_same_unit_wrong\requirements.yaml
+  [SAME] examples\defective\requirements.yaml
+  [SAME] examples\ambiguous\approved-rules.yaml
+  [SAME] examples\blocked\approved-rules.yaml
+  [SAME] examples\clean\approved-rules.yaml
+  [SAME] examples\corrected\approved-rules.yaml
+  [SAME] examples\crs_same_unit_wrong\approved-rules.yaml
+  [SAME] examples\defective\approved-rules.yaml
+对拍结论：全部一致
+
+Pydantic lax 校验通过：{'requirement_id': 'A1', 'required_for_release': True, 'support_status': 'SUPPORTED'}
+Pydantic lax 会把 'yes' 收敛为 bool：{'requirement_id': 'A1', 'required_for_release': True, 'support_status': 'SUPPORTED'}
+Pydantic strict 反向确认：类型错误被拦下（required_for_release）
+jsonschema 标准校验：正向通过、可用（完整 Draft 支持，替代自研子集校验器）
+
+==========================================================================
+6. 结论
+==========================================================================
+ENV_VERIFY_OK=true（依赖齐备且全部完成真实运行验证）

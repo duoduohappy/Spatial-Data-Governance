@@ -1,0 +1,19 @@
+{
+  "directory": "2026-10-27T00-19-03-715Z",
+  "video": "video/page@6d515e1b53cbdcdf256ee723cfa22cae.webm",
+  "sha256": "d3eb8ccc549d4aa8fd3b7becab298e9f9b2bcd24d02fca9fc7088b8bdf31f5e7",
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1440,
+        "height": 1000
+      }
+    ],
+    "format": {
+      "duration": "182.160000"
+    }
+  }
+}

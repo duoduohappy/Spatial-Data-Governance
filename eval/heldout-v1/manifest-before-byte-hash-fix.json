@@ -1,0 +1,1029 @@
+{
+  "frozen_at": "2026-10-27T03:57:05.040432+00:00",
+  "scope": "80 developer-authored synthetic atomic clauses across eight new specifications; NOT human/independent gold labels. Frozen before first model inference; no expected labels sent to the model.",
+  "prompt_sha256": "21d31c3522466efd3036e763db32ec4945cc976f3ece56b7408c0faa013cc13f",
+  "cases": [
+    {
+      "id": "holdout-01",
+      "document_sha256": "bbb79c0ec240a44c69320163a782a2f049bc3bf9f0293f03d0f4a013f5fd7351",
+      "truth": [
+        {
+          "rule_type": "required_field_present",
+          "source_quote": "1. 每条设施记录都须含数据字典标记的全部必填列。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "non_empty",
+          "source_quote": "2. 各必填列不可为空：先去掉两端空白，再判定字符串长度是否为零。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "trim": true,
+            "missing_rate_policy": "STRICT"
+          }
+        },
+        {
+          "rule_type": "type_parse",
+          "source_quote": "3. 所有字段均须按字典声明的数据类型解析；时间字段采用含时区的 RFC3339。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "enum_value",
+          "source_quote": "4. category 只能使用字典里的枚举编码，禁止枚举别名。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          }
+        },
+        {
+          "rule_type": "id_unique",
+          "source_quote": "5. record_id 在本交付批次内不得出现重复。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "record_id"
+          }
+        },
+        {
+          "rule_type": "coord_range",
+          "source_quote": "6. 经度允许 [-170,170]，纬度允许 [-80,80]；二者均须为有限数值。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "lon_range": [
+              -170,
+              170
+            ],
+            "lat_range": [
+              -80,
+              80
+            ]
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "source_quote": "7. 交付点的坐标参考系限定为 EPSG:4326。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "expected_crs": "EPSG:4326"
+          }
+        },
+        {
+          "rule_type": "within_project_area",
+          "source_quote": "8. 所有点必须位于项目多边形内；边界线上的点不计入范围。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "boundary_policy": "exclusive"
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "source_quote": "9. 采集时间相对 2026-10-15T00:00:00Z 不得早于 11 天。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "max_age_days": 11,
+            "reference_time": "2026-10-15T00:00:00Z"
+          }
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "source_quote": "10. 名称相同且间距不超过 24 米的记录列为疑似重复；仅供参考，不参与放行。",
+          "supported": true,
+          "advisory": true,
+          "parameters": {
+            "max_distance_m": 24,
+            "name_equal": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "holdout-02",
+      "document_sha256": "ab69de1f44222426d134be8d66adfa526af469f0305178ca2f0867986e11c40d",
+      "truth": [
+        {
+          "rule_type": "required_field_present",
+          "source_quote": "- Rows must contain every field marked required in the supplied dictionary.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "non_empty",
+          "source_quote": "- Required values must not be empty after trimming leading and trailing whitespace.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "trim": true,
+            "missing_rate_policy": "STRICT"
+          }
+        },
+        {
+          "rule_type": "type_parse",
+          "source_quote": "- Parse every dictionary field using its declared type; timestamps must use RFC3339 with a timezone.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "enum_value",
+          "source_quote": "- category must match a dictionary enum exactly; aliases are not allowed.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          }
+        },
+        {
+          "rule_type": "id_unique",
+          "source_quote": "- record_id must be unique across this batch.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "record_id"
+          }
+        },
+        {
+          "rule_type": "coord_range",
+          "source_quote": "- Both coordinates must be finite: longitude [-165,165] and latitude [-75,75].",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "lon_range": [
+              -165,
+              165
+            ],
+            "lat_range": [
+              -75,
+              75
+            ]
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "source_quote": "- The declared coordinate reference system must be EPSG:4326.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "expected_crs": "EPSG:4326"
+          }
+        },
+        {
+          "rule_type": "within_project_area",
+          "source_quote": "- Points must lie in the project polygon. Include points on its boundary.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "boundary_policy": "inclusive"
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "source_quote": "- At reference time 2026-10-20T00:00:00Z the age limit is 13 days.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "max_age_days": 13,
+            "reference_time": "2026-10-20T00:00:00Z"
+          }
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "source_quote": "- Flag points within 17 metres with equal names for manual duplicate review. This is advisory only and is not a release condition.",
+          "supported": true,
+          "advisory": true,
+          "parameters": {
+            "max_distance_m": 17,
+            "name_equal": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "holdout-03",
+      "document_sha256": "2811ac78e5f7fc611a1aeb26d4db37c4e63ac6b7da873db88fe0ca1835dff68f",
+      "truth": [
+        {
+          "rule_type": "required_field_present",
+          "source_quote": "1. 记录需要包含字典中所有必填字段。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "non_empty",
+          "source_quote": "2. 必填字段的空值按原始字符串长度为 0 判定，不得裁剪前后空白。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "trim": false,
+            "missing_rate_policy": "STRICT"
+          }
+        },
+        {
+          "rule_type": "type_parse",
+          "source_quote": "3. 整个数据字典中的每个字段都必须满足声明类型；时间采用带时区 RFC3339。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "enum_value",
+          "source_quote": "4. category 值须属于字典枚举集合，不接受别名。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          }
+        },
+        {
+          "rule_type": "id_unique",
+          "source_quote": "5. 主键 record_id 必须批次内唯一。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "record_id"
+          }
+        },
+        {
+          "rule_type": "coord_range",
+          "source_quote": "6. 坐标数值须有限，longitude 区间 [-160,160]，latitude 区间 [-70,70]。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "lon_range": [
+              -160,
+              160
+            ],
+            "lat_range": [
+              -70,
+              70
+            ]
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "source_quote": "7. 坐标系统声明须为 EPSG:4326。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "expected_crs": "EPSG:4326"
+          }
+        },
+        {
+          "rule_type": "within_project_area",
+          "source_quote": "8. 点必须落在项目区域，包含区域边界上的点。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "boundary_policy": "inclusive"
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "source_quote": "9. 以 2026-11-01T00:00:00Z 为基准，采集时间不能超过 9 天。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "max_age_days": 9,
+            "reference_time": "2026-11-01T00:00:00Z"
+          }
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "source_quote": "10. 间距不超过 19 米的任何两个点都作为重复候选，不考虑名称是否相同；仅供参考，不作为放行依据。",
+          "supported": true,
+          "advisory": true,
+          "parameters": {
+            "max_distance_m": 19,
+            "name_equal": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "holdout-04",
+      "document_sha256": "2bffda642e730680bad43da6dfd0f11f14cbb6a3936975eb785869801eae6aff",
+      "truth": [
+        {
+          "rule_type": "required_field_present",
+          "source_quote": "- 字段完整性：数据字典列为必填的字段必须全部存在。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "non_empty",
+          "source_quote": "- 空值检查：对必填字段去除首尾空白后不得为空。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "trim": true,
+            "missing_rate_policy": "STRICT"
+          }
+        },
+        {
+          "rule_type": "type_parse",
+          "source_quote": "- 类型检查：按字典检查全部字段，日期时间必须采用显式时区的 RFC3339。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "enum_value",
+          "source_quote": "- 分类检查：category 必须严格匹配数据字典枚举，不允许别名替代。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          }
+        },
+        {
+          "rule_type": "id_unique",
+          "source_quote": "- 标识检查：record_id 不得重复。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "record_id"
+          }
+        },
+        {
+          "rule_type": "coord_range",
+          "source_quote": "- 坐标检查：有限经度 [-155,155] 和有限纬度 [-65,65]。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "lon_range": [
+              -155,
+              155
+            ],
+            "lat_range": [
+              -65,
+              65
+            ]
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "source_quote": "- 参考系统检查：必须声明 EPSG:4326。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "expected_crs": "EPSG:4326"
+          }
+        },
+        {
+          "rule_type": "within_project_area",
+          "source_quote": "- 范围检查：必须在项目区域内，区域边界不算范围内。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "boundary_policy": "exclusive"
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "source_quote": "- 时效检查：基准时间 2026-10-25T00:00:00Z，最多允许 6 天。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "max_age_days": 6,
+            "reference_time": "2026-10-25T00:00:00Z"
+          }
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "source_quote": "- 候选检查：同名且距离不超过 21 米才列重复候选；本项仅供参考，不作为放行依据。",
+          "supported": true,
+          "advisory": true,
+          "parameters": {
+            "max_distance_m": 21,
+            "name_equal": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "holdout-05",
+      "document_sha256": "7514d3bbf14ec665dba17e6e66d2d3157ac8ae711b0dde1644c38e2aa739e8da",
+      "truth": [
+        {
+          "rule_type": "required_field_present",
+          "source_quote": "1. 提交记录要具备字典中的每一个必填字段。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "non_empty",
+          "source_quote": "2. 必填值去掉两端空白后必须非空。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "trim": true,
+            "missing_rate_policy": "STRICT"
+          }
+        },
+        {
+          "rule_type": "type_parse",
+          "source_quote": "3. 必须检查所有字典字段类型，时间要使用带时区 RFC3339。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "enum_value",
+          "source_quote": "4. category 编码严格按字典枚举，禁止别名。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          }
+        },
+        {
+          "rule_type": "id_unique",
+          "source_quote": "5. record_id 需要唯一。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "record_id"
+          }
+        },
+        {
+          "rule_type": "coord_range",
+          "source_quote": "6. 坐标必须有限，经度 [-150,150]，纬度 [-60,60]。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "lon_range": [
+              -150,
+              150
+            ],
+            "lat_range": [
+              -60,
+              60
+            ]
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "source_quote": "7. 点位声明的 CRS 必须是 EPSG:4326。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "expected_crs": "EPSG:4326"
+          }
+        },
+        {
+          "rule_type": "within_project_area",
+          "source_quote": "8. 点位必须处于项目范围，边界线纳入范围。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "boundary_policy": "inclusive"
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "source_quote": "9. 数据要及时更新；更新期限和比较基准日期都等待项目确认。",
+          "supported": false,
+          "advisory": false,
+          "parameters": null
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "source_quote": "10. 同名点位相距不超过 26 米时列重复候选，属于参考建议，不作为放行依据。",
+          "supported": true,
+          "advisory": true,
+          "parameters": {
+            "max_distance_m": 26,
+            "name_equal": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "holdout-06",
+      "document_sha256": "5a2d5521d062acd90bff699b89bf67dd62becc94adae85910243ac8740523542",
+      "truth": [
+        {
+          "rule_type": "required_field_present",
+          "source_quote": "- 按数据字典，所有必需列都要出现在记录内。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "non_empty",
+          "source_quote": "- 不得提交空必填值；空值在去除首尾空白之后判定。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "trim": true,
+            "missing_rate_policy": "STRICT"
+          }
+        },
+        {
+          "rule_type": "type_parse",
+          "source_quote": "- 字典所声明的每个字段都要核查类型，时间格式为有时区的 RFC3339。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "enum_value",
+          "source_quote": "- 字典枚举约束 category，不允许枚举别名。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          }
+        },
+        {
+          "rule_type": "id_unique",
+          "source_quote": "- 不得有重复的 record_id。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "record_id"
+          }
+        },
+        {
+          "rule_type": "coord_range",
+          "source_quote": "- 有限坐标的经度范围 [-145,145]，纬度范围 [-55,55]。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "lon_range": [
+              -145,
+              145
+            ],
+            "lat_range": [
+              -55,
+              55
+            ]
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "source_quote": "- 坐标参考系的具体代码未给出，需要项目负责人补充，禁止根据数值猜测。",
+          "supported": false,
+          "advisory": false,
+          "parameters": null
+        },
+        {
+          "rule_type": "within_project_area",
+          "source_quote": "- 点位应在项目多边形内部，边界上的点也算在范围内。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "boundary_policy": "inclusive"
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "source_quote": "- 采集时间距离基准 2026-10-18T00:00:00Z 不超过 12 天。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "max_age_days": 12,
+            "reference_time": "2026-10-18T00:00:00Z"
+          }
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "source_quote": "- 名称相同且间隔不超过 23 米时产生重复候选；此项仅供参考，不作为放行依据。",
+          "supported": true,
+          "advisory": true,
+          "parameters": {
+            "max_distance_m": 23,
+            "name_equal": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "holdout-07",
+      "document_sha256": "83a2b71abd351b3df15257458bfd761fc054fba2a70540b04087080815d8c248",
+      "truth": [
+        {
+          "rule_type": "required_field_present",
+          "source_quote": "1. 字典中的全部必填字段必须存在。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "non_empty",
+          "source_quote": "2. 必填内容在去除首尾空白后不得为空串。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "trim": true,
+            "missing_rate_policy": "STRICT"
+          }
+        },
+        {
+          "rule_type": "type_parse",
+          "source_quote": "3. 所有字段按照字典类型检查，时间采用带时区的 RFC3339。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "enum_value",
+          "source_quote": "4. category 的取值必须精确属于字典枚举，不接受别名。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          }
+        },
+        {
+          "rule_type": "id_unique",
+          "source_quote": "5. record_id 在本包中不可重复。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "record_id"
+          }
+        },
+        {
+          "rule_type": "coord_range",
+          "source_quote": "6. 经度和纬度必须有限，经度 [-140,140]，纬度 [-50,50]。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "lon_range": [
+              -140,
+              140
+            ],
+            "lat_range": [
+              -50,
+              50
+            ]
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "source_quote": "7. 本次坐标参考系采用 EPSG:4326。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "expected_crs": "EPSG:4326"
+          }
+        },
+        {
+          "rule_type": "within_project_area",
+          "source_quote": "8. 必须检查点是否位于项目多边形，边界上的点算不算在内尚未约定。",
+          "supported": false,
+          "advisory": false,
+          "parameters": null
+        },
+        {
+          "rule_type": "freshness",
+          "source_quote": "9. 相对基准 2026-10-22T00:00:00Z，采集数据最多可早 14 天。",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "max_age_days": 14,
+            "reference_time": "2026-10-22T00:00:00Z"
+          }
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "source_quote": "10. 同名点的距离不超过 28 米时列为重复候选；仅供参考，不作为放行依据。",
+          "supported": true,
+          "advisory": true,
+          "parameters": {
+            "max_distance_m": 28,
+            "name_equal": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "holdout-08",
+      "document_sha256": "5510279b9a352a9f3114bed05fbdfe00c393f5bb863938b22678fabe3f0edac4",
+      "truth": [
+        {
+          "rule_type": "required_field_present",
+          "source_quote": "- Please include all dictionary-required columns in every record.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "non_empty",
+          "source_quote": "- Trim both ends of required strings before checking that they are nonempty.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "trim": true,
+            "missing_rate_policy": "STRICT"
+          }
+        },
+        {
+          "rule_type": "type_parse",
+          "source_quote": "- Validate types for every dictionary field, with timezone-bearing RFC3339 timestamps.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ]
+          }
+        },
+        {
+          "rule_type": "enum_value",
+          "source_quote": "- category must use the dictionary enum codes without aliases.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          }
+        },
+        {
+          "rule_type": "id_unique",
+          "source_quote": "- Each record_id must occur exactly once in the batch.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "field": "record_id"
+          }
+        },
+        {
+          "rule_type": "coord_range",
+          "source_quote": "- Finite coordinates are required: longitude [-135,135], latitude [-45,45].",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "lon_range": [
+              -135,
+              135
+            ],
+            "lat_range": [
+              -45,
+              45
+            ]
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "source_quote": "- Use EPSG:4326 as the declared coordinate reference system.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "expected_crs": "EPSG:4326"
+          }
+        },
+        {
+          "rule_type": "within_project_area",
+          "source_quote": "- All points must be inside the project area, including its boundary.",
+          "supported": true,
+          "advisory": false,
+          "parameters": {
+            "boundary_policy": "inclusive"
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "source_quote": "- Source age must be at most 16 days, but the reference timestamp has not been supplied and needs clarification.",
+          "supported": false,
+          "advisory": false,
+          "parameters": null
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "source_quote": "- Equal-name points at a distance of at most 22 metres should be duplicate candidates; advisory only, not a release condition.",
+          "supported": true,
+          "advisory": true,
+          "parameters": {
+            "max_distance_m": 22,
+            "name_equal": true
+          }
+        }
+      ]
+    }
+  ]
+}

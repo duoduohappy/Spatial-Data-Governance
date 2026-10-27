@@ -1,0 +1,25 @@
+# 工作区产物（不随仓库分发）
+work/
+work_gen.txt
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# 环境与密钥
+.env
+*.key
+
+# 编辑器
+.idea/
+.vscode/
+
+# App/evaluation/runtime artifacts
+eval/generated/
+tests/ui/node_modules/
+node_modules/
+*.egg-info/
+build/
+dist/

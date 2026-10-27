@@ -1,0 +1,57 @@
+Collecting shapely
+  Downloading shapely-2.2.0-cp311-cp311-win_amd64.whl.metadata (6.8 kB)
+Collecting pyproj
+  Downloading pyproj-3.7.2-cp311-cp311-win_amd64.whl.metadata (31 kB)
+Collecting PyYAML
+  Downloading pyyaml-6.0.3-cp311-cp311-win_amd64.whl.metadata (2.4 kB)
+Collecting pydantic
+  Using cached pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+Collecting jsonschema
+  Using cached jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting numpy>=1.26 (from shapely)
+  Downloading numpy-2.4.6-cp311-cp311-win_amd64.whl.metadata (6.6 kB)
+Collecting certifi (from pyproj)
+  Using cached certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting annotated-types>=0.6.0 (from pydantic)
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.1 (from pydantic)
+  Downloading pydantic_core-2.50.1-cp311-cp311-win_amd64.whl.metadata (6.7 kB)
+Collecting typing-extensions>=4.16.0 (from pydantic)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic)
+  Using cached typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting attrs>=22.2.0 (from jsonschema)
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema)
+  Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema)
+  Using cached referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.25.0 (from jsonschema)
+  Downloading rpds_py-2026.9.1-cp311-cp311-win_amd64.whl.metadata (4.2 kB)
+Downloading shapely-2.2.0-cp311-cp311-win_amd64.whl (1.8 MB)
+   ---------------------------------------- 1.8/1.8 MB 24.1 kB/s eta 0:00:00
+Downloading pyproj-3.7.2-cp311-cp311-win_amd64.whl (6.3 MB)
+   ---------------------------------------- 6.3/6.3 MB 31.9 kB/s eta 0:00:00
+Downloading pyyaml-6.0.3-cp311-cp311-win_amd64.whl (158 kB)
+   --------------------------------------- 158.8/158.8 kB 25.3 kB/s eta 0:00:00
+Using cached pydantic-2.14.1-py3-none-any.whl (488 kB)
+Downloading pydantic_core-2.50.1-cp311-cp311-win_amd64.whl (2.2 MB)
+   ---------------------------------------- 2.2/2.2 MB 30.0 kB/s eta 0:00:00
+Using cached jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Using cached annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Downloading numpy-2.4.6-cp311-cp311-win_amd64.whl (12.6 MB)
+   ---------------------------------------- 12.6/12.6 MB 26.8 kB/s eta 0:00:00
+Using cached referencing-0.37.0-py3-none-any.whl (26 kB)
+Downloading rpds_py-2026.9.1-cp311-cp311-win_amd64.whl (226 kB)
+   --------------------------------------- 226.0/226.0 kB 53.5 kB/s eta 0:00:00
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Using cached certifi-2026.10.23-py3-none-any.whl (135 kB)
+Installing collected packages: typing-extensions, rpds-py, PyYAML, numpy, certifi, attrs, annotated-types, typing-inspection, shapely, referencing, pyproj, pydantic-core, pydantic, jsonschema-specifications, jsonschema
+Successfully installed PyYAML-6.0.3 annotated-types-0.8.0 attrs-26.1.0 certifi-2026.10.23 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 numpy-2.4.6 pydantic-2.14.1 pydantic-core-2.50.1 pyproj-3.7.2 referencing-0.37.0 rpds-py-2026.9.1 shapely-2.2.0 typing-extensions-4.16.0 typing-inspection-0.4.4
+
+[notice] A new release of pip is available: 24.0 -> 26.2.2
+[notice] To update, run: C:\Users\TempAdmin\AppData\Local\Temp\ga-verify\.venv311b\Scripts\python.exe -m pip install --upgrade pip
+rc=0

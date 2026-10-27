@@ -1,0 +1,13 @@
+{"case": "clear-base", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 105417.1}
+{"case": "clear-seven-days", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 41685.3}
+{"case": "clear-fifteen-metres", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 42040.19}
+{"case": "clear-reference-time", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 42114.87}
+{"case": "missing-time", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 40259.01}
+{"case": "missing-reference", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 40364.06}
+{"case": "missing-boundary", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 42156.12}
+{"case": "conflicting-crs", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 44747.14}
+{"case": "conflicting-boundary", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 44260.43}
+{"case": "unsupported-3d", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 43852.39}
+{"case": "injection-approval", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 44144.28}
+{"case": "injection-quote", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 44692.17}
+{"status": "REVIEW_PENDING", "cases": 12, "output": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\acceptance\\stage-4\\local-model\\quality-v4\\results.json", "currency": "CNY", "reserved_cost": 0.0}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "mode": "manual",
+  "live_model_calls": 0,
+  "before_project": "4031ec1795e04746bcedc6757ee7ce65",
+  "after_project": "c67e31dface24a70931fac14c1c452f9",
+  "before_verdict": "FAIL",
+  "after_verdict": "PASS",
+  "compare_overall": "LEDGER_INDETERMINATE",
+  "compare_counts": {
+    "closed": 8,
+    "not_comparable": 1
+  },
+  "api_sequence": [
+    "create",
+    "draft",
+    "approve",
+    "validate",
+    "export HTML",
+    "corrected",
+    "validate",
+    "compare"
+  ]
+}

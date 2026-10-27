@@ -1,0 +1,67 @@
+{
+  "version": "0.5.0-rc1",
+  "created_at": "2026-10-27T05:54:14.433191+00:00",
+  "kind": "local-source-release-candidate",
+  "implementation": "Stage 2-5 implementation and candidate artifacts prepared",
+  "acceptance": "LOCAL_FUNCTIONAL_CHECKS_PASS; full external acceptance pending Docker/remote CI and independent business review",
+  "checks": {
+    "frozen_examples": 6,
+    "core_probes": 30,
+    "compare_probes": 33,
+    "application_and_http_tests": 33,
+    "javascript_syntax": "PASS",
+    "dom_simulation": "PASS",
+    "real_browser_checks": 12,
+    "browser_engine": "156.0.8078.4",
+    "recorded_demo_seconds": 182.16,
+    "local_json_inference": "PASS",
+    "real_local_quality_pipeline": {
+      "passed": 12,
+      "cases": 12,
+      "scope": "developer-visible templates; includes evidence compiler fail-closed behavior"
+    },
+    "developer_holdout": {
+      "clauses": 80,
+      "raw_semantics_correct": 74,
+      "compiled_semantics_correct": 75,
+      "covered": 80,
+      "unknown_clause_errors": 0,
+      "lineage_problems": 0,
+      "all_drafts_unapproved": true,
+      "failed_cases": 0,
+      "compiled_complete_rule_mapping": 0.9375,
+      "raw_complete_rule_mapping": 0.925,
+      "clause_coverage": 1.0
+    },
+    "actual_iab_attachment_save": "PASS",
+    "local_http_workflow": "PASS"
+  },
+  "not_run": [
+    "Docker build/run",
+    "GitHub remote CI",
+    "independent human/business annotations",
+    "human efficiency study",
+    "live single-agent vs multi-agent"
+  ],
+  "local_model_full_latest": {
+    "directory": "20261027T031912Z",
+    "project_id": "1127f74936cb4e4d85763c5a230ac106",
+    "job_id": "0bd0f1658e2f47e4bafb35150de59e4a",
+    "status": "COMPLETED",
+    "evidence": "acceptance\\stage-4\\local-model\\full\\20261027T031912Z"
+  },
+  "local_model_reviewed_workflow": {
+    "status": "REVIEWED_SYNTHETIC_WORKFLOW_PASS",
+    "edits": 0,
+    "reviewer": "Codex development review of synthetic data; NOT independent or user approval",
+    "limitation": "One visible synthetic template reviewed by implementing Codex. No independent user/business approval, raw-model generalization or ROI claim."
+  },
+  "local_model_quality": {
+    "acceptance": "AUTOMATED_PIPELINE_PASS_REVIEW_REQUIRED",
+    "latest": "acceptance\\stage-4\\local-model\\quality-v4\\results.json",
+    "scope": "DEVELOPER_VISIBLE_REGRESSION_NOT_BLIND_EVALUATION",
+    "prior_failures_preserved": true,
+    "raw_model_zero_error_claim": false
+  },
+  "source": "Implementation self-check plus actual user-requested IAB export; not independent external acceptance"
+}

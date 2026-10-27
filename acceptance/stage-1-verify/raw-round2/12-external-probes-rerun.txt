@@ -1,0 +1,5 @@
+blocked_unchanged before FAIL after FAIL compare LEDGER_OPEN counts {'still_open': 1}
+after_missing_evidence before PASS after INDETERMINATE compare LEDGER_CLOSED_NOT_ACCEPTED counts {}
+failing_entity_deleted before FAIL after PASS compare LEDGER_INDETERMINATE counts {'removed_pending_review': 1}
+after_rule_unapproved before FAIL after INDETERMINATE compare LEDGER_INDETERMINATE counts {'unresolved_unknown': 1}
+unique_entity_multiple_findings before FAIL after PASS compare LEDGER_CLOSED_ACCEPTED counts {'closed': 2}

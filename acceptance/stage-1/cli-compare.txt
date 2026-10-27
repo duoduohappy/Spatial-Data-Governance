@@ -1,0 +1,18 @@
+整改复验 compare：C:\Users\TempAdmin\WorkBuddy\2026-10-26-13-17-35\geoacceptance\examples\defective → C:\Users\TempAdmin\WorkBuddy\2026-10-26-13-17-35\geoacceptance\examples\corrected
+  整改前总体=FAIL（findings=11）　整改后总体=PASS（findings=1）
+  身份策略：record_id（poi.csv 首列），要求两批均存在且唯一；不使用行号　身份可用=False
+  汇总：fixed=8, not_comparable=1
+  结论：INDETERMINATE
+
+  record_id        rule     status         before → after
+  SD-0002          R03      fixed          TYPE_PARSE_ERROR → -
+  SD-0003          R04      fixed          ENUM_VIOLATION → -
+  SD-0005          R05      not_comparable DUPLICATE_ID → -  ← 记录稳定标识不可用（缺失或批次内重复），拒绝按行号匹配
+  SD-0006          R09      fixed          STALE_RECORD → -
+  SD-0007          R02      fixed          EMPTY_VALUE → -
+  SD-0009          R06      fixed          LATITUDE_OUT_OF_RANGE → -
+  SD-0010          R02      fixed          EMPTY_VALUE → -
+  SD-0011          R08      fixed          OUTSIDE_PROJECT_AREA → -
+  SD-0013          R03      fixed          TYPE_PARSE_ERROR → -
+
+[OK] 结构化结果：acceptance\stage-1\compare-defective-corrected.json

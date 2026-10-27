@@ -1,0 +1,2 @@
+bundles written: clean, defective, corrected, ambiguous, blocked, crs_same_unit_wrong
+example_root: C:\Users\TempAdmin\AppData\Local\Temp\ga-r2\examples

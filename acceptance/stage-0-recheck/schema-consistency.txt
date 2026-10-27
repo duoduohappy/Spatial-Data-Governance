@@ -1,0 +1,20 @@
+========================================================================
+Schema 一致性校验（标准库子集实现，Stage 0 不引入 jsonschema）
+========================================================================
+支持（参与校验）的关键字全集 [22]：$ref, additionalProperties, allOf, anyOf, const, enum, exclusiveMaximum, exclusiveMinimum, items, maxItems, maxLength, maximum, minItems, minLength, minimum, not, oneOf, pattern, properties, required, type, uniqueItems
+已知但不参与校验 [8]：$schema, additionalItems, default, definitions, deprecated, description, examples, title
+
+支持（参与校验）的关键字 [17]：$ref, additionalProperties, allOf, anyOf, const, enum, items, maxItems, maximum, minItems, minLength, minimum, pattern, properties, required, type, uniqueItems
+已知但不参与校验的关键字 [3]：$schema, description, title
+子集外关键字：（无）
+
+十类规则参数约束负例：10 条，全部按预期被拦下 = True
+
+示例包文档校验：6 个包
+
+登记表一致性：原因码 35（FAIL 31 / CANDIDATE 1 / INDETERMINATE 3；其中 finding 可用 19、规则级专用 16）、风险信号码 3
+
+产物校验：report.json 6 个、run_manifest.json 6 个
+
+[PASS] 全部一致性检查通过（子集范围内无不支持关键字被静默跳过）
+SCHEMA_CONSISTENT=true

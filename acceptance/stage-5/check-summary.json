@@ -1,0 +1,63 @@
+{
+  "python": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]",
+  "checks": [
+    {
+      "name": "core-regression",
+      "command": [
+        "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "tools/stage0_gate.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.462
+    },
+    {
+      "name": "core-probes",
+      "command": [
+        "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "tools/recheck_probes.py",
+        "--out",
+        "acceptance/stage-5/core-probes.json"
+      ],
+      "exit_code": 0,
+      "seconds": 13.771
+    },
+    {
+      "name": "compare-probes",
+      "command": [
+        "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "tools/compare_probes.py"
+      ],
+      "exit_code": 0,
+      "seconds": 4.475
+    },
+    {
+      "name": "schema-check",
+      "command": [
+        "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "tools/check_schema_consistency.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.378
+    },
+    {
+      "name": "application-tests",
+      "command": [
+        "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "tests/test_application.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.141
+    }
+  ],
+  "all_ok": true
+}

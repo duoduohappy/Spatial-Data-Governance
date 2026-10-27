@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-27T00:14:07.261Z",
+  "mode": "real Chromium, automated synthetic review",
+  "checks": [
+    {
+      "name": "desktop welcome has no horizontal overflow",
+      "status": "PASS"
+    }
+  ],
+  "screenshots": [
+    "01-welcome.png",
+    "failure.png"
+  ],
+  "errors": [],
+  "browser_version": "156.0.8078.4",
+  "status": "FAIL",
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('示例 · defective', { exact: true }).first() to be visible\u001b[22m\n\u001b[2m    61 × locator resolved to hidden <option value=\"1f6107291a0546f48841a7b392b25cab\">示例 · defective</option>\u001b[22m\n\n    at waitText (C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\tests\\ui\\browser-test.cjs:18:79)\n    at main (C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\tests\\ui\\browser-test.cjs:35:75)\n    at async C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\tests\\ui\\browser-test.cjs:77:16",
+  "video": "video/page@9a570afddb4b5351c85d468bdd2aa300.webm"
+}

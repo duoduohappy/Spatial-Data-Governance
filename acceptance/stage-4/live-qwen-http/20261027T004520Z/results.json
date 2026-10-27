@@ -1,0 +1,58 @@
+{
+  "config": {
+    "configured": true,
+    "endpoint_configured": true,
+    "provider": "qwen",
+    "model": "qwen-plus",
+    "endpoint_origin": "https://dashscope.aliyuncs.com",
+    "key_present": true,
+    "pricing_configured": true,
+    "currency": "CNY",
+    "thinking": "disabled"
+  },
+  "project_id": "8430dc2facd54014bc3526984beb3eb7",
+  "job": {
+    "id": "9991d51ccd2d44489d456e11040c324f",
+    "project": "8430dc2facd54014bc3526984beb3eb7",
+    "kind": "draft",
+    "revision": 1,
+    "status": "FAILED",
+    "result": {
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "qwen-plus",
+          "currency": "CNY",
+          "reserved_cost": 0.0217808,
+          "reserved_usd": null,
+          "usage": null,
+          "cost": null,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "ERROR",
+          "error": "ModelError",
+          "duration_ms": 94.07
+        },
+        {
+          "attempt": 2,
+          "model": "qwen-plus",
+          "currency": "CNY",
+          "reserved_cost": 0.0217808,
+          "reserved_usd": null,
+          "usage": null,
+          "cost": null,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "ERROR",
+          "error": "ModelError",
+          "duration_ms": 78.81
+        }
+      ]
+    },
+    "error": "Model failed after bounded attempts; see call metadata",
+    "created": "2026-10-27T00:45:21.032309+00:00",
+    "idempotency": "8430dc2facd54014bc3526984beb3eb7:qwen-live-smoke-20261027T004520Z"
+  },
+  "human_review": "NOT_REVIEWED",
+  "scope": "One real Qwen call on synthetic clean example; no approval or model-accuracy claim."
+}

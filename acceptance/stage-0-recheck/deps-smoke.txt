@@ -1,0 +1,28 @@
+python=3.13.14 platform=Windows-11-10.0.26200-SP0
+
+模块           状态     用途
+------------------------------------------------------------------------------
+yaml         OK     Stage 0+：配置文件读写（发行包名 PyYAML；当前 Stage 0 未使用，自研极简解析器代替）  (版本 6.0.3)
+pydantic     MISSING Stage 1+：数据对象与 Schema 校验
+jsonschema   MISSING Stage 1+：Schema 一致性校验
+fastapi      MISSING Stage 1+：HTTP API
+geopandas    MISSING Stage 1+：空间数据读写
+shapely      MISSING Stage 1+：几何谓词与拓扑
+pyproj       MISSING Stage 1+：坐标系变换与测地距离
+pandas       MISSING Stage 1+：字段级剖析
+pytest       MISSING Stage 1+：单元与集成测试
+
+当前环境可执行且不需要安装的重跑记录：
+  pip: pip 26.1.2 from C:\Users\TempAdmin\.workbuddy\binaries\python\versions\3.13.12\Lib\site-packages\pip (python 3.13)
+
+缺失项（未安装，Stage 1 开工前需要处理）：
+  - pydantic -> pip install pydantic
+  - jsonschema -> pip install jsonschema
+  - fastapi -> pip install fastapi uvicorn
+  - geopandas -> pip install geopandas
+  - shapely -> pip install shapely
+  - pyproj -> pip install pyproj
+  - pandas -> pip install pandas
+  - pytest -> pip install pytest
+
+Stage 0 门槛要求：零第三方依赖即可完成端到端实例。本环境的 Stage 0 依赖满足情况：满足

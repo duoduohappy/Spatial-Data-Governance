@@ -1,0 +1,108 @@
+{
+  "schema_version": "stage0-2",
+  "truth_source": "人工推导",
+  "truth_review": {
+    "reviewer": "严过关（QA，Stage 0 重验）",
+    "date": "2026-10-26",
+    "method": "人工逐条推导：以 examples/README.md 缺陷真值表 + docs/stage0-recheck-contract.md （§1 三态 / §4 CRS 四类 / §7 统计口径 / §9.4 记录级比对）为唯一依据，先写出期望值再执行实现；实现输出与推导不一致即视为实现缺陷并上报。",
+    "basis": "examples/*/delivery_spec.md 冻结条款行 + INPUT_MANIFEST.json 哈希 + examples/README.md 缺陷真值表；每条数字可回溯到具体数据行号。",
+    "reviewed_fields": "per_rule 的 verdict / execution_status / reason_code / 六个统计字段 / findings；expected/findings.json 的 stable_key / reason_code / field / observed_value / review_state / execution_status / record_locator；expected/clause_coverage.json 的 coverage_state / verdict / execution_status / reason_code。"
+  },
+  "clause_coverage": [
+    {
+      "requirement_id": "A1",
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "failure_reason_codes": [],
+      "advisory_reason_codes": []
+    },
+    {
+      "requirement_id": "A2",
+      "coverage_state": "COVERED",
+      "verdict": "FAIL",
+      "execution_status": "COMPLETED",
+      "reason_code": "EMPTY_VALUE",
+      "failure_reason_codes": [
+        "EMPTY_VALUE"
+      ],
+      "advisory_reason_codes": []
+    },
+    {
+      "requirement_id": "A3",
+      "coverage_state": "COVERED",
+      "verdict": "FAIL",
+      "execution_status": "PARTIAL",
+      "reason_code": "TYPE_PARSE_ERROR",
+      "failure_reason_codes": [
+        "TYPE_PARSE_ERROR"
+      ],
+      "advisory_reason_codes": []
+    },
+    {
+      "requirement_id": "A4",
+      "coverage_state": "COVERED",
+      "verdict": "FAIL",
+      "execution_status": "PARTIAL",
+      "reason_code": "ENUM_VIOLATION",
+      "failure_reason_codes": [
+        "ENUM_VIOLATION"
+      ],
+      "advisory_reason_codes": []
+    },
+    {
+      "requirement_id": "A5",
+      "coverage_state": "COVERED",
+      "verdict": "FAIL",
+      "execution_status": "COMPLETED",
+      "reason_code": "DUPLICATE_ID",
+      "failure_reason_codes": [
+        "DUPLICATE_ID"
+      ],
+      "advisory_reason_codes": []
+    },
+    {
+      "requirement_id": "B1",
+      "coverage_state": "COVERED",
+      "verdict": "FAIL",
+      "execution_status": "PARTIAL",
+      "reason_code": "LATITUDE_OUT_OF_RANGE",
+      "failure_reason_codes": [
+        "LATITUDE_OUT_OF_RANGE"
+      ],
+      "advisory_reason_codes": []
+    },
+    {
+      "requirement_id": "B2",
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "failure_reason_codes": [],
+      "advisory_reason_codes": []
+    },
+    {
+      "requirement_id": "B3",
+      "coverage_state": "COVERED",
+      "verdict": "FAIL",
+      "execution_status": "PARTIAL",
+      "reason_code": "OUTSIDE_PROJECT_AREA",
+      "failure_reason_codes": [
+        "OUTSIDE_PROJECT_AREA"
+      ],
+      "advisory_reason_codes": []
+    },
+    {
+      "requirement_id": "C1",
+      "coverage_state": "COVERED",
+      "verdict": "FAIL",
+      "execution_status": "PARTIAL",
+      "reason_code": "STALE_RECORD",
+      "failure_reason_codes": [
+        "STALE_RECORD"
+      ],
+      "advisory_reason_codes": []
+    }
+  ]
+}

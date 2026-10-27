@@ -1,0 +1,6 @@
+{
+  "source_files": 269,
+  "issues": [],
+  "status": "PASS",
+  "scope": "Heuristic current source scan only. Not a guarantee; Git history is not distributed in ZIP."
+}

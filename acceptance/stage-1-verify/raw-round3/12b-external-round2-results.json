@@ -1,0 +1,206 @@
+[
+  {
+    "case": "delete_clean_entity",
+    "result": {
+      "schema_version": "stage1-compare-3",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\additional\\clean_before",
+        "aggregate": "PASS",
+        "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+        "findings": 1,
+        "findings_by_class": {
+          "CANDIDATE": 1
+        },
+        "records": 12,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\additional\\clean_entity_removed",
+        "aggregate": "PASS",
+        "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+        "findings": 1,
+        "findings_by_class": {
+          "CANDIDATE": 1
+        },
+        "records": 11,
+        "config_rejections": [],
+        "preflight_problems": [],
+        "exec_error": null
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列）在两批均存在且唯一；不使用行号",
+        "index_source": "全量输入记录（不是只统计出现过失败的 finding）",
+        "dataset_identity": "数据集级问题用「规则身份 + 证据域 file」追踪，不因无 record_id 消失",
+        "before": {
+          "records": 12,
+          "distinct": 12,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "after": {
+          "records": 11,
+          "distinct": 11,
+          "unidentified": 0,
+          "duplicated": []
+        },
+        "ok": true
+      },
+      "ruler": {
+        "rule_fingerprint_fields": [
+          "rule_id",
+          "rule_type",
+          "status",
+          "version",
+          "required_for_release",
+          "requirement_ids",
+          "parameters",
+          "parameter_sources",
+          "preconditions",
+          "reviewer",
+          "approved_at"
+        ],
+        "artifact_fingerprint_fields": [
+          "dictionary.csv",
+          "area.geojson",
+          "delivery_spec.md",
+          "requirements",
+          "reference_time"
+        ],
+        "rules_removed_after": [],
+        "rules_added_after": [],
+        "rule_fingerprint_changed": {},
+        "artifacts_changed": [],
+        "rule_versions_changed": [],
+        "same_ruler": true
+      },
+      "scope": {
+        "entities_removed_after": [
+          "SD-0001"
+        ],
+        "entities_added_after": [],
+        "advisory_after": [
+          {
+            "key": "record:SD-0011|R10",
+            "rule_id": "R10",
+            "codes": [
+              "DUPLICATE_CANDIDATE"
+            ]
+          }
+        ],
+        "unknown_before": [],
+        "unknown_after": [],
+        "ledger_size": 1,
+        "closure_rule": "closed 需要整改后同一规则仍 APPROVED、未被配置拒绝、有结果、execution_status=COMPLETED、规则与所映射条款结论均为 PASS；实体缺失一律 removed_pending_review（全量实体清单差集，无批准删除通道）"
+      },
+      "counts": {
+        "removed_pending_review": 1
+      },
+      "ledger": "INDETERMINATE",
+      "after_acceptance": "PASS",
+      "overall": "LEDGER_INDETERMINATE",
+      "notes": [
+        "整改后缺失 1 个实体：当前无批准删除通道，一律 removed_pending_review 阻断（S1-R2-02）；若要允许某类删除，必须先显式定义政策与可追溯的批准记录"
+      ],
+      "items": [
+        {
+          "key": "record:SD-0001|-",
+          "identity_kind": "record",
+          "record_id": "SD-0001",
+          "evidence_domain": null,
+          "rule_id": "-",
+          "status": "removed_pending_review",
+          "before_codes": [],
+          "after_codes": [],
+          "after_unknown_codes": [],
+          "reduced": false,
+          "closure_evidence": null,
+          "reasons": [
+            "整改后批次缺失实体（SD-0001）：当前没有批准删除通道，一律待审核——无论该实体整改前是否有失败项，都不得据此自动放行"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "case": "empty_required_field_config",
+    "result": {
+      "schema_version": "stage1-validate-2",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "generated_at": "2026-10-26T15:37:38.631763+00:00",
+      "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\r3\\ext\\additional\\missing_name_empty_field_rule",
+      "mode": "validate",
+      "mode_note": "正式检查入口：不需要 expected 真值，结论只来自内核唯一判定路径。",
+      "expected_used": false,
+      "inputs": {
+        "delivery_spec.md": {
+          "sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+          "bytes": 1133
+        },
+        "dictionary.csv": {
+          "sha256": "24ea76d4f1cc7bcb6de684d6b8b5fe48354c46e2124600cfb4877c50638cd7ee",
+          "bytes": 365
+        },
+        "poi.csv": {
+          "sha256": "4f0eeeb376d257e81e2dd61f9d6c160ed8f5e21f1f56366a542bb5711b63d956",
+          "bytes": 708
+        },
+        "area.geojson": {
+          "sha256": "dcd51cef97c0dbc5c334352895849bdaa99547b9cef15ca0e48396e279779976",
+          "bytes": 288
+        },
+        "crs.json": {
+          "sha256": "9c8f3c1a9bc3c717bac6b21d807399d62872ccb1efb55fddef4af39eb2f06ebc",
+          "bytes": 152
+        },
+        "requirements.yaml": {
+          "sha256": "85a0b7a17efbfb12aa17e08001ec18700eb1adc945ea76db8cbc614e32271532",
+          "bytes": 4044
+        },
+        "approved-rules.yaml": {
+          "sha256": "a95e69bf90bad094ef15189f267b854392c767139bf9e08dcc1281e2e62fc659",
+          "bytes": 7941
+        }
+      },
+      "executed": false,
+      "exec_error": null,
+      "clauses_pending": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2"
+      ],
+      "config_rejections": [
+        {
+          "code": "INPUT_SCHEMA_INVALID",
+          "target": "R01",
+          "detail": "<root>: Value error, parameters 不满足 required_field_present 的约束：fields: List should have at least 1 item after validation, not 0"
+        }
+      ],
+      "preflight_problems": [],
+      "aggregate_verdict": "INDETERMINATE",
+      "aggregate_reason": "配置/前置校验未通过，拒绝执行（1 项拒绝 / 0 项问题）；仍有 10 个条款应检查（clauses_pending），未执行不得当成通过",
+      "clause_coverage": [],
+      "check_results": [],
+      "findings": [],
+      "findings_by_class": {},
+      "counts": {
+        "records": 12,
+        "clauses_required": 10,
+        "clauses_covered": 0,
+        "rules": 0,
+        "findings": 0
+      }
+    }
+  }
+]

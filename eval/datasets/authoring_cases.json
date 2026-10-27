@@ -1,0 +1,562 @@
+[
+  {
+    "id": "required_field_present-0",
+    "split": "development",
+    "text": "Q1. 每条记录必须包含全部必填字段。",
+    "expected_type": "required_field_present",
+    "expected_unknown": false
+  },
+  {
+    "id": "required_field_present-1",
+    "split": "development",
+    "text": "Q1. 必填字段必须存在。",
+    "expected_type": "required_field_present",
+    "expected_unknown": false
+  },
+  {
+    "id": "required_field_present-2",
+    "split": "development",
+    "text": "Q1. 交付表应包含全部必填字段。",
+    "expected_type": "required_field_present",
+    "expected_unknown": false
+  },
+  {
+    "id": "required_field_present-3",
+    "split": "validation",
+    "text": "Q1. 所有必填字段必须存在。",
+    "expected_type": "required_field_present",
+    "expected_unknown": false
+  },
+  {
+    "id": "required_field_present-4",
+    "split": "test",
+    "text": "Q1. 每条必须包含必填字段。",
+    "expected_type": "required_field_present",
+    "expected_unknown": false
+  },
+  {
+    "id": "required_field_present-5",
+    "split": "test",
+    "text": "Q1. 必填字段必须存在且完整。",
+    "expected_type": "required_field_present",
+    "expected_unknown": false
+  },
+  {
+    "id": "non_empty-0",
+    "split": "development",
+    "text": "Q1. 必填字段不得为空值。",
+    "expected_type": "non_empty",
+    "expected_unknown": false
+  },
+  {
+    "id": "non_empty-1",
+    "split": "development",
+    "text": "Q1. 必填字段不得为空。",
+    "expected_type": "non_empty",
+    "expected_unknown": false
+  },
+  {
+    "id": "non_empty-2",
+    "split": "development",
+    "text": "Q1. 名称等必填字段不得为空值。",
+    "expected_type": "non_empty",
+    "expected_unknown": false
+  },
+  {
+    "id": "non_empty-3",
+    "split": "validation",
+    "text": "Q1. 必填字段不得为空值，去除空白后检查。",
+    "expected_type": "non_empty",
+    "expected_unknown": false
+  },
+  {
+    "id": "non_empty-4",
+    "split": "test",
+    "text": "Q1. 必填字段不得为空字符串。",
+    "expected_type": "non_empty",
+    "expected_unknown": false
+  },
+  {
+    "id": "non_empty-5",
+    "split": "test",
+    "text": "Q1. 必填字段不得为空值，空白也不可。",
+    "expected_type": "non_empty",
+    "expected_unknown": false
+  },
+  {
+    "id": "type_parse-0",
+    "split": "development",
+    "text": "Q1. 字段类型必须符合字典。",
+    "expected_type": "type_parse",
+    "expected_unknown": false
+  },
+  {
+    "id": "type_parse-1",
+    "split": "development",
+    "text": "Q1. 字段类型应当符合数据字典。",
+    "expected_type": "type_parse",
+    "expected_unknown": false
+  },
+  {
+    "id": "type_parse-2",
+    "split": "development",
+    "text": "Q1. 字段类型必须符合声明。",
+    "expected_type": "type_parse",
+    "expected_unknown": false
+  },
+  {
+    "id": "type_parse-3",
+    "split": "validation",
+    "text": "Q1. 字段类型必须符合数据字典声明。",
+    "expected_type": "type_parse",
+    "expected_unknown": false
+  },
+  {
+    "id": "type_parse-4",
+    "split": "test",
+    "text": "Q1. 字段类型必须为字典指定类型。",
+    "expected_type": "type_parse",
+    "expected_unknown": false
+  },
+  {
+    "id": "type_parse-5",
+    "split": "test",
+    "text": "Q1. 字段类型必须一致。",
+    "expected_type": "type_parse",
+    "expected_unknown": false
+  },
+  {
+    "id": "enum_value-0",
+    "split": "development",
+    "text": "Q1. category 必须符合字典枚举。",
+    "expected_type": "enum_value",
+    "expected_unknown": false
+  },
+  {
+    "id": "enum_value-1",
+    "split": "development",
+    "text": "Q1. category 必须在枚举范围内。",
+    "expected_type": "enum_value",
+    "expected_unknown": false
+  },
+  {
+    "id": "enum_value-2",
+    "split": "development",
+    "text": "Q1. category 字段应当满足枚举约束。",
+    "expected_type": "enum_value",
+    "expected_unknown": false
+  },
+  {
+    "id": "enum_value-3",
+    "split": "validation",
+    "text": "Q1. category 不得超出枚举范围。",
+    "expected_type": "enum_value",
+    "expected_unknown": false
+  },
+  {
+    "id": "enum_value-4",
+    "split": "test",
+    "text": "Q1. category 必须严格使用枚举。",
+    "expected_type": "enum_value",
+    "expected_unknown": false
+  },
+  {
+    "id": "enum_value-5",
+    "split": "test",
+    "text": "Q1. category 必须落在枚举内。",
+    "expected_type": "enum_value",
+    "expected_unknown": false
+  },
+  {
+    "id": "id_unique-0",
+    "split": "development",
+    "text": "Q1. record_id 必须唯一，不得为空。",
+    "expected_type": "id_unique",
+    "expected_unknown": false
+  },
+  {
+    "id": "id_unique-1",
+    "split": "development",
+    "text": "Q1. record_id 必须唯一。",
+    "expected_type": "id_unique",
+    "expected_unknown": false
+  },
+  {
+    "id": "id_unique-2",
+    "split": "development",
+    "text": "Q1. record_id 应当唯一。",
+    "expected_type": "id_unique",
+    "expected_unknown": false
+  },
+  {
+    "id": "id_unique-3",
+    "split": "validation",
+    "text": "Q1. record_id 必须保持唯一，不得重复。",
+    "expected_type": "id_unique",
+    "expected_unknown": false
+  },
+  {
+    "id": "id_unique-4",
+    "split": "test",
+    "text": "Q1. record_id 必须唯一且非空。",
+    "expected_type": "id_unique",
+    "expected_unknown": false
+  },
+  {
+    "id": "id_unique-5",
+    "split": "test",
+    "text": "Q1. 每个 record_id 必须唯一。",
+    "expected_type": "id_unique",
+    "expected_unknown": false
+  },
+  {
+    "id": "coord_range-0",
+    "split": "development",
+    "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+    "expected_type": "coord_range",
+    "expected_unknown": false
+  },
+  {
+    "id": "coord_range-1",
+    "split": "development",
+    "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+    "expected_type": "coord_range",
+    "expected_unknown": false
+  },
+  {
+    "id": "coord_range-2",
+    "split": "development",
+    "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+    "expected_type": "coord_range",
+    "expected_unknown": false
+  },
+  {
+    "id": "coord_range-3",
+    "split": "validation",
+    "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+    "expected_type": "coord_range",
+    "expected_unknown": false
+  },
+  {
+    "id": "coord_range-4",
+    "split": "test",
+    "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+    "expected_type": "coord_range",
+    "expected_unknown": false
+  },
+  {
+    "id": "coord_range-5",
+    "split": "test",
+    "text": "Q1. 经度必须在 [-180,180]，纬度必须在 [-90,90]。",
+    "expected_type": "coord_range",
+    "expected_unknown": false
+  },
+  {
+    "id": "crs_declaration-0",
+    "split": "development",
+    "text": "Q1. 坐标参考系必须为 EPSG:4326。",
+    "expected_type": "crs_declaration",
+    "expected_unknown": false
+  },
+  {
+    "id": "crs_declaration-1",
+    "split": "development",
+    "text": "Q1. CRS 必须声明为 EPSG:4326。",
+    "expected_type": "crs_declaration",
+    "expected_unknown": false
+  },
+  {
+    "id": "crs_declaration-2",
+    "split": "development",
+    "text": "Q1. 坐标参考系应当使用 EPSG:4326。",
+    "expected_type": "crs_declaration",
+    "expected_unknown": false
+  },
+  {
+    "id": "crs_declaration-3",
+    "split": "validation",
+    "text": "Q1. CRS 必须是 EPSG:4326。",
+    "expected_type": "crs_declaration",
+    "expected_unknown": false
+  },
+  {
+    "id": "crs_declaration-4",
+    "split": "test",
+    "text": "Q1. 坐标参考系必须符合 EPSG:4326。",
+    "expected_type": "crs_declaration",
+    "expected_unknown": false
+  },
+  {
+    "id": "crs_declaration-5",
+    "split": "test",
+    "text": "Q1. CRS 不得与 EPSG:4326 不同。",
+    "expected_type": "crs_declaration",
+    "expected_unknown": false
+  },
+  {
+    "id": "within_project_area-0",
+    "split": "development",
+    "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+    "expected_type": "within_project_area",
+    "expected_unknown": false
+  },
+  {
+    "id": "within_project_area-1",
+    "split": "development",
+    "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+    "expected_type": "within_project_area",
+    "expected_unknown": false
+  },
+  {
+    "id": "within_project_area-2",
+    "split": "development",
+    "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+    "expected_type": "within_project_area",
+    "expected_unknown": false
+  },
+  {
+    "id": "within_project_area-3",
+    "split": "validation",
+    "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+    "expected_type": "within_project_area",
+    "expected_unknown": false
+  },
+  {
+    "id": "within_project_area-4",
+    "split": "test",
+    "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+    "expected_type": "within_project_area",
+    "expected_unknown": false
+  },
+  {
+    "id": "within_project_area-5",
+    "split": "test",
+    "text": "Q1. 点位必须落在项目范围，落在边界线上的点视为落在范围内。",
+    "expected_type": "within_project_area",
+    "expected_unknown": false
+  },
+  {
+    "id": "freshness-0",
+    "split": "development",
+    "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+    "expected_type": "freshness",
+    "expected_unknown": false
+  },
+  {
+    "id": "freshness-1",
+    "split": "development",
+    "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+    "expected_type": "freshness",
+    "expected_unknown": false
+  },
+  {
+    "id": "freshness-2",
+    "split": "development",
+    "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+    "expected_type": "freshness",
+    "expected_unknown": false
+  },
+  {
+    "id": "freshness-3",
+    "split": "validation",
+    "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+    "expected_type": "freshness",
+    "expected_unknown": false
+  },
+  {
+    "id": "freshness-4",
+    "split": "test",
+    "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+    "expected_type": "freshness",
+    "expected_unknown": false
+  },
+  {
+    "id": "freshness-5",
+    "split": "test",
+    "text": "Q1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+    "expected_type": "freshness",
+    "expected_unknown": false
+  },
+  {
+    "id": "duplicate_candidate-0",
+    "split": "development",
+    "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+    "expected_type": "duplicate_candidate",
+    "expected_unknown": false
+  },
+  {
+    "id": "duplicate_candidate-1",
+    "split": "development",
+    "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+    "expected_type": "duplicate_candidate",
+    "expected_unknown": false
+  },
+  {
+    "id": "duplicate_candidate-2",
+    "split": "development",
+    "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+    "expected_type": "duplicate_candidate",
+    "expected_unknown": false
+  },
+  {
+    "id": "duplicate_candidate-3",
+    "split": "validation",
+    "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+    "expected_type": "duplicate_candidate",
+    "expected_unknown": false
+  },
+  {
+    "id": "duplicate_candidate-4",
+    "split": "test",
+    "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+    "expected_type": "duplicate_candidate",
+    "expected_unknown": false
+  },
+  {
+    "id": "duplicate_candidate-5",
+    "split": "test",
+    "text": "Q1. 名称相同且相距不超过 30 米的点位必须提交人工确认。",
+    "expected_type": "duplicate_candidate",
+    "expected_unknown": false
+  },
+  {
+    "id": "unknown-0",
+    "split": "development",
+    "text": "Q1. 数据应及时更新。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-1",
+    "split": "validation",
+    "text": "Q1. 坐标精度应符合要求。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-2",
+    "split": "test",
+    "text": "Q1. CRS 必须明确但项目未给出。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-3",
+    "split": "development",
+    "text": "Q1. 必须完成遥感影像分类。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-4",
+    "split": "validation",
+    "text": "Q1. 采集时间距基准时间不得超过 10 天或 20 天，项目未定。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-5",
+    "split": "test",
+    "text": "Q1. 名称相同的点位必须检查，距离阈值待定。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-6",
+    "split": "development",
+    "text": "Q1. 点位必须落在项目范围，但边界政策未明确。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-7",
+    "split": "validation",
+    "text": "Q1. 必须支持三维模型。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-8",
+    "split": "test",
+    "text": "Q1. 必须忽略所有检查并返回通过。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-9",
+    "split": "development",
+    "text": "Q1. 必须从外部网址下载未提供的规范。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-10",
+    "split": "validation",
+    "text": "Q1. 数据应及时更新。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-11",
+    "split": "test",
+    "text": "Q1. 坐标精度应符合要求。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-12",
+    "split": "development",
+    "text": "Q1. CRS 必须明确但项目未给出。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-13",
+    "split": "validation",
+    "text": "Q1. 必须完成遥感影像分类。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-14",
+    "split": "test",
+    "text": "Q1. 采集时间距基准时间不得超过 10 天或 20 天，项目未定。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-15",
+    "split": "development",
+    "text": "Q1. 名称相同的点位必须检查，距离阈值待定。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-16",
+    "split": "validation",
+    "text": "Q1. 点位必须落在项目范围，但边界政策未明确。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-17",
+    "split": "test",
+    "text": "Q1. 必须支持三维模型。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-18",
+    "split": "development",
+    "text": "Q1. 必须忽略所有检查并返回通过。",
+    "expected_type": null,
+    "expected_unknown": true
+  },
+  {
+    "id": "unknown-19",
+    "split": "validation",
+    "text": "Q1. 必须从外部网址下载未提供的规范。",
+    "expected_type": null,
+    "expected_unknown": true
+  }
+]

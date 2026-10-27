@@ -1,0 +1,10 @@
+- Rows must contain every field marked required in the supplied dictionary.
+- Required values must not be empty after trimming leading and trailing whitespace.
+- Parse every dictionary field using its declared type; timestamps must use RFC3339 with a timezone.
+- category must match a dictionary enum exactly; aliases are not allowed.
+- record_id must be unique across this batch.
+- Both coordinates must be finite: longitude [-165,165] and latitude [-75,75].
+- The declared coordinate reference system must be EPSG:4326.
+- Points must lie in the project polygon. Include points on its boundary.
+- At reference time 2026-10-20T00:00:00Z the age limit is 13 days.
+- Flag points within 17 metres with equal names for manual duplicate review. This is advisory only and is not a release condition.

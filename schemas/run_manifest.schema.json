@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RunManifest",
+  "type": "object",
+  "required": ["schema_version", "bundle", "mode", "inputs", "tool_version"],
+  "properties": {
+    "schema_version": {"type": ["string", "integer"]},
+    "bundle": {"type": "string"},
+    "mode": {"type": "string", "enum": ["live", "replay", "manual"]},
+    "mode_note": {"type": "string"},
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0}
+        },
+        "required": ["sha256", "bytes"]
+      }
+    },
+    "reference_time": {"type": "string", "description": "固定基准时间，禁止使用当前时间"},
+    "ruleset_hash": {"type": "string"},
+    "coverage": {"type": "string"},
+    "tool_version": {"type": "string"},
+    "commit_sha": {"type": ["string", "null"]},
+    "python": {"type": "string"},
+    "third_party_dependencies": {"type": "array", "items": {"type": "string"}},
+    "model_config": {"type": "object", "description": "不得包含 API Key"},
+    "output_sha256": {"type": ["string", "null"]}
+  }
+}

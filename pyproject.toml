@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geoacceptance-local"
+version = "0.5.0rc1"
+description = "Traceable spatial delivery checks with human-reviewed rule proposals"
+requires-python = ">=3.13"
+license = "MIT"
+dependencies = ["shapely>=2.1,<3", "pyproj>=3.7,<4", "PyYAML>=6,<7", "pydantic>=2.10,<3", "jsonschema>=4.23,<5"]
+
+[project.scripts]
+geoacceptance = "geoacceptance.cli:main"
+geoacceptance-app = "geoacceptance.server:main"
+
+[tool.setuptools]
+packages = ["geoacceptance", "tools"]
+
+[tool.setuptools.package-data]
+geoacceptance = ["web/*.html", "web/*.css", "web/*.js"]

@@ -1,0 +1,69 @@
+[PASS] C00-identical 正例对照：clean → clean（无失败项）
+      overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={}
+[PASS] C01-canonical 正例对照：defective → corrected（8 关闭 + SD-0005 重复不可比）
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'closed': 8, 'not_comparable': 1}
+[PASS] EXT01-1      数据集级失败未修：blocked → blocked（CRS 声明错误没改）
+      overall=LEDGER_OPEN ledger=OPEN after=FAIL counts={'still_open': 1}
+[PASS] EXT01-2      整改后缺证据：clean → ambiguous（阈值与精度依据不足）
+      overall=LEDGER_CLOSED_NOT_ACCEPTED ledger=CLOSED after=INDETERMINATE counts={}
+[PASS] EXT01-3      规则未批准：同数据但 R09 改 DRAFT（检查资格不具备）
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'unresolved_unknown': 1}
+[PASS] EXT02-1      删除缺陷实体：整改后直接删掉这条记录（故障实体删除）
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'removed_pending_review': 1}
+[PASS] EXT03-1      唯一实体多条 finding：不构成实体重复（两条都真实修复）
+      overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={'closed': 2}
+[PASS] EXT04-1      同版本改参数：R02 trim=true→false（放宽尺子制造“修复”）
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'not_comparable': 1}
+[PASS] EXT04-2      改判定阈值：R09 max_age_days 30→365（来源对不上 ⇒ 配置拒绝）
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'not_comparable': 1}
+[PASS] EXT04-3      改数据字典：把非法类别加进枚举（字典变了就不是同一把尺子）
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'not_comparable': 1}
+[PASS] EXT04-4      改项目范围：把 area.geojson 放大 4 倍让越界点“变合法”
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'not_comparable': 1}
+[PASS] EXT04-5      改基准时间：R09 reference_time 前移（来源同步改 ⇒ 拒绝执行）
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=FAIL counts={'not_comparable': 12}
+[PASS] EXT04-6      规则删除：整改后批次没有 R09（尺子被撤走）
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'not_comparable': 1}
+[PASS] EXT04-7      依赖失效：上游 R03 改 DRAFT ⇒ 下游未完整执行
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=INDETERMINATE counts={'unresolved_unknown': 1}
+[PASS] EXT04-8      批准来源变化：数据修好了但 R09 被重新批准
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'not_comparable': 1}
+[PASS] EXT02-2      新增实体必须披露（不比较没出现过失败的实体是不够的）
+      overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={}
+[PASS] EXT04-9      新增规则必须披露（R11 只存在于整改后批次）
+      overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={'closed': 1}
+[PASS] R202-1       干净实体删除：无缺陷记录消失也必须待审核，不得整体放行
+      overall=LEDGER_INDETERMINATE ledger=INDETERMINATE after=PASS counts={'removed_pending_review': 1}
+[PASS] R202-2       行序打乱：身份按 record_id 而非行号，结论不得变化
+      overall=LEDGER_CLOSED_ACCEPTED ledger=CLOSED after=PASS counts={}
+[PASS] PARAM-01     required_field_present：空必需数组（fields=[]）
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R01')]
+[PASS] PARAM-02     non_empty：错误类型（trim='yes' 字符串）
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R02')]
+[PASS] PARAM-03     type_parse：fields 不是数组
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R03')]
+[PASS] PARAM-04     enum_value：缺必填参数（allow_alias）
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R04')]
+[PASS] PARAM-05     id_unique：field 不是字符串
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R05')]
+[PASS] PARAM-06     coord_range：lon_range 少于 2 个数
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R06'), ('PARAMETER_VALUE_MISMATCH', 'R06')]
+[PASS] PARAM-07     crs_declaration：expected_crs 含非法字符
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R07'), ('PARAMETER_VALUE_MISMATCH', 'R07')]
+[PASS] PARAM-08     within_project_area：boundary_policy 非法枚举
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R08'), ('BOUNDARY_POLICY_UNKNOWN', 'R08')]
+[PASS] PARAM-09     freshness：max_age_days 为负
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R09'), ('PARAMETER_VALUE_MISMATCH', 'R09')]
+[PASS] PARAM-10     duplicate_candidate：未知参数键（extra）
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R10'), ('PARAMETER_SOURCE_UNCLASSIFIED', 'R10')]
+[PASS] PARAM-11     未知 rule_type：magic_check
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R05')]
+[PASS] PARAM-12     缺 parameters：不得按默认值继续执行
+      executed=False verdict=INDETERMINATE clauses_required=10 rejections=[('INPUT_SCHEMA_INVALID', 'R01')]
+[PASS] PARAM-00     有效输入正向对照：clean 照常执行（不误杀）
+      executed=True verdict=PASS clauses_required=9 rejections=[]
+[PASS] VALIDATE-1   正式入口 validate：新包无 expected 也能给出结论
+      verdict=FAIL expected_used=False findings={'FAIL': 1, 'CANDIDATE': 1} schema_err=[]
+
+COMPARE_PROBES_OK=true（33/33）
+结构化结果：C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\work\stage1-compare\compare-probe-results.json

@@ -1,0 +1,17 @@
+# 哈希证据依赖字节级稳定（INPUT_MANIFEST.json 登记的是 sha256）。
+# 若检出时被 core.autocrlf=true 转成 CRLF，哈希全部失配，会误报「输入被篡改」。
+# 因此下列文件类型在任何环境、任何 autocrlf 设置下都必须以 LF 检出。
+*.py      text eol=lf
+*.json    text eol=lf
+*.yaml    text eol=lf
+*.yml     text eol=lf
+*.csv     text eol=lf
+*.md      text eol=lf
+*.geojson text eol=lf
+# 依赖锁定与运行输出同样要求字节级稳定（可复现环境依赖它）
+*.txt     text eol=lf
+*.lock    text eol=lf
+
+# Preserve the exact pre-inference frozen holdout bytes and its recorded manifest digest.
+eval/heldout-v1/** -text
+acceptance/stage-4/local-model/heldout-v1/** -text

@@ -1,0 +1,6 @@
+Batch 0 /50
+Batch 10 /50
+Batch 20 /50
+Batch 30 /50
+Batch 40 /50
+{"mapping": {"development": {"n": 37, "mapping_accuracy": 1.0}, "validation": {"n": 17, "mapping_accuracy": 1.0}, "test": {"n": 26, "mapping_accuracy": 1.0}}, "batch_test_correct": 20, "batch_test_n": 20, "false_accepts": 0, "public": "RUN", "seconds": 102.617}

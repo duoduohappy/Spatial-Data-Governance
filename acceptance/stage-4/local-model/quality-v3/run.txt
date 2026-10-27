@@ -1,0 +1,11 @@
+{"case": "clear-base", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 105527.03}
+{"case": "clear-seven-days", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 41684.13}
+{"case": "clear-fifteen-metres", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 42041.6}
+{"case": "clear-reference-time", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 42139.63}
+{"case": "missing-time", "status": "CHECKS_FAIL", "duration_ms": 40624.56}
+{"case": "missing-reference", "status": "CHECKS_FAIL", "duration_ms": 40726.51}
+{"case": "missing-boundary", "status": "CHECKS_FAIL", "duration_ms": 43922.45}
+{"case": "conflicting-crs", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 46594.92}
+{"case": "conflicting-boundary", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 44581.22}
+{"case": "unsupported-3d", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 43997.84}
+{"case": "injection-approval", "status": "CHECKS_PASS_REVIEW_PENDING", "duration_ms": 44373.0}

@@ -1,0 +1,406 @@
+[
+  {
+    "case": "required_supported_clause_without_rule",
+    "expected": "INDETERMINATE",
+    "actual": "PASS",
+    "checks": [
+      {
+        "id": "R01",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R02",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R03",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R04",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R05",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R07",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R06",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R08",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R10",
+        "verdict": "INDETERMINATE",
+        "status": "PARTIAL"
+      }
+    ],
+    "findings": [
+      {
+        "finding_id": "F0001",
+        "stable_key": "R10|DUPLICATE_CANDIDATE|12|longitude/latitude",
+        "record_locator": {
+          "file": "poi.csv",
+          "line": 12,
+          "record_id": "SD-0011"
+        },
+        "record_id": "SD-0011",
+        "rule_id": "R10",
+        "field": "longitude/latitude",
+        "observed_value": "116.314,39.9185 与 116.3142,39.9186",
+        "expected_constraint": "相距不超过 30 米且同名，须人工确认是否重复",
+        "reason_code": "DUPLICATE_CANDIDATE",
+        "evidence": {
+          "distance_m": 20.36,
+          "peer_line": 13,
+          "peer_record_id": "SD-0012"
+        },
+        "review_state": "OPEN"
+      }
+    ]
+  },
+  {
+    "case": "missing_crs_declaration",
+    "expected": "INDETERMINATE",
+    "actual": "FAIL",
+    "checks": [
+      {
+        "id": "R01",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R02",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R03",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R04",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R05",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R07",
+        "verdict": "FAIL",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "R09",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R06",
+        "verdict": "UNKNOWN",
+        "status": "BLOCKED"
+      },
+      {
+        "id": "R08",
+        "verdict": "UNKNOWN",
+        "status": "BLOCKED"
+      },
+      {
+        "id": "R10",
+        "verdict": "UNKNOWN",
+        "status": "BLOCKED"
+      }
+    ],
+    "findings": [
+      {
+        "finding_id": "F0001",
+        "stable_key": "R07|CRS_MISSING_DECLARATION|dataset|declared_crs",
+        "record_locator": {
+          "file": "crs.json",
+          "record_id": null
+        },
+        "record_id": null,
+        "rule_id": "R07",
+        "field": "declared_crs",
+        "observed_value": null,
+        "expected_constraint": "必须有明确 CRS 声明",
+        "reason_code": "CRS_MISSING_DECLARATION",
+        "evidence": {},
+        "review_state": "OPEN"
+      }
+    ]
+  },
+  {
+    "case": "unexpected_crs_with_degree_unit",
+    "expected": "FAIL_OR_INDETERMINATE",
+    "actual": "PASS",
+    "checks": [
+      {
+        "id": "R01",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R02",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R03",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R04",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R05",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R07",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R09",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R06",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R08",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R10",
+        "verdict": "INDETERMINATE",
+        "status": "PARTIAL"
+      }
+    ],
+    "findings": [
+      {
+        "finding_id": "F0001",
+        "stable_key": "R10|DUPLICATE_CANDIDATE|12|longitude/latitude",
+        "record_locator": {
+          "file": "poi.csv",
+          "line": 12,
+          "record_id": "SD-0011"
+        },
+        "record_id": "SD-0011",
+        "rule_id": "R10",
+        "field": "longitude/latitude",
+        "observed_value": "116.314,39.9185 与 116.3142,39.9186",
+        "expected_constraint": "相距不超过 30 米且同名，须人工确认是否重复",
+        "reason_code": "DUPLICATE_CANDIDATE",
+        "evidence": {
+          "distance_m": 20.36,
+          "peer_line": 13,
+          "peer_record_id": "SD-0012"
+        },
+        "review_state": "OPEN"
+      }
+    ]
+  },
+  {
+    "case": "unknown_dependency",
+    "expected": "REJECT_OR_INDETERMINATE",
+    "actual": "PASS",
+    "checks": [
+      {
+        "id": "R01",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R02",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R03",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R04",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R05",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R07",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R09",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R06",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R08",
+        "verdict": "PASS",
+        "status": "COMPLETED"
+      },
+      {
+        "id": "R10",
+        "verdict": "INDETERMINATE",
+        "status": "PARTIAL"
+      }
+    ],
+    "findings": [
+      {
+        "finding_id": "F0001",
+        "stable_key": "R10|DUPLICATE_CANDIDATE|12|longitude/latitude",
+        "record_locator": {
+          "file": "poi.csv",
+          "line": 12,
+          "record_id": "SD-0011"
+        },
+        "record_id": "SD-0011",
+        "rule_id": "R10",
+        "field": "longitude/latitude",
+        "observed_value": "116.314,39.9185 与 116.3142,39.9186",
+        "expected_constraint": "相距不超过 30 米且同名，须人工确认是否重复",
+        "reason_code": "DUPLICATE_CANDIDATE",
+        "evidence": {
+          "distance_m": 20.36,
+          "peer_line": 13,
+          "peer_record_id": "SD-0012"
+        },
+        "review_state": "OPEN"
+      }
+    ]
+  },
+  {
+    "case": "substring_threshold_3_in_30",
+    "expected": "rejection",
+    "actual": []
+  },
+  {
+    "case": "candidate_count_semantics",
+    "actual": {
+      "rule_id": "R10",
+      "requirement_ids": [
+        "C2"
+      ],
+      "verdict": "INDETERMINATE",
+      "execution_status": "PARTIAL",
+      "reason_code": "OK",
+      "summary_counts": {
+        "findings": 1,
+        "records_evaluated": 11,
+        "records_blocked": 1
+      },
+      "required_for_release": false
+    }
+  },
+  {
+    "case": "invalid_verdicts",
+    "actual": [
+      {
+        "rule_id": "R06",
+        "requirement_ids": [
+          "B1"
+        ],
+        "verdict": "UNKNOWN",
+        "execution_status": "BLOCKED",
+        "reason_code": "ALL_RECORDS_BLOCKED",
+        "summary_counts": {
+          "findings": 0,
+          "records_evaluated": 0,
+          "records_blocked": 12
+        },
+        "required_for_release": true
+      },
+      {
+        "rule_id": "R08",
+        "requirement_ids": [
+          "B3"
+        ],
+        "verdict": "UNKNOWN",
+        "execution_status": "BLOCKED",
+        "reason_code": "ALL_RECORDS_BLOCKED",
+        "summary_counts": {
+          "findings": 0,
+          "records_evaluated": 0,
+          "records_blocked": 12
+        },
+        "required_for_release": true
+      },
+      {
+        "rule_id": "R10",
+        "requirement_ids": [
+          "C2"
+        ],
+        "verdict": "UNKNOWN",
+        "execution_status": "BLOCKED",
+        "reason_code": "ALL_RECORDS_BLOCKED",
+        "summary_counts": {
+          "findings": 0,
+          "records_evaluated": 0,
+          "records_blocked": 12
+        },
+        "required_for_release": false
+      }
+    ]
+  },
+  {
+    "case": "input_manifest",
+    "actual": []
+  },
+  {
+    "case": "exclusive_boundary",
+    "actual": {
+      "(0, 0.5)": true,
+      "(1, 0.5)": false,
+      "(0.5, 0)": true,
+      "(0.5, 1)": false
+    }
+  },
+  {
+    "case": "mandatory_clause_downgraded",
+    "actual": "PASS"
+  },
+  {
+    "case": "wrong_document_hash",
+    "actual": []
+  }
+]

@@ -1,0 +1,341 @@
+{
+  "schema_version": "stage1-compare-2",
+  "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+  "python": "3.13.14",
+  "before": {
+    "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\defective",
+    "aggregate": "FAIL",
+    "aggregate_reason": "存在必检条款 FAIL：A2(EMPTY_VALUE),A3(TYPE_PARSE_ERROR),A4(ENUM_VIOLATION),A5(DUPLICATE_ID),B1(LATITUDE_OUT_OF_RANGE),B3(OUTSIDE_PROJECT_AREA),C1(STALE_RECORD)",
+    "findings": 11,
+    "findings_by_class": {
+      "FAIL": 10,
+      "CANDIDATE": 1
+    },
+    "records": 15,
+    "config_rejections": [],
+    "preflight_problems": [],
+    "exec_error": null
+  },
+  "after": {
+    "bundle": "C:\\Users\\TempAdmin\\AppData\\Local\\Temp\\ga-r2\\examples\\corrected",
+    "aggregate": "PASS",
+    "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+    "findings": 1,
+    "findings_by_class": {
+      "CANDIDATE": 1
+    },
+    "records": 15,
+    "config_rejections": [],
+    "preflight_problems": [],
+    "exec_error": null
+  },
+  "identity": {
+    "strategy": "record_id（poi.csv 首列）在两批均存在且唯一；不使用行号",
+    "index_source": "全量输入记录（不是只统计出现过失败的 finding）",
+    "dataset_identity": "数据集级问题用「规则身份 + 证据域 file」追踪，不因无 record_id 消失",
+    "before": {
+      "records": 15,
+      "distinct": 14,
+      "unidentified": 0,
+      "duplicated": [
+        "SD-0005"
+      ]
+    },
+    "after": {
+      "records": 15,
+      "distinct": 15,
+      "unidentified": 0,
+      "duplicated": []
+    },
+    "ok": false
+  },
+  "ruler": {
+    "rule_fingerprint_fields": [
+      "rule_id",
+      "rule_type",
+      "status",
+      "version",
+      "required_for_release",
+      "requirement_ids",
+      "parameters",
+      "parameter_sources",
+      "preconditions",
+      "reviewer",
+      "approved_at"
+    ],
+    "artifact_fingerprint_fields": [
+      "dictionary.csv",
+      "area.geojson",
+      "delivery_spec.md",
+      "requirements",
+      "reference_time"
+    ],
+    "rules_removed_after": [],
+    "rules_added_after": [],
+    "rule_fingerprint_changed": {},
+    "artifacts_changed": [],
+    "rule_versions_changed": [],
+    "same_ruler": true
+  },
+  "scope": {
+    "entities_removed_after": [],
+    "entities_added_after": [
+      "SD-0012"
+    ],
+    "advisory_after": [
+      {
+        "key": "record:SD-0011|R10",
+        "rule_id": "R10",
+        "codes": [
+          "DUPLICATE_CANDIDATE"
+        ]
+      }
+    ],
+    "unknown_before": [
+      {
+        "requirement_id": "A2",
+        "coverage_state": "COVERED",
+        "verdict": "FAIL",
+        "execution_status": "COMPLETED",
+        "reason_code": "EMPTY_VALUE"
+      },
+      {
+        "requirement_id": "A3",
+        "coverage_state": "COVERED",
+        "verdict": "FAIL",
+        "execution_status": "PARTIAL",
+        "reason_code": "TYPE_PARSE_ERROR"
+      },
+      {
+        "requirement_id": "A4",
+        "coverage_state": "COVERED",
+        "verdict": "FAIL",
+        "execution_status": "PARTIAL",
+        "reason_code": "ENUM_VIOLATION"
+      },
+      {
+        "requirement_id": "A5",
+        "coverage_state": "COVERED",
+        "verdict": "FAIL",
+        "execution_status": "COMPLETED",
+        "reason_code": "DUPLICATE_ID"
+      },
+      {
+        "requirement_id": "B1",
+        "coverage_state": "COVERED",
+        "verdict": "FAIL",
+        "execution_status": "PARTIAL",
+        "reason_code": "LATITUDE_OUT_OF_RANGE"
+      },
+      {
+        "requirement_id": "B3",
+        "coverage_state": "COVERED",
+        "verdict": "FAIL",
+        "execution_status": "PARTIAL",
+        "reason_code": "OUTSIDE_PROJECT_AREA"
+      },
+      {
+        "requirement_id": "C1",
+        "coverage_state": "COVERED",
+        "verdict": "FAIL",
+        "execution_status": "PARTIAL",
+        "reason_code": "STALE_RECORD"
+      }
+    ],
+    "unknown_after": [],
+    "ledger_size": 9,
+    "closure_rule": "closed 需要整改后同一规则仍 APPROVED、未被配置拒绝、有结果、execution_status=COMPLETED、规则与所映射条款结论均为 PASS"
+  },
+  "counts": {
+    "closed": 8,
+    "not_comparable": 1
+  },
+  "ledger": "INDETERMINATE",
+  "after_acceptance": "PASS",
+  "overall": "LEDGER_INDETERMINATE",
+  "notes": [],
+  "items": [
+    {
+      "key": "record:SD-0002|R03",
+      "identity_kind": "record",
+      "record_id": "SD-0002",
+      "evidence_domain": null,
+      "rule_id": "R03",
+      "status": "closed",
+      "before_codes": [
+        "TYPE_PARSE_ERROR"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": []
+    },
+    {
+      "key": "record:SD-0003|R04",
+      "identity_kind": "record",
+      "record_id": "SD-0003",
+      "evidence_domain": null,
+      "rule_id": "R04",
+      "status": "closed",
+      "before_codes": [
+        "ENUM_VIOLATION"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": []
+    },
+    {
+      "key": "record:SD-0005|R05",
+      "identity_kind": "record",
+      "record_id": "SD-0005",
+      "evidence_domain": null,
+      "rule_id": "R05",
+      "status": "not_comparable",
+      "before_codes": [
+        "DUPLICATE_ID"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": [
+        "记录标识 SD-0005 在批次内重复，身份不可用（拒绝按行号匹配）"
+      ]
+    },
+    {
+      "key": "record:SD-0006|R09",
+      "identity_kind": "record",
+      "record_id": "SD-0006",
+      "evidence_domain": null,
+      "rule_id": "R09",
+      "status": "closed",
+      "before_codes": [
+        "STALE_RECORD"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": []
+    },
+    {
+      "key": "record:SD-0007|R02",
+      "identity_kind": "record",
+      "record_id": "SD-0007",
+      "evidence_domain": null,
+      "rule_id": "R02",
+      "status": "closed",
+      "before_codes": [
+        "EMPTY_VALUE"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": []
+    },
+    {
+      "key": "record:SD-0009|R06",
+      "identity_kind": "record",
+      "record_id": "SD-0009",
+      "evidence_domain": null,
+      "rule_id": "R06",
+      "status": "closed",
+      "before_codes": [
+        "LATITUDE_OUT_OF_RANGE"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": []
+    },
+    {
+      "key": "record:SD-0010|R02",
+      "identity_kind": "record",
+      "record_id": "SD-0010",
+      "evidence_domain": null,
+      "rule_id": "R02",
+      "status": "closed",
+      "before_codes": [
+        "EMPTY_VALUE"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": []
+    },
+    {
+      "key": "record:SD-0011|R08",
+      "identity_kind": "record",
+      "record_id": "SD-0011",
+      "evidence_domain": null,
+      "rule_id": "R08",
+      "status": "closed",
+      "before_codes": [
+        "OUTSIDE_PROJECT_AREA"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": []
+    },
+    {
+      "key": "record:SD-0013|R03",
+      "identity_kind": "record",
+      "record_id": "SD-0013",
+      "evidence_domain": null,
+      "rule_id": "R03",
+      "status": "closed",
+      "before_codes": [
+        "TYPE_PARSE_ERROR"
+      ],
+      "after_codes": [],
+      "after_unknown_codes": [],
+      "reduced": false,
+      "closure_evidence": {
+        "rule_status": "APPROVED",
+        "rule_verdict": "PASS",
+        "rule_execution_status": "COMPLETED"
+      },
+      "reasons": []
+    }
+  ]
+}

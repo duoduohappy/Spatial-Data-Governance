@@ -1,0 +1,306 @@
+{
+  "document": "1. 每条设施记录都须含数据字典标记的全部必填列。\n2. 各必填列不可为空：先去掉两端空白，再判定字符串长度是否为零。\n3. 所有字段均须按字典声明的数据类型解析；时间字段采用含时区的 RFC3339。\n4. category 只能使用字典里的枚举编码，禁止枚举别名。\n5. record_id 在本交付批次内不得出现重复。\n6. 经度允许 [-170,170]，纬度允许 [-80,80]；二者均须为有限数值。\n7. 交付点的坐标参考系限定为 EPSG:4326。\n8. 所有点必须位于项目多边形内；边界线上的点不计入范围。\n9. 采集时间相对 2026-10-15T00:00:00Z 不得早于 11 天。\n10. 名称相同且间距不超过 24 米的记录列为疑似重复；仅供参考，不参与放行。\n",
+  "dictionary": "field_name,description,data_type,required,enum_values\nrecord_id,记录唯一标识,string,true,\nname,设施名称,string,true,\ncategory,设施类别,string,true,\"[\"\"学校\"\",\"\"医院\"\",\"\"公园\"\",\"\"公交站\"\"]\"\nlongitude,经度（WGS84 十进制度）,number,true,\nlatitude,纬度（WGS84 十进制度）,number,true,\nsource_time,数据采集时间,datetime,true,\n",
+  "fields": [
+    "record_id",
+    "name",
+    "category",
+    "longitude",
+    "latitude",
+    "source_time"
+  ],
+  "rule_types": [
+    "required_field_present",
+    "non_empty",
+    "type_parse",
+    "enum_value",
+    "id_unique",
+    "coord_range",
+    "crs_declaration",
+    "within_project_area",
+    "freshness",
+    "duplicate_candidate"
+  ],
+  "parameter_schemas": {
+    "required_field_present": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fields"
+      ],
+      "title": "PRequiredFieldPresent",
+      "type": "object"
+    },
+    "non_empty": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Fields",
+          "type": "array"
+        },
+        "missing_rate_policy": {
+          "const": "STRICT",
+          "title": "Missing Rate Policy",
+          "type": "string"
+        },
+        "trim": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Trim"
+        },
+        "allowed_missing_rate": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "ge": 0,
+              "le": 1
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Allowed Missing Rate"
+        }
+      },
+      "required": [
+        "fields",
+        "missing_rate_policy"
+      ],
+      "title": "PNonEmpty",
+      "type": "object"
+    },
+    "type_parse": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Fields",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fields"
+      ],
+      "title": "PTypeParse",
+      "type": "object"
+    },
+    "enum_value": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "minLength": 1,
+          "title": "Field",
+          "type": "string"
+        },
+        "allow_alias": {
+          "title": "Allow Alias",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field",
+        "allow_alias"
+      ],
+      "title": "PEnumValue",
+      "type": "object"
+    },
+    "id_unique": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "minLength": 1,
+          "title": "Field",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field"
+      ],
+      "title": "PIdUnique",
+      "type": "object"
+    },
+    "coord_range": {
+      "additionalProperties": false,
+      "properties": {
+        "lon_range": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Lon Range",
+          "type": "array"
+        },
+        "lat_range": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Lat Range",
+          "type": "array"
+        }
+      },
+      "required": [
+        "lon_range",
+        "lat_range"
+      ],
+      "title": "PCoordRange",
+      "type": "object"
+    },
+    "crs_declaration": {
+      "additionalProperties": false,
+      "properties": {
+        "expected_crs": {
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:+-]+$",
+          "title": "Expected Crs",
+          "type": "string"
+        },
+        "expected_from_sidecar": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected From Sidecar"
+        }
+      },
+      "required": [
+        "expected_crs"
+      ],
+      "title": "PCrsDeclaration",
+      "type": "object"
+    },
+    "within_project_area": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary_policy": {
+          "enum": [
+            "inclusive",
+            "exclusive"
+          ],
+          "title": "Boundary Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "boundary_policy"
+      ],
+      "title": "PWithinProjectArea",
+      "type": "object"
+    },
+    "freshness": {
+      "additionalProperties": false,
+      "properties": {
+        "reference_time": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2}(\\.\\d+)?)?(Z|[+-]\\d{2}:\\d{2})$",
+          "title": "Reference Time",
+          "type": "string"
+        },
+        "max_age_days": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "ge": 0,
+          "title": "Max Age Days"
+        }
+      },
+      "required": [
+        "reference_time",
+        "max_age_days"
+      ],
+      "title": "PFreshness",
+      "type": "object"
+    },
+    "duplicate_candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "max_distance_m": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "ge": 0,
+          "title": "Max Distance M"
+        },
+        "name_equal": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name Equal"
+        }
+      },
+      "required": [
+        "max_distance_m"
+      ],
+      "title": "PDuplicateCandidate",
+      "type": "object"
+    }
+  },
+  "excluded": "No POI record values, coordinates, source files, credentials, paths or prior approvals are sent."
+}

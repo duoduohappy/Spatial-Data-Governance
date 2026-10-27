@@ -1,0 +1,8 @@
+[PASS] clean      aggregate=PASS          findings=1   -> C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\work\stage0\clean
+[PASS] defective  aggregate=FAIL          findings=11  -> C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\work\stage0\defective
+[PASS] corrected  aggregate=PASS          findings=1   -> C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\work\stage0\corrected
+[PASS] ambiguous  aggregate=INDETERMINATE findings=1   -> C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\work\stage0\ambiguous
+[PASS] blocked    aggregate=FAIL          findings=1   -> C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\work\stage0\blocked
+[PASS] crs_same_unit_wrong aggregate=FAIL          findings=1   -> C:\Users\TempAdmin\AppData\Local\Temp\ga-r3\work\stage0\crs_same_unit_wrong
+
+ALL_OK=true

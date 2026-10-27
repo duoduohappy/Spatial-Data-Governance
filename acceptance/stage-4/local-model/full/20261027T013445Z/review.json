@@ -1,0 +1,2171 @@
+{
+  "reviewer": "Codex synthetic development review; NOT independent or user approval",
+  "raw_automated_subset": {
+    "draft_only": true,
+    "coverage": true,
+    "parameters:freshness": true,
+    "all_ten_types": true
+  },
+  "raw_semantics": "REQUIRES_EDITS",
+  "changes": [
+    {
+      "path": "requirements.C2.required_for_release",
+      "old": true,
+      "new": false,
+      "reason": "C2 explicitly advisory; supported candidate check"
+    },
+    {
+      "path": "requirements.C2.support_status",
+      "old": "NEEDS_CLARIFICATION",
+      "new": "SUPPORTED",
+      "reason": "C2 explicitly advisory; supported candidate check"
+    },
+    {
+      "path": "requirements.C2.ambiguities",
+      "old": [
+        "本项仅供参考，不作为放行依据"
+      ],
+      "new": [],
+      "reason": "C2 explicitly advisory; supported candidate check"
+    },
+    {
+      "path": "rules.R01",
+      "old": {
+        "rule_id": "R01",
+        "rule_type": "required_field_present",
+        "requirement_ids": [
+          "A1"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time"
+          ]
+        },
+        "parameter_sources": [
+          {
+            "parameter": "fields",
+            "value": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "value_literal": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "requirement_id": "A1",
+            "source_line_start": 7,
+            "source_line_end": 7,
+            "source_quote": "A1. 每条记录必须包含全部必填字段。",
+            "interpretation": "必填字段列表",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "new": {
+        "rule_id": "R01",
+        "rule_type": "required_field_present",
+        "requirement_ids": [
+          "A1"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time"
+          ]
+        },
+        "parameter_sources": [],
+        "preconditions": [],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "reason": "Correct source literals/structural settings against original clauses; do not replace threshold values"
+    },
+    {
+      "path": "rules.R02",
+      "old": {
+        "rule_id": "R02",
+        "rule_type": "non_empty",
+        "requirement_ids": [
+          "A2"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time"
+          ],
+          "missing_rate_policy": "STRICT",
+          "trim": null
+        },
+        "parameter_sources": [
+          {
+            "parameter": "fields",
+            "value": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "value_literal": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "requirement_id": "A2",
+            "source_line_start": 8,
+            "source_line_end": 8,
+            "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+            "interpretation": "必填字段列表",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "parameter": "missing_rate_policy",
+            "value": "STRICT",
+            "value_literal": [
+              "STRICT"
+            ],
+            "requirement_id": "A2",
+            "source_line_start": 8,
+            "source_line_end": 8,
+            "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+            "interpretation": "Missing rate policy",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "new": {
+        "rule_id": "R02",
+        "rule_type": "non_empty",
+        "requirement_ids": [
+          "A2"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time"
+          ],
+          "missing_rate_policy": "STRICT",
+          "trim": true
+        },
+        "parameter_sources": [],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "reason": "Correct source literals/structural settings against original clauses; do not replace threshold values"
+    },
+    {
+      "path": "rules.R03",
+      "old": {
+        "rule_id": "R03",
+        "rule_type": "type_parse",
+        "requirement_ids": [
+          "A3"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time"
+          ]
+        },
+        "parameter_sources": [
+          {
+            "parameter": "fields",
+            "value": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "value_literal": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time"
+            ],
+            "requirement_id": "A3",
+            "source_line_start": 9,
+            "source_line_end": 9,
+            "source_quote": "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。",
+            "interpretation": "必填字段列表",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R02"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "new": {
+        "rule_id": "R03",
+        "rule_type": "type_parse",
+        "requirement_ids": [
+          "A3"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time"
+          ]
+        },
+        "parameter_sources": [],
+        "preconditions": [
+          "R02"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "reason": "Correct source literals/structural settings against original clauses; do not replace threshold values"
+    },
+    {
+      "path": "rules.R04",
+      "old": {
+        "rule_id": "R04",
+        "rule_type": "enum_value",
+        "requirement_ids": [
+          "A4"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "field": "category",
+          "allow_alias": false
+        },
+        "parameter_sources": [
+          {
+            "parameter": "field",
+            "value": "category",
+            "value_literal": [
+              "category"
+            ],
+            "requirement_id": "A4",
+            "source_line_start": 10,
+            "source_line_end": 10,
+            "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+            "interpretation": "Field name",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "parameter": "allow_alias",
+            "value": false,
+            "value_literal": [
+              "false"
+            ],
+            "requirement_id": "A4",
+            "source_line_start": 10,
+            "source_line_end": 10,
+            "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+            "interpretation": "Allow aliases",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01",
+          "R03"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "new": {
+        "rule_id": "R04",
+        "rule_type": "enum_value",
+        "requirement_ids": [
+          "A4"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "field": "category",
+          "allow_alias": false
+        },
+        "parameter_sources": [],
+        "preconditions": [
+          "R01",
+          "R03"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "reason": "Correct source literals/structural settings against original clauses; do not replace threshold values"
+    },
+    {
+      "path": "rules.R05",
+      "old": {
+        "rule_id": "R05",
+        "rule_type": "id_unique",
+        "requirement_ids": [
+          "A5"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "field": "record_id"
+        },
+        "parameter_sources": [
+          {
+            "parameter": "field",
+            "value": "record_id",
+            "value_literal": [
+              "record_id"
+            ],
+            "requirement_id": "A5",
+            "source_line_start": 11,
+            "source_line_end": 11,
+            "source_quote": "A5. record_id 必须唯一，不得重复，也不得为空。",
+            "interpretation": "Field name",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "new": {
+        "rule_id": "R05",
+        "rule_type": "id_unique",
+        "requirement_ids": [
+          "A5"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "field": "record_id"
+        },
+        "parameter_sources": [],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "reason": "Correct source literals/structural settings against original clauses; do not replace threshold values"
+    },
+    {
+      "path": "rules.R07",
+      "old": {
+        "rule_id": "R07",
+        "rule_type": "crs_declaration",
+        "requirement_ids": [
+          "B2"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "expected_crs": "EPSG:4326",
+          "expected_from_sidecar": null
+        },
+        "parameter_sources": [
+          {
+            "parameter": "expected_crs",
+            "value": "EPSG:4326",
+            "value_literal": [
+              "EPSG:4326"
+            ],
+            "requirement_id": "B2",
+            "source_line_start": 16,
+            "source_line_end": 16,
+            "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+            "interpretation": "Expected CRS",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "parameter": "expected_from_sidecar",
+            "value": null,
+            "value_literal": [
+              "null"
+            ],
+            "requirement_id": "B2",
+            "source_line_start": 16,
+            "source_line_end": 16,
+            "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+            "interpretation": "Expected from sidecar",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "new": {
+        "rule_id": "R07",
+        "rule_type": "crs_declaration",
+        "requirement_ids": [
+          "B2"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "expected_crs": "EPSG:4326",
+          "expected_from_sidecar": null
+        },
+        "parameter_sources": [
+          {
+            "parameter": "expected_crs",
+            "value": "EPSG:4326",
+            "value_literal": [
+              "EPSG:4326"
+            ],
+            "requirement_id": "B2",
+            "source_line_start": 16,
+            "source_line_end": 16,
+            "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+            "interpretation": "Expected CRS",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "reason": "Correct source literals/structural settings against original clauses; do not replace threshold values"
+    },
+    {
+      "path": "rules.R08",
+      "old": {
+        "rule_id": "R08",
+        "rule_type": "within_project_area",
+        "requirement_ids": [
+          "B3"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "boundary_policy": "inclusive"
+        },
+        "parameter_sources": [
+          {
+            "parameter": "boundary_policy",
+            "value": "inclusive",
+            "value_literal": [
+              "inclusive"
+            ],
+            "requirement_id": "B3",
+            "source_line_start": 17,
+            "source_line_end": 17,
+            "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+            "interpretation": "Boundary policy",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01",
+          "R03",
+          "R06",
+          "R07"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "new": {
+        "rule_id": "R08",
+        "rule_type": "within_project_area",
+        "requirement_ids": [
+          "B3"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "boundary_policy": "inclusive"
+        },
+        "parameter_sources": [
+          {
+            "parameter": "boundary_policy",
+            "value": "inclusive",
+            "value_literal": [
+              "落在边界线上的点视为落在范围内"
+            ],
+            "requirement_id": "B3",
+            "source_line_start": 17,
+            "source_line_end": 17,
+            "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+            "interpretation": "Boundary policy",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01",
+          "R03",
+          "R06",
+          "R07"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "reason": "Correct source literals/structural settings against original clauses; do not replace threshold values"
+    },
+    {
+      "path": "rules.R10",
+      "old": {
+        "rule_id": "R10",
+        "rule_type": "duplicate_candidate",
+        "requirement_ids": [
+          "C2"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "max_distance_m": 30,
+          "name_equal": null
+        },
+        "parameter_sources": [
+          {
+            "parameter": "max_distance_m",
+            "value": 30,
+            "value_literal": [
+              "30"
+            ],
+            "requirement_id": "C2",
+            "source_line_start": 22,
+            "source_line_end": 22,
+            "source_quote": "C2. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+            "interpretation": "Max distance in meters",
+            "unit": "m",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "parameter": "name_equal",
+            "value": null,
+            "value_literal": [
+              "null"
+            ],
+            "requirement_id": "C2",
+            "source_line_start": 22,
+            "source_line_end": 22,
+            "source_quote": "C2. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+            "interpretation": "Name equal",
+            "unit": "",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01",
+          "R03",
+          "R06"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "new": {
+        "rule_id": "R10",
+        "rule_type": "duplicate_candidate",
+        "requirement_ids": [
+          "C2"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "max_distance_m": 30,
+          "name_equal": true
+        },
+        "parameter_sources": [
+          {
+            "parameter": "max_distance_m",
+            "value": 30,
+            "value_literal": [
+              "30"
+            ],
+            "requirement_id": "C2",
+            "source_line_start": 22,
+            "source_line_end": 22,
+            "source_quote": "C2. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+            "interpretation": "Max distance in meters",
+            "unit": "metre",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01",
+          "R03",
+          "R06"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      "reason": "Correct source literals/structural settings against original clauses; do not replace threshold values"
+    }
+  ],
+  "unedited_approval_rejection": {
+    "status": 400,
+    "error": {
+      "error": "Approval rejected: [{\"code\": \"PARAMETER_SOURCE_NOT_FOUND\", \"target\": \"R08\", \"detail\": \"参数 boundary_policy 的字面量 \\\"inclusive\\\" 在批准引用中找不到来源（token 边界匹配，禁止子串包含）\"}]"
+    }
+  },
+  "clean_run": {
+    "id": "987cbd7785154c24bdd7aef2f7f7dfdb",
+    "project": "b821739c74754189a721bc32181c5c48",
+    "kind": "validate",
+    "revision": 3,
+    "status": "COMPLETED",
+    "result": {
+      "schema_version": "stage1-validate-2",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "generated_at": "2026-10-27T01:39:41.049111+00:00",
+      "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\work\\local-app\\runs\\987cbd7785154c24bdd7aef2f7f7dfdb",
+      "mode": "validate",
+      "mode_note": "正式检查入口：不需要 expected 真值，结论只来自内核唯一判定路径。",
+      "expected_used": false,
+      "inputs": {
+        "delivery_spec.md": {
+          "sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+          "bytes": 1133
+        },
+        "dictionary.csv": {
+          "sha256": "24ea76d4f1cc7bcb6de684d6b8b5fe48354c46e2124600cfb4877c50638cd7ee",
+          "bytes": 365
+        },
+        "poi.csv": {
+          "sha256": "48aa03665f8a5d6b0cd02942d860b484bd751412c22c4927f23f4ab248b3689d",
+          "bytes": 946
+        },
+        "area.geojson": {
+          "sha256": "dcd51cef97c0dbc5c334352895849bdaa99547b9cef15ca0e48396e279779976",
+          "bytes": 288
+        },
+        "crs.json": {
+          "sha256": "9c8f3c1a9bc3c717bac6b21d807399d62872ccb1efb55fddef4af39eb2f06ebc",
+          "bytes": 152
+        },
+        "requirements.yaml": {
+          "sha256": "9e73e028c1726b78c55a8df9dd16257512c418e20a33f648267f8ca664f56b6f",
+          "bytes": 4841
+        },
+        "approved-rules.yaml": {
+          "sha256": "e299c5a44cf8c1b7392c749519a05b2d93f69515b028150386106b5ab4298e51",
+          "bytes": 8485
+        }
+      },
+      "executed": true,
+      "exec_error": null,
+      "clauses_pending": [],
+      "config_rejections": [],
+      "preflight_problems": [],
+      "aggregate_verdict": "PASS",
+      "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+      "clause_coverage": [
+        {
+          "requirement_id": "A1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R01"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A2",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R02"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A3",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R03"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A4",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R04"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A5",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R05"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R06"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B2",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R07"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B3",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R08"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "C1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R09"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        }
+      ],
+      "check_results": [
+        {
+          "rule_id": "R01",
+          "requirement_ids": [
+            "A1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R02",
+          "requirement_ids": [
+            "A2"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R03",
+          "requirement_ids": [
+            "A3"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R04",
+          "requirement_ids": [
+            "A4"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R05",
+          "requirement_ids": [
+            "A5"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R07",
+          "requirement_ids": [
+            "B2"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R09",
+          "requirement_ids": [
+            "C1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R06",
+          "requirement_ids": [
+            "B1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R08",
+          "requirement_ids": [
+            "B3"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R10",
+          "requirement_ids": [
+            "C2"
+          ],
+          "verdict": "INDETERMINATE",
+          "execution_status": "COMPLETED",
+          "reason_code": "DUPLICATE_CANDIDATE",
+          "summary_counts": {
+            "records_total": 12,
+            "records_evaluated": 12,
+            "records_failed": 0,
+            "records_indeterminate": 2,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 1
+          },
+          "required_for_release": false
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "F0001",
+          "stable_key": "R10|DUPLICATE_CANDIDATE|12|longitude/latitude",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 12,
+            "record_id": "SD-0011"
+          },
+          "record_id": "SD-0011",
+          "rule_id": "R10",
+          "field": "longitude/latitude",
+          "observed_value": "116.314,39.9185 与 116.3142,39.9186",
+          "expected_constraint": "相距不超过 30 米且同名，须人工确认是否重复",
+          "reason_code": "DUPLICATE_CANDIDATE",
+          "evidence": {
+            "distance_m": 20.39,
+            "peer_line": 13,
+            "peer_record_id": "SD-0012"
+          },
+          "review_state": "OPEN"
+        }
+      ],
+      "findings_by_class": {
+        "CANDIDATE": 1
+      },
+      "counts": {
+        "records": 12,
+        "clauses_required": 9,
+        "clauses_covered": 9,
+        "rules": 10,
+        "findings": 1
+      }
+    },
+    "error": null,
+    "created": "2026-10-27T01:39:40.959753+00:00",
+    "idempotency": "b821739c74754189a721bc32181c5c48:local-reviewed-clean"
+  },
+  "defective_run": {
+    "id": "53db498fad754bcd96ace2c4c37340f6",
+    "project": "27a42a351d9e454c8835afe9671a6693",
+    "kind": "validate",
+    "revision": 1,
+    "status": "COMPLETED",
+    "result": {
+      "schema_version": "stage1-validate-2",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "generated_at": "2026-10-27T01:39:41.221300+00:00",
+      "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\work\\local-app\\runs\\53db498fad754bcd96ace2c4c37340f6",
+      "mode": "validate",
+      "mode_note": "正式检查入口：不需要 expected 真值，结论只来自内核唯一判定路径。",
+      "expected_used": false,
+      "inputs": {
+        "delivery_spec.md": {
+          "sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+          "bytes": 1133
+        },
+        "dictionary.csv": {
+          "sha256": "24ea76d4f1cc7bcb6de684d6b8b5fe48354c46e2124600cfb4877c50638cd7ee",
+          "bytes": 365
+        },
+        "poi.csv": {
+          "sha256": "e973133533bf36750a4e779e5d96503a3c9311c726257472f5b58d3f7a94c2be",
+          "bytes": 1142
+        },
+        "area.geojson": {
+          "sha256": "dcd51cef97c0dbc5c334352895849bdaa99547b9cef15ca0e48396e279779976",
+          "bytes": 288
+        },
+        "crs.json": {
+          "sha256": "9c8f3c1a9bc3c717bac6b21d807399d62872ccb1efb55fddef4af39eb2f06ebc",
+          "bytes": 152
+        },
+        "requirements.yaml": {
+          "sha256": "9e73e028c1726b78c55a8df9dd16257512c418e20a33f648267f8ca664f56b6f",
+          "bytes": 4841
+        },
+        "approved-rules.yaml": {
+          "sha256": "e299c5a44cf8c1b7392c749519a05b2d93f69515b028150386106b5ab4298e51",
+          "bytes": 8485
+        }
+      },
+      "executed": true,
+      "exec_error": null,
+      "clauses_pending": [],
+      "config_rejections": [],
+      "preflight_problems": [],
+      "aggregate_verdict": "FAIL",
+      "aggregate_reason": "存在必检条款 FAIL：A2(EMPTY_VALUE),A3(TYPE_PARSE_ERROR),A4(ENUM_VIOLATION),A5(DUPLICATE_ID),B1(LATITUDE_OUT_OF_RANGE),B3(OUTSIDE_PROJECT_AREA),C1(STALE_RECORD)",
+      "clause_coverage": [
+        {
+          "requirement_id": "A1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R01"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A2",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R02"
+          ],
+          "failure_reason_codes": [
+            "EMPTY_VALUE"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "FAIL",
+          "execution_status": "COMPLETED",
+          "reason_code": "EMPTY_VALUE"
+        },
+        {
+          "requirement_id": "A3",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R03"
+          ],
+          "failure_reason_codes": [
+            "TYPE_PARSE_ERROR"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "TYPE_PARSE_ERROR"
+        },
+        {
+          "requirement_id": "A4",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R04"
+          ],
+          "failure_reason_codes": [
+            "ENUM_VIOLATION"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "ENUM_VIOLATION"
+        },
+        {
+          "requirement_id": "A5",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R05"
+          ],
+          "failure_reason_codes": [
+            "DUPLICATE_ID"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "FAIL",
+          "execution_status": "COMPLETED",
+          "reason_code": "DUPLICATE_ID"
+        },
+        {
+          "requirement_id": "B1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R06"
+          ],
+          "failure_reason_codes": [
+            "LATITUDE_OUT_OF_RANGE"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "LATITUDE_OUT_OF_RANGE"
+        },
+        {
+          "requirement_id": "B2",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R07"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B3",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R08"
+          ],
+          "failure_reason_codes": [
+            "OUTSIDE_PROJECT_AREA"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "OUTSIDE_PROJECT_AREA"
+        },
+        {
+          "requirement_id": "C1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R09"
+          ],
+          "failure_reason_codes": [
+            "STALE_RECORD"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "STALE_RECORD"
+        }
+      ],
+      "check_results": [
+        {
+          "rule_id": "R01",
+          "requirement_ids": [
+            "A1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R02",
+          "requirement_ids": [
+            "A2"
+          ],
+          "verdict": "FAIL",
+          "execution_status": "COMPLETED",
+          "reason_code": "EMPTY_VALUE",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 2,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 2
+          },
+          "required_for_release": true,
+          "failure_reason_codes": [
+            "EMPTY_VALUE"
+          ]
+        },
+        {
+          "rule_id": "R03",
+          "requirement_ids": [
+            "A3"
+          ],
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "TYPE_PARSE_ERROR",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 13,
+            "records_failed": 2,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 2,
+            "records_uninterpretable": 0,
+            "records_blocked": 2,
+            "findings": 2
+          },
+          "required_for_release": true,
+          "failure_reason_codes": [
+            "TYPE_PARSE_ERROR"
+          ]
+        },
+        {
+          "rule_id": "R04",
+          "requirement_ids": [
+            "A4"
+          ],
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "ENUM_VIOLATION",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 11,
+            "records_failed": 1,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 4,
+            "records_uninterpretable": 0,
+            "records_blocked": 4,
+            "findings": 1
+          },
+          "required_for_release": true,
+          "failure_reason_codes": [
+            "ENUM_VIOLATION"
+          ]
+        },
+        {
+          "rule_id": "R05",
+          "requirement_ids": [
+            "A5"
+          ],
+          "verdict": "FAIL",
+          "execution_status": "COMPLETED",
+          "reason_code": "DUPLICATE_ID",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 2,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 2
+          },
+          "required_for_release": true,
+          "failure_reason_codes": [
+            "DUPLICATE_ID"
+          ]
+        },
+        {
+          "rule_id": "R07",
+          "requirement_ids": [
+            "B2"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R09",
+          "requirement_ids": [
+            "C1"
+          ],
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "STALE_RECORD",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 11,
+            "records_failed": 1,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 4,
+            "records_uninterpretable": 0,
+            "records_blocked": 4,
+            "findings": 1
+          },
+          "required_for_release": true,
+          "failure_reason_codes": [
+            "STALE_RECORD"
+          ]
+        },
+        {
+          "rule_id": "R06",
+          "requirement_ids": [
+            "B1"
+          ],
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "LATITUDE_OUT_OF_RANGE",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 11,
+            "records_failed": 1,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 4,
+            "records_uninterpretable": 0,
+            "records_blocked": 4,
+            "findings": 1
+          },
+          "required_for_release": true,
+          "failure_reason_codes": [
+            "LATITUDE_OUT_OF_RANGE"
+          ]
+        },
+        {
+          "rule_id": "R08",
+          "requirement_ids": [
+            "B3"
+          ],
+          "verdict": "FAIL",
+          "execution_status": "PARTIAL",
+          "reason_code": "OUTSIDE_PROJECT_AREA",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 10,
+            "records_failed": 1,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 5,
+            "records_uninterpretable": 0,
+            "records_blocked": 5,
+            "findings": 1
+          },
+          "required_for_release": true,
+          "failure_reason_codes": [
+            "OUTSIDE_PROJECT_AREA"
+          ]
+        },
+        {
+          "rule_id": "R10",
+          "requirement_ids": [
+            "C2"
+          ],
+          "verdict": "INDETERMINATE",
+          "execution_status": "PARTIAL",
+          "reason_code": "ALL_RECORDS_BLOCKED",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 10,
+            "records_failed": 0,
+            "records_indeterminate": 2,
+            "records_skipped_upstream": 5,
+            "records_uninterpretable": 0,
+            "records_blocked": 5,
+            "findings": 1
+          },
+          "required_for_release": false
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "F0001",
+          "stable_key": "R02|EMPTY_VALUE|8|category",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 8,
+            "record_id": "SD-0007"
+          },
+          "record_id": "SD-0007",
+          "rule_id": "R02",
+          "field": "category",
+          "observed_value": "",
+          "expected_constraint": "不得为空值",
+          "reason_code": "EMPTY_VALUE",
+          "evidence": {},
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0002",
+          "stable_key": "R02|EMPTY_VALUE|11|longitude",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 11,
+            "record_id": "SD-0010"
+          },
+          "record_id": "SD-0010",
+          "rule_id": "R02",
+          "field": "longitude",
+          "observed_value": "",
+          "expected_constraint": "不得为空值",
+          "reason_code": "EMPTY_VALUE",
+          "evidence": {},
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0003",
+          "stable_key": "R03|TYPE_PARSE_ERROR|3|source_time",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 3,
+            "record_id": "SD-0002"
+          },
+          "record_id": "SD-0002",
+          "rule_id": "R03",
+          "field": "source_time",
+          "observed_value": "2026-09-22 09:30",
+          "expected_constraint": "类型必须为 datetime",
+          "reason_code": "TYPE_PARSE_ERROR",
+          "evidence": {},
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0004",
+          "stable_key": "R03|TYPE_PARSE_ERROR|14|longitude",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 14,
+            "record_id": "SD-0013"
+          },
+          "record_id": "SD-0013",
+          "rule_id": "R03",
+          "field": "longitude",
+          "observed_value": "abc",
+          "expected_constraint": "类型必须为 number",
+          "reason_code": "TYPE_PARSE_ERROR",
+          "evidence": {},
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0005",
+          "stable_key": "R04|ENUM_VIOLATION|4|category",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 4,
+            "record_id": "SD-0003"
+          },
+          "record_id": "SD-0003",
+          "rule_id": "R04",
+          "field": "category",
+          "observed_value": "公共厕所",
+          "expected_constraint": "取值必须在字典枚举内: 学校/医院/公园/公交站",
+          "reason_code": "ENUM_VIOLATION",
+          "evidence": {
+            "dictionary_line": 4
+          },
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0006",
+          "stable_key": "R05|DUPLICATE_ID|6|record_id",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 6,
+            "record_id": "SD-0005"
+          },
+          "record_id": "SD-0005",
+          "rule_id": "R05",
+          "field": "record_id",
+          "observed_value": "SD-0005",
+          "expected_constraint": "ID 必须唯一",
+          "reason_code": "DUPLICATE_ID",
+          "evidence": {
+            "duplicate_lines": [
+              6,
+              13
+            ]
+          },
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0007",
+          "stable_key": "R05|DUPLICATE_ID|13|record_id",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 13,
+            "record_id": "SD-0005"
+          },
+          "record_id": "SD-0005",
+          "rule_id": "R05",
+          "field": "record_id",
+          "observed_value": "SD-0005",
+          "expected_constraint": "ID 必须唯一",
+          "reason_code": "DUPLICATE_ID",
+          "evidence": {
+            "duplicate_lines": [
+              6,
+              13
+            ]
+          },
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0008",
+          "stable_key": "R09|STALE_RECORD|7|source_time",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 7,
+            "record_id": "SD-0006"
+          },
+          "record_id": "SD-0006",
+          "rule_id": "R09",
+          "field": "source_time",
+          "observed_value": "2026-08-01T00:00:00Z",
+          "expected_constraint": "距基准时间不得超过 30 天",
+          "reason_code": "STALE_RECORD",
+          "evidence": {
+            "age_days": 61.0
+          },
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0009",
+          "stable_key": "R06|LATITUDE_OUT_OF_RANGE|10|latitude",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 10,
+            "record_id": "SD-0009"
+          },
+          "record_id": "SD-0009",
+          "rule_id": "R06",
+          "field": "latitude",
+          "observed_value": "91.5000",
+          "expected_constraint": "纬度须在 [-90,90]",
+          "reason_code": "LATITUDE_OUT_OF_RANGE",
+          "evidence": {},
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0010",
+          "stable_key": "R08|OUTSIDE_PROJECT_AREA|12|longitude/latitude",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 12,
+            "record_id": "SD-0011"
+          },
+          "record_id": "SD-0011",
+          "rule_id": "R08",
+          "field": "longitude/latitude",
+          "observed_value": "116.36,39.9185",
+          "expected_constraint": "点位须落在项目范围内（含边界）",
+          "reason_code": "OUTSIDE_PROJECT_AREA",
+          "evidence": {},
+          "review_state": "OPEN"
+        },
+        {
+          "finding_id": "F0011",
+          "stable_key": "R10|DUPLICATE_CANDIDATE|15|longitude/latitude",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 15,
+            "record_id": "SD-0014"
+          },
+          "record_id": "SD-0014",
+          "rule_id": "R10",
+          "field": "longitude/latitude",
+          "observed_value": "116.313,39.9145 与 116.3131,39.9146",
+          "expected_constraint": "相距不超过 30 米且同名，须人工确认是否重复",
+          "reason_code": "DUPLICATE_CANDIDATE",
+          "evidence": {
+            "distance_m": 14.01,
+            "peer_line": 16,
+            "peer_record_id": "SD-0015"
+          },
+          "review_state": "OPEN"
+        }
+      ],
+      "findings_by_class": {
+        "FAIL": 10,
+        "CANDIDATE": 1
+      },
+      "counts": {
+        "records": 15,
+        "clauses_required": 9,
+        "clauses_covered": 9,
+        "rules": 10,
+        "findings": 11
+      }
+    },
+    "error": null,
+    "created": "2026-10-27T01:39:41.130241+00:00",
+    "idempotency": "27a42a351d9e454c8835afe9671a6693:local-reviewed-defective"
+  },
+  "corrected_run": {
+    "id": "5c461a2af77241aa9ed9bb1018d92c33",
+    "project": "e4630efa0a9342b6a65d6ee79b3041b3",
+    "kind": "validate",
+    "revision": 1,
+    "status": "COMPLETED",
+    "result": {
+      "schema_version": "stage1-validate-2",
+      "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+      "python": "3.13.14",
+      "generated_at": "2026-10-27T01:39:41.394196+00:00",
+      "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\work\\local-app\\runs\\5c461a2af77241aa9ed9bb1018d92c33",
+      "mode": "validate",
+      "mode_note": "正式检查入口：不需要 expected 真值，结论只来自内核唯一判定路径。",
+      "expected_used": false,
+      "inputs": {
+        "delivery_spec.md": {
+          "sha256": "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22",
+          "bytes": 1133
+        },
+        "dictionary.csv": {
+          "sha256": "24ea76d4f1cc7bcb6de684d6b8b5fe48354c46e2124600cfb4877c50638cd7ee",
+          "bytes": 365
+        },
+        "poi.csv": {
+          "sha256": "ae205f0ee226992326296d3fcaf5b8990530fc8d9668119452e89f291dddd8eb",
+          "bytes": 1174
+        },
+        "area.geojson": {
+          "sha256": "dcd51cef97c0dbc5c334352895849bdaa99547b9cef15ca0e48396e279779976",
+          "bytes": 288
+        },
+        "crs.json": {
+          "sha256": "9c8f3c1a9bc3c717bac6b21d807399d62872ccb1efb55fddef4af39eb2f06ebc",
+          "bytes": 152
+        },
+        "requirements.yaml": {
+          "sha256": "9e73e028c1726b78c55a8df9dd16257512c418e20a33f648267f8ca664f56b6f",
+          "bytes": 4841
+        },
+        "approved-rules.yaml": {
+          "sha256": "e299c5a44cf8c1b7392c749519a05b2d93f69515b028150386106b5ab4298e51",
+          "bytes": 8485
+        }
+      },
+      "executed": true,
+      "exec_error": null,
+      "clauses_pending": [],
+      "config_rejections": [],
+      "preflight_problems": [],
+      "aggregate_verdict": "PASS",
+      "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+      "clause_coverage": [
+        {
+          "requirement_id": "A1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R01"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A2",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R02"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A3",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R03"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A4",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R04"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "A5",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R05"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R06"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B2",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R07"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "B3",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R08"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        },
+        {
+          "requirement_id": "C1",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "mapped_rule_ids": [
+            "R09"
+          ],
+          "coverage_state": "COVERED",
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK"
+        }
+      ],
+      "check_results": [
+        {
+          "rule_id": "R01",
+          "requirement_ids": [
+            "A1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R02",
+          "requirement_ids": [
+            "A2"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R03",
+          "requirement_ids": [
+            "A3"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R04",
+          "requirement_ids": [
+            "A4"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R05",
+          "requirement_ids": [
+            "A5"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R07",
+          "requirement_ids": [
+            "B2"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R09",
+          "requirement_ids": [
+            "C1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R06",
+          "requirement_ids": [
+            "B1"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R08",
+          "requirement_ids": [
+            "B3"
+          ],
+          "verdict": "PASS",
+          "execution_status": "COMPLETED",
+          "reason_code": "OK",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 0,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 0
+          },
+          "required_for_release": true
+        },
+        {
+          "rule_id": "R10",
+          "requirement_ids": [
+            "C2"
+          ],
+          "verdict": "INDETERMINATE",
+          "execution_status": "COMPLETED",
+          "reason_code": "DUPLICATE_CANDIDATE",
+          "summary_counts": {
+            "records_total": 15,
+            "records_evaluated": 15,
+            "records_failed": 0,
+            "records_indeterminate": 2,
+            "records_skipped_upstream": 0,
+            "records_uninterpretable": 0,
+            "records_blocked": 0,
+            "findings": 1
+          },
+          "required_for_release": false
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "F0001",
+          "stable_key": "R10|DUPLICATE_CANDIDATE|12|longitude/latitude",
+          "record_locator": {
+            "file": "poi.csv",
+            "line": 12,
+            "record_id": "SD-0011"
+          },
+          "record_id": "SD-0011",
+          "rule_id": "R10",
+          "field": "longitude/latitude",
+          "observed_value": "116.314,39.9185 与 116.3142,39.9186",
+          "expected_constraint": "相距不超过 30 米且同名，须人工确认是否重复",
+          "reason_code": "DUPLICATE_CANDIDATE",
+          "evidence": {
+            "distance_m": 20.39,
+            "peer_line": 13,
+            "peer_record_id": "SD-0012"
+          },
+          "review_state": "OPEN"
+        }
+      ],
+      "findings_by_class": {
+        "CANDIDATE": 1
+      },
+      "counts": {
+        "records": 15,
+        "clauses_required": 9,
+        "clauses_covered": 9,
+        "rules": 10,
+        "findings": 1
+      }
+    },
+    "error": null,
+    "created": "2026-10-27T01:39:41.302841+00:00",
+    "idempotency": "e4630efa0a9342b6a65d6ee79b3041b3:local-reviewed-corrected"
+  },
+  "status": "REVIEWED_SYNTHETIC_WORKFLOW_PASS",
+  "limitation": "One visible template; edited by implementing Codex. NOT raw-model quality, independent human acceptance, blind accuracy or ROI."
+}

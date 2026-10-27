@@ -1,0 +1,95 @@
+schema_version: 1
+bundle: "crs_same_unit_wrong"
+reference_time: "2026-10-01T00:00:00Z"
+requirements:
+  -
+    requirement_id: "A1"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 7
+    source_line_end: 7
+    source_quote: "A1. 每条记录必须包含全部必填字段。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+  -
+    requirement_id: "A2"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 8
+    source_line_end: 8
+    source_quote: "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+  -
+    requirement_id: "A3"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 9
+    source_line_end: 9
+    source_quote: "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+    interpretation: "本项目采用 ISO8601 的 RFC3339 子集：必须带 T 分隔符与显式时区（Z 或 ±HH:MM）。这是本项目采用的格式子集，不是 ISO8601 标准的全部。"
+  -
+    requirement_id: "A4"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 10
+    source_line_end: 10
+    source_quote: "A4. category 字段取值必须在数据字典给定的枚举范围内。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+  -
+    requirement_id: "A5"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 11
+    source_line_end: 11
+    source_quote: "A5. record_id 必须唯一，不得重复，也不得为空。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+  -
+    requirement_id: "B1"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 15
+    source_line_end: 15
+    source_quote: "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+  -
+    requirement_id: "B2"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 16
+    source_line_end: 16
+    source_quote: "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+  -
+    requirement_id: "B3"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 17
+    source_line_end: 17
+    source_quote: "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+  -
+    requirement_id: "C1"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 21
+    source_line_end: 21
+    source_quote: "C1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。"
+    required_for_release: true
+    support_status: "SUPPORTED"
+  -
+    requirement_id: "C2"
+    document_id: "delivery_spec.md"
+    document_sha256: "93a778c0316d46e0cc9f2c53dee435d9ddcb826bacbfce0d4550ab8f9134cb22"
+    source_line_start: 22
+    source_line_end: 22
+    source_quote: "C2. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。"
+    required_for_release: false
+    support_status: "SUPPORTED"

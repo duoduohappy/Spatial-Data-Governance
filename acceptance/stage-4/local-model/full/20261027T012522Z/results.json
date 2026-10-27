@@ -1,0 +1,47 @@
+{
+  "config": {
+    "configured": true,
+    "endpoint_configured": true,
+    "provider": "ollama",
+    "model": "geoacceptance-qwen3:4b",
+    "endpoint_origin": "http://127.0.0.1",
+    "key_present": false,
+    "pricing_configured": true,
+    "currency": "CNY",
+    "thinking": "disabled"
+  },
+  "project_id": "6dc0ec2f03674f499f027982d65ab56e",
+  "job": {
+    "id": "6e9a5021a050495dbd9c58d707d1168e",
+    "project": "6dc0ec2f03674f499f027982d65ab56e",
+    "kind": "draft",
+    "revision": 1,
+    "status": "FAILED",
+    "result": {
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 1859,
+            "completion_tokens": 1848,
+            "total_tokens": 3707
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 28554.53
+        }
+      ]
+    },
+    "error": "Invalid proposal shape",
+    "created": "2026-10-27T01:25:23.089771+00:00",
+    "idempotency": "6dc0ec2f03674f499f027982d65ab56e:local-qwen-smoke-20261027T012522Z"
+  },
+  "human_review": "NOT_REVIEWED",
+  "scope": "One real LOCAL Qwen3 4B generation on a synthetic clean example; no cloud API fee and no automatic approval."
+}

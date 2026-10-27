@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-27T00:12:31.949Z",
+  "mode": "real Chromium, automated synthetic review",
+  "checks": [],
+  "screenshots": [],
+  "errors": [],
+  "status": "FAIL",
+  "error": "browserType.launch: Failed to launch chromium because executable doesn't exist at C:\\Users\\TempAdmin\\AppData\\Local\\Packages\\sandbox.{d4d4979a-85be-4844-a947-a2f14d9a3e14}\\AC\\ms-playwright\\chromium_headless_shell-1248\\chrome-win64\\headless_shell.exe\n    at main (C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\tests\\ui\\browser-test.cjs:30:25)\n    at async C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\tests\\ui\\browser-test.cjs:77:16"
+}

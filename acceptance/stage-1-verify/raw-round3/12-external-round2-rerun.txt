@@ -1,0 +1,2 @@
+delete_clean_entity LEDGER_INDETERMINATE ['SD-0001']
+empty_required_field_config INDETERMINATE rejections [{'code': 'INPUT_SCHEMA_INVALID', 'target': 'R01', 'detail': '<root>: Value error, parameters 不满足 required_field_present 的约束：fields: List should have at least 1 item after validation, not 0'}]

@@ -1,0 +1,311 @@
+schema_version: 1
+bundle: "ambiguous"
+rules:
+  -
+    rule_id: "R01"
+    requirement_ids:
+      - "A1"
+    rule_type: "required_field_present"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      fields:
+        - "record_id"
+        - "name"
+        - "category"
+        - "longitude"
+        - "latitude"
+        - "source_time"
+    parameter_sources: []
+    preconditions: []
+    notes: ""
+  -
+    rule_id: "R02"
+    requirement_ids:
+      - "A2"
+    rule_type: "non_empty"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      fields:
+        - "record_id"
+        - "name"
+        - "category"
+        - "longitude"
+        - "latitude"
+        - "source_time"
+      trim: true
+      allowed_missing_rate: 0.0
+      missing_rate_policy: "STRICT"
+    parameter_sources: []
+    preconditions: []
+    notes: ""
+  -
+    rule_id: "R03"
+    requirement_ids:
+      - "A3"
+    rule_type: "type_parse"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      fields:
+        - "record_id"
+        - "name"
+        - "category"
+        - "longitude"
+        - "latitude"
+        - "source_time"
+    parameter_sources: []
+    preconditions:
+      - "R02"
+    notes: ""
+  -
+    rule_id: "R04"
+    requirement_ids:
+      - "A4"
+    rule_type: "enum_value"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      field: "category"
+      allow_alias: false
+    parameter_sources: []
+    preconditions:
+      - "R01"
+      - "R03"
+    notes: ""
+  -
+    rule_id: "R05"
+    requirement_ids:
+      - "A5"
+    rule_type: "id_unique"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      field: "record_id"
+    parameter_sources: []
+    preconditions:
+      - "R01"
+    notes: ""
+  -
+    rule_id: "R06"
+    requirement_ids:
+      - "B1"
+    rule_type: "coord_range"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      lon_range:
+        - -180
+        - 180
+      lat_range:
+        - -90
+        - 90
+    parameter_sources:
+      -
+        parameter: "lon_range"
+        value:
+          - -180
+          - 180
+        requirement_id: "B1"
+        document_id: "delivery_spec.md"
+        document_sha256: "8d2f2d287d14492fe3bb633ec5231c87d09a1069be10a37c01658bebfcbc68f2"
+        source_line_start: 15
+        source_line_end: 15
+        source_quote: "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。"
+        value_literal:
+          - "-180"
+          - "180"
+        unit: "degree"
+        interpretation: "原文直接给出经度取值区间 [-180,180]。"
+        reviewer: "stage0-人工批准（示例）"
+        approved_at: "2026-10-26"
+      -
+        parameter: "lat_range"
+        value:
+          - -90
+          - 90
+        requirement_id: "B1"
+        document_id: "delivery_spec.md"
+        document_sha256: "8d2f2d287d14492fe3bb633ec5231c87d09a1069be10a37c01658bebfcbc68f2"
+        source_line_start: 15
+        source_line_end: 15
+        source_quote: "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。"
+        value_literal:
+          - "-90"
+          - "90"
+        unit: "degree"
+        interpretation: "原文直接给出纬度取值区间 [-90,90]。"
+        reviewer: "stage0-人工批准（示例）"
+        approved_at: "2026-10-26"
+    preconditions:
+      - "R01"
+      - "R03"
+      - "R07"
+    notes: ""
+  -
+    rule_id: "R07"
+    requirement_ids:
+      - "B2"
+    rule_type: "crs_declaration"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      expected_from_sidecar: true
+      expected_crs: "EPSG:4326"
+    parameter_sources:
+      -
+        parameter: "expected_crs"
+        value: "EPSG:4326"
+        requirement_id: "B2"
+        document_id: "delivery_spec.md"
+        document_sha256: "8d2f2d287d14492fe3bb633ec5231c87d09a1069be10a37c01658bebfcbc68f2"
+        source_line_start: 16
+        source_line_end: 16
+        source_quote: "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。"
+        value_literal:
+          - "EPSG:4326"
+        unit: null
+        interpretation: "原文明确本批次声明为 EPSG:4326；判定按规范形式严格比对，Stage 0 不做别名推断。"
+        reviewer: "stage0-人工批准（示例）"
+        approved_at: "2026-10-26"
+    preconditions:
+      - "R01"
+    notes: ""
+  -
+    rule_id: "R08"
+    requirement_ids:
+      - "B3"
+    rule_type: "within_project_area"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      boundary_policy: "inclusive"
+    parameter_sources:
+      -
+        parameter: "boundary_policy"
+        value: "inclusive"
+        requirement_id: "B3"
+        document_id: "delivery_spec.md"
+        document_sha256: "8d2f2d287d14492fe3bb633ec5231c87d09a1069be10a37c01658bebfcbc68f2"
+        source_line_start: 17
+        source_line_end: 17
+        source_quote: "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。"
+        value_literal:
+          - "落在边界线上的点视为落在范围内"
+        unit: null
+        interpretation: "原文规定边界线上的点视为在范围内，映射为 inclusive；该映射由人工批准，机器只校验字面存在，不判定解释是否正确。"
+        reviewer: "stage0-人工批准（示例）"
+        approved_at: "2026-10-26"
+    preconditions:
+      - "R01"
+      - "R03"
+      - "R06"
+      - "R07"
+    notes: ""
+  -
+    rule_id: "R09"
+    requirement_ids:
+      - "C1"
+    rule_type: "freshness"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: true
+    parameters:
+      max_age_days: 30
+      reference_time: "2026-10-01T00:00:00Z"
+    parameter_sources:
+      -
+        parameter: "max_age_days"
+        value: 30
+        requirement_id: "C1"
+        document_id: "delivery_spec.md"
+        document_sha256: "8d2f2d287d14492fe3bb633ec5231c87d09a1069be10a37c01658bebfcbc68f2"
+        source_line_start: 21
+        source_line_end: 21
+        source_quote: "C1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。"
+        value_literal:
+          - "30"
+        unit: "day"
+        interpretation: "原文直接给出天数上限，无需解释。"
+        reviewer: "stage0-人工批准（示例）"
+        approved_at: "2026-10-26"
+      -
+        parameter: "reference_time"
+        value: "2026-10-01T00:00:00Z"
+        requirement_id: "C1"
+        document_id: "delivery_spec.md"
+        document_sha256: "8d2f2d287d14492fe3bb633ec5231c87d09a1069be10a37c01658bebfcbc68f2"
+        source_line_start: 21
+        source_line_end: 21
+        source_quote: "C1. 采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。"
+        value_literal:
+          - "2026-10-01T00:00:00Z"
+        unit: null
+        interpretation: "原文固定基准时间；实现禁止取当前时间。"
+        reviewer: "stage0-人工批准（示例）"
+        approved_at: "2026-10-26"
+    preconditions:
+      - "R01"
+      - "R03"
+    notes: ""
+  -
+    rule_id: "R10"
+    requirement_ids:
+      - "C2"
+    rule_type: "duplicate_candidate"
+    status: "APPROVED"
+    version: 1
+    reviewer: "stage0-人工批准（示例）"
+    approved_at: "2026-10-26"
+    required_for_release: false
+    parameters:
+      max_distance_m: 30
+      name_equal: true
+    parameter_sources:
+      -
+        parameter: "max_distance_m"
+        value: 30
+        requirement_id: "C2"
+        document_id: "delivery_spec.md"
+        document_sha256: "8d2f2d287d14492fe3bb633ec5231c87d09a1069be10a37c01658bebfcbc68f2"
+        source_line_start: 22
+        source_line_end: 22
+        source_quote: "C2. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。"
+        value_literal:
+          - "30"
+        unit: "metre"
+        interpretation: "原文直接给出 30 米的距离上限。"
+        reviewer: "stage0-人工批准（示例）"
+        approved_at: "2026-10-26"
+    preconditions:
+      - "R01"
+      - "R03"
+      - "R06"
+    notes: ""

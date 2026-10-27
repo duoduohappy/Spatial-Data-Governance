@@ -1,0 +1,46 @@
+{
+  "config": {
+    "configured": true,
+    "endpoint_configured": true,
+    "provider": "qwen",
+    "model": "qwen-plus",
+    "endpoint_origin": "https://dashscope.aliyuncs.com",
+    "key_present": true,
+    "pricing_configured": true,
+    "currency": "CNY",
+    "thinking": "disabled"
+  },
+  "project_id": "c2c46080052f41649ff3195053893baf",
+  "job": {
+    "id": "9379816a70a942be9e4195d1313dd67a",
+    "project": "c2c46080052f41649ff3195053893baf",
+    "kind": "draft",
+    "revision": 1,
+    "status": "FAILED",
+    "result": {
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "qwen-plus",
+          "currency": "CNY",
+          "reserved_cost": 0.0217808,
+          "reserved_usd": null,
+          "usage": null,
+          "cost": null,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "ERROR",
+          "error": "ModelError",
+          "error_code": "PROVIDER_HTTP_ERROR",
+          "http_status": 403,
+          "duration_ms": 104.29
+        }
+      ]
+    },
+    "error": "Provider HTTP 403; check request parameters, key, region and account permissions",
+    "created": "2026-10-27T01:00:42.630955+00:00",
+    "idempotency": "c2c46080052f41649ff3195053893baf:qwen-live-smoke-20261027T010042Z"
+  },
+  "human_review": "NOT_REVIEWED",
+  "scope": "One real Qwen call on synthetic clean example; no approval or model-accuracy claim."
+}

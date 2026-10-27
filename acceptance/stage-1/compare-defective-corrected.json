@@ -1,0 +1,136 @@
+{
+  "schema_version": "stage1-compare-1",
+  "before": {
+    "bundle": "C:\\Users\\TempAdmin\\WorkBuddy\\2026-10-26-13-17-35\\geoacceptance\\examples\\defective",
+    "aggregate": "FAIL",
+    "findings": 11
+  },
+  "after": {
+    "bundle": "C:\\Users\\TempAdmin\\WorkBuddy\\2026-10-26-13-17-35\\geoacceptance\\examples\\corrected",
+    "aggregate": "PASS",
+    "findings": 1
+  },
+  "identity": {
+    "strategy": "record_id（poi.csv 首列），要求两批均存在且唯一；不使用行号",
+    "ok": false,
+    "missing_record_id": {
+      "before": 0,
+      "after": 0
+    },
+    "duplicated_record_id": {
+      "before": [
+        "SD-0005"
+      ],
+      "after": []
+    }
+  },
+  "rule_versions_changed": [],
+  "counts": {
+    "fixed": 8,
+    "not_comparable": 1
+  },
+  "overall": "INDETERMINATE",
+  "items": [
+    {
+      "record_id": "SD-0002",
+      "rule_id": "R03",
+      "status": "fixed",
+      "before_codes": [
+        "TYPE_PARSE_ERROR"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": []
+    },
+    {
+      "record_id": "SD-0003",
+      "rule_id": "R04",
+      "status": "fixed",
+      "before_codes": [
+        "ENUM_VIOLATION"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": []
+    },
+    {
+      "record_id": "SD-0005",
+      "rule_id": "R05",
+      "status": "not_comparable",
+      "before_codes": [
+        "DUPLICATE_ID"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": [
+        "记录稳定标识不可用（缺失或批次内重复），拒绝按行号匹配"
+      ]
+    },
+    {
+      "record_id": "SD-0006",
+      "rule_id": "R09",
+      "status": "fixed",
+      "before_codes": [
+        "STALE_RECORD"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": []
+    },
+    {
+      "record_id": "SD-0007",
+      "rule_id": "R02",
+      "status": "fixed",
+      "before_codes": [
+        "EMPTY_VALUE"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": []
+    },
+    {
+      "record_id": "SD-0009",
+      "rule_id": "R06",
+      "status": "fixed",
+      "before_codes": [
+        "LATITUDE_OUT_OF_RANGE"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": []
+    },
+    {
+      "record_id": "SD-0010",
+      "rule_id": "R02",
+      "status": "fixed",
+      "before_codes": [
+        "EMPTY_VALUE"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": []
+    },
+    {
+      "record_id": "SD-0011",
+      "rule_id": "R08",
+      "status": "fixed",
+      "before_codes": [
+        "OUTSIDE_PROJECT_AREA"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": []
+    },
+    {
+      "record_id": "SD-0013",
+      "rule_id": "R03",
+      "status": "fixed",
+      "before_codes": [
+        "TYPE_PARSE_ERROR"
+      ],
+      "after_codes": [],
+      "reduced": false,
+      "reasons": []
+    }
+  ]
+}

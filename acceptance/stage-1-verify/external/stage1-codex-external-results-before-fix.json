@@ -1,0 +1,221 @@
+[
+  {
+    "case": "blocked_unchanged",
+    "result": {
+      "schema_version": "stage1-compare-1",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\repo\\examples\\blocked",
+        "aggregate": "FAIL",
+        "findings": 1
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\repo\\examples\\blocked",
+        "aggregate": "FAIL",
+        "findings": 1
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列），要求两批均存在且唯一；不使用行号",
+        "ok": false,
+        "missing_record_id": {
+          "before": 1,
+          "after": 1
+        },
+        "duplicated_record_id": {
+          "before": [],
+          "after": []
+        }
+      },
+      "rule_versions_changed": [],
+      "counts": {},
+      "overall": "COMPLETE",
+      "items": []
+    }
+  },
+  {
+    "case": "after_missing_evidence",
+    "result": {
+      "schema_version": "stage1-compare-1",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\repo\\examples\\clean",
+        "aggregate": "PASS",
+        "findings": 1
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\repo\\examples\\ambiguous",
+        "aggregate": "INDETERMINATE",
+        "findings": 1
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列），要求两批均存在且唯一；不使用行号",
+        "ok": true,
+        "missing_record_id": {
+          "before": 0,
+          "after": 0
+        },
+        "duplicated_record_id": {
+          "before": [],
+          "after": []
+        }
+      },
+      "rule_versions_changed": [],
+      "counts": {},
+      "overall": "COMPLETE",
+      "items": []
+    }
+  },
+  {
+    "case": "failing_entity_deleted",
+    "result": {
+      "schema_version": "stage1-compare-1",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\cases\\stale_before",
+        "aggregate": "FAIL",
+        "findings": 2
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\cases\\deleted_after",
+        "aggregate": "PASS",
+        "findings": 1
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列），要求两批均存在且唯一；不使用行号",
+        "ok": true,
+        "missing_record_id": {
+          "before": 0,
+          "after": 0
+        },
+        "duplicated_record_id": {
+          "before": [],
+          "after": []
+        }
+      },
+      "rule_versions_changed": [],
+      "counts": {
+        "fixed": 1
+      },
+      "overall": "COMPLETE",
+      "items": [
+        {
+          "record_id": "SD-0001",
+          "rule_id": "R09",
+          "status": "fixed",
+          "before_codes": [
+            "STALE_RECORD"
+          ],
+          "after_codes": [],
+          "reduced": false,
+          "reasons": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "after_rule_unapproved",
+    "result": {
+      "schema_version": "stage1-compare-1",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\cases\\stale_before2",
+        "aggregate": "FAIL",
+        "findings": 2
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\cases\\stale_unapproved",
+        "aggregate": "INDETERMINATE",
+        "findings": 1
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列），要求两批均存在且唯一；不使用行号",
+        "ok": true,
+        "missing_record_id": {
+          "before": 0,
+          "after": 0
+        },
+        "duplicated_record_id": {
+          "before": [],
+          "after": []
+        }
+      },
+      "rule_versions_changed": [],
+      "counts": {
+        "fixed": 1
+      },
+      "overall": "COMPLETE",
+      "items": [
+        {
+          "record_id": "SD-0001",
+          "rule_id": "R09",
+          "status": "fixed",
+          "before_codes": [
+            "STALE_RECORD"
+          ],
+          "after_codes": [],
+          "reduced": false,
+          "reasons": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "unique_entity_multiple_findings",
+    "result": {
+      "schema_version": "stage1-compare-1",
+      "before": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\cases\\unique_two_failures",
+        "aggregate": "FAIL",
+        "findings": 3
+      },
+      "after": {
+        "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\work\\stage1-review\\cases\\unique_repaired",
+        "aggregate": "PASS",
+        "findings": 1
+      },
+      "identity": {
+        "strategy": "record_id（poi.csv 首列），要求两批均存在且唯一；不使用行号",
+        "ok": false,
+        "missing_record_id": {
+          "before": 0,
+          "after": 0
+        },
+        "duplicated_record_id": {
+          "before": [
+            "SD-0001"
+          ],
+          "after": []
+        }
+      },
+      "rule_versions_changed": [],
+      "counts": {
+        "not_comparable": 2
+      },
+      "overall": "INDETERMINATE",
+      "items": [
+        {
+          "record_id": "SD-0001",
+          "rule_id": "R04",
+          "status": "not_comparable",
+          "before_codes": [
+            "ENUM_VIOLATION"
+          ],
+          "after_codes": [],
+          "reduced": false,
+          "reasons": [
+            "记录稳定标识不可用（缺失或批次内重复），拒绝按行号匹配"
+          ]
+        },
+        {
+          "record_id": "SD-0001",
+          "rule_id": "R09",
+          "status": "not_comparable",
+          "before_codes": [
+            "STALE_RECORD"
+          ],
+          "after_codes": [],
+          "reduced": false,
+          "reasons": [
+            "记录稳定标识不可用（缺失或批次内重复），拒绝按行号匹配"
+          ]
+        }
+      ]
+    }
+  }
+]

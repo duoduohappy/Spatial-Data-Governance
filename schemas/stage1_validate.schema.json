@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GeoAcceptance 正式检查 validate 输出（stage1-validate-2）",
+  "description": "validate_bundle() 的结构化输出：正式检查入口，不需要 expected 真值。拒绝执行时保留应检查条款（clauses_pending / counts.clauses_required）。用 tools/check_schema_consistency.py 声明的关键字子集校验。",
+  "type": "object",
+  "required": [
+    "schema_version", "bundle", "mode", "expected_used", "inputs", "executed",
+    "config_rejections", "preflight_problems", "aggregate_verdict",
+    "aggregate_reason", "clause_coverage", "check_results", "findings",
+    "findings_by_class", "counts"
+  ],
+  "properties": {
+    "schema_version": {"const": "stage1-validate-2"},
+    "tool_version": {"type": "string"},
+    "python": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "bundle": {"type": "string"},
+    "mode": {"const": "validate"},
+    "mode_note": {"type": "string"},
+    "expected_used": {"const": false},
+    "inputs": {"type": "object"},
+    "executed": {"type": "boolean"},
+    "exec_error": {"type": ["string", "null"]},
+    "clauses_pending": {
+      "type": "array", "items": {"type": "string"},
+      "description": "拒绝执行时仍应检查的条款清单（来自 requirements.yaml；不得把拒绝执行说成项目没有条款）"
+    },
+    "config_rejections": {"type": "array"},
+    "preflight_problems": {"type": "array", "items": {"type": "string"}},
+    "aggregate_verdict": {"enum": ["PASS", "FAIL", "INDETERMINATE"]},
+    "aggregate_reason": {"type": "string"},
+    "clause_coverage": {"type": "array", "items": {"type": "object"}},
+    "check_results": {"type": "array", "items": {"type": "object"}},
+    "findings": {"type": "array", "items": {"type": "object"}},
+    "findings_by_class": {"type": "object"},
+    "counts": {
+      "type": "object",
+      "required": ["records", "clauses_required", "clauses_covered", "rules", "findings"],
+      "properties": {
+        "records": {"type": "integer", "minimum": 0},
+        "clauses_required": {"type": "integer", "minimum": 0},
+        "clauses_covered": {"type": "integer", "minimum": 0},
+        "rules": {"type": "integer", "minimum": 0},
+        "findings": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}
