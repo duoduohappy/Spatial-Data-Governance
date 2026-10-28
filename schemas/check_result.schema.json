@@ -2,31 +2,73 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "CheckResult",
   "type": "object",
-  "required": ["requirement_ids", "verdict", "execution_status", "reason_code"],
+  "required": [
+    "requirement_ids",
+    "verdict",
+    "execution_status",
+    "reason_code"
+  ],
   "properties": {
-    "rule_id": {"type": ["string", "null"]},
-    "requirement_ids": {"type": "array", "items": {"type": "string"}},
+    "rule_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requirement_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "verdict": {
       "type": "string",
-      "enum": ["PASS", "FAIL", "INDETERMINATE"],
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INDETERMINATE"
+      ],
       "description": "三态业务结论；UNKNOWN 已废止（GA-06）"
     },
     "execution_status": {
       "type": "string",
-      "enum": ["QUEUED", "RUNNING", "COMPLETED", "PARTIAL", "BLOCKED", "NOT_EXECUTED",
-               "NOT_IMPLEMENTED", "REJECTED", "FAILED", "CANCELLED"],
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "COMPLETED",
+        "PARTIAL",
+        "BLOCKED",
+        "NOT_EXECUTED",
+        "NOT_IMPLEMENTED",
+        "REJECTED",
+        "FAILED",
+        "CANCELLED"
+      ],
       "description": "Stage 0 只产出 COMPLETED/PARTIAL/BLOCKED/NOT_EXECUTED/NOT_IMPLEMENTED/REJECTED/FAILED；QUEUED/RUNNING/CANCELLED 留给 Stage 3"
     },
-    "reason_code": {"type": "string"},
+    "reason_code": {
+      "type": "string"
+    },
     "failure_reason_codes": {
       "type": "array",
       "items": {
         "type": "string",
         "enum": [
-          "FIELD_COLUMN_MISSING", "FIELD_COUNT_MISMATCH", "EMPTY_VALUE", "EMPTY_ID",
-          "TYPE_PARSE_ERROR", "NON_FINITE_NUMBER", "UNSUPPORTED_DATA_TYPE", "ENUM_VIOLATION",
-          "DUPLICATE_ID", "LONGITUDE_OUT_OF_RANGE", "LATITUDE_OUT_OF_RANGE",
-          "CRS_DECLARATION_MISMATCH", "OUTSIDE_PROJECT_AREA", "STALE_RECORD", "FUTURE_TIMESTAMP"
+          "FIELD_COLUMN_MISSING",
+          "FIELD_COUNT_MISMATCH",
+          "EMPTY_VALUE",
+          "EMPTY_ID",
+          "TYPE_PARSE_ERROR",
+          "NON_FINITE_NUMBER",
+          "UNSUPPORTED_DATA_TYPE",
+          "ENUM_VIOLATION",
+          "DUPLICATE_ID",
+          "LONGITUDE_OUT_OF_RANGE",
+          "LATITUDE_OUT_OF_RANGE",
+          "CRS_DECLARATION_MISMATCH",
+          "OUTSIDE_PROJECT_AREA",
+          "STALE_RECORD",
+          "FUTURE_TIMESTAMP"
         ]
       },
       "uniqueItems": true,
@@ -37,7 +79,9 @@
       "items": {
         "type": "string",
         "enum": [
-          "CRS_MISSING_DECLARATION", "CRS_EXPECTED_NOT_APPROVED", "TIMEZONE_UNDECLARED"
+          "CRS_MISSING_DECLARATION",
+          "CRS_EXPECTED_NOT_APPROVED",
+          "TIMEZONE_UNDECLARED"
         ]
       },
       "uniqueItems": true,
@@ -47,14 +91,39 @@
       "type": "object",
       "description": "契约 §7.1：total = evaluated + skipped_upstream + uninterpretable（互斥）；failed/indeterminate 是 evaluated 的重叠子集",
       "properties": {
-        "records_total": {"type": "integer", "minimum": 0},
-        "records_evaluated": {"type": "integer", "minimum": 0},
-        "records_failed": {"type": "integer", "minimum": 0},
-        "records_indeterminate": {"type": "integer", "minimum": 0},
-        "records_skipped_upstream": {"type": "integer", "minimum": 0},
-        "records_uninterpretable": {"type": "integer", "minimum": 0},
-        "records_blocked": {"type": "integer", "minimum": 0, "description": "派生字段 = skipped_upstream + uninterpretable；Stage 1 移除"},
-        "findings": {"type": "integer", "minimum": 0}
+        "records_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records_evaluated": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records_failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records_indeterminate": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records_skipped_upstream": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records_uninterpretable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "records_blocked": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "派生字段 = skipped_upstream + uninterpretable；Stage 1 移除"
+        },
+        "findings": {
+          "type": "integer",
+          "minimum": 0
+        }
       },
       "required": [
         "records_total",
@@ -69,13 +138,35 @@
     },
     "risk_signals": {
       "type": "array",
-      "items": {"$ref": "risk_signal.schema.json"},
+      "items": {
+        "$ref": "risk_signal.schema.json"
+      },
       "description": "风险信号（A3）：不参与 verdict 计算，不产生阻断性 finding；code 受 schemas/risk_signal.schema.json 的枚举约束"
     },
-    "coverage": {"type": "string"},
-    "finding_artifact_id": {"type": ["string", "null"]},
-    "tool_version": {"type": "string"},
-    "duration_ms": {"type": "integer", "minimum": 0},
-    "required_for_release": {"type": "boolean"}
+    "coverage": {
+      "type": "string"
+    },
+    "finding_artifact_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "required_for_release": {
+      "type": "boolean"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "scope_selection": {
+      "type": "object"
+    }
   }
 }

@@ -7,6 +7,7 @@ from pathlib import Path
 import yaml
 from .authoring import create_draft,normalize_proposal,outbound_preview,digest
 from .llm import CompatibleClient
+from .collaboration import STRATEGIES,create_collaborative_draft
 from .validate import validate_bundle
 from .compare import compare_batches
 from . import reporting
@@ -52,6 +53,14 @@ class Service:
             c.executescript('''CREATE TABLE IF NOT EXISTS projects(id TEXT PRIMARY KEY, name TEXT, revision INTEGER, draft TEXT, approval TEXT, created TEXT);
             CREATE TABLE IF NOT EXISTS jobs(id TEXT PRIMARY KEY,project TEXT,kind TEXT,revision INTEGER,status TEXT,result TEXT,error TEXT,created TEXT,idempotency TEXT UNIQUE);
             CREATE TABLE IF NOT EXISTS audit(seq INTEGER PRIMARY KEY AUTOINCREMENT,project TEXT,action TEXT,actor TEXT,at TEXT,detail TEXT);''')
+            columns={row['name'] for row in c.execute('PRAGMA table_info(jobs)')}
+            for name,default in [('strategy','single'),('mode','legacy_unknown')]:
+                if name not in columns:c.execute("ALTER TABLE jobs ADD COLUMN "+name+" TEXT NOT NULL DEFAULT '"+default+"'")
+            # Legacy databases did not persist mode. Only recover it from an explicit result.
+            for job in c.execute("SELECT id,result,mode FROM jobs WHERE result IS NOT NULL AND strategy='single'").fetchall():
+                try:known=json.loads(job['result']).get('mode')
+                except (ValueError,AttributeError):continue
+                if known in ('manual','live') and known!=job['mode']:c.execute('UPDATE jobs SET mode=? WHERE id=?',(known,job['id']))
             c.execute("UPDATE jobs SET status='INTERRUPTED',error='Application restarted; resubmit explicitly' WHERE status IN ('QUEUED','RUNNING')")
     def close(self):
         self.pool.shutdown(wait=True)
@@ -97,7 +106,7 @@ class Service:
             shutil.rmtree(dest.parent);raise
         return self.project(p)
     def example(self,name):
-        if name not in ('clean','defective','corrected','ambiguous','blocked','crs_same_unit_wrong'):raise ValueError('Unknown example')
+        if name not in ('clean','defective','corrected','ambiguous','blocked','crs_same_unit_wrong','scoped_sources'):raise ValueError('Unknown example')
         b=ROOT/'examples'/name
         return self.create('示例 · '+name,{n:(b/n).read_text(encoding='utf-8') for n in INPUTS})
     def detail(self,p):
@@ -118,35 +127,37 @@ class Service:
             except (TypeError,ValueError):valid=False;lon=lat=None
             points.append({'line':i,'record_id':r.get('record_id'),'name':r.get('name'),'longitude':lon if valid else None,'latitude':lat if valid else None})
         return {'records':len(rows),'shown':len(points),'points':points,'area':json.loads((b/'area.geojson').read_text(encoding='utf-8'))}
-    def submit(self,p,kind,revision,key,mode='manual'):
+    def submit(self,p,kind,revision,key,mode='manual',strategy='single'):
         if kind not in ('draft','validate'):raise ValueError('Unknown task kind')
         if mode not in ('manual','live'):raise ValueError('Unknown mode')
+        if strategy not in STRATEGIES:raise ValueError('Unknown authoring strategy')
+        if strategy!='single' and (kind!='draft' or mode!='live'):raise ValueError('Collaboration requires a live draft')
         if not key or len(key)>100:raise ValueError('Idempotency key required')
         with self.lock,self.connect() as c:
             old=c.execute('SELECT * FROM jobs WHERE idempotency=?',(p+':'+key,)).fetchone()
             if old:
-                if old['kind']!=kind or old['revision']!=revision:raise Conflict('Idempotency key reused for another operation')
+                if old['kind']!=kind or old['revision']!=revision or old['mode']!=mode or old['strategy']!=strategy:raise Conflict('Idempotency key reused for another operation')
                 return dict(old)
             proj=self.project(p)
             if proj['revision']!=revision:raise Conflict('Stale project revision; refresh')
             if kind=='validate' and not proj['approval']:raise Conflict('Approve current rules before execution')
             active=c.execute("SELECT count(*) FROM jobs WHERE status IN ('QUEUED','RUNNING')").fetchone()[0]
             if active>=8:raise Conflict('Queue is full; retry later')
-            j=uid();c.execute('INSERT INTO jobs VALUES(?,?,?,?,?,?,?,?,?)',(j,p,kind,revision,'QUEUED',None,None,now(),p+':'+key))
-            self.audit(c,p,'QUEUE','local-user',{'job':j,'kind':kind,'revision':revision,'mode':mode})
-        self.pool.submit(self._execute,j,proj,kind,mode)
+            j=uid();c.execute('INSERT INTO jobs(id,project,kind,revision,status,result,error,created,idempotency,strategy,mode) VALUES(?,?,?,?,?,?,?,?,?,?,?)',(j,p,kind,revision,'QUEUED',None,None,now(),p+':'+key,strategy,mode))
+            self.audit(c,p,'QUEUE','local-user',{'job':j,'kind':kind,'revision':revision,'mode':mode,'strategy':strategy})
+        self.pool.submit(self._execute,j,proj,kind,mode,strategy)
         return self.job(j)
     def job(self,j):
         if not re.fullmatch('[a-f0-9]{32}',j):raise ValueError('Invalid job ID')
         with self.connect() as c:r=c.execute('SELECT * FROM jobs WHERE id=?',(j,)).fetchone()
         if not r:raise ValueError('Job not found')
         d=dict(r);d['result']=json.loads(d['result']) if d['result'] else None;return d
-    def _execute(self,j,proj,kind,mode):
+    def _execute(self,j,proj,kind,mode,strategy='single'):
         p=proj['id'];client=CompatibleClient() if mode=='live' else None
         with self.connect() as c:c.execute("UPDATE jobs SET status='RUNNING' WHERE id=?",(j,))
         try:
             if kind=='draft':
-                result=create_draft(self.path(p),mode,client)
+                result=create_draft(self.path(p),mode,client) if strategy=='single' else create_collaborative_draft(self.path(p),client,strategy)
                 with self.lock,self.connect() as c:
                     cur=self.project(p)
                     if cur['revision']!=proj['revision']:raise Conflict('Project changed while drafting; proposal discarded')
@@ -172,15 +183,17 @@ class Service:
             message=str(e)[:800] if isinstance(e,(ValueError,Conflict)) else type(e).__name__
             if client and client.config.api_key:message=message.replace(client.config.api_key,'[redacted]')
             with self.connect() as c:
-                c.execute("UPDATE jobs SET status='FAILED',error=?,result=? WHERE id=?",(message,json.dumps({'calls':client.calls if client else []}),j))
+                c.execute("UPDATE jobs SET status='FAILED',error=?,result=? WHERE id=?",(message,json.dumps({'calls':client.calls if client else [],'collaboration_outputs':getattr(client,'collaboration_outputs',[])},ensure_ascii=False),j))
                 self.audit(c,p,'TASK_FAILED','system',{'job':j,'error':message})
-    def approve(self,p,revision,proposal,actor):
+    def approve(self,p,revision,proposal,actor,ack_collaboration=False):
         if not isinstance(actor,str) or not actor.strip() or len(actor)>100:raise ValueError('Reviewer name required')
         with self.lock:
             proj=self.project(p)
             if proj['revision']!=revision:raise Conflict('Stale revision; refresh before approval')
             if not proj['draft']:raise Conflict('No draft to approve')
-            base=json.loads(proj['draft']);doc=normalize_proposal(proposal,self.path(p))
+            base=json.loads(proj['draft'])
+            if base.get('collaboration') and ack_collaboration is not True:raise ValueError('Acknowledge collaborative review and any unreviewed revision before approval')
+            doc=normalize_proposal(proposal,self.path(p))
             baseids={q['requirement_id'] for q in base['requirements']}
             if baseids!={q['requirement_id'] for q in doc['requirements']}:raise ValueError('Review cannot remove/add clause IDs; regenerate a draft for a changed source')
             baseq={q['requirement_id']:q for q in base['requirements']}
@@ -205,6 +218,7 @@ class Service:
             if rejections or problems:raise ValueError('Approval rejected: '+json.dumps(rejections or problems,ensure_ascii=False)[:1500])
             approval={'requirements_doc':rdoc,'rules_doc':rulesdoc,'reviewer':actor.strip(),'at':stamp,'mode':base['mode'],
                       'input_hashes':{n:hashlib.sha256((self.path(p)/n).read_bytes()).hexdigest() for n in INPUTS}}
+            approval['collaboration']=base.get('collaboration');approval['collaboration_ack']=bool(ack_collaboration)
             approval['hash']=digest(json.dumps(approval,sort_keys=True,ensure_ascii=False))
             with self.connect() as c:
                 c.execute('UPDATE projects SET approval=?,revision=revision+1 WHERE id=?',(json.dumps(approval,ensure_ascii=False),p))

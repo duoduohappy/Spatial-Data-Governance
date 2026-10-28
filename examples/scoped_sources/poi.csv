@@ -1,0 +1,3 @@
+record_id,name,category,longitude,latitude,source_time,source
+M-001,合成市政设施,学校,116.3050,39.9050,2026-09-28T00:00:00Z,municipal
+S-001,合成普查设施,医院,116.3080,39.9080,2026-09-10T00:00:00Z,survey

@@ -1,0 +1,2 @@
+DOM_OK=true
+Includes collaboration panel, XSS-safe review text and collaboration action. DOM simulation, not real-browser visual evidence.

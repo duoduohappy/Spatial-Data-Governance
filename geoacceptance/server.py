@@ -15,7 +15,7 @@ class AppServer(ThreadingHTTPServer):
         except Exception:
             self.service.close();raise
 class Handler(BaseHTTPRequestHandler):
-    server_version='GeoAcceptance/0.5'
+    server_version='GeoAcceptance/0.6'
     def log_message(self,*args):pass
     def send(self,code,data,typ='application/json; charset=utf-8',attachment=None):
         raw=json.dumps(data,ensure_ascii=False,allow_nan=False).encode('utf-8') if typ.startswith('application/json') else data.encode('utf-8')
@@ -36,7 +36,12 @@ class Handler(BaseHTTPRequestHandler):
             if p in ('/app.js','/style.css'):
                 return self.send(200,(Path(__file__).parent/'web'/p[1:]).read_text(encoding='utf-8'),'text/javascript; charset=utf-8' if p.endswith('js') else 'text/css; charset=utf-8')
             if p=='/api/projects':return self.send(200,s.list())
-            if p=='/api/config':return self.send(200,ModelConfig.from_env().public())
+            if p=='/api/config':
+                config=ModelConfig.from_env();public=config.public()
+                public['review_strategies']=['single','self_review','dual_review'] if config.provider=='ollama' else ['single']
+                public['version']='0.6.0-rc1'
+                public['collaboration_status']='experimental_no_measured_quality_gain'
+                return self.send(200,public)
             parts=p.strip('/').split('/')
             if len(parts)==3 and parts[:2]==['api','projects']:return self.send(200,s.detail(parts[2]))
             if len(parts)>=3 and parts[:2]==['api','jobs']:
@@ -68,8 +73,8 @@ class Handler(BaseHTTPRequestHandler):
                 project=parts[2];op=parts[3]
                 if op in ('draft','validate'):
                     if op=='draft' and d.get('mode')=='live' and d.get('confirm_outbound') is not True:raise ValueError('Confirm the displayed outbound payload before a live call')
-                    return self.send(202,s.submit(project,op,d['revision'],d['key'],d.get('mode','manual')))
-                if op=='approve':return self.send(200,s.approve(project,d['revision'],d['proposal'],d['reviewer']))
+                    return self.send(202,s.submit(project,op,d['revision'],d['key'],d.get('mode','manual'),d.get('strategy','single')))
+                if op=='approve':return self.send(200,s.approve(project,d['revision'],d['proposal'],d['reviewer'],d.get('ack_collaboration',False)))
                 if op=='corrected':return self.send(201,s.corrected(project,d['revision'],d['files'],d.get('name')))
             return self.send(404,{'error':'Not found'})
         except Conflict as e:self.send(409,{'error':str(e)})

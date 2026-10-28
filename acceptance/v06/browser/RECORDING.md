@@ -1,0 +1,1 @@
+Browser screenshots and structured results are committed. The original 3.3 MB WebM is retained in the local source delivery archive; the GitHub connector rejected its blob upload twice. Re-run tests/ui/browser-test.mjs to create a fresh recording. This does not change the recorded test outcomes.

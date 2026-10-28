@@ -1,0 +1,1 @@
+batch_id,clause_id,document_sha256,line_start,line_end,source_quote,rule_type,parameters_json,scope_json,support_status,required_for_release,reviewer_id,labelled_at,reason

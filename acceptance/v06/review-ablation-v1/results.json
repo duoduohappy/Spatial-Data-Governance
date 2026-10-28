@@ -1,0 +1,4111 @@
+{
+  "status": "MEASURED_DEVELOPER_REGRESSION_NOT_INDEPENDENT_VALIDATION",
+  "created_at": "2026-10-27T10:12:30.267047+00:00",
+  "manifest_sha256": "87aed7add6b164be9e4ea73b9481f97bfe7e177cdd19022d251c88faffc859d0",
+  "scope": "Developer-authored synthetic regression, frozen before first v0.6 collaboration inference; not independent human labels. Existing exposed 80-clause set is not treated as new holdout.",
+  "provenance": {
+    "geoacceptance/appcli.py": "65f71d13f78fc1eedf9fcfb4744ee25a4100417de7b0b6a8de366e400af1a5af",
+    "geoacceptance/authoring.py": "f93bc01ee0aa163b2eda16198ad3c7976ef7f3ce43f5da1ef8d771c94bd5dba5",
+    "geoacceptance/cli.py": "54946f353b5d94c736abdaff944d74a9dc181ff9267d18ce92e6dc548092cf55",
+    "geoacceptance/collaboration.py": "f0aa82e00455a3b2084b906eef6043263b3f2811a1fd1485b0d191231254b71b",
+    "geoacceptance/compare.py": "cb051d2eda27c220a0f031b91fc8740595b1cf7adcce3716a12d7f9a7b32e0d4",
+    "geoacceptance/deepseek_launcher.py": "8915bb577f7a3aae9c5dc71d59d43d82c8f69ecf809c928428d14bab904d94ad",
+    "geoacceptance/inputs.py": "f581809f0d0dbd1b0f6d27988ef3376fcaa4c8d36e32d84248165c0efd57a7da",
+    "geoacceptance/llm.py": "c1ba0f1894d58d3f004114ad2c8a494fb443b6a48a2f8684a5440de7a1e17792",
+    "geoacceptance/local_authoring.py": "ac6469b50503667269ec5ce1336285dcfb06102567255f312fe05fd021626380",
+    "geoacceptance/local_launcher.py": "9963f6b35753475e84bb24cd24e701482ff3d613ac975af720b48e6c9728c9ad",
+    "geoacceptance/qwen_launcher.py": "f38a0a7c45243235111863696db6179f474a92ddfd4c6544d2fc349c999203cf",
+    "geoacceptance/reporting.py": "d5a9443d4300e9ecc4b4ebf6198d9cb4445a98dd9598301341daec1edd9c7579",
+    "geoacceptance/server.py": "0c17b415999fe4133acf8188d61d30e7056378046fe55bfe4d8ada5f8b9f70af",
+    "geoacceptance/service.py": "d46123b1bfe429a972d312721b5736c0fc2e511cce444860edc85df875ed7161",
+    "geoacceptance/validate.py": "5be28cf5794e158368111d2b48952c6c9d46842d0868041a7d15fb6d0efa04f7",
+    "geoacceptance/__init__.py": "1e5f59df368b6251908ebebdf8e989e3f7c3ade71b48c728ac12f9ec74b4b03d",
+    "tools/check_schema_consistency.py": "ba3963568bcf63a9d675edf22681b89bd0ef0691acd54499531afbbe4c014d82",
+    "tools/compare_probes.py": "cf1dcd6fc80f6bcec0e99976c34ac182a269464f851e4aa9d28bf8b7d59999b4",
+    "tools/compare_snapshots.py": "4589aaab0ee5f44383b18a08a6f7e9cdbb542ad5ab3219fff3806744ce3962e5",
+    "tools/fetch_public_sample.py": "3e84e6bbf3edbdab63c60e8392d647f6071e277d6e9fa64e49def60e726864f6",
+    "tools/heldout_acceptance.py": "6ce2dffc502b684befb2658ef671f2671956fe6fd43a5c7cc0c94443e86b5530",
+    "tools/http_smoke.py": "df163350d5d18e8d5e059afaace73b9f198e6a2f5caecad4de818c6d9fb84a80",
+    "tools/http_workflow_probe.py": "671e5ca8fc4d804dcf394bebe6048c3a18340cf4987563b2796d22a514ddf2ef",
+    "tools/input_models.py": "c497a8b0e47aad97787dbb02c7693d7e280f91449e71b6dff7579b1c59f3ee92",
+    "tools/live_acceptance.py": "5969ce030d9a46ef93a32fcc3862b57161086d3edebf59d352fe08f0aa7eace6",
+    "tools/make_examples.py": "d7ca659341ad6fcaa326fa056c91e325170ad7df0401e9a620f73ff9de209fcd",
+    "tools/recheck_probes.py": "39585128e204ee4a52f4ef7388061d919a7cda6557083420bf4be4c99fbc2ad9",
+    "tools/release_check.py": "9073c39d479a480bb5b5a0829a6f5e6f1deb8b74ad3c3b04166c07d34efab7e2",
+    "tools/restore_recording.py": "1dc63faebd5ee74e80ec35419b7be58489f25ada00b9eb3d1d3ef01fcb69de0e",
+    "tools/review_ablation.py": "d372bf6ee27546508e3db28e2da5c47f53a4be8663f75ebbedbbc8484ee18092",
+    "tools/run_checks.py": "faf3b20a141bd60c2d08d897a504f05200348d8e5147c15b452ca0f1a7bff30a",
+    "tools/selfcheck_guards.py": "ae71c64fffc094ab39871dbdce4239de583b5b7c45fb6bae8e0c6d59b92b62ac",
+    "tools/setup_local_model.py": "a2638f565b96fa135ee455072b53560b318c71ce3d28229c064de4f27a000d44",
+    "tools/smoke_deps.py": "1a9623e1fd2da6513f619ca184ccd9489fb5b0a4efcbf3fbd72ee42a0765b857",
+    "tools/snapshot_results.py": "94f2bc3221dca53320dcf02c457824f1d9ece84a15db6ad89fbc3d057fb95bbb",
+    "tools/stage0_gate.py": "a5e59c80680be25fcf35ed28038ba920c1d16b9fcf7aa747a9043cec88e1f5bd",
+    "tools/summarize_local_quality.py": "872f69e54b1271a30bfb3197d7b204572c37b1173ee582663ee45d01e92c04d1",
+    "tools/verify_env.py": "ae9600c49ff1a89c2fac3e39e64fd83d1ec9c76a872d7166631d03336e6f2154",
+    "tools/verify_release_evidence.py": "88190d3c27421886e7199f29c582a9ad70ad895999bb066ba0f39809baa9006d",
+    "tools/write_release_status.py": "9d9173decd27bab3da3c76c820e93d3b9b6de615ffca16064147cf00cddbfa99",
+    "tools/__init__.py": "4af33ce4c06dd5036e296bd22c03785f33140622b7ce25bfc70a4e248099f769"
+  },
+  "criteria": {
+    "unknown_false_support_max": 0,
+    "minimum_correct_improvement_over_single": 1,
+    "max_token_ratio": 4,
+    "note": "Small developer set only; superiority cannot be generalized."
+  },
+  "cases": [
+    {
+      "case": "case-01",
+      "strategy": "single",
+      "status": "COMPLETED",
+      "human_review": "NOT_RUN",
+      "draft": {
+        "schema_version": 1,
+        "requirements": [
+          {
+            "requirement_id": "Q002",
+            "source_line_start": 2,
+            "source_line_end": 2,
+            "source_quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+            "description": "每条记录必须具有字典声明的全部必填字段",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q003",
+            "source_line_start": 3,
+            "source_line_end": 3,
+            "source_quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+            "description": "全部必填字段不得为空；去除首尾空白后长度为零也视为空值",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q004",
+            "source_line_start": 4,
+            "source_line_end": 4,
+            "source_quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+            "description": "所有字段必须按数据字典声明的数据类型解析",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q005",
+            "source_line_start": 5,
+            "source_line_end": 5,
+            "source_quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+            "description": "category 只能使用数据字典枚举编码，不允许别名",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q006",
+            "source_line_start": 6,
+            "source_line_end": 6,
+            "source_quote": "5. record_id 必须在交付数据中唯一。",
+            "description": "record_id 必须在交付数据中唯一",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q007",
+            "source_line_start": 7,
+            "source_line_end": 7,
+            "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+            "description": "经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q008",
+            "source_line_start": 8,
+            "source_line_end": 8,
+            "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+            "description": "坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q009",
+            "source_line_start": 9,
+            "source_line_end": 9,
+            "source_quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+            "description": "点位必须位于项目区域；边界上的点计入区域内部",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q010",
+            "source_line_start": 10,
+            "source_line_end": 10,
+            "source_quote": "9. 以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天。",
+            "description": "以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          },
+          {
+            "requirement_id": "Q011",
+            "source_line_start": 11,
+            "source_line_end": 11,
+            "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+            "description": "仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据",
+            "required_for_release": false,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c"
+          }
+        ],
+        "rules": [
+          {
+            "rule_id": "R01",
+            "rule_type": "required_field_present",
+            "requirement_ids": [
+              "Q002"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ]
+            },
+            "parameter_sources": [],
+            "preconditions": [],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R02",
+            "rule_type": "non_empty",
+            "requirement_ids": [
+              "Q003"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ],
+              "missing_rate_policy": "STRICT",
+              "trim": true
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R03",
+            "rule_type": "type_parse",
+            "requirement_ids": [
+              "Q004"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ]
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R02"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R04",
+            "rule_type": "enum_value",
+            "requirement_ids": [
+              "Q005"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "field": "category",
+              "allow_alias": false
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01",
+              "R03"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R05",
+            "rule_type": "id_unique",
+            "requirement_ids": [
+              "Q006"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "field": "record_id"
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R06",
+            "rule_type": "coord_range",
+            "requirement_ids": [
+              "Q007"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "lon_range": [
+                -180,
+                180
+              ],
+              "lat_range": [
+                -90,
+                90
+              ]
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q007",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                "interpretation": "经度范围 [-180, 180]（度）",
+                "parameter": "lon_range",
+                "value": [
+                  -180,
+                  180
+                ],
+                "value_literal": [
+                  "-180",
+                  "180"
+                ],
+                "unit": "degree",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c",
+                "reviewer": "",
+                "approved_at": ""
+              },
+              {
+                "requirement_id": "Q007",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                "interpretation": "纬度范围 [-90, 90]（度）",
+                "parameter": "lat_range",
+                "value": [
+                  -90,
+                  90
+                ],
+                "value_literal": [
+                  "-90",
+                  "90"
+                ],
+                "unit": "degree",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R07"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R07",
+            "rule_type": "crs_declaration",
+            "requirement_ids": [
+              "Q008"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "expected_crs": "EPSG:4326"
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q008",
+                "source_line_start": 8,
+                "source_line_end": 8,
+                "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+                "interpretation": "EPSG:4326（WGS84）",
+                "parameter": "expected_crs",
+                "value": "EPSG:4326",
+                "value_literal": [
+                  "EPSG:4326"
+                ],
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R08",
+            "rule_type": "within_project_area",
+            "requirement_ids": [
+              "Q009"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "boundary_policy": "inclusive"
+            },
+            "parameter_sources": [
+              {
+                "value_literal": [
+                  "边界上的点计入区域内部"
+                ],
+                "requirement_id": "Q009",
+                "source_line_start": 9,
+                "source_line_end": 9,
+                "source_quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+                "interpretation": "inclusive",
+                "parameter": "boundary_policy",
+                "value": "inclusive",
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R06",
+              "R07"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R09",
+            "rule_type": "freshness",
+            "requirement_ids": [
+              "Q010"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "reference_time": "2026-09-28T00:00:00Z",
+              "max_age_days": 12
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q010",
+                "source_line_start": 10,
+                "source_line_end": 10,
+                "source_quote": "9. 以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天。",
+                "interpretation": "2026-09-28T00:00:00Z",
+                "parameter": "reference_time",
+                "value": "2026-09-28T00:00:00Z",
+                "value_literal": [
+                  "2026-09-28T00:00:00Z"
+                ],
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c",
+                "reviewer": "",
+                "approved_at": ""
+              },
+              {
+                "requirement_id": "Q010",
+                "source_line_start": 10,
+                "source_line_end": 10,
+                "source_quote": "9. 以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天。",
+                "interpretation": "12",
+                "parameter": "max_age_days",
+                "value": 12,
+                "value_literal": [
+                  "12"
+                ],
+                "unit": "day",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R10",
+            "rule_type": "duplicate_candidate",
+            "requirement_ids": [
+              "Q011"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": false,
+            "parameters": {
+              "max_distance_m": 8,
+              "name_equal": true
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q011",
+                "source_line_start": 11,
+                "source_line_end": 11,
+                "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+                "interpretation": "8",
+                "parameter": "max_distance_m",
+                "value": 8,
+                "value_literal": [
+                  "8"
+                ],
+                "unit": "metre",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "330cda4d31c8e0b6de73d7a5358df3349054bb842e29f1361e3d64bba17cbf5c",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R06"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "reference_time": "2026-09-28T00:00:00Z",
+        "clarifications": [],
+        "compiler": {
+          "kind": "local-evidence-compiler",
+          "quarantined_rules": [],
+          "scope": "Values copied from model parameters; no semantic correction or approval."
+        },
+        "mode": "live",
+        "calls": [
+          {
+            "attempt": 1,
+            "model": "geoacceptance-qwen3:4b",
+            "currency": "CNY",
+            "reserved_cost": 0.0,
+            "reserved_usd": null,
+            "usage": {
+              "prompt_tokens": 2267,
+              "completion_tokens": 2518,
+              "total_tokens": 4785
+            },
+            "cost": 0.0,
+            "cost_usd": null,
+            "cost_basis": "estimate at configured rates; not provider invoice",
+            "status": "OK",
+            "duration_ms": 105769.09
+          }
+        ],
+        "model_proposal": {
+          "requirements": [
+            {
+              "requirement_id": "Q002",
+              "source_line_start": 2,
+              "source_line_end": 2,
+              "source_quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+              "description": "每条记录必须具有字典声明的全部必填字段",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q003",
+              "source_line_start": 3,
+              "source_line_end": 3,
+              "source_quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+              "description": "全部必填字段不得为空；去除首尾空白后长度为零也视为空值",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q004",
+              "source_line_start": 4,
+              "source_line_end": 4,
+              "source_quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+              "description": "所有字段必须按数据字典声明的数据类型解析",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q005",
+              "source_line_start": 5,
+              "source_line_end": 5,
+              "source_quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+              "description": "category 只能使用数据字典枚举编码，不允许别名",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q006",
+              "source_line_start": 6,
+              "source_line_end": 6,
+              "source_quote": "5. record_id 必须在交付数据中唯一。",
+              "description": "record_id 必须在交付数据中唯一",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q007",
+              "source_line_start": 7,
+              "source_line_end": 7,
+              "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+              "description": "经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q008",
+              "source_line_start": 8,
+              "source_line_end": 8,
+              "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+              "description": "坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q009",
+              "source_line_start": 9,
+              "source_line_end": 9,
+              "source_quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+              "description": "点位必须位于项目区域；边界上的点计入区域内部",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q010",
+              "source_line_start": 10,
+              "source_line_end": 10,
+              "source_quote": "9. 以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天。",
+              "description": "以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q011",
+              "source_line_start": 11,
+              "source_line_end": 11,
+              "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+              "description": "仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据",
+              "required_for_release": false,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            }
+          ],
+          "rules": [
+            {
+              "rule_type": "required_field_present",
+              "requirement_ids": [
+                "Q002"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "non_empty",
+              "requirement_ids": [
+                "Q003"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ],
+                "missing_rate_policy": "STRICT",
+                "trim": true
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "type_parse",
+              "requirement_ids": [
+                "Q004"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "enum_value",
+              "requirement_ids": [
+                "Q005"
+              ],
+              "parameters": {
+                "field": "category",
+                "allow_alias": false
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "id_unique",
+              "requirement_ids": [
+                "Q006"
+              ],
+              "parameters": {
+                "field": "record_id"
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "coord_range",
+              "requirement_ids": [
+                "Q007"
+              ],
+              "parameters": {
+                "lon_range": [
+                  -180,
+                  180
+                ],
+                "lat_range": [
+                  -90,
+                  90
+                ]
+              },
+              "parameter_evidence": {
+                "lon_range": {
+                  "requirement_id": "Q007",
+                  "source_line_start": 7,
+                  "source_line_end": 7,
+                  "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                  "interpretation": "经度范围 [-180, 180]（度）"
+                },
+                "lat_range": {
+                  "requirement_id": "Q007",
+                  "source_line_start": 7,
+                  "source_line_end": 7,
+                  "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                  "interpretation": "纬度范围 [-90, 90]（度）"
+                }
+              }
+            },
+            {
+              "rule_type": "crs_declaration",
+              "requirement_ids": [
+                "Q008"
+              ],
+              "parameters": {
+                "expected_crs": "EPSG:4326"
+              },
+              "parameter_evidence": {
+                "expected_crs": {
+                  "requirement_id": "Q008",
+                  "source_line_start": 8,
+                  "source_line_end": 8,
+                  "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+                  "interpretation": "EPSG:4326（WGS84）"
+                }
+              }
+            },
+            {
+              "rule_type": "within_project_area",
+              "requirement_ids": [
+                "Q009"
+              ],
+              "parameters": {
+                "boundary_policy": "inclusive"
+              },
+              "parameter_evidence": {
+                "boundary_policy": {
+                  "value_literal": [
+                    "边界上的点计入区域内部"
+                  ],
+                  "requirement_id": "Q009",
+                  "source_line_start": 9,
+                  "source_line_end": 9,
+                  "source_quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+                  "interpretation": "inclusive"
+                }
+              }
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "Q010"
+              ],
+              "parameters": {
+                "reference_time": "2026-09-28T00:00:00Z",
+                "max_age_days": 12
+              },
+              "parameter_evidence": {
+                "reference_time": {
+                  "requirement_id": "Q010",
+                  "source_line_start": 10,
+                  "source_line_end": 10,
+                  "source_quote": "9. 以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天。",
+                  "interpretation": "2026-09-28T00:00:00Z"
+                },
+                "max_age_days": {
+                  "requirement_id": "Q010",
+                  "source_line_start": 10,
+                  "source_line_end": 10,
+                  "source_quote": "9. 以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天。",
+                  "interpretation": "12"
+                }
+              }
+            },
+            {
+              "rule_type": "duplicate_candidate",
+              "requirement_ids": [
+                "Q011"
+              ],
+              "parameters": {
+                "max_distance_m": 8,
+                "name_equal": true
+              },
+              "parameter_evidence": {
+                "max_distance_m": {
+                  "requirement_id": "Q011",
+                  "source_line_start": 11,
+                  "source_line_end": 11,
+                  "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+                  "interpretation": "8"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "scores": [
+        {
+          "quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+          "rule_type": "required_field_present",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+          "rule_type": "non_empty",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+          "rule_type": "type_parse",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+          "rule_type": "enum_value",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "5. record_id 必须在交付数据中唯一。",
+          "rule_type": "id_unique",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+          "rule_type": "coord_range",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+          "rule_type": "crs_declaration",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+          "rule_type": "within_project_area",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "9. 以 2026-09-28T00:00:00Z 为基准时间，数据年龄不得超过 12 天。",
+          "rule_type": "freshness",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+          "rule_type": "duplicate_candidate",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        }
+      ],
+      "lineage": {
+        "quote_and_parameter_problems": [],
+        "configuration_rejections": [],
+        "scope": "Dry validation; no actual approval or execution. Draft is unchanged."
+      },
+      "all_unapproved": true,
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2267,
+            "completion_tokens": 2518,
+            "total_tokens": 4785
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 105769.09
+        }
+      ],
+      "duration_ms": 106640.83
+    },
+    {
+      "case": "case-01",
+      "strategy": "self_review",
+      "status": "FAILED",
+      "human_review": "NOT_RUN",
+      "error_type": "ValueError",
+      "error": "Final review required",
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2267,
+            "completion_tokens": 2518,
+            "total_tokens": 4785
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 39856.92,
+          "role": "proposer",
+          "strategy": "self_review"
+        },
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 10294,
+            "completion_tokens": 816,
+            "total_tokens": 11110
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 24282.65,
+          "role": "self_reviewer",
+          "strategy": "self_review"
+        }
+      ],
+      "duration_ms": 64179.83
+    },
+    {
+      "case": "case-01",
+      "strategy": "dual_review",
+      "status": "FAILED",
+      "human_review": "NOT_RUN",
+      "error_type": "ValueError",
+      "error": "Final review required",
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2267,
+            "completion_tokens": 2518,
+            "total_tokens": 4785
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 40394.47,
+          "role": "proposer",
+          "strategy": "dual_review"
+        },
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 5912,
+            "completion_tokens": 943,
+            "total_tokens": 6855
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 21152.57,
+          "role": "reviewer",
+          "strategy": "dual_review"
+        }
+      ],
+      "duration_ms": 61589.94
+    },
+    {
+      "case": "case-02",
+      "strategy": "self_review",
+      "status": "FAILED",
+      "human_review": "NOT_RUN",
+      "error_type": "ValueError",
+      "error": "Final review required",
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2261,
+            "completion_tokens": 2505,
+            "total_tokens": 4766
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 41276.84,
+          "role": "proposer",
+          "strategy": "self_review"
+        },
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 10026,
+            "completion_tokens": 169,
+            "total_tokens": 10195
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 9580.84,
+          "role": "self_reviewer",
+          "strategy": "self_review"
+        }
+      ],
+      "duration_ms": 50899.86
+    },
+    {
+      "case": "case-02",
+      "strategy": "dual_review",
+      "status": "FAILED",
+      "human_review": "NOT_RUN",
+      "error_type": "ValueError",
+      "error": "Final review required",
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2261,
+            "completion_tokens": 2505,
+            "total_tokens": 4766
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 40126.51,
+          "role": "proposer",
+          "strategy": "dual_review"
+        },
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 5669,
+            "completion_tokens": 957,
+            "total_tokens": 6626
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 21145.42,
+          "role": "reviewer",
+          "strategy": "dual_review"
+        }
+      ],
+      "duration_ms": 61311.99
+    },
+    {
+      "case": "case-02",
+      "strategy": "single",
+      "status": "COMPLETED",
+      "human_review": "NOT_RUN",
+      "draft": {
+        "schema_version": 1,
+        "requirements": [
+          {
+            "requirement_id": "Q002",
+            "source_line_start": 2,
+            "source_line_end": 2,
+            "source_quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+            "description": "每条记录必须具有字典声明的全部必填字段",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q003",
+            "source_line_start": 3,
+            "source_line_end": 3,
+            "source_quote": "2. All required fields must be nonempty. Do not trim leading or trailing whitespace before checking.",
+            "description": "All required fields must be nonempty. Do not trim leading or trailing whitespace before checking.",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q004",
+            "source_line_start": 4,
+            "source_line_end": 4,
+            "source_quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+            "description": "所有字段必须按数据字典声明的数据类型解析",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q005",
+            "source_line_start": 5,
+            "source_line_end": 5,
+            "source_quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+            "description": "category 只能使用数据字典枚举编码，不允许别名",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q006",
+            "source_line_start": 6,
+            "source_line_end": 6,
+            "source_quote": "5. record_id 必须在交付数据中唯一。",
+            "description": "record_id 必须在交付数据中唯一",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q007",
+            "source_line_start": 7,
+            "source_line_end": 7,
+            "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+            "description": "经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q008",
+            "source_line_start": 8,
+            "source_line_end": 8,
+            "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+            "description": "坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q009",
+            "source_line_start": 9,
+            "source_line_end": 9,
+            "source_quote": "8. All points must lie inside the project polygon; points exactly on the boundary are excluded.",
+            "description": "All points must lie inside the project polygon; points exactly on the boundary are excluded",
+            "required_for_release": true,
+            "support_status": "NEEDS_CLARIFICATION",
+            "ambiguities": [
+              "规则编译失败，未执行：Parameter evidence does not contain the actual value/literal: boundary_policy"
+            ],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q010",
+            "source_line_start": 10,
+            "source_line_end": 10,
+            "source_quote": "9. Records must be no older than 6 days relative to 2026-09-25T00:00:00Z.",
+            "description": "Records must be no older than 6 days relative to 2026-09-25T00:00:00Z",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          },
+          {
+            "requirement_id": "Q011",
+            "source_line_start": 11,
+            "source_line_end": 11,
+            "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+            "description": "仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据",
+            "required_for_release": false,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91"
+          }
+        ],
+        "rules": [
+          {
+            "rule_id": "R01",
+            "rule_type": "required_field_present",
+            "requirement_ids": [
+              "Q002"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ]
+            },
+            "parameter_sources": [],
+            "preconditions": [],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R02",
+            "rule_type": "non_empty",
+            "requirement_ids": [
+              "Q003"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ],
+              "missing_rate_policy": "STRICT",
+              "trim": false
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R03",
+            "rule_type": "type_parse",
+            "requirement_ids": [
+              "Q004"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ]
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R02"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R04",
+            "rule_type": "enum_value",
+            "requirement_ids": [
+              "Q005"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "field": "category",
+              "allow_alias": false
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01",
+              "R03"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R05",
+            "rule_type": "id_unique",
+            "requirement_ids": [
+              "Q006"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "field": "record_id"
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R06",
+            "rule_type": "coord_range",
+            "requirement_ids": [
+              "Q007"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "lon_range": [
+                -180,
+                180
+              ],
+              "lat_range": [
+                -90,
+                90
+              ]
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q007",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                "interpretation": "经度范围 [-180, 180]（度）",
+                "parameter": "lon_range",
+                "value": [
+                  -180,
+                  180
+                ],
+                "value_literal": [
+                  "-180",
+                  "180"
+                ],
+                "unit": "degree",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91",
+                "reviewer": "",
+                "approved_at": ""
+              },
+              {
+                "requirement_id": "Q007",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                "interpretation": "纬度范围 [-90, 90]（度）",
+                "parameter": "lat_range",
+                "value": [
+                  -90,
+                  90
+                ],
+                "value_literal": [
+                  "-90",
+                  "90"
+                ],
+                "unit": "degree",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R07"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R07",
+            "rule_type": "crs_declaration",
+            "requirement_ids": [
+              "Q008"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "expected_crs": "EPSG:4326"
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q008",
+                "source_line_start": 8,
+                "source_line_end": 8,
+                "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+                "interpretation": "EPSG:4326（WGS84）",
+                "parameter": "expected_crs",
+                "value": "EPSG:4326",
+                "value_literal": [
+                  "EPSG:4326"
+                ],
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R09",
+            "rule_type": "freshness",
+            "requirement_ids": [
+              "Q010"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "reference_time": "2026-09-25T00:00:00Z",
+              "max_age_days": 6
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q010",
+                "source_line_start": 10,
+                "source_line_end": 10,
+                "source_quote": "9. Records must be no older than 6 days relative to 2026-09-25T00:00:00Z.",
+                "interpretation": "2026-09-25T00:00:00Z",
+                "parameter": "reference_time",
+                "value": "2026-09-25T00:00:00Z",
+                "value_literal": [
+                  "2026-09-25T00:00:00Z"
+                ],
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91",
+                "reviewer": "",
+                "approved_at": ""
+              },
+              {
+                "requirement_id": "Q010",
+                "source_line_start": 10,
+                "source_line_end": 10,
+                "source_quote": "9. Records must be no older than 6 days relative to 2026-09-25T00:00:00Z.",
+                "interpretation": "6 days",
+                "parameter": "max_age_days",
+                "value": 6,
+                "value_literal": [
+                  "6"
+                ],
+                "unit": "day",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R10",
+            "rule_type": "duplicate_candidate",
+            "requirement_ids": [
+              "Q011"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": false,
+            "parameters": {
+              "max_distance_m": 8,
+              "name_equal": true
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q011",
+                "source_line_start": 11,
+                "source_line_end": 11,
+                "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+                "interpretation": "8 meters",
+                "parameter": "max_distance_m",
+                "value": 8,
+                "value_literal": [
+                  "8"
+                ],
+                "unit": "metre",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "924ebc7d4b6c87e8f1994f314400839baeaf605ab84c6b1e2d509f834a167f91",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R06"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "reference_time": "2026-09-25T00:00:00Z",
+        "clarifications": [
+          {
+            "requirement_id": "Q009",
+            "messages": [
+              "规则编译失败，未执行：Parameter evidence does not contain the actual value/literal: boundary_policy"
+            ]
+          }
+        ],
+        "compiler": {
+          "kind": "local-evidence-compiler",
+          "quarantined_rules": [
+            {
+              "rule_type": "within_project_area",
+              "requirement_ids": [
+                "Q009"
+              ],
+              "reason": "Parameter evidence does not contain the actual value/literal: boundary_policy"
+            }
+          ],
+          "scope": "Values copied from model parameters; no semantic correction or approval."
+        },
+        "mode": "live",
+        "calls": [
+          {
+            "attempt": 1,
+            "model": "geoacceptance-qwen3:4b",
+            "currency": "CNY",
+            "reserved_cost": 0.0,
+            "reserved_usd": null,
+            "usage": {
+              "prompt_tokens": 2261,
+              "completion_tokens": 2505,
+              "total_tokens": 4766
+            },
+            "cost": 0.0,
+            "cost_usd": null,
+            "cost_basis": "estimate at configured rates; not provider invoice",
+            "status": "OK",
+            "duration_ms": 40268.26
+          }
+        ],
+        "model_proposal": {
+          "requirements": [
+            {
+              "requirement_id": "Q002",
+              "source_line_start": 2,
+              "source_line_end": 2,
+              "source_quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+              "description": "每条记录必须具有字典声明的全部必填字段",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q003",
+              "source_line_start": 3,
+              "source_line_end": 3,
+              "source_quote": "2. All required fields must be nonempty. Do not trim leading or trailing whitespace before checking.",
+              "description": "All required fields must be nonempty. Do not trim leading or trailing whitespace before checking.",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q004",
+              "source_line_start": 4,
+              "source_line_end": 4,
+              "source_quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+              "description": "所有字段必须按数据字典声明的数据类型解析",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q005",
+              "source_line_start": 5,
+              "source_line_end": 5,
+              "source_quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+              "description": "category 只能使用数据字典枚举编码，不允许别名",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q006",
+              "source_line_start": 6,
+              "source_line_end": 6,
+              "source_quote": "5. record_id 必须在交付数据中唯一。",
+              "description": "record_id 必须在交付数据中唯一",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q007",
+              "source_line_start": 7,
+              "source_line_end": 7,
+              "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+              "description": "经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q008",
+              "source_line_start": 8,
+              "source_line_end": 8,
+              "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+              "description": "坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q009",
+              "source_line_start": 9,
+              "source_line_end": 9,
+              "source_quote": "8. All points must lie inside the project polygon; points exactly on the boundary are excluded.",
+              "description": "All points must lie inside the project polygon; points exactly on the boundary are excluded",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q010",
+              "source_line_start": 10,
+              "source_line_end": 10,
+              "source_quote": "9. Records must be no older than 6 days relative to 2026-09-25T00:00:00Z.",
+              "description": "Records must be no older than 6 days relative to 2026-09-25T00:00:00Z",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q011",
+              "source_line_start": 11,
+              "source_line_end": 11,
+              "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+              "description": "仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据",
+              "required_for_release": false,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            }
+          ],
+          "rules": [
+            {
+              "rule_type": "required_field_present",
+              "requirement_ids": [
+                "Q002"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "non_empty",
+              "requirement_ids": [
+                "Q003"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ],
+                "missing_rate_policy": "STRICT",
+                "trim": false
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "type_parse",
+              "requirement_ids": [
+                "Q004"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "enum_value",
+              "requirement_ids": [
+                "Q005"
+              ],
+              "parameters": {
+                "field": "category",
+                "allow_alias": false
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "id_unique",
+              "requirement_ids": [
+                "Q006"
+              ],
+              "parameters": {
+                "field": "record_id"
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "coord_range",
+              "requirement_ids": [
+                "Q007"
+              ],
+              "parameters": {
+                "lon_range": [
+                  -180,
+                  180
+                ],
+                "lat_range": [
+                  -90,
+                  90
+                ]
+              },
+              "parameter_evidence": {
+                "lon_range": {
+                  "requirement_id": "Q007",
+                  "source_line_start": 7,
+                  "source_line_end": 7,
+                  "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                  "interpretation": "经度范围 [-180, 180]（度）"
+                },
+                "lat_range": {
+                  "requirement_id": "Q007",
+                  "source_line_start": 7,
+                  "source_line_end": 7,
+                  "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                  "interpretation": "纬度范围 [-90, 90]（度）"
+                }
+              }
+            },
+            {
+              "rule_type": "crs_declaration",
+              "requirement_ids": [
+                "Q008"
+              ],
+              "parameters": {
+                "expected_crs": "EPSG:4326"
+              },
+              "parameter_evidence": {
+                "expected_crs": {
+                  "requirement_id": "Q008",
+                  "source_line_start": 8,
+                  "source_line_end": 8,
+                  "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+                  "interpretation": "EPSG:4326（WGS84）"
+                }
+              }
+            },
+            {
+              "rule_type": "within_project_area",
+              "requirement_ids": [
+                "Q009"
+              ],
+              "parameters": {
+                "boundary_policy": "exclusive"
+              },
+              "parameter_evidence": {
+                "boundary_policy": {
+                  "value_literal": [
+                    "points exactly on the boundary are excluded"
+                  ],
+                  "requirement_id": "Q009",
+                  "source_line_start": 9,
+                  "source_line_end": 9,
+                  "source_quote": "8. All points must lie inside the project polygon; points exactly on the boundary are excluded.",
+                  "interpretation": "exclusive"
+                }
+              }
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "Q010"
+              ],
+              "parameters": {
+                "reference_time": "2026-09-25T00:00:00Z",
+                "max_age_days": 6
+              },
+              "parameter_evidence": {
+                "reference_time": {
+                  "requirement_id": "Q010",
+                  "source_line_start": 10,
+                  "source_line_end": 10,
+                  "source_quote": "9. Records must be no older than 6 days relative to 2026-09-25T00:00:00Z.",
+                  "interpretation": "2026-09-25T00:00:00Z"
+                },
+                "max_age_days": {
+                  "requirement_id": "Q010",
+                  "source_line_start": 10,
+                  "source_line_end": 10,
+                  "source_quote": "9. Records must be no older than 6 days relative to 2026-09-25T00:00:00Z.",
+                  "interpretation": "6 days"
+                }
+              }
+            },
+            {
+              "rule_type": "duplicate_candidate",
+              "requirement_ids": [
+                "Q011"
+              ],
+              "parameters": {
+                "max_distance_m": 8,
+                "name_equal": true
+              },
+              "parameter_evidence": {
+                "max_distance_m": {
+                  "requirement_id": "Q011",
+                  "source_line_start": 11,
+                  "source_line_end": 11,
+                  "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+                  "interpretation": "8 meters"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "scores": [
+        {
+          "quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+          "rule_type": "required_field_present",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "2. All required fields must be nonempty. Do not trim leading or trailing whitespace before checking.",
+          "rule_type": "non_empty",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+          "rule_type": "type_parse",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+          "rule_type": "enum_value",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "5. record_id 必须在交付数据中唯一。",
+          "rule_type": "id_unique",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+          "rule_type": "coord_range",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+          "rule_type": "crs_declaration",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "8. All points must lie inside the project polygon; points exactly on the boundary are excluded.",
+          "rule_type": "within_project_area",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": false,
+          "covered": true
+        },
+        {
+          "quote": "9. Records must be no older than 6 days relative to 2026-09-25T00:00:00Z.",
+          "rule_type": "freshness",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+          "rule_type": "duplicate_candidate",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        }
+      ],
+      "lineage": {
+        "quote_and_parameter_problems": [],
+        "configuration_rejections": [],
+        "scope": "Dry validation; no actual approval or execution. Draft is unchanged."
+      },
+      "all_unapproved": true,
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2261,
+            "completion_tokens": 2505,
+            "total_tokens": 4766
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 40268.26
+        }
+      ],
+      "duration_ms": 40359.66
+    },
+    {
+      "case": "case-03",
+      "strategy": "dual_review",
+      "status": "FAILED",
+      "human_review": "NOT_RUN",
+      "error_type": "ValueError",
+      "error": "Final review required",
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2254,
+            "completion_tokens": 2491,
+            "total_tokens": 4745
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 40668.21,
+          "role": "proposer",
+          "strategy": "dual_review"
+        },
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 5000,
+            "completion_tokens": 968,
+            "total_tokens": 5968
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 20295.89,
+          "role": "reviewer",
+          "strategy": "dual_review"
+        }
+      ],
+      "duration_ms": 61000.0
+    },
+    {
+      "case": "case-03",
+      "strategy": "single",
+      "status": "COMPLETED",
+      "human_review": "NOT_RUN",
+      "draft": {
+        "schema_version": 1,
+        "requirements": [
+          {
+            "requirement_id": "Q002",
+            "source_line_start": 2,
+            "source_line_end": 2,
+            "source_quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+            "description": "每条记录必须具有字典声明的全部必填字段",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q003",
+            "source_line_start": 3,
+            "source_line_end": 3,
+            "source_quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+            "description": "全部必填字段不得为空；去除首尾空白后长度为零也视为空值",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q004",
+            "source_line_start": 4,
+            "source_line_end": 4,
+            "source_quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+            "description": "所有字段必须按数据字典声明的数据类型解析",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q005",
+            "source_line_start": 5,
+            "source_line_end": 5,
+            "source_quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+            "description": "category 只能使用数据字典枚举编码，不允许别名",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q006",
+            "source_line_start": 6,
+            "source_line_end": 6,
+            "source_quote": "5. record_id 必须在交付数据中唯一。",
+            "description": "record_id 必须在交付数据中唯一",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q007",
+            "source_line_start": 7,
+            "source_line_end": 7,
+            "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+            "description": "经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q008",
+            "source_line_start": 8,
+            "source_line_end": 8,
+            "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+            "description": "坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q009",
+            "source_line_start": 9,
+            "source_line_end": 9,
+            "source_quote": "8. 点位应位于项目区域内，但边界点政策尚未约定，需要业务确认。",
+            "description": "点位应位于项目区域内，但边界点政策尚未约定，需要业务确认",
+            "required_for_release": true,
+            "support_status": "NEEDS_CLARIFICATION",
+            "ambiguities": [
+              "规则编译失败，未执行：Rule refers to unresolved or unsupported requirements",
+              "模型建议非必检，原文无豁免依据，已恢复必检"
+            ],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q010",
+            "source_line_start": 10,
+            "source_line_end": 10,
+            "source_quote": "9. 数据年龄不得超过 20 天，但本次交付尚未给出比较用的基准时间。",
+            "description": "数据年龄不得超过 20 天，但本次交付尚未给出比较用的基准时间",
+            "required_for_release": true,
+            "support_status": "NEEDS_CLARIFICATION",
+            "ambiguities": [
+              "规则编译失败，未执行：Rule refers to unresolved or unsupported requirements",
+              "模型建议非必检，原文无豁免依据，已恢复必检"
+            ],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          },
+          {
+            "requirement_id": "Q011",
+            "source_line_start": 11,
+            "source_line_end": 11,
+            "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+            "description": "仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据",
+            "required_for_release": false,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be"
+          }
+        ],
+        "rules": [
+          {
+            "rule_id": "R01",
+            "rule_type": "required_field_present",
+            "requirement_ids": [
+              "Q002"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ]
+            },
+            "parameter_sources": [],
+            "preconditions": [],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R02",
+            "rule_type": "non_empty",
+            "requirement_ids": [
+              "Q003"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ],
+              "missing_rate_policy": "STRICT",
+              "trim": true
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R03",
+            "rule_type": "type_parse",
+            "requirement_ids": [
+              "Q004"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ]
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R02"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R04",
+            "rule_type": "enum_value",
+            "requirement_ids": [
+              "Q005"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "field": "category",
+              "allow_alias": false
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01",
+              "R03"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R05",
+            "rule_type": "id_unique",
+            "requirement_ids": [
+              "Q006"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "field": "record_id"
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R06",
+            "rule_type": "coord_range",
+            "requirement_ids": [
+              "Q007"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "lon_range": [
+                -180,
+                180
+              ],
+              "lat_range": [
+                -90,
+                90
+              ]
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q007",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                "interpretation": "经度范围 [-180, 180]（度）",
+                "parameter": "lon_range",
+                "value": [
+                  -180,
+                  180
+                ],
+                "value_literal": [
+                  "-180",
+                  "180"
+                ],
+                "unit": "degree",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be",
+                "reviewer": "",
+                "approved_at": ""
+              },
+              {
+                "requirement_id": "Q007",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                "interpretation": "纬度范围 [-90, 90]（度）",
+                "parameter": "lat_range",
+                "value": [
+                  -90,
+                  90
+                ],
+                "value_literal": [
+                  "-90",
+                  "90"
+                ],
+                "unit": "degree",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R07"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R07",
+            "rule_type": "crs_declaration",
+            "requirement_ids": [
+              "Q008"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "expected_crs": "EPSG:4326"
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q008",
+                "source_line_start": 8,
+                "source_line_end": 8,
+                "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+                "interpretation": "EPSG:4326（WGS84）",
+                "parameter": "expected_crs",
+                "value": "EPSG:4326",
+                "value_literal": [
+                  "EPSG:4326"
+                ],
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R10",
+            "rule_type": "duplicate_candidate",
+            "requirement_ids": [
+              "Q011"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": false,
+            "parameters": {
+              "max_distance_m": 8,
+              "name_equal": true
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q011",
+                "source_line_start": 11,
+                "source_line_end": 11,
+                "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+                "interpretation": "8米（最大距离）",
+                "parameter": "max_distance_m",
+                "value": 8,
+                "value_literal": [
+                  "8"
+                ],
+                "unit": "metre",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "95dd91eadaf5a8ba07d44db01842dad759cd144ef318cc133294028b90e383be",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R06"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "reference_time": null,
+        "clarifications": [
+          {
+            "requirement_id": "Q009",
+            "messages": [
+              "规则编译失败，未执行：Rule refers to unresolved or unsupported requirements",
+              "模型建议非必检，原文无豁免依据，已恢复必检"
+            ]
+          },
+          {
+            "requirement_id": "Q010",
+            "messages": [
+              "规则编译失败，未执行：Rule refers to unresolved or unsupported requirements",
+              "模型建议非必检，原文无豁免依据，已恢复必检"
+            ]
+          }
+        ],
+        "compiler": {
+          "kind": "local-evidence-compiler",
+          "quarantined_rules": [
+            {
+              "rule_type": "within_project_area",
+              "requirement_ids": [
+                "Q009"
+              ],
+              "reason": "Rule refers to unresolved or unsupported requirements"
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "Q010"
+              ],
+              "reason": "Rule refers to unresolved or unsupported requirements"
+            }
+          ],
+          "scope": "Values copied from model parameters; no semantic correction or approval."
+        },
+        "mode": "live",
+        "calls": [
+          {
+            "attempt": 1,
+            "model": "geoacceptance-qwen3:4b",
+            "currency": "CNY",
+            "reserved_cost": 0.0,
+            "reserved_usd": null,
+            "usage": {
+              "prompt_tokens": 2254,
+              "completion_tokens": 2491,
+              "total_tokens": 4745
+            },
+            "cost": 0.0,
+            "cost_usd": null,
+            "cost_basis": "estimate at configured rates; not provider invoice",
+            "status": "OK",
+            "duration_ms": 39817.81
+          }
+        ],
+        "model_proposal": {
+          "requirements": [
+            {
+              "requirement_id": "Q002",
+              "source_line_start": 2,
+              "source_line_end": 2,
+              "source_quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+              "description": "每条记录必须具有字典声明的全部必填字段",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q003",
+              "source_line_start": 3,
+              "source_line_end": 3,
+              "source_quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+              "description": "全部必填字段不得为空；去除首尾空白后长度为零也视为空值",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q004",
+              "source_line_start": 4,
+              "source_line_end": 4,
+              "source_quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+              "description": "所有字段必须按数据字典声明的数据类型解析",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q005",
+              "source_line_start": 5,
+              "source_line_end": 5,
+              "source_quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+              "description": "category 只能使用数据字典枚举编码，不允许别名",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q006",
+              "source_line_start": 6,
+              "source_line_end": 6,
+              "source_quote": "5. record_id 必须在交付数据中唯一。",
+              "description": "record_id 必须在交付数据中唯一",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q007",
+              "source_line_start": 7,
+              "source_line_end": 7,
+              "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+              "description": "经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q008",
+              "source_line_start": 8,
+              "source_line_end": 8,
+              "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+              "description": "坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q009",
+              "source_line_start": 9,
+              "source_line_end": 9,
+              "source_quote": "8. 点位应位于项目区域内，但边界点政策尚未约定，需要业务确认。",
+              "description": "点位应位于项目区域内，但边界点政策尚未约定，需要业务确认",
+              "required_for_release": false,
+              "support_status": "NEEDS_CLARIFICATION",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q010",
+              "source_line_start": 10,
+              "source_line_end": 10,
+              "source_quote": "9. 数据年龄不得超过 20 天，但本次交付尚未给出比较用的基准时间。",
+              "description": "数据年龄不得超过 20 天，但本次交付尚未给出比较用的基准时间",
+              "required_for_release": false,
+              "support_status": "NEEDS_CLARIFICATION",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q011",
+              "source_line_start": 11,
+              "source_line_end": 11,
+              "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+              "description": "仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据",
+              "required_for_release": false,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            }
+          ],
+          "rules": [
+            {
+              "rule_type": "required_field_present",
+              "requirement_ids": [
+                "Q002"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "non_empty",
+              "requirement_ids": [
+                "Q003"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ],
+                "missing_rate_policy": "STRICT",
+                "trim": true
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "type_parse",
+              "requirement_ids": [
+                "Q004"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "enum_value",
+              "requirement_ids": [
+                "Q005"
+              ],
+              "parameters": {
+                "field": "category",
+                "allow_alias": false
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "id_unique",
+              "requirement_ids": [
+                "Q006"
+              ],
+              "parameters": {
+                "field": "record_id"
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "coord_range",
+              "requirement_ids": [
+                "Q007"
+              ],
+              "parameters": {
+                "lon_range": [
+                  -180,
+                  180
+                ],
+                "lat_range": [
+                  -90,
+                  90
+                ]
+              },
+              "parameter_evidence": {
+                "lon_range": {
+                  "requirement_id": "Q007",
+                  "source_line_start": 7,
+                  "source_line_end": 7,
+                  "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                  "interpretation": "经度范围 [-180, 180]（度）"
+                },
+                "lat_range": {
+                  "requirement_id": "Q007",
+                  "source_line_start": 7,
+                  "source_line_end": 7,
+                  "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                  "interpretation": "纬度范围 [-90, 90]（度）"
+                }
+              }
+            },
+            {
+              "rule_type": "crs_declaration",
+              "requirement_ids": [
+                "Q008"
+              ],
+              "parameters": {
+                "expected_crs": "EPSG:4326"
+              },
+              "parameter_evidence": {
+                "expected_crs": {
+                  "requirement_id": "Q008",
+                  "source_line_start": 8,
+                  "source_line_end": 8,
+                  "source_quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+                  "interpretation": "EPSG:4326（WGS84）"
+                }
+              }
+            },
+            {
+              "rule_type": "within_project_area",
+              "requirement_ids": [
+                "Q009"
+              ],
+              "parameters": {
+                "boundary_policy": "inclusive"
+              },
+              "parameter_evidence": {
+                "boundary_policy": {
+                  "value_literal": [
+                    "点位应位于项目区域内，但边界点政策尚未约定，需要业务确认。"
+                  ],
+                  "requirement_id": "Q009",
+                  "source_line_start": 9,
+                  "source_line_end": 9,
+                  "source_quote": "8. 点位应位于项目区域内，但边界点政策尚未约定，需要业务确认。",
+                  "interpretation": "边界政策未约定，需业务确认"
+                }
+              }
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "Q010"
+              ],
+              "parameters": {
+                "reference_time": "2024-05-20T00:00:00Z",
+                "max_age_days": 20
+              },
+              "parameter_evidence": {
+                "reference_time": {
+                  "requirement_id": "Q010",
+                  "source_line_start": 10,
+                  "source_line_end": 10,
+                  "source_quote": "9. 数据年龄不得超过 20 天，但本次交付尚未给出比较用的基准时间。",
+                  "interpretation": "基准时间未指定，使用当前时间作为参考"
+                },
+                "max_age_days": {
+                  "requirement_id": "Q010",
+                  "source_line_start": 10,
+                  "source_line_end": 10,
+                  "source_quote": "9. 数据年龄不得超过 20 天，但本次交付尚未给出比较用的基准时间。",
+                  "interpretation": "20天（数据年龄上限）"
+                }
+              }
+            },
+            {
+              "rule_type": "duplicate_candidate",
+              "requirement_ids": [
+                "Q011"
+              ],
+              "parameters": {
+                "max_distance_m": 8,
+                "name_equal": true
+              },
+              "parameter_evidence": {
+                "max_distance_m": {
+                  "requirement_id": "Q011",
+                  "source_line_start": 11,
+                  "source_line_end": 11,
+                  "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+                  "interpretation": "8米（最大距离）"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "scores": [
+        {
+          "quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+          "rule_type": "required_field_present",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+          "rule_type": "non_empty",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+          "rule_type": "type_parse",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+          "rule_type": "enum_value",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "5. record_id 必须在交付数据中唯一。",
+          "rule_type": "id_unique",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+          "rule_type": "coord_range",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "7. 坐标参考系必须声明为 EPSG:4326，不可按坐标量级推断。",
+          "rule_type": "crs_declaration",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "8. 点位应位于项目区域内，但边界点政策尚未约定，需要业务确认。",
+          "rule_type": "within_project_area",
+          "expected_supported": false,
+          "raw_semantics_correct": false,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "9. 数据年龄不得超过 20 天，但本次交付尚未给出比较用的基准时间。",
+          "rule_type": "freshness",
+          "expected_supported": false,
+          "raw_semantics_correct": false,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+          "rule_type": "duplicate_candidate",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        }
+      ],
+      "lineage": {
+        "quote_and_parameter_problems": [],
+        "configuration_rejections": [],
+        "scope": "Dry validation; no actual approval or execution. Draft is unchanged."
+      },
+      "all_unapproved": true,
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2254,
+            "completion_tokens": 2491,
+            "total_tokens": 4745
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 39817.81
+        }
+      ],
+      "duration_ms": 39899.42
+    },
+    {
+      "case": "case-03",
+      "strategy": "self_review",
+      "status": "FAILED",
+      "human_review": "NOT_RUN",
+      "error_type": "ValueError",
+      "error": "Final review required",
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2254,
+            "completion_tokens": 2491,
+            "total_tokens": 4745
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 39736.97,
+          "role": "proposer",
+          "strategy": "self_review"
+        },
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 9378,
+            "completion_tokens": 803,
+            "total_tokens": 10181
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 22690.42,
+          "role": "self_reviewer",
+          "strategy": "self_review"
+        }
+      ],
+      "duration_ms": 62458.75
+    },
+    {
+      "case": "case-04",
+      "strategy": "single",
+      "status": "COMPLETED",
+      "human_review": "NOT_RUN",
+      "draft": {
+        "schema_version": 1,
+        "requirements": [
+          {
+            "requirement_id": "Q002",
+            "source_line_start": 2,
+            "source_line_end": 2,
+            "source_quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+            "description": "每条记录必须具有字典声明的全部必填字段",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q003",
+            "source_line_start": 3,
+            "source_line_end": 3,
+            "source_quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+            "description": "全部必填字段不得为空；去除首尾空白后长度为零也视为空值",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q004",
+            "source_line_start": 4,
+            "source_line_end": 4,
+            "source_quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+            "description": "所有字段必须按数据字典声明的数据类型解析",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q005",
+            "source_line_start": 5,
+            "source_line_end": 5,
+            "source_quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+            "description": "category 只能使用数据字典枚举编码，不允许别名",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q006",
+            "source_line_start": 6,
+            "source_line_end": 6,
+            "source_quote": "5. record_id 必须在交付数据中唯一。",
+            "description": "record_id 必须在交付数据中唯一",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q007",
+            "source_line_start": 7,
+            "source_line_end": 7,
+            "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+            "description": "经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q008",
+            "source_line_start": 8,
+            "source_line_end": 8,
+            "source_quote": "7. 本批全部记录的 CRS 必须同时等于 EPSG:4326 和 EPSG:4490，两项均为强制要求。",
+            "description": "本批全部记录的 CRS 必须同时等于 EPSG:4326 和 EPSG:4490，两项均为强制要求",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q009",
+            "source_line_start": 9,
+            "source_line_end": 9,
+            "source_quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+            "description": "点位必须位于项目区域；边界上的点计入区域内部",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q010",
+            "source_line_start": 10,
+            "source_line_end": 10,
+            "source_quote": "9. 以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天。",
+            "description": "以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天",
+            "required_for_release": true,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          },
+          {
+            "requirement_id": "Q011",
+            "source_line_start": 11,
+            "source_line_end": 11,
+            "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+            "description": "仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据",
+            "required_for_release": false,
+            "support_status": "SUPPORTED",
+            "ambiguities": [],
+            "document_id": "delivery_spec.md",
+            "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632"
+          }
+        ],
+        "rules": [
+          {
+            "rule_id": "R01",
+            "rule_type": "required_field_present",
+            "requirement_ids": [
+              "Q002"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ]
+            },
+            "parameter_sources": [],
+            "preconditions": [],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R02",
+            "rule_type": "non_empty",
+            "requirement_ids": [
+              "Q003"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ],
+              "missing_rate_policy": "STRICT",
+              "trim": true
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R03",
+            "rule_type": "type_parse",
+            "requirement_ids": [
+              "Q004"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "fields": [
+                "record_id",
+                "name",
+                "category",
+                "longitude",
+                "latitude",
+                "source_time"
+              ]
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R02"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R04",
+            "rule_type": "enum_value",
+            "requirement_ids": [
+              "Q005"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "field": "category",
+              "allow_alias": false
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01",
+              "R03"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R05",
+            "rule_type": "id_unique",
+            "requirement_ids": [
+              "Q006"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "field": "record_id"
+            },
+            "parameter_sources": [],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R06",
+            "rule_type": "coord_range",
+            "requirement_ids": [
+              "Q007"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "lon_range": [
+                -180,
+                180
+              ],
+              "lat_range": [
+                -90,
+                90
+              ]
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q007",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                "interpretation": "经度范围 [-180, 180]（度）",
+                "parameter": "lon_range",
+                "value": [
+                  -180,
+                  180
+                ],
+                "value_literal": [
+                  "-180",
+                  "180"
+                ],
+                "unit": "degree",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632",
+                "reviewer": "",
+                "approved_at": ""
+              },
+              {
+                "requirement_id": "Q007",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                "interpretation": "纬度范围 [-90, 90]（度）",
+                "parameter": "lat_range",
+                "value": [
+                  -90,
+                  90
+                ],
+                "value_literal": [
+                  "-90",
+                  "90"
+                ],
+                "unit": "degree",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R07"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R07",
+            "rule_type": "crs_declaration",
+            "requirement_ids": [
+              "Q008"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "expected_crs": "EPSG:4326"
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q008",
+                "source_line_start": 8,
+                "source_line_end": 8,
+                "source_quote": "7. 本批全部记录的 CRS 必须同时等于 EPSG:4326 和 EPSG:4490，两项均为强制要求。",
+                "interpretation": "EPSG:4326",
+                "parameter": "expected_crs",
+                "value": "EPSG:4326",
+                "value_literal": [
+                  "EPSG:4326"
+                ],
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R08",
+            "rule_type": "within_project_area",
+            "requirement_ids": [
+              "Q009"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "boundary_policy": "inclusive"
+            },
+            "parameter_sources": [
+              {
+                "value_literal": [
+                  "边界上的点计入区域内部"
+                ],
+                "requirement_id": "Q009",
+                "source_line_start": 9,
+                "source_line_end": 9,
+                "source_quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+                "interpretation": "inclusive",
+                "parameter": "boundary_policy",
+                "value": "inclusive",
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R06",
+              "R07"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R09",
+            "rule_type": "freshness",
+            "requirement_ids": [
+              "Q010"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": true,
+            "parameters": {
+              "reference_time": "2026-09-21T00:00:00Z",
+              "max_age_days": 5
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q010",
+                "source_line_start": 10,
+                "source_line_end": 10,
+                "source_quote": "9. 以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天。",
+                "interpretation": "2026-09-21T00:00:00Z",
+                "parameter": "reference_time",
+                "value": "2026-09-21T00:00:00Z",
+                "value_literal": [
+                  "2026-09-21T00:00:00Z"
+                ],
+                "unit": null,
+                "document_id": "delivery_spec.md",
+                "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632",
+                "reviewer": "",
+                "approved_at": ""
+              },
+              {
+                "requirement_id": "Q010",
+                "source_line_start": 10,
+                "source_line_end": 10,
+                "source_quote": "9. 以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天。",
+                "interpretation": "5",
+                "parameter": "max_age_days",
+                "value": 5,
+                "value_literal": [
+                  "5"
+                ],
+                "unit": "day",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "rule_id": "R10",
+            "rule_type": "duplicate_candidate",
+            "requirement_ids": [
+              "Q011"
+            ],
+            "status": "DRAFT",
+            "version": 1,
+            "required_for_release": false,
+            "parameters": {
+              "max_distance_m": 8,
+              "name_equal": true
+            },
+            "parameter_sources": [
+              {
+                "requirement_id": "Q011",
+                "source_line_start": 11,
+                "source_line_end": 11,
+                "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+                "interpretation": "8",
+                "parameter": "max_distance_m",
+                "value": 8,
+                "value_literal": [
+                  "8"
+                ],
+                "unit": "metre",
+                "document_id": "delivery_spec.md",
+                "document_sha256": "dea36ca1c2425ff00bd79f53a731ad3db1584e8f85f08966adc623b82bccb632",
+                "reviewer": "",
+                "approved_at": ""
+              }
+            ],
+            "preconditions": [
+              "R01",
+              "R03",
+              "R06"
+            ],
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "reference_time": "2026-09-21T00:00:00Z",
+        "clarifications": [],
+        "compiler": {
+          "kind": "local-evidence-compiler",
+          "quarantined_rules": [],
+          "scope": "Values copied from model parameters; no semantic correction or approval."
+        },
+        "mode": "live",
+        "calls": [
+          {
+            "attempt": 1,
+            "model": "geoacceptance-qwen3:4b",
+            "currency": "CNY",
+            "reserved_cost": 0.0,
+            "reserved_usd": null,
+            "usage": {
+              "prompt_tokens": 2274,
+              "completion_tokens": 2532,
+              "total_tokens": 4806
+            },
+            "cost": 0.0,
+            "cost_usd": null,
+            "cost_basis": "estimate at configured rates; not provider invoice",
+            "status": "OK",
+            "duration_ms": 41533.37
+          }
+        ],
+        "model_proposal": {
+          "requirements": [
+            {
+              "requirement_id": "Q002",
+              "source_line_start": 2,
+              "source_line_end": 2,
+              "source_quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+              "description": "每条记录必须具有字典声明的全部必填字段",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q003",
+              "source_line_start": 3,
+              "source_line_end": 3,
+              "source_quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+              "description": "全部必填字段不得为空；去除首尾空白后长度为零也视为空值",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q004",
+              "source_line_start": 4,
+              "source_line_end": 4,
+              "source_quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+              "description": "所有字段必须按数据字典声明的数据类型解析",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q005",
+              "source_line_start": 5,
+              "source_line_end": 5,
+              "source_quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+              "description": "category 只能使用数据字典枚举编码，不允许别名",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q006",
+              "source_line_start": 6,
+              "source_line_end": 6,
+              "source_quote": "5. record_id 必须在交付数据中唯一。",
+              "description": "record_id 必须在交付数据中唯一",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q007",
+              "source_line_start": 7,
+              "source_line_end": 7,
+              "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+              "description": "经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q008",
+              "source_line_start": 8,
+              "source_line_end": 8,
+              "source_quote": "7. 本批全部记录的 CRS 必须同时等于 EPSG:4326 和 EPSG:4490，两项均为强制要求。",
+              "description": "本批全部记录的 CRS 必须同时等于 EPSG:4326 和 EPSG:4490，两项均为强制要求",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q009",
+              "source_line_start": 9,
+              "source_line_end": 9,
+              "source_quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+              "description": "点位必须位于项目区域；边界上的点计入区域内部",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q010",
+              "source_line_start": 10,
+              "source_line_end": 10,
+              "source_quote": "9. 以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天。",
+              "description": "以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "Q011",
+              "source_line_start": 11,
+              "source_line_end": 11,
+              "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+              "description": "仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据",
+              "required_for_release": false,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            }
+          ],
+          "rules": [
+            {
+              "rule_type": "required_field_present",
+              "requirement_ids": [
+                "Q002"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "non_empty",
+              "requirement_ids": [
+                "Q003"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ],
+                "missing_rate_policy": "STRICT",
+                "trim": true
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "type_parse",
+              "requirement_ids": [
+                "Q004"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "enum_value",
+              "requirement_ids": [
+                "Q005"
+              ],
+              "parameters": {
+                "field": "category",
+                "allow_alias": false
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "id_unique",
+              "requirement_ids": [
+                "Q006"
+              ],
+              "parameters": {
+                "field": "record_id"
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "coord_range",
+              "requirement_ids": [
+                "Q007"
+              ],
+              "parameters": {
+                "lon_range": [
+                  -180,
+                  180
+                ],
+                "lat_range": [
+                  -90,
+                  90
+                ]
+              },
+              "parameter_evidence": {
+                "lon_range": {
+                  "requirement_id": "Q007",
+                  "source_line_start": 7,
+                  "source_line_end": 7,
+                  "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                  "interpretation": "经度范围 [-180, 180]（度）"
+                },
+                "lat_range": {
+                  "requirement_id": "Q007",
+                  "source_line_start": 7,
+                  "source_line_end": 7,
+                  "source_quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+                  "interpretation": "纬度范围 [-90, 90]（度）"
+                }
+              }
+            },
+            {
+              "rule_type": "crs_declaration",
+              "requirement_ids": [
+                "Q008"
+              ],
+              "parameters": {
+                "expected_crs": "EPSG:4326"
+              },
+              "parameter_evidence": {
+                "expected_crs": {
+                  "requirement_id": "Q008",
+                  "source_line_start": 8,
+                  "source_line_end": 8,
+                  "source_quote": "7. 本批全部记录的 CRS 必须同时等于 EPSG:4326 和 EPSG:4490，两项均为强制要求。",
+                  "interpretation": "EPSG:4326"
+                }
+              }
+            },
+            {
+              "rule_type": "within_project_area",
+              "requirement_ids": [
+                "Q009"
+              ],
+              "parameters": {
+                "boundary_policy": "inclusive"
+              },
+              "parameter_evidence": {
+                "boundary_policy": {
+                  "value_literal": [
+                    "边界上的点计入区域内部"
+                  ],
+                  "requirement_id": "Q009",
+                  "source_line_start": 9,
+                  "source_line_end": 9,
+                  "source_quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+                  "interpretation": "inclusive"
+                }
+              }
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "Q010"
+              ],
+              "parameters": {
+                "reference_time": "2026-09-21T00:00:00Z",
+                "max_age_days": 5
+              },
+              "parameter_evidence": {
+                "reference_time": {
+                  "requirement_id": "Q010",
+                  "source_line_start": 10,
+                  "source_line_end": 10,
+                  "source_quote": "9. 以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天。",
+                  "interpretation": "2026-09-21T00:00:00Z"
+                },
+                "max_age_days": {
+                  "requirement_id": "Q010",
+                  "source_line_start": 10,
+                  "source_line_end": 10,
+                  "source_quote": "9. 以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天。",
+                  "interpretation": "5"
+                }
+              }
+            },
+            {
+              "rule_type": "duplicate_candidate",
+              "requirement_ids": [
+                "Q011"
+              ],
+              "parameters": {
+                "max_distance_m": 8,
+                "name_equal": true
+              },
+              "parameter_evidence": {
+                "max_distance_m": {
+                  "requirement_id": "Q011",
+                  "source_line_start": 11,
+                  "source_line_end": 11,
+                  "source_quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+                  "interpretation": "8"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "scores": [
+        {
+          "quote": "1. 每条记录必须具有字典声明的全部必填字段。",
+          "rule_type": "required_field_present",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "2. 全部必填字段不得为空；去除首尾空白后长度为零也视为空值。",
+          "rule_type": "non_empty",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "3. 所有字段必须按数据字典声明的数据类型解析。",
+          "rule_type": "type_parse",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "4. category 只能使用数据字典枚举编码，不允许别名。",
+          "rule_type": "enum_value",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "5. record_id 必须在交付数据中唯一。",
+          "rule_type": "id_unique",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "6. 经度必须落在 [-180,180]，纬度必须落在 [-90,90]，单位为度。",
+          "rule_type": "coord_range",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "7. 本批全部记录的 CRS 必须同时等于 EPSG:4326 和 EPSG:4490，两项均为强制要求。",
+          "rule_type": "crs_declaration",
+          "expected_supported": false,
+          "raw_semantics_correct": false,
+          "compiled_semantics_correct": false,
+          "covered": true
+        },
+        {
+          "quote": "8. 点位必须位于项目区域；边界上的点计入区域内部。",
+          "rule_type": "within_project_area",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "9. 以 2026-09-21T00:00:00Z 为基准时间，数据年龄不得超过 5 天。",
+          "rule_type": "freshness",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        },
+        {
+          "quote": "10. 仅供参考：名称相同且距离不超过 8 米时标记重复候选，不作为放行依据。",
+          "rule_type": "duplicate_candidate",
+          "expected_supported": true,
+          "raw_semantics_correct": true,
+          "compiled_semantics_correct": true,
+          "covered": true
+        }
+      ],
+      "lineage": {
+        "quote_and_parameter_problems": [],
+        "configuration_rejections": [],
+        "scope": "Dry validation; no actual approval or execution. Draft is unchanged."
+      },
+      "all_unapproved": true,
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2274,
+            "completion_tokens": 2532,
+            "total_tokens": 4806
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 41533.37
+        }
+      ],
+      "duration_ms": 41632.78
+    },
+    {
+      "case": "case-04",
+      "strategy": "self_review",
+      "status": "FAILED",
+      "human_review": "NOT_RUN",
+      "error_type": "ValueError",
+      "error": "Final review required",
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2274,
+            "completion_tokens": 2532,
+            "total_tokens": 4806
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 40962.77,
+          "role": "proposer",
+          "strategy": "self_review"
+        },
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 10249,
+            "completion_tokens": 834,
+            "total_tokens": 11083
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 24909.1,
+          "role": "self_reviewer",
+          "strategy": "self_review"
+        }
+      ],
+      "duration_ms": 65908.78
+    },
+    {
+      "case": "case-04",
+      "strategy": "dual_review",
+      "status": "FAILED",
+      "human_review": "NOT_RUN",
+      "error_type": "ValueError",
+      "error": "Final review required",
+      "calls": [
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 2274,
+            "completion_tokens": 2532,
+            "total_tokens": 4806
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 41667.0,
+          "role": "proposer",
+          "strategy": "dual_review"
+        },
+        {
+          "attempt": 1,
+          "model": "geoacceptance-qwen3:4b",
+          "currency": "CNY",
+          "reserved_cost": 0.0,
+          "reserved_usd": null,
+          "usage": {
+            "prompt_tokens": 5846,
+            "completion_tokens": 1004,
+            "total_tokens": 6850
+          },
+          "cost": 0.0,
+          "cost_usd": null,
+          "cost_basis": "estimate at configured rates; not provider invoice",
+          "status": "OK",
+          "duration_ms": 22175.86,
+          "role": "reviewer",
+          "strategy": "dual_review"
+        }
+      ],
+      "duration_ms": 63880.78
+    }
+  ],
+  "metrics": {
+    "single": {
+      "correct": 38,
+      "clauses": 40,
+      "covered": 40,
+      "unknown_errors": 1,
+      "failed_cases": 0,
+      "model_calls": 4,
+      "tokens": 19102,
+      "duration_ms": 228532.69,
+      "all_unapproved": true,
+      "lineage_problems": 0
+    },
+    "self_review": {
+      "correct": 0,
+      "clauses": 40,
+      "covered": 0,
+      "unknown_errors": 0,
+      "failed_cases": 4,
+      "model_calls": 8,
+      "tokens": 61671,
+      "duration_ms": 243447.22,
+      "all_unapproved": false,
+      "lineage_problems": 0
+    },
+    "dual_review": {
+      "correct": 0,
+      "clauses": 40,
+      "covered": 0,
+      "unknown_errors": 0,
+      "failed_cases": 4,
+      "model_calls": 8,
+      "tokens": 45401,
+      "duration_ms": 247782.71,
+      "all_unapproved": false,
+      "lineage_problems": 0
+    }
+  },
+  "default_strategy": "single",
+  "adoption": "DO_NOT_PROMOTE_DUAL_REVIEW_DEFAULT",
+  "note": "Actual local calls. Same local model; role separation is not statistical independence. Modification counts are proxies, not measured human effort."
+}

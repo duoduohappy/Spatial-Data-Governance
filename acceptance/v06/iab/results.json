@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "project_id": "ba615576572b4d3187471418e997ab9b",
+  "draft_job": "0a31d7e64b064bb4bb2ef679e9f2d724",
+  "validate_job": "c035d068a7ad42cbbca22a2af085f4b9",
+  "reviewer": "Codex 合成样例工程复核（非独立业务批准）",
+  "scope": "Actual IAB approval and validation of synthetic local two-role output; zero parameter edits; not independent business approval",
+  "model_calls": 2,
+  "rules": 11,
+  "scoped_instances": 2,
+  "screenshots": [
+    "review.png",
+    "scoped-results.png",
+    "scope-instances.png"
+  ]
+}

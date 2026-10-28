@@ -1,145 +1,443 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "GeoAcceptance 整改复验 compare 输出（stage1-compare-3）",
+  "title": "GeoAcceptance 整改复验 compare 输出（stage1-compare-4）",
   "description": "compare_batches() 的结构化输出。关闭一个整改项必须有正面证据；总体区分「台账关闭」与「整改后批次自身验收」；实体缺失（全量实体清单差集）一律 removed_pending_review 阻断。本 Schema 用 tools/check_schema_consistency.py 声明的关键字子集校验。",
   "type": "object",
   "required": [
-    "schema_version", "before", "after", "identity", "ruler", "scope",
-    "counts", "ledger", "after_acceptance", "overall", "items"
+    "schema_version",
+    "before",
+    "after",
+    "identity",
+    "ruler",
+    "scope",
+    "counts",
+    "ledger",
+    "after_acceptance",
+    "overall",
+    "items"
   ],
   "properties": {
-    "schema_version": {"const": "stage1-compare-3"},
-    "tool_version": {"type": "string"},
-    "python": {"type": "string"},
-    "before": {"$ref": "stage1_compare.schema.json#/definitions/batch"},
-    "after": {"$ref": "stage1_compare.schema.json#/definitions/batch"},
+    "schema_version": {
+      "enum": [
+        "stage1-compare-3",
+        "stage1-compare-4"
+      ]
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "python": {
+      "type": "string"
+    },
+    "before": {
+      "$ref": "stage1_compare.schema.json#/definitions/batch"
+    },
+    "after": {
+      "$ref": "stage1_compare.schema.json#/definitions/batch"
+    },
     "identity": {
       "type": "object",
-      "required": ["strategy", "index_source", "dataset_identity", "before", "after", "ok"],
+      "required": [
+        "strategy",
+        "index_source",
+        "dataset_identity",
+        "before",
+        "after",
+        "ok"
+      ],
       "properties": {
-        "strategy": {"type": "string"},
-        "index_source": {"type": "string"},
-        "dataset_identity": {"type": "string"},
-        "before": {"$ref": "stage1_compare.schema.json#/definitions/entity_index"},
-        "after": {"$ref": "stage1_compare.schema.json#/definitions/entity_index"},
-        "ok": {"type": "boolean"}
+        "strategy": {
+          "type": "string"
+        },
+        "index_source": {
+          "type": "string"
+        },
+        "dataset_identity": {
+          "type": "string"
+        },
+        "before": {
+          "$ref": "stage1_compare.schema.json#/definitions/entity_index"
+        },
+        "after": {
+          "$ref": "stage1_compare.schema.json#/definitions/entity_index"
+        },
+        "ok": {
+          "type": "boolean"
+        }
       }
     },
     "ruler": {
       "type": "object",
       "required": [
-        "rule_fingerprint_fields", "artifact_fingerprint_fields",
-        "rules_removed_after", "rules_added_after", "rule_fingerprint_changed",
-        "artifacts_changed", "rule_versions_changed", "same_ruler"
+        "rule_fingerprint_fields",
+        "artifact_fingerprint_fields",
+        "rules_removed_after",
+        "rules_added_after",
+        "rule_fingerprint_changed",
+        "artifacts_changed",
+        "rule_versions_changed",
+        "same_ruler"
       ],
       "properties": {
-        "rule_fingerprint_fields": {"type": "array", "items": {"type": "string"}},
-        "artifact_fingerprint_fields": {"type": "array", "items": {"type": "string"}},
-        "rules_removed_after": {"type": "array", "items": {"type": "string"}},
-        "rules_added_after": {"type": "array", "items": {"type": "string"}},
-        "rule_fingerprint_changed": {"type": "object"},
-        "artifacts_changed": {"type": "array", "items": {"type": "string"}},
-        "rule_versions_changed": {"type": "array", "items": {"type": "string"}},
-        "same_ruler": {"type": "boolean"}
+        "rule_fingerprint_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "artifact_fingerprint_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rules_removed_after": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rules_added_after": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rule_fingerprint_changed": {
+          "type": "object"
+        },
+        "artifacts_changed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rule_versions_changed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "same_ruler": {
+          "type": "boolean"
+        }
       }
     },
     "scope": {
       "type": "object",
       "required": [
-        "entities_removed_after", "entities_added_after", "advisory_after",
-        "unknown_before", "unknown_after", "ledger_size", "closure_rule"
+        "entities_removed_after",
+        "entities_added_after",
+        "advisory_after",
+        "unknown_before",
+        "unknown_after",
+        "ledger_size",
+        "closure_rule"
       ],
       "properties": {
-        "entities_removed_after": {"type": "array", "items": {"type": "string"}},
-        "entities_added_after": {"type": "array", "items": {"type": "string"}},
-        "advisory_after": {"type": "array", "items": {"$ref": "stage1_compare.schema.json#/definitions/advisory"}},
-        "unknown_before": {"type": "array", "items": {"$ref": "stage1_compare.schema.json#/definitions/unknown_clause"}},
-        "unknown_after": {"type": "array", "items": {"$ref": "stage1_compare.schema.json#/definitions/unknown_clause"}},
-        "ledger_size": {"type": "integer", "minimum": 0},
-        "closure_rule": {"type": "string"}
+        "entities_removed_after": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "entities_added_after": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "advisory_after": {
+          "type": "array",
+          "items": {
+            "$ref": "stage1_compare.schema.json#/definitions/advisory"
+          }
+        },
+        "unknown_before": {
+          "type": "array",
+          "items": {
+            "$ref": "stage1_compare.schema.json#/definitions/unknown_clause"
+          }
+        },
+        "unknown_after": {
+          "type": "array",
+          "items": {
+            "$ref": "stage1_compare.schema.json#/definitions/unknown_clause"
+          }
+        },
+        "ledger_size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "closure_rule": {
+          "type": "string"
+        }
       }
     },
-    "counts": {"type": "object"},
-    "ledger": {"enum": ["CLOSED", "OPEN", "INDETERMINATE"]},
-    "after_acceptance": {"enum": ["PASS", "FAIL", "INDETERMINATE"]},
-    "overall": {
+    "counts": {
+      "type": "object"
+    },
+    "ledger": {
       "enum": [
-        "LEDGER_CLOSED_ACCEPTED", "LEDGER_CLOSED_NOT_ACCEPTED",
-        "LEDGER_OPEN", "LEDGER_INDETERMINATE"
+        "CLOSED",
+        "OPEN",
+        "INDETERMINATE"
       ]
     },
-    "notes": {"type": "array", "items": {"type": "string"}},
-    "items": {"type": "array", "items": {"$ref": "stage1_compare.schema.json#/definitions/item"}}
+    "after_acceptance": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INDETERMINATE"
+      ]
+    },
+    "overall": {
+      "enum": [
+        "LEDGER_CLOSED_ACCEPTED",
+        "LEDGER_CLOSED_NOT_ACCEPTED",
+        "LEDGER_OPEN",
+        "LEDGER_INDETERMINATE"
+      ]
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "stage1_compare.schema.json#/definitions/item"
+      }
+    }
   },
   "definitions": {
     "batch": {
       "type": "object",
-      "required": ["bundle", "aggregate", "aggregate_reason", "findings",
-                   "findings_by_class", "records", "config_rejections",
-                   "preflight_problems"],
+      "required": [
+        "bundle",
+        "aggregate",
+        "aggregate_reason",
+        "findings",
+        "findings_by_class",
+        "records",
+        "config_rejections",
+        "preflight_problems"
+      ],
       "properties": {
-        "bundle": {"type": "string"},
-        "aggregate": {"enum": ["PASS", "FAIL", "INDETERMINATE"]},
-        "aggregate_reason": {"type": "string"},
-        "findings": {"type": "integer", "minimum": 0},
-        "findings_by_class": {"type": "object"},
-        "records": {"type": "integer", "minimum": 0},
-        "config_rejections": {"type": "array"},
-        "preflight_problems": {"type": "array", "items": {"type": "string"}},
-        "exec_error": {"type": ["string", "null"]}
+        "bundle": {
+          "type": "string"
+        },
+        "aggregate": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "INDETERMINATE"
+          ]
+        },
+        "aggregate_reason": {
+          "type": "string"
+        },
+        "findings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "findings_by_class": {
+          "type": "object"
+        },
+        "records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "config_rejections": {
+          "type": "array"
+        },
+        "preflight_problems": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exec_error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       }
     },
     "entity_index": {
       "type": "object",
-      "required": ["records", "distinct", "unidentified", "duplicated"],
+      "required": [
+        "records",
+        "distinct",
+        "unidentified",
+        "duplicated"
+      ],
       "properties": {
-        "records": {"type": "integer", "minimum": 0},
-        "distinct": {"type": "integer", "minimum": 0},
-        "unidentified": {"type": "integer", "minimum": 0},
-        "duplicated": {"type": "array", "items": {"type": "string"}}
+        "records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "distinct": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unidentified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duplicated": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "advisory": {
       "type": "object",
-      "required": ["key", "rule_id", "codes"],
+      "required": [
+        "key",
+        "rule_id",
+        "codes"
+      ],
       "properties": {
-        "key": {"type": "string"},
-        "rule_id": {"type": "string"},
-        "codes": {"type": "array", "items": {"type": "string"}}
+        "key": {
+          "type": "string"
+        },
+        "rule_id": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "unknown_clause": {
       "type": "object",
-      "required": ["requirement_id", "coverage_state", "verdict",
-                   "execution_status", "reason_code"],
+      "required": [
+        "requirement_id",
+        "coverage_state",
+        "verdict",
+        "execution_status",
+        "reason_code"
+      ],
       "properties": {
-        "requirement_id": {"type": "string"},
-        "coverage_state": {"enum": ["UNMAPPED", "UNAPPROVED", "NO_IMPLEMENTATION",
-                                    "CONFIG_REJECTED", "MISSING_RESULT", "COVERED"]},
-        "verdict": {"enum": ["PASS", "FAIL", "INDETERMINATE"]},
-        "execution_status": {"type": "string"},
-        "reason_code": {"type": "string"}
+        "requirement_id": {
+          "type": "string"
+        },
+        "coverage_state": {
+          "enum": [
+            "UNMAPPED",
+            "UNAPPROVED",
+            "NO_IMPLEMENTATION",
+            "CONFIG_REJECTED",
+            "MISSING_RESULT",
+            "COVERED"
+          ]
+        },
+        "verdict": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "INDETERMINATE"
+          ]
+        },
+        "execution_status": {
+          "type": "string"
+        },
+        "reason_code": {
+          "type": "string"
+        }
       }
     },
     "item": {
       "type": "object",
-      "required": ["key", "identity_kind", "rule_id", "status",
-                   "before_codes", "after_codes", "after_unknown_codes",
-                   "reduced", "reasons"],
+      "required": [
+        "key",
+        "identity_kind",
+        "rule_id",
+        "status",
+        "before_codes",
+        "after_codes",
+        "after_unknown_codes",
+        "reduced",
+        "reasons"
+      ],
       "properties": {
-        "key": {"type": "string"},
-        "identity_kind": {"enum": ["record", "dataset", "unidentified"]},
-        "record_id": {"type": ["string", "null"]},
-        "evidence_domain": {"type": ["string", "null"]},
-        "rule_id": {"type": "string"},
-        "status": {"enum": ["closed", "still_open", "new_issue", "unresolved_unknown",
-                            "removed_pending_review", "not_comparable"]},
-        "before_codes": {"type": "array", "items": {"type": "string"}},
-        "after_codes": {"type": "array", "items": {"type": "string"}},
-        "after_unknown_codes": {"type": "array", "items": {"type": "string"}},
-        "reduced": {"type": "boolean"},
-        "closure_evidence": {"type": ["object", "null"]},
-        "reasons": {"type": "array", "items": {"type": "string"}}
+        "key": {
+          "type": "string"
+        },
+        "identity_kind": {
+          "enum": [
+            "record",
+            "dataset",
+            "unidentified"
+          ]
+        },
+        "record_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_domain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rule_id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "closed",
+            "still_open",
+            "new_issue",
+            "unresolved_unknown",
+            "removed_pending_review",
+            "not_comparable"
+          ]
+        },
+        "before_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "after_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "after_unknown_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reduced": {
+          "type": "boolean"
+        },
+        "closure_evidence": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     }
   }

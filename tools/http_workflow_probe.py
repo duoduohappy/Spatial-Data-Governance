@@ -55,6 +55,37 @@ def run(base):
     positive=api('/api/compare',{'before':stale['id'],'after':restored_job['id']})
     assert positive['overall']=='LEDGER_CLOSED_ACCEPTED',positive
     checks.append('positive closure with stable identity and successful rule execution')
+    scoped=api('/api/examples',{'name':'scoped_sources'})
+    scoped_draft=wait(api('/api/projects/'+scoped['id']+'/draft',{'revision':scoped['revision'],'key':'scope-draft','mode':'manual'}))
+    detail=api('/api/projects/'+scoped['id'])
+    scoped=api('/api/projects/'+scoped['id']+'/approve',{'revision':detail['revision'],'proposal':detail['draft'],'reviewer':'CI synthetic scope review; not independent user approval'})
+    scoped_run=wait(api('/api/projects/'+scoped['id']+'/validate',{'revision':scoped['revision'],'key':'scope-pass'}))
+    assert scoped_run['result']['aggregate_verdict']=='PASS'
+    instances=[r for r in scoped_run['result']['check_results'] if r.get('scope')]
+    assert len(instances)==2 and all(r['summary_counts']['records_evaluated']==1 for r in instances)
+    checks.append('two independent source-scoped freshness instances PASS')
+    text=(ROOT/'examples/scoped_sources/poi.csv').read_text(encoding='utf-8');reader=csv.DictReader(io.StringIO(text));fields=reader.fieldnames;rows=list(reader)
+    rows.append(dict(rows[0],record_id='M-002',name='Another synthetic municipal facility'))
+    rows[0]['source_time']='2026-09-10T00:00:00Z'
+    def scoped_correction(parent,records,name):
+        buffer=io.StringIO();writer=csv.DictWriter(buffer,fieldnames=fields);writer.writeheader();writer.writerows(records)
+        return api('/api/projects/'+parent['id']+'/corrected',{'revision':parent['revision'],'files':{'poi.csv':buffer.getvalue()},'name':name})
+    stale_scope=scoped_correction(scoped,rows,'scope stale')
+    scope_before=wait(api('/api/projects/'+stale_scope['id']+'/validate',{'revision':stale_scope['revision'],'key':'scope-stale'}))
+    assert scope_before['result']['aggregate_verdict']=='FAIL'
+    failed=[r for r in scope_before['result']['check_results'] if r.get('scope') and r['verdict']=='FAIL']
+    assert len(failed)==1 and failed[0]['scope']['equals']=='municipal'
+    checks.append('seven-day rule does not misapply to thirty-day source')
+    rows[0]['source']='survey';moved=scoped_correction(stale_scope,rows,'scope moved')
+    scope_after=wait(api('/api/projects/'+moved['id']+'/validate',{'revision':moved['revision'],'key':'scope-moved'}))
+    assert scope_after['result']['aggregate_verdict']=='PASS'
+    ledger=api('/api/compare',{'before':scope_before['id'],'after':scope_after['id']})
+    assert ledger['overall']=='LEDGER_INDETERMINATE'
+    assert not any(i.get('record_id')=='M-001' and i['status']=='closed' for i in ledger['items'])
+    checks.append('moving source cannot falsely close an original failure')
+    with urllib.request.urlopen(base+'/api/jobs/'+scoped_run['id']+'/report.html',timeout=10) as response:
+        assert 'source=municipal' in response.read().decode()
+    checks.append('HTML report retains explicit source scope')
     for kind in ('json','html'):
         with urllib.request.urlopen(base+'/api/jobs/'+after['id']+'/report.'+kind,timeout=10) as response:
             assert 'attachment' in response.headers.get('Content-Disposition','')

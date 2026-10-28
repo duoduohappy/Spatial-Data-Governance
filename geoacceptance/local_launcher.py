@@ -17,10 +17,12 @@ def local_env(root):
     return env
 
 def port_in_use(port):
-    with socket.socket() as sock:return sock.connect_ex(('127.0.0.1',port))==0
+    with socket.socket() as sock:
+        sock.settimeout(1)
+        return sock.connect_ex(('127.0.0.1',port))==0
 
 def main(argv=None):
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--port',type=int,default=8766);a=p.parse_args(argv)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--port',type=int,default=8766);p.add_argument('--data-dir');a=p.parse_args(argv)
     runtime=ROOT/'work/local-model';exe=runtime/'ollama/ollama.exe'
     if not exe.exists():print('Portable Ollama is not installed; see docs/LOCAL_MODEL.md',file=sys.stderr);return 2
     if port_in_use(a.port):print('Workbench port is already in use; existing services left untouched.',file=sys.stderr);return 2
@@ -52,9 +54,10 @@ def main(argv=None):
                        GA_OUTPUT_PRICE_PER_MILLION='0',GA_JOB_BUDGET='0',GA_CURRENCY='CNY')
         os.environ.clear();os.environ.update(app_env)
         from .server import AppServer
-        app=AppServer(a.port,ROOT/'work/local-app')
+        data_dir=Path(a.data_dir).resolve() if a.data_dir else ROOT/'work/local-app'
+        app=AppServer(a.port,data_dir)
         print(f'LOCAL Qwen3 4B | no cloud API charge | http://127.0.0.1:{a.port}',flush=True)
-        print('Local projects use work/local-app; existing cloud workspace is preserved.',flush=True)
+        print('Local workspace: '+str(data_dir)+'; no cloud calls.',flush=True)
         try:app.serve_forever()
         except KeyboardInterrupt:pass
         finally:app.shutdown();app.server_close();app.service.close()

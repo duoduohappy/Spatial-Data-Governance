@@ -1,3 +1,11 @@
+# 0.6.0-rc1 (upgrade candidate)
+
+Added bounded local proposal/reviewer roles, optional read-only tool selection, one revision, persistent strategy/mode and explicit review acknowledgement. Added three-arm real local developer ablation; dual-role mapping 37/40 versus single 38/40, so single stays default. Failures and interruption retained.
+
+Added source-scoped freshness instances, stable finding identities, exact selector evidence, unknown/empty scope handling, source-reclassification closure protection, UI/report scope disclosure and POI pilot templates. No real pilot or human efficiency result is claimed. New tests and PR CI determine engineering acceptance.
+
+---
+
 # Release notes · 0.5.0-rc1
 
 Added a local project/review/evidence/compare workbench over the previously accepted CSV deterministic core. Added manual draft baseline and OpenAI-compatible JSON adapter, explicit outbound confirmation, bounded retries/cost reservations, persistent jobs, optimistic approval versions, immutable run snapshots, corrected batches, CSV/Point GeoJSON input and API/CLI.

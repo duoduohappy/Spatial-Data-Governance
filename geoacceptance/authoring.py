@@ -139,20 +139,24 @@ def manual_proposal(bundle):
         elif '名称相同' in quote and '米' in quote:
             nums=re.findall(r'不超过\s*(\d+)\s*米',quote)
             if len(set(nums))==1:t='duplicate_candidate';p={'max_distance_m':int(nums[0]),'name_equal':True};sources=[make_source(q,'max_distance_m',p['max_distance_m'],[nums[0]],'metre')]
-        if t in used:
+        from tools.rule_scopes import parse_scope
+        scope=parse_scope(quote,cid) if t=='freshness' else None
+        if t in used and not (t=='freshness' and scope):
             q['support_status']='NEEDS_CLARIFICATION';q['ambiguities']=['同类规则多条或冲突，首版需人工合并，不自动覆盖前一条'];t=None
         if not t:
             q['support_status']='UNSUPPORTED' if re.search('精度|遥感|三维|拓扑',quote) else 'NEEDS_CLARIFICATION'
             q['ambiguities']=q['ambiguities'] or ['缺少明确阈值、依据或支持的规则；请补充要求，不采用默认值']
         else:
-            used.add(t);rules.append({'rule_type':t,'requirement_ids':[cid],'parameters':p,'parameter_sources':sources})
+            used.add(t);rule={'rule_type':t,'requirement_ids':[cid],'parameters':p,'parameter_sources':sources}
+            if scope:rule['scope']=scope
+            rules.append(rule)
         reqs.append(q)
     return {'requirements':reqs,'rules':rules}
 
 def normalize_proposal(raw,bundle):
     b=Path(bundle);text=(b/'delivery_spec.md').read_text(encoding='utf-8');lines=text.splitlines()
     if not isinstance(raw,dict) or not isinstance(raw.get('requirements'),list) or not isinstance(raw.get('rules'),list):raise ValueError('Invalid proposal shape')
-    if len(raw['requirements'])>200 or len(raw['rules'])>10:raise ValueError('Draft size limit')
+    if len(raw['requirements'])>200 or len(raw['rules'])>24:raise ValueError('Draft size limit')
     reqs=[];seen=set();covered=set()
     for item in raw['requirements']:
         q=copy.deepcopy(item);cid=q.get('requirement_id');start=q.get('source_line_start');end=q.get('source_line_end')
@@ -177,8 +181,12 @@ def normalize_proposal(raw,bundle):
     byid={q['requirement_id']:q for q in reqs};rules=[];types=set()
     for x in raw['rules']:
         t=x.get('rule_type');refs=x.get('requirement_ids')
-        if t not in TYPES or t in types or not refs or any(c not in byid for c in refs):raise ValueError('Unknown/duplicate/unbound rule')
+        if t not in TYPES or (t in types and (t!='freshness' or not x.get('scope'))) or not refs or any(c not in byid for c in refs):raise ValueError('Unknown/duplicate/unbound rule')
         types.add(t);rid=TYPES[t]
+        if x.get('scope'):
+            from tools.rule_scopes import identity
+            if not isinstance(x['scope'],dict):raise ValueError('Invalid rule scope')
+            rid=identity(x['scope'])
         sources=[]
         for s in x.get('parameter_sources',[]):
             s=copy.deepcopy(s);q=byid.get(s.get('requirement_id'))
@@ -190,12 +198,17 @@ def normalize_proposal(raw,bundle):
         r={'rule_id':rid,'rule_type':t,'requirement_ids':refs,'status':'DRAFT','version':1,
            'required_for_release':any(byid[c]['required_for_release'] for c in refs),
            'parameters':x.get('parameters'), 'parameter_sources':sources,'preconditions':[], 'reviewer':'','approved_at':''}
+        if 'scope' in x:r['scope']=copy.deepcopy(x['scope'])
         rules.append(r)
     ids={r['rule_id'] for r in rules}
     # Do not remove unavailable safety dependencies; draft remains non-executable until clarified.
-    for r in rules:r['preconditions']=DEPS[r['rule_id']]
+    for r in rules:r['preconditions']=DEPS[TYPES[r['rule_type']]]
     from tools.input_models import Rule
     for r in rules:Rule.model_validate(r)
+    from tools.rule_scopes import validate_scopes
+    dictionary={row['field_name']:row for row in csv.DictReader(io.StringIO((b/'dictionary.csv').read_text(encoding='utf-8')))}
+    scope_problems=validate_scopes(rules,reqs,next(csv.reader(io.StringIO((b/'poi.csv').read_text(encoding='utf-8'))),[]),dictionary)
+    if scope_problems:raise ValueError('Invalid scope: '+json.dumps(scope_problems,ensure_ascii=False))
     ref=next((r['parameters']['reference_time'] for r in rules if r['rule_type']=='freshness'),None)
     return {'schema_version':1,'requirements':reqs,'rules':rules,'reference_time':ref,
             'clarifications':[{'requirement_id':q['requirement_id'],'messages':q.get('ambiguities',[]) or ['不支持或证据不足']} for q in reqs if q['support_status']!='SUPPORTED']}
@@ -207,8 +220,8 @@ def create_draft(bundle,mode='manual',client=None):
         elif mode=='live':
             client=client or CompatibleClient()
             if client.config.provider=='ollama':
-                from .local_authoring import output_schema,compile_proposal,GUIDANCE
-                raw=client.complete([{'role':'system','content':SYSTEM+GUIDANCE},
+                from .local_authoring import output_schema,compile_proposal,guidance
+                raw=client.complete([{'role':'system','content':SYSTEM+guidance(bundle)},
                     {'role':'user','content':json.dumps(outbound_preview(bundle),ensure_ascii=False)}],response_schema=output_schema(bundle))
                 result=compile_proposal(raw,bundle);result.update(mode=mode,calls=client.calls,model_proposal=raw)
                 return result

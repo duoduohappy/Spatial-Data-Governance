@@ -326,7 +326,7 @@ class AppTests(unittest.TestCase):
     def test_unconfigured_live_fails_honestly(self):
         with self.assertRaises(ModelError):CompatibleClient(ModelConfig()).complete([{'role':'user','content':'x'}])
     def test_restart_marks_running_interrupted(self):
-        with self.s.connect() as c:c.execute("INSERT INTO jobs VALUES('dead','p','draft',1,'RUNNING',NULL,NULL,'now','dead')")
+        with self.s.connect() as c:c.execute("INSERT INTO jobs(id,project,kind,revision,status,result,error,created,idempotency) VALUES('dead','p','draft',1,'RUNNING',NULL,NULL,'now','dead')")
         self.s.close()
         s2=Service(self.s.root)
         with s2.connect() as c:self.assertEqual(c.execute("SELECT status FROM jobs WHERE id='dead'").fetchone()[0],'INTERRUPTED')

@@ -1,3 +1,5 @@
+> 0.6 升级候选：本机运行 start-v06.cmd，访问 http://127.0.0.1:8768/，使用 work/v06-app-v2。双角色审查为实验选项，当前开发对照未获质量收益。详见 V06_UPGRADE.md。以下保留原入口说明。
+
 # Quick start (Windows)
 
 Use Python 3.13.14. A new local .venv was created for this candidate, all 22 locked dependencies installed successfully, and the core, compare, schema and application checks reran successfully in that environment. Python 3.11 support is not claimed. Installation evidence: acceptance/stage-5/clean-install.txt; fresh-env-verify.txt; check-summary.json. The delivered local folder is ready to run with start.cmd; the source ZIP requires installation.
