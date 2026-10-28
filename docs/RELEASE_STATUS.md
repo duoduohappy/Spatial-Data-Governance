@@ -1,6 +1,6 @@
 # 0.6.0-rc1 升级验收状态
 
-日期：2026-10-28。功能状态：**LOCAL_ENGINEERING_CHECKS_PASS_REMOTE_PENDING**。
+日期：2026-10-28。功能状态：**LOCAL_AND_REMOTE_ENGINEERING_CHECKS_PASS**。
 
 本轮实现：可选双角色提议/审查，受控查询、一次修订、人工确认；按来源的 freshness 多实例，稳定规则 ID、范围指纹、未知/零匹配保护、重分类不自动关闭；POI 试点流程及空白记录模板。
 
@@ -8,7 +8,7 @@
 
 模型质量结论：单次 38/40、自检 38/40、双角色 37/40；Token 为 19,102 / 75,824 / 66,506。保留失败、精确源码快照和环境中断记录。双角色没有达到采用标准，默认仍为 single。开发标签不等于独立金标准，未测量人工效率。
 
-本轮远程 CI 状态：NOT_RUN_FOR_THIS_BRANCH。远程运行：尚未执行；不能用 0.5 的通过记录替代。提交：待提交。所有通过结论以对应运行的提交为界。
+本轮远程 CI 状态：PASS。远程运行：https://github.com/duoduohappy/Spatial-Data-Governance/actions/runs/40625420846。提交：b1c360b2ad12dd38a706d3c5e1282c8358087b61。所有通过结论以对应运行的提交为界。
 
 真实试点：POI 数据交付验收方向已选，实际批次/独立审核人为零；材料与标签未到位，状态 NOT_STARTED。见 POI_PILOT.md，不宣称生产上线或 ROI。
 

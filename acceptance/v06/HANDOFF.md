@@ -10,4 +10,4 @@ Actual checks: 58 tests; six frozen packs; 30 core and 33 compare probes; 15 rea
 
 Developer ablation: single 38/40, self-review 38/40, dual-review 37/40; tokens 19102/75824/66506. Single remains default; dual review is experimental. Failures, environment interruption and exact experiment source snapshots are retained. Experiment code predates later scope/report refinements.
 
-Real POI pilot NOT_STARTED; no actual batches, business reviewers or human-efficiency evidence. Templates are ready. No cloud model calls occurred in this upgrade. Remote PR/CI and candidate packaging remain the engineering handoff steps at this snapshot.
+Real POI pilot NOT_STARTED; no actual batches, business reviewers or human-efficiency evidence. Templates are ready. No cloud model calls occurred in this upgrade. PR #1 is open on codex/v06-poi-collaboration. Remote run 40625420846 passed all five jobs on b1c360b2ad12dd38a706d3c5e1282c8358087b61, including Docker and Windows. See remote-ci/results.json. Packaging remains a delivery step; pilot and quality claims remain restricted as above.
