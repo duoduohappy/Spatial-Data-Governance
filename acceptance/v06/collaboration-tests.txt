@@ -1,0 +1,18 @@
+test_cloud_rejected_before_any_call (__main__.CollaborationTests.test_cloud_rejected_before_any_call) ... ok
+test_compiler_rejected_evidence_can_be_revised_without_changing_truth (__main__.CollaborationTests.test_compiler_rejected_evidence_can_be_revised_without_changing_truth) ... ok
+test_idempotency_key_includes_strategy_and_mode (__main__.CollaborationTests.test_idempotency_key_includes_strategy_and_mode) ... ok
+test_keyed_review_compiles_without_omitting_ids (__main__.CollaborationTests.test_keyed_review_compiles_without_omitting_ids) ... ok
+test_legacy_database_mode_migration_preserves_uncertainty (__main__.CollaborationTests.test_legacy_database_mode_migration_preserves_uncertainty) ... ok
+test_review_requires_complete_exact_evidence (__main__.CollaborationTests.test_review_requires_complete_exact_evidence) ... ok
+test_second_tool_round_is_rejected (__main__.CollaborationTests.test_second_tool_round_is_rejected) ... ok
+test_self_review_retains_authoring_context (__main__.CollaborationTests.test_self_review_retains_authoring_context) ... ok
+test_separate_context_no_approval (__main__.CollaborationTests.test_separate_context_no_approval) ... ok
+test_stored_collaboration_cannot_be_removed_to_bypass_ack (__main__.CollaborationTests.test_stored_collaboration_cannot_be_removed_to_bypass_ack) ... ok
+test_tool_round_and_single_revision_bounded (__main__.CollaborationTests.test_tool_round_and_single_revision_bounded) ... ok
+test_tools_cannot_escape_read_only_boundary (__main__.CollaborationTests.test_tools_cannot_escape_read_only_boundary) ... ok
+test_unresolved_without_revision_remains_unknown (__main__.CollaborationTests.test_unresolved_without_revision_remains_unknown) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.985s
+
+OK

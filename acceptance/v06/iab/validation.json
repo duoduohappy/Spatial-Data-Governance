@@ -1,0 +1,420 @@
+{
+  "schema_version": "stage1-validate-2",
+  "tool_version": "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)",
+  "python": "3.13.14",
+  "generated_at": "2026-10-28T01:09:51.198266+00:00",
+  "bundle": "C:\\Users\\TempAdmin\\Documents\\Codex\\2026-10-26\\mu\\outputs\\GeoAcceptance\\work\\v06-app-v2\\runs\\c035d068a7ad42cbbca22a2af085f4b9",
+  "mode": "validate",
+  "mode_note": "正式检查入口：不需要 expected 真值，结论只来自内核唯一判定路径。",
+  "expected_used": false,
+  "inputs": {
+    "delivery_spec.md": {
+      "sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2",
+      "bytes": 1304
+    },
+    "dictionary.csv": {
+      "sha256": "93f35f238fc861174fb7bed3a4b892b9b0d97e4eb2d1186ab4582ab657909f75",
+      "bytes": 427
+    },
+    "poi.csv": {
+      "sha256": "71595d8f75f76e607b5de0fd56ce42e82aff672fec7bca5f4a4545b249aa1cfd",
+      "bytes": 219
+    },
+    "area.geojson": {
+      "sha256": "dcd51cef97c0dbc5c334352895849bdaa99547b9cef15ca0e48396e279779976",
+      "bytes": 288
+    },
+    "crs.json": {
+      "sha256": "9c8f3c1a9bc3c717bac6b21d807399d62872ccb1efb55fddef4af39eb2f06ebc",
+      "bytes": 152
+    },
+    "requirements.yaml": {
+      "sha256": "2c97c1f857d3b9798e93d93f0a7a3d5025351a8108bac599afeb61f7c36226c8",
+      "bytes": 5475
+    },
+    "approved-rules.yaml": {
+      "sha256": "0575c9a9795010fe7f76bde3594a0062ba9698a6f678112505d05490b3bea396",
+      "bytes": 10207
+    }
+  },
+  "executed": true,
+  "exec_error": null,
+  "clauses_pending": [],
+  "config_rejections": [],
+  "preflight_problems": [],
+  "aggregate_verdict": "PASS",
+  "aggregate_reason": "全部必检条款均有完整有效的 PASS 证据",
+  "clause_coverage": [
+    {
+      "requirement_id": "A1",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R01"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "A2",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R02"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "A3",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R03"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "A4",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R04"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "A5",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R05"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "B1",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R06"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "B2",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R07"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "B3",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R08"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "C1",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R09_32667d83548e"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    },
+    {
+      "requirement_id": "C2",
+      "required_for_release": true,
+      "support_status": "SUPPORTED",
+      "mapped_rule_ids": [
+        "R09_a159384fc2b2"
+      ],
+      "coverage_state": "COVERED",
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK"
+    }
+  ],
+  "check_results": [
+    {
+      "rule_id": "R01",
+      "requirement_ids": [
+        "A1"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true
+    },
+    {
+      "rule_id": "R02",
+      "requirement_ids": [
+        "A2"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true
+    },
+    {
+      "rule_id": "R03",
+      "requirement_ids": [
+        "A3"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true
+    },
+    {
+      "rule_id": "R04",
+      "requirement_ids": [
+        "A4"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true
+    },
+    {
+      "rule_id": "R05",
+      "requirement_ids": [
+        "A5"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true
+    },
+    {
+      "rule_id": "R07",
+      "requirement_ids": [
+        "B2"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true
+    },
+    {
+      "rule_id": "R09_32667d83548e",
+      "requirement_ids": [
+        "C1"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 1,
+        "records_evaluated": 1,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true,
+      "scope": {
+        "field": "source",
+        "equals": "municipal",
+        "requirement_id": "C1"
+      },
+      "scope_selection": {
+        "eligible_records": 1,
+        "unknown_selector_records": 0,
+        "excluded_records": 1
+      }
+    },
+    {
+      "rule_id": "R09_a159384fc2b2",
+      "requirement_ids": [
+        "C2"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 1,
+        "records_evaluated": 1,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true,
+      "scope": {
+        "field": "source",
+        "equals": "survey",
+        "requirement_id": "C2"
+      },
+      "scope_selection": {
+        "eligible_records": 1,
+        "unknown_selector_records": 0,
+        "excluded_records": 1
+      }
+    },
+    {
+      "rule_id": "R06",
+      "requirement_ids": [
+        "B1"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true
+    },
+    {
+      "rule_id": "R08",
+      "requirement_ids": [
+        "B3"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": true
+    },
+    {
+      "rule_id": "R10",
+      "requirement_ids": [
+        "C3"
+      ],
+      "verdict": "PASS",
+      "execution_status": "COMPLETED",
+      "reason_code": "OK",
+      "summary_counts": {
+        "records_total": 2,
+        "records_evaluated": 2,
+        "records_failed": 0,
+        "records_indeterminate": 0,
+        "records_skipped_upstream": 0,
+        "records_uninterpretable": 0,
+        "records_blocked": 0,
+        "findings": 0
+      },
+      "required_for_release": false
+    }
+  ],
+  "findings": [],
+  "findings_by_class": {},
+  "counts": {
+    "records": 2,
+    "clauses_required": 10,
+    "clauses_covered": 10,
+    "rules": 11,
+    "findings": 0
+  }
+}

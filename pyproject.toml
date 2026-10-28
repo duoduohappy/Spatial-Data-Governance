@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "geoacceptance-local"
-version = "0.5.0rc1"
+version = "0.6.0rc1"
 description = "Traceable spatial delivery checks with human-reviewed rule proposals"
 requires-python = ">=3.13"
 license = "MIT"

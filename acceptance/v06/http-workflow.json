@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "at": "2026-10-28T01:24:52.579286+00:00",
+  "base": "http://127.0.0.1:8978",
+  "checks": [
+    "CSRF rejection",
+    "draft remains unapproved; zero model calls",
+    "clean PASS",
+    "defective FAIL",
+    "corrected PASS",
+    "duplicate identity prevents false closure despite corrected batch PASS",
+    "positive closure with stable identity and successful rule execution",
+    "two independent source-scoped freshness instances PASS",
+    "seven-day rule does not misapply to thirty-day source",
+    "moving source cannot falsely close an original failure",
+    "HTML report retains explicit source scope",
+    "json export body and attachment headers",
+    "html export body and attachment headers"
+  ],
+  "mode": "manual synthetic workflow; zero model calls",
+  "scope": "HTTP workflow probe; environment/container provenance must be supplied separately."
+}

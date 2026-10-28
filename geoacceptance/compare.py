@@ -45,12 +45,12 @@ sys.path.insert(0, str(ROOT))
 import stage0_gate as gate  # noqa: E402
 from geoacceptance import inputs  # noqa: E402
 
-SCHEMA_VERSION = "stage1-compare-3"
+SCHEMA_VERSION = "stage1-compare-4"
 
 # 参与规则语义指纹的字段：**排除** bundle / notes（不影响判定）
 RULE_FINGERPRINT_FIELDS = ("rule_id", "rule_type", "status", "version", "required_for_release",
                            "requirement_ids", "parameters", "parameter_sources",
-                           "preconditions", "reviewer", "approved_at")
+                           "preconditions", "reviewer", "approved_at", "scope")
 # 参与批次制品指纹的项：这些变了，同一条规则量出来的结果也不是一回事。
 # crs.json 与 poi.csv 是**被测数据**（CRS 声明本身就是检查对象），不进尺子指纹。
 ARTIFACT_FILES = ("dictionary.csv", "area.geojson", "delivery_spec.md")
@@ -336,6 +336,16 @@ def compare_batches(before_dir: Path, after_dir: Path,
     entities_removed = sorted(before_ids - after_ids)
     entities_added = sorted(after_ids - before_ids)
 
+    # A change of source can move an entity outside a failing rule. It is not repair evidence.
+    scope_fields=sorted({r['scope']['field'] for ctx in (b,a) for r in ctx['rules_by_id'].values() if r.get('scope')})
+    scope_changes={}
+    for field in scope_fields:
+        def values(ctx):
+            k=ctx['kernel']
+            return {row[0].strip():k.field_value(row,field) for _line,row in k.rows if row and row[0].strip() in ctx['index']['unique']}
+        old_values,new_values=values(b),values(a)
+        for ident in sorted(set(old_values)&set(new_values)):
+            if old_values[ident]!=new_values[ident]:scope_changes.setdefault(ident,[]).append({'field':field,'before':old_values[ident],'after':new_values[ident]})
     items = []
     # S1-R2-02：被删实体的失败码先按实体合并（多条规则 → 一条待审核条目，不重复计实体）
     removed_set = set(entities_removed)
@@ -365,6 +375,8 @@ def compare_batches(before_dir: Path, after_dir: Path,
                 reasons.append("记录标识 %s 在批次内重复，身份不可用（拒绝按行号匹配）" % ident)
         # ② 尺子可比性（先判"资格"，再判"尺子内容"：资格不具备不是"尺子不同"，
         #    而是"整改后根本没有这把尺子的合格执行"，两者都不能关闭但原因必须分清）
+        if kind=='record' and ident in scope_changes:
+            reasons.append('适用范围选择字段发生变化，须业务复核；移出原规则范围不能作为整改关闭证据')
         qual_reason = None
         if rule_id in rules_removed:
             reasons.append("整改后批次不存在该规则：尺子被撤走，无法证明同一检查已通过")
@@ -425,6 +437,12 @@ def compare_batches(before_dir: Path, after_dir: Path,
             }) or None,
             "reasons": reasons,
         })
+
+    for ident,changes in sorted(scope_changes.items()):
+        items.append({'key':'record:'+ident+'|scope-selector','identity_kind':'record','record_id':ident,
+                      'evidence_domain':None,'rule_id':'-','status':NOT_COMPARABLE,'before_codes':[],
+                      'after_codes':[],'after_unknown_codes':[],'reduced':False,'closure_evidence':None,
+                      'selector_changes':changes,'reasons':['适用范围选择字段改变，尚无批准重分类通道，必须人工业务复核']})
 
     # ---- S1-R2-02：在全量实体清单差集上统一生成 removed_pending_review
     # 无论该实体在整改前是否有失败 finding（"原本干净"还是"原本有缺陷"），

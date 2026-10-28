@@ -137,8 +137,16 @@ class Requirement(_Strict):
     ambiguities: Optional[List[str]] = None
 
 
+class RecordScope(BaseModel):
+    model_config = ConfigDict(strict=True, extra="forbid")
+    field: str = Field(pattern=r"^[A-Za-z][A-Za-z0-9_]{0,31}$")
+    equals: str = Field(min_length=1, max_length=80)
+    requirement_id: str = Field(min_length=1)
+
+
 class Rule(_Strict):
     rule_id: str
+    scope: Optional[RecordScope] = None
     requirement_ids: List[str] = Field(min_length=1)
     rule_type: Literal["required_field_present", "non_empty", "type_parse", "enum_value",
                        "id_unique", "coord_range", "crs_declaration", "within_project_area",
@@ -161,6 +169,10 @@ class Rule(_Strict):
         - 缺必填键、空必需数组、错误类型、非法枚举、未知参数键 ⇒ 拒绝；
         - 拒绝时**不得**忽略参数后按默认值继续执行（那等于换了一把没人批准过的尺子）。
         """
+        if 'scope' in self.model_fields_set and self.scope is None:
+            raise ValueError('Omit an absent scope; explicit null scope is invalid')
+        if self.scope is not None and self.rule_type != 'freshness':
+            raise ValueError('Record scope is only supported by freshness in v0.6')
         params = self.parameters
         if params is None:
             raise ValueError("缺少 parameters：%s 规则必须显式声明参数（不得按默认值执行）"

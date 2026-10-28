@@ -27,7 +27,7 @@ import stage0_gate as gate  # noqa: E402
 from geoacceptance import inputs  # noqa: E402
 from geoacceptance.compare import BUNDLE_TEXT_FILES, guard_bundle  # noqa: E402
 
-SCHEMA_VERSION = "stage1-validate-2"
+SCHEMA_VERSION = "stage1-validate-3"
 
 
 def validate_bundle(bundle: Path, max_bytes: int = inputs.DEFAULT_MAX_BYTES) -> dict:

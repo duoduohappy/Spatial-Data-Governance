@@ -35,12 +35,17 @@ for _s in (getattr(sys, "stdout", None), getattr(sys, "stderr", None)):
         _s.reconfigure(encoding="utf-8", errors="strict")
 from pathlib import Path
 
+if __package__:
+    from .rule_scopes import validate_scopes,population
+else:
+    from rule_scopes import validate_scopes,population
+
 ROOT = Path(__file__).resolve().parent.parent
 EX = ROOT / "examples"
 WORK = ROOT / "work" / "stage0"
 
 SCHEMA_VERSION = "stage0-2"
-TOOL_VERSION = "stage0-gate/0.2.0 (shapely/pyproj/PyYAML/pydantic)"
+TOOL_VERSION = "geoacceptance/0.6.0-rc1 (shapely/pyproj/PyYAML/pydantic; scoped freshness)"
 
 # ---------------------------------------------------------------- 契约词汇表（契约 §1）
 VERDICTS = ("PASS", "FAIL", "INDETERMINATE")
@@ -871,6 +876,7 @@ class Kernel:
             return self.config_rejections
         out = []
         out.extend(self.reject_input_schema())
+        out.extend(validate_scopes(self.rule_doc['rules'], self.req_doc['requirements'], self.header, self.dict))
         out.extend(self.reject_missing_rate_policy())
         out.extend(self.reject_boundary_policy())
         ps = self._parameter_source_scan()
@@ -1337,7 +1343,7 @@ class Kernel:
         一边规则级结论是 INDETERMINATE，I4（有失败必然是 FAIL）必然抛 CONTRACT_VIOLATION。
         一行同时有 FAIL 类 finding 时仍算失败（FAIL 优先，不因缺证据而降级）。
         """
-        all_lines = [lineno for lineno, _ in self.rows]
+        all_lines = sorted(population(rule, self.header, self.rows, self.dict)[0])
         upstream = {l for l in self.blocked_lines(rule) if l in set(all_lines)}
         own_blocked = {l for l in (blocked or set()) if l in set(all_lines)} - upstream
 
@@ -1528,6 +1534,9 @@ class Kernel:
 
             try:
                 result = make_result(rule, verdict, status, reason, counts)
+                if rule.get('scope'):
+                    eligible, unknown, excluded = population(rule, self.header, self.rows, self.dict)
+                    result['scope_selection'] = {'eligible_records':len(eligible), 'unknown_selector_records':len(unknown), 'excluded_records':len(excluded)}
                 if failure_findings:
                     # S0-R1：保留 FAIL finding 的原因码序列（**去重、保留首次出现顺序**，契约 §3.5.2），
                     # 供条款级聚合取「第一条 FAIL finding 的 reason_code」作条款级 reason_code（§3.5.1）
@@ -1604,7 +1613,8 @@ class Kernel:
 
     def eval_lines(self, rule):
         blocked = self.blocked_lines(rule)
-        return [lineno for lineno, _ in self.rows if lineno not in blocked]
+        eligible, _unknown, _excluded = population(rule, self.header, self.rows, self.dict)
+        return [lineno for lineno, _ in self.rows if lineno not in blocked and lineno in eligible]
 
     # --- R01 必填字段存在
     def rule_required_field_present(self, rule, ctx):
@@ -1612,12 +1622,12 @@ class Kernel:
         params = rule.get("parameters") or {}
         for field in params.get("fields") or []:
             if field not in self.header:
-                f.append(self.finding("R01", self.dataset_locator("poi.csv"),
+                f.append(self.finding(rule["rule_id"], self.dataset_locator("poi.csv"),
                                       field, "缺失整列", "字段必须存在", "FIELD_COLUMN_MISSING"))
         for lineno, row in self.rows:
             if len(row) < len(self.header):
                 missing = self.header[len(row):]
-                f.append(self.finding("R01", self.record_locator(lineno, row), ",".join(missing),
+                f.append(self.finding(rule["rule_id"], self.record_locator(lineno, row), ",".join(missing),
                                       "缺值", "每行字段数必须与表头一致", "FIELD_COUNT_MISMATCH"))
         return f, blocked
 
@@ -1634,7 +1644,7 @@ class Kernel:
                     continue
                 v = row.get(field)
                 if v is None or (v.strip() if trim else v) == "":
-                    f.append(self.finding("R02", rec, field, v, "不得为空值", "EMPTY_VALUE"))
+                    f.append(self.finding(rule["rule_id"], rec, field, v, "不得为空值", "EMPTY_VALUE"))
                     blocked.add(lineno)
         return f, blocked
 
@@ -1655,7 +1665,7 @@ class Kernel:
                     continue
                 _, err = parse_value(v, self.dict[field]["data_type"])
                 if err:
-                    f.append(self.finding("R03", rec, field, v,
+                    f.append(self.finding(rule["rule_id"], rec, field, v,
                                           f"类型必须为 {self.dict[field]['data_type']}", err))
                     blocked.add(lineno)
                     rec_blocked = True
@@ -1679,7 +1689,7 @@ class Kernel:
                 blocked.add(lineno)
                 continue
             if v.strip() not in enum_values:
-                f.append(self.finding("R04", rec, field, v,
+                f.append(self.finding(rule["rule_id"], rec, field, v,
                                       "取值必须在字典枚举内: " + "/".join(enum_values),
                                       "ENUM_VIOLATION",
                                       {"dictionary_line": self.dict[field]["source_line"]}))
@@ -1696,14 +1706,14 @@ class Kernel:
             row = idx[lineno]
             v = (self.field_value(row, field) or "").strip()
             if v == "":
-                f.append(self.finding("R05", self.record_locator(lineno, row), field, v,
+                f.append(self.finding(rule["rule_id"], self.record_locator(lineno, row), field, v,
                                       "ID 不得为空", "EMPTY_ID"))
                 continue
             seen.setdefault(v, []).append(lineno)
         for v, lines in seen.items():
             if len(lines) > 1:
                 for ln in lines:
-                    f.append(self.finding("R05", self.record_locator(ln, idx[ln]), field, v,
+                    f.append(self.finding(rule["rule_id"], self.record_locator(ln, idx[ln]), field, v,
                                           "ID 必须唯一", "DUPLICATE_ID",
                                           {"duplicate_lines": lines}))
         blocked |= set(self.eval_lines(rule)) & self.blocked_lines(rule)
@@ -1727,11 +1737,11 @@ class Kernel:
                 blocked.add(lineno)
                 continue
             if not (p["lon_range"][0] <= lon <= p["lon_range"][1]):
-                f.append(self.finding("R06", rec, "longitude", lon_s,
+                f.append(self.finding(rule["rule_id"], rec, "longitude", lon_s,
                                       f"经度须在 [{p['lon_range'][0]},{p['lon_range'][1]}]",
                                       "LONGITUDE_OUT_OF_RANGE"))
             if not (p["lat_range"][0] <= lat <= p["lat_range"][1]):
-                f.append(self.finding("R06", rec, "latitude", lat_s,
+                f.append(self.finding(rule["rule_id"], rec, "latitude", lat_s,
                                       f"纬度须在 [{p['lat_range'][0]},{p['lat_range'][1]}]",
                                       "LATITUDE_OUT_OF_RANGE"))
         blocked |= set(self.eval_lines(rule)) & self.blocked_lines(rule)
@@ -1759,7 +1769,7 @@ class Kernel:
 
         # C2：缺声明 —— 无批准条款授权判 FAIL，按 A2 落 INDETERMINATE
         if not declared:
-            f.append(self.finding("R07", self.dataset_locator("crs.json"), "declared_crs", None,
+            f.append(self.finding(rule["rule_id"], self.dataset_locator("crs.json"), "declared_crs", None,
                                   "必须提交 CRS 声明才能做一致性判定；缺证据即未知，不判 FAIL",
                                   "CRS_MISSING_DECLARATION"))
             return f, set(all_lines)
@@ -1767,7 +1777,7 @@ class Kernel:
         # C1 前置：要求的 CRS 必须有已批准且自校验通过的来源，否则同样缺证据
         src = self.approved_parameter_source(rule, "expected_crs")
         if not expected or src is None:
-            f.append(self.finding("R07", self.dataset_locator("crs.json"), "expected_crs", expected,
+            f.append(self.finding(rule["rule_id"], self.dataset_locator("crs.json"), "expected_crs", expected,
                                   "要求的 CRS 缺少已批准来源，不得据此判定（缺证据即未知）",
                                   "CRS_EXPECTED_NOT_APPROVED"))
             return f, set(all_lines)
@@ -1775,7 +1785,7 @@ class Kernel:
         # C1：声明一致性（唯一可判 FAIL）
         if normalize_crs(declared) != normalize_crs(expected):
             f.append(self.finding(
-                "R07", self.dataset_locator("crs.json"), "declared_crs", declared,
+                rule["rule_id"], self.dataset_locator("crs.json"), "declared_crs", declared,
                 "声明的 CRS 必须与原文要求一致；本系统不自动纠偏、不猜测真实 CRS",
                 "CRS_DECLARATION_MISMATCH",
                 {"expected_crs": expected, "declared_crs": declared,
@@ -1845,7 +1855,7 @@ class Kernel:
                 continue
             hint = "点位须落在项目范围内（%s边界）" % ("含" if inclusive else "不含")
             if not point_in_ring_or_boundary(lon, lat, ring, inclusive=inclusive):
-                f.append(self.finding("R08", rec, "longitude/latitude", f"{lon},{lat}",
+                f.append(self.finding(rule["rule_id"], rec, "longitude/latitude", f"{lon},{lat}",
                                       hint, "OUTSIDE_PROJECT_AREA"))
         blocked |= set(self.eval_lines(rule)) & self.blocked_lines(rule)
         return f, blocked
@@ -1879,7 +1889,11 @@ class Kernel:
         p = rule.get("parameters") or {}
         ref = dt.datetime.fromisoformat(p["reference_time"].replace("Z", "+00:00"))
         field = "source_time"
+        _eligible, unknown, _excluded = population(rule, self.header, self.rows, self.dict)
         for lineno in self.eval_lines(rule):
+            if lineno in unknown:
+                blocked.add(lineno)
+                continue
             row = idx[lineno]
             rec = self.record_locator(lineno, row)
             v = self.field_value(row, field)
@@ -1889,15 +1903,15 @@ class Kernel:
                 continue
             if val.tzinfo is None:
                 val = val.replace(tzinfo=dt.timezone.utc)
-                f.append(self.finding("R09", rec, field, v,
+                f.append(self.finding(rule["rule_id"], rec, field, v,
                                       "时间必须带时区或被声明的时区解释", "TIMEZONE_UNDECLARED"))
             age = (ref - val).total_seconds() / 86400.0
             if age > p["max_age_days"]:
-                f.append(self.finding("R09", rec, field, v,
+                f.append(self.finding(rule["rule_id"], rec, field, v,
                                       f"距基准时间不得超过 {p['max_age_days']} 天",
                                       "STALE_RECORD", {"age_days": round(age, 3)}))
             elif age < 0:
-                f.append(self.finding("R09", rec, field, v, "不得晚于基准时间", "FUTURE_TIMESTAMP"))
+                f.append(self.finding(rule["rule_id"], rec, field, v, "不得晚于基准时间", "FUTURE_TIMESTAMP"))
         blocked |= set(self.eval_lines(rule)) & self.blocked_lines(rule)
         return f, blocked
 
@@ -1927,7 +1941,7 @@ class Kernel:
                     if not any(key == g[0] for g in groups):
                         groups.append((key, d, a, b))
         for key, d, a, b in groups:
-            f.append(self.finding("R10", self.record_locator(a[0], a[1]), "longitude/latitude",
+            f.append(self.finding(rule["rule_id"], self.record_locator(a[0], a[1]), "longitude/latitude",
                                   f"{a[2]},{a[3]} 与 {b[2]},{b[3]}",
                                   f"相距不超过 {p['max_distance_m']} 米且同名，须人工确认是否重复",
                                   "DUPLICATE_CANDIDATE",
@@ -2024,6 +2038,8 @@ def make_result(rule, verdict, status, reason, counts, detail=None):
         "summary_counts": dict(counts),
         "required_for_release": bool(rule.get("required_for_release")),
     }
+    if rule.get('scope'):
+        result['scope'] = dict(rule['scope'])
     if detail:
         result["detail"] = detail
     assert_contract(result)

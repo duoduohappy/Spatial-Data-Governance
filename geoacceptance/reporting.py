@@ -43,8 +43,9 @@ def render_html(report: dict) -> str:
            _esc(",".join(c.get("failure_reason_codes") or c.get("advisory_reason_codes") or [])))
         for c in cov)
     rows_rule = "\n".join(
-        "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
+        "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
         % (_esc(r.get("rule_id")), _esc(",".join(r.get("requirement_ids") or [])),
+           _esc((r['scope']['field']+'='+r['scope']['equals']) if r.get('scope') else '全批次'),
            _badge(r.get("verdict")), _esc(r.get("execution_status")),
            _esc(r.get("reason_code")),
            _esc((r.get("summary_counts") or {}).get("records_failed")))
@@ -77,7 +78,7 @@ def render_html(report: dict) -> str:
 <table><tr><th>条款</th><th>覆盖状态</th><th>结论</th><th>执行状态</th><th>原因码</th><th>原因码数组</th></tr>
 %(rows_clause)s</table>
 <h2>规则结果（check_results）</h2>
-<table><tr><th>规则</th><th>条款</th><th>结论</th><th>执行状态</th><th>原因码</th><th>失败记录数</th></tr>
+<table><tr><th>规则</th><th>条款</th><th>适用范围</th><th>结论</th><th>执行状态</th><th>原因码</th><th>失败记录数</th></tr>
 %(rows_rule)s</table>
 <h2>缺陷清单（findings）</h2>
 <table><tr><th>ID</th><th>规则</th><th>记录标识</th><th>字段</th><th>原因码</th><th>观测值</th></tr>

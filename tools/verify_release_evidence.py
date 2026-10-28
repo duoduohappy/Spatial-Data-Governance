@@ -14,6 +14,14 @@ def main():
         assert digest(ROOT/'eval/heldout-v1'/case['id']/'delivery_spec.md')==case['document_sha256'], case['id']
     for entry in read('acceptance/stage-3/iab-downloads/results.json')['files']:
         assert digest(ROOT/'acceptance/stage-3/iab-downloads'/('report.'+entry['type']))==entry['sha256'], entry['type']
+    review_set=ROOT/'eval/review-dev-v1/manifest.json'
+    if review_set.exists():
+        review=json.loads(review_set.read_text(encoding='utf-8'))
+        for case in review['cases']:
+            assert digest(ROOT/'eval/review-dev-v1'/case['id']/'delivery_spec.md')==case['document_sha256'],case['id']
+        for version in ('v1','v2'):
+            record=read('acceptance/v06/review-ablation-'+version+'/results.json')
+            assert digest(review_set)==record['manifest_sha256'],'Review dataset manifest changed'
     restore()
     media=read('acceptance/stage-3/browser/recording-metadata.json')
     assert digest(VIDEO)==media['sha256'], 'Recording bytes changed'

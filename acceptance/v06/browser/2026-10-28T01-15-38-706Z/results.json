@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-28T01:15:38.710Z",
+  "mode": "real Chromium, automated synthetic review",
+  "checks": [
+    {
+      "name": "desktop welcome has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "unapproved execution blocked; unconfigured live disabled",
+      "status": "PASS"
+    },
+    {
+      "name": "10 source clauses visible",
+      "status": "PASS"
+    },
+    {
+      "name": "unchecked review cannot approve",
+      "status": "PASS"
+    },
+    {
+      "name": "defective batch FAIL; real SVG rendered",
+      "status": "PASS"
+    },
+    {
+      "name": "map click links to evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "JSON and HTML export HTTP bodies verified; browser save pending",
+      "status": "PASS"
+    },
+    {
+      "name": "corrected batch PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "duplicate original identity prevents false ledger closure",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile overview has no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "mobile can switch existing projects",
+      "status": "PASS"
+    },
+    {
+      "name": "scoped source 7/30-day rules execute PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "both source scope instances shown",
+      "status": "PASS"
+    },
+    {
+      "name": "scoped results have no horizontal overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "no uncaught browser JavaScript errors",
+      "status": "PASS"
+    }
+  ],
+  "screenshots": [
+    "01-welcome.png",
+    "02-import.png",
+    "03-review.png",
+    "04-failure-evidence.png",
+    "05-corrected.png",
+    "06-compare.png",
+    "07-audit.png",
+    "08-mobile.png",
+    "09-scoped-sources.png"
+  ],
+  "errors": [],
+  "browser_version": "156.0.8078.4",
+  "download_status": "BLOCKED: Chromium headless shell cancels attachment downloads in this environment",
+  "status": "PASS",
+  "video": "video/page@cb0712f2e1abe4196dd6cc9d73ceb120.webm"
+}

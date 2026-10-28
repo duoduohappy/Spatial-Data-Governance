@@ -1,0 +1,101 @@
+{
+  "version": "0.6.0-rc1",
+  "at": "2026-10-28T01:52:13.897665+00:00",
+  "functional_acceptance": "LOCAL_ENGINEERING_CHECKS_PASS_REMOTE_PENDING",
+  "checks": {
+    "unit_and_http_tests": 58,
+    "frozen_examples": 6,
+    "core_probes": 30,
+    "compare_probes": 33,
+    "real_browser_checks": 15,
+    "http_workflow_checks": 13,
+    "actual_iab_workflow": "PASS"
+  },
+  "model_quality": {
+    "metrics": {
+      "single": {
+        "correct": 38,
+        "clauses": 40,
+        "covered": 40,
+        "unknown_errors": 1,
+        "failed_cases": 0,
+        "model_calls": 4,
+        "tokens": 19102,
+        "duration_ms": 291211.67,
+        "all_unapproved": true,
+        "lineage_problems": 0
+      },
+      "self_review": {
+        "correct": 38,
+        "clauses": 40,
+        "covered": 40,
+        "unknown_errors": 1,
+        "failed_cases": 0,
+        "model_calls": 10,
+        "tokens": 75824,
+        "duration_ms": 340205.62,
+        "all_unapproved": true,
+        "lineage_problems": 0
+      },
+      "dual_review": {
+        "correct": 37,
+        "clauses": 40,
+        "covered": 40,
+        "unknown_errors": 1,
+        "failed_cases": 0,
+        "model_calls": 11,
+        "tokens": 66506,
+        "duration_ms": 386536.06,
+        "all_unapproved": true,
+        "lineage_problems": 0
+      }
+    },
+    "adoption": "DO_NOT_PROMOTE_DUAL_REVIEW_DEFAULT",
+    "default_strategy": "single",
+    "scope": "Developer-authored synthetic regression, frozen before first v0.6 collaboration inference; not independent human labels. Existing exposed 80-clause set is not treated as new holdout.",
+    "not_independent_human_gold": true
+  },
+  "live_workbench": {
+    "status": "PASS",
+    "project_id": "ba615576572b4d3187471418e997ab9b",
+    "draft_job": "0a31d7e64b064bb4bb2ef679e9f2d724",
+    "validate_job": "c035d068a7ad42cbbca22a2af085f4b9",
+    "reviewer": "Codex 合成样例工程复核（非独立业务批准）",
+    "scope": "Actual IAB approval and validation of synthetic local two-role output; zero parameter edits; not independent business approval",
+    "model_calls": 2,
+    "rules": 11,
+    "scoped_instances": 2,
+    "screenshots": [
+      "review.png",
+      "scoped-results.png",
+      "scope-instances.png"
+    ]
+  },
+  "remote_ci": {
+    "status": "NOT_RUN_FOR_THIS_BRANCH"
+  },
+  "pilot": {
+    "status": "NOT_STARTED",
+    "scenario": "POI delivery acceptance",
+    "real_batches": 0,
+    "business_reviewers": 0,
+    "independent_labels": false,
+    "human_efficiency_measured": false,
+    "required_inputs": [
+      "real delivery documents",
+      "actual POI data/dictionary/area/CRS",
+      "business reviewers and frozen labels"
+    ]
+  },
+  "not_measured": [
+    "independent business acceptance",
+    "human active review time / ROI",
+    "production operation"
+  ],
+  "limits": [
+    "same local model, serial roles",
+    "optional reviewer tools; zero tool requests in current workbench demo",
+    "freshness scopes only; explicit positive markers and disjoint enum values",
+    "source reclassification requires business review; no automatic authorization channel"
+  ]
+}

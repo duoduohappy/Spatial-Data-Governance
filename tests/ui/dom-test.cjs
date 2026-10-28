@@ -18,8 +18,13 @@ setTimeout(()=>{
   context.fixture=fixture;
   vm.runInContext(`project=fixture.project;report=fixture.report;projects=[project];tab='review';render();tab='results';render();tab='history';render();tab='overview';render();`,context);
   if(!document.querySelector('h1')?.textContent.includes('defective'))throw Error('Real API fixture rendering failed');
+  vm.runInContext(`project.draft.collaboration={strategy:'dual_review',status:'NO_ISSUES_FOUND_NOT_APPROVED',limits:{max_model_calls:4},actual_model_calls:2,tool_trace:[],revision:null,review:{checks:[{requirement_id:'A1',status:'ISSUE',reason:'<img src=x onerror=alert(1)>'}]}};tab='review';render();`,context);
+  if(!document.querySelector('h3')?.textContent.includes('协作审查'))throw Error('Collaborative review panel absent');
+  if(document.querySelector('img'))throw Error('Review text executed as HTML');
+  vm.runInContext(`config={configured:true,review_strategies:['single','dual_review']};tab='overview';render();`,context);
+  if(![...document.querySelectorAll('button')].some(b=>b.textContent.includes('双 Agent')))throw Error('Collaboration action absent');
   console.log('DOM_OK=true: welcome, overview, stats, SVG map, empty review/results/compare/history');
-  fs.writeFileSync(path.join(root,'acceptance/stage-3/dom-check.txt'),'DOM_OK=true\nDOM simulation with linkedom, not a real-browser visual screenshot.\n');
+  const out=path.resolve(root,process.env.GA_TEST_EVIDENCE_DIR||'acceptance/stage-3');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'dom-check.txt'),'DOM_OK=true\nIncludes collaboration panel, XSS-safe review text and collaboration action. DOM simulation, not real-browser visual evidence.\n');
  }catch(e){console.error(e);process.exitCode=1}
 },30);
 

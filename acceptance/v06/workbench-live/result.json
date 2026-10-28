@@ -1,0 +1,2069 @@
+{
+  "id": "d45bf879cf704570aef642d434f12946",
+  "project": "e72fe812539747848a7932894e628a9c",
+  "kind": "draft",
+  "revision": 1,
+  "status": "COMPLETED",
+  "result": {
+    "schema_version": 1,
+    "requirements": [
+      {
+        "requirement_id": "A1",
+        "source_line_start": 7,
+        "source_line_end": 7,
+        "source_quote": "A1. 每条记录必须包含全部必填字段。",
+        "description": "每条记录必须包含全部必填字段",
+        "required_for_release": true,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "A2",
+        "source_line_start": 8,
+        "source_line_end": 8,
+        "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+        "description": "必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串",
+        "required_for_release": true,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "A3",
+        "source_line_start": 9,
+        "source_line_end": 9,
+        "source_quote": "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。",
+        "description": "字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式",
+        "required_for_release": true,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "A4",
+        "source_line_start": 10,
+        "source_line_end": 10,
+        "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+        "description": "category 字段取值必须在数据字典给定的枚举范围内",
+        "required_for_release": true,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "A5",
+        "source_line_start": 11,
+        "source_line_end": 11,
+        "source_quote": "A5. record_id 必须唯一，不得重复，也不得为空。",
+        "description": "record_id 必须唯一，不得重复，也不得为空",
+        "required_for_release": true,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "B1",
+        "source_line_start": 15,
+        "source_line_end": 15,
+        "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+        "description": "坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]",
+        "required_for_release": true,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "B2",
+        "source_line_start": 16,
+        "source_line_end": 16,
+        "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+        "description": "坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326",
+        "required_for_release": true,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "B3",
+        "source_line_start": 17,
+        "source_line_end": 17,
+        "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+        "description": "点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内",
+        "required_for_release": true,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "C1",
+        "source_line_start": 21,
+        "source_line_end": 21,
+        "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+        "description": "仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z",
+        "required_for_release": true,
+        "support_status": "NEEDS_CLARIFICATION",
+        "ambiguities": [
+          "规则编译失败，未执行：Invalid scope: [{\"code\": \"INPUT_SCHEMA_INVALID\", \"target\": \"R09\", \"detail\": \"Conditional freshness clause requires its explicit scope\"}]",
+          "协作审查保留待澄清，须人工确认"
+        ],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "C2",
+        "source_line_start": 22,
+        "source_line_end": 22,
+        "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+        "description": "仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z",
+        "required_for_release": true,
+        "support_status": "NEEDS_CLARIFICATION",
+        "ambiguities": [
+          "规则编译失败，未执行：Invalid scope: [{\"code\": \"INPUT_SCHEMA_INVALID\", \"target\": \"R09\", \"detail\": \"Conditional freshness clause requires its explicit scope\"}]",
+          "规则编译失败，未执行：Rule refers to unresolved or unsupported requirements",
+          "协作审查保留待澄清，须人工确认"
+        ],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      },
+      {
+        "requirement_id": "C3",
+        "source_line_start": 23,
+        "source_line_end": 23,
+        "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+        "description": "相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据",
+        "required_for_release": false,
+        "support_status": "SUPPORTED",
+        "ambiguities": [],
+        "document_id": "delivery_spec.md",
+        "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2"
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "rule_type": "required_field_present",
+        "requirement_ids": [
+          "A1"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time",
+            "source"
+          ]
+        },
+        "parameter_sources": [],
+        "preconditions": [],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      {
+        "rule_id": "R02",
+        "rule_type": "non_empty",
+        "requirement_ids": [
+          "A2"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time",
+            "source"
+          ],
+          "missing_rate_policy": "STRICT",
+          "trim": true
+        },
+        "parameter_sources": [],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      {
+        "rule_id": "R03",
+        "rule_type": "type_parse",
+        "requirement_ids": [
+          "A3"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "fields": [
+            "record_id",
+            "name",
+            "category",
+            "longitude",
+            "latitude",
+            "source_time",
+            "source"
+          ]
+        },
+        "parameter_sources": [],
+        "preconditions": [
+          "R02"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      {
+        "rule_id": "R04",
+        "rule_type": "enum_value",
+        "requirement_ids": [
+          "A4"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "field": "category",
+          "allow_alias": false
+        },
+        "parameter_sources": [],
+        "preconditions": [
+          "R01",
+          "R03"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      {
+        "rule_id": "R05",
+        "rule_type": "id_unique",
+        "requirement_ids": [
+          "A5"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "field": "record_id"
+        },
+        "parameter_sources": [],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      {
+        "rule_id": "R06",
+        "rule_type": "coord_range",
+        "requirement_ids": [
+          "B1"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "lon_range": [
+            -180,
+            180
+          ],
+          "lat_range": [
+            -90,
+            90
+          ]
+        },
+        "parameter_sources": [
+          {
+            "requirement_id": "B1",
+            "source_line_start": 15,
+            "source_line_end": 15,
+            "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+            "interpretation": "经度取值范围 [-180,180]",
+            "parameter": "lon_range",
+            "value": [
+              -180,
+              180
+            ],
+            "value_literal": [
+              "-180",
+              "180"
+            ],
+            "unit": "degree",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2",
+            "reviewer": "",
+            "approved_at": ""
+          },
+          {
+            "requirement_id": "B1",
+            "source_line_start": 15,
+            "source_line_end": 15,
+            "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+            "interpretation": "纬度取值范围 [-90,90]",
+            "parameter": "lat_range",
+            "value": [
+              -90,
+              90
+            ],
+            "value_literal": [
+              "-90",
+              "90"
+            ],
+            "unit": "degree",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01",
+          "R03",
+          "R07"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      {
+        "rule_id": "R07",
+        "rule_type": "crs_declaration",
+        "requirement_ids": [
+          "B2"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "expected_crs": "EPSG:4326"
+        },
+        "parameter_sources": [
+          {
+            "requirement_id": "B2",
+            "source_line_start": 16,
+            "source_line_end": 16,
+            "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+            "interpretation": "EPSG:4326",
+            "parameter": "expected_crs",
+            "value": "EPSG:4326",
+            "value_literal": [
+              "EPSG:4326"
+            ],
+            "unit": null,
+            "document_id": "delivery_spec.md",
+            "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      {
+        "rule_id": "R08",
+        "rule_type": "within_project_area",
+        "requirement_ids": [
+          "B3"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": true,
+        "parameters": {
+          "boundary_policy": "inclusive"
+        },
+        "parameter_sources": [
+          {
+            "value_literal": [
+              "落在边界线上的点视为落在范围内"
+            ],
+            "requirement_id": "B3",
+            "source_line_start": 17,
+            "source_line_end": 17,
+            "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+            "interpretation": "inclusive",
+            "parameter": "boundary_policy",
+            "value": "inclusive",
+            "unit": null,
+            "document_id": "delivery_spec.md",
+            "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01",
+          "R03",
+          "R06",
+          "R07"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      },
+      {
+        "rule_id": "R10",
+        "rule_type": "duplicate_candidate",
+        "requirement_ids": [
+          "C3"
+        ],
+        "status": "DRAFT",
+        "version": 1,
+        "required_for_release": false,
+        "parameters": {
+          "max_distance_m": 30,
+          "name_equal": true
+        },
+        "parameter_sources": [
+          {
+            "requirement_id": "C3",
+            "source_line_start": 23,
+            "source_line_end": 23,
+            "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+            "interpretation": "30",
+            "parameter": "max_distance_m",
+            "value": 30,
+            "value_literal": [
+              "30"
+            ],
+            "unit": "metre",
+            "document_id": "delivery_spec.md",
+            "document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2",
+            "reviewer": "",
+            "approved_at": ""
+          }
+        ],
+        "preconditions": [
+          "R01",
+          "R03",
+          "R06"
+        ],
+        "reviewer": "",
+        "approved_at": ""
+      }
+    ],
+    "reference_time": null,
+    "clarifications": [
+      {
+        "requirement_id": "C1",
+        "messages": [
+          "规则编译失败，未执行：Invalid scope: [{\"code\": \"INPUT_SCHEMA_INVALID\", \"target\": \"R09\", \"detail\": \"Conditional freshness clause requires its explicit scope\"}]",
+          "协作审查保留待澄清，须人工确认"
+        ]
+      },
+      {
+        "requirement_id": "C2",
+        "messages": [
+          "规则编译失败，未执行：Invalid scope: [{\"code\": \"INPUT_SCHEMA_INVALID\", \"target\": \"R09\", \"detail\": \"Conditional freshness clause requires its explicit scope\"}]",
+          "规则编译失败，未执行：Rule refers to unresolved or unsupported requirements",
+          "协作审查保留待澄清，须人工确认"
+        ]
+      }
+    ],
+    "compiler": {
+      "kind": "local-evidence-compiler",
+      "quarantined_rules": [
+        {
+          "rule_type": "freshness",
+          "requirement_ids": [
+            "C1",
+            "C2"
+          ],
+          "reason": "Invalid scope: [{\"code\": \"INPUT_SCHEMA_INVALID\", \"target\": \"R09\", \"detail\": \"Conditional freshness clause requires its explicit scope\"}]"
+        },
+        {
+          "rule_type": "freshness",
+          "requirement_ids": [
+            "C2"
+          ],
+          "reason": "Rule refers to unresolved or unsupported requirements"
+        }
+      ],
+      "scope": "Values copied from model parameters; no semantic correction or approval."
+    },
+    "mode": "live",
+    "model_proposal": {
+      "requirements": [
+        {
+          "requirement_id": "A1",
+          "source_line_start": 7,
+          "source_line_end": 7,
+          "source_quote": "A1. 每条记录必须包含全部必填字段。",
+          "description": "每条记录必须包含全部必填字段",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "A2",
+          "source_line_start": 8,
+          "source_line_end": 8,
+          "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+          "description": "必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "A3",
+          "source_line_start": 9,
+          "source_line_end": 9,
+          "source_quote": "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。",
+          "description": "字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "A4",
+          "source_line_start": 10,
+          "source_line_end": 10,
+          "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+          "description": "category 字段取值必须在数据字典给定的枚举范围内",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "A5",
+          "source_line_start": 11,
+          "source_line_end": 11,
+          "source_quote": "A5. record_id 必须唯一，不得重复，也不得为空。",
+          "description": "record_id 必须唯一，不得重复，也不得为空",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "B1",
+          "source_line_start": 15,
+          "source_line_end": 15,
+          "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+          "description": "坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "B2",
+          "source_line_start": 16,
+          "source_line_end": 16,
+          "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+          "description": "坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "B3",
+          "source_line_start": 17,
+          "source_line_end": 17,
+          "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+          "description": "点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "C1",
+          "source_line_start": 21,
+          "source_line_end": 21,
+          "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+          "description": "仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "C2",
+          "source_line_start": 22,
+          "source_line_end": 22,
+          "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+          "description": "仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z",
+          "required_for_release": true,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        },
+        {
+          "requirement_id": "C3",
+          "source_line_start": 23,
+          "source_line_end": 23,
+          "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+          "description": "相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据",
+          "required_for_release": false,
+          "support_status": "SUPPORTED",
+          "ambiguities": []
+        }
+      ],
+      "rules": [
+        {
+          "rule_type": "required_field_present",
+          "requirement_ids": [
+            "A1"
+          ],
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time",
+              "source"
+            ]
+          },
+          "parameter_evidence": {}
+        },
+        {
+          "rule_type": "non_empty",
+          "requirement_ids": [
+            "A2"
+          ],
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time",
+              "source"
+            ],
+            "missing_rate_policy": "STRICT",
+            "trim": true
+          },
+          "parameter_evidence": {}
+        },
+        {
+          "rule_type": "type_parse",
+          "requirement_ids": [
+            "A3"
+          ],
+          "parameters": {
+            "fields": [
+              "record_id",
+              "name",
+              "category",
+              "longitude",
+              "latitude",
+              "source_time",
+              "source"
+            ]
+          },
+          "parameter_evidence": {}
+        },
+        {
+          "rule_type": "enum_value",
+          "requirement_ids": [
+            "A4"
+          ],
+          "parameters": {
+            "field": "category",
+            "allow_alias": false
+          },
+          "parameter_evidence": {}
+        },
+        {
+          "rule_type": "id_unique",
+          "requirement_ids": [
+            "A5"
+          ],
+          "parameters": {
+            "field": "record_id"
+          },
+          "parameter_evidence": {}
+        },
+        {
+          "rule_type": "coord_range",
+          "requirement_ids": [
+            "B1"
+          ],
+          "parameters": {
+            "lon_range": [
+              -180,
+              180
+            ],
+            "lat_range": [
+              -90,
+              90
+            ]
+          },
+          "parameter_evidence": {
+            "lon_range": {
+              "requirement_id": "B1",
+              "source_line_start": 15,
+              "source_line_end": 15,
+              "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+              "interpretation": "经度取值范围 [-180,180]"
+            },
+            "lat_range": {
+              "requirement_id": "B1",
+              "source_line_start": 15,
+              "source_line_end": 15,
+              "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+              "interpretation": "纬度取值范围 [-90,90]"
+            }
+          }
+        },
+        {
+          "rule_type": "crs_declaration",
+          "requirement_ids": [
+            "B2"
+          ],
+          "parameters": {
+            "expected_crs": "EPSG:4326"
+          },
+          "parameter_evidence": {
+            "expected_crs": {
+              "requirement_id": "B2",
+              "source_line_start": 16,
+              "source_line_end": 16,
+              "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+              "interpretation": "EPSG:4326"
+            }
+          }
+        },
+        {
+          "rule_type": "within_project_area",
+          "requirement_ids": [
+            "B3"
+          ],
+          "parameters": {
+            "boundary_policy": "inclusive"
+          },
+          "parameter_evidence": {
+            "boundary_policy": {
+              "value_literal": [
+                "落在边界线上的点视为落在范围内"
+              ],
+              "requirement_id": "B3",
+              "source_line_start": 17,
+              "source_line_end": 17,
+              "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+              "interpretation": "inclusive"
+            }
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "requirement_ids": [
+            "C1",
+            "C2"
+          ],
+          "parameters": {
+            "reference_time": "2026-10-01T00:00:00Z",
+            "max_age_days": 7
+          },
+          "parameter_evidence": {
+            "reference_time": {
+              "requirement_id": "C1",
+              "source_line_start": 21,
+              "source_line_end": 21,
+              "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+              "interpretation": "2026-10-01T00:00:00Z"
+            },
+            "max_age_days": {
+              "requirement_id": "C1",
+              "source_line_start": 21,
+              "source_line_end": 21,
+              "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+              "interpretation": "7"
+            }
+          }
+        },
+        {
+          "rule_type": "freshness",
+          "requirement_ids": [
+            "C2"
+          ],
+          "parameters": {
+            "reference_time": "2026-10-01T00:00:00Z",
+            "max_age_days": 30
+          },
+          "parameter_evidence": {
+            "reference_time": {
+              "requirement_id": "C2",
+              "source_line_start": 22,
+              "source_line_end": 22,
+              "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+              "interpretation": "2026-10-01T00:00:00Z"
+            },
+            "max_age_days": {
+              "requirement_id": "C2",
+              "source_line_start": 22,
+              "source_line_end": 22,
+              "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+              "interpretation": "30"
+            }
+          }
+        },
+        {
+          "rule_type": "duplicate_candidate",
+          "requirement_ids": [
+            "C3"
+          ],
+          "parameters": {
+            "max_distance_m": 30,
+            "name_equal": true
+          },
+          "parameter_evidence": {
+            "max_distance_m": {
+              "requirement_id": "C3",
+              "source_line_start": 23,
+              "source_line_end": 23,
+              "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+              "interpretation": "30"
+            }
+          }
+        }
+      ]
+    },
+    "calls": [
+      {
+        "attempt": 1,
+        "model": "geoacceptance-qwen3:4b",
+        "currency": "CNY",
+        "reserved_cost": 0.0,
+        "reserved_usd": null,
+        "usage": {
+          "prompt_tokens": 2574,
+          "completion_tokens": 3091,
+          "total_tokens": 5665
+        },
+        "cost": 0.0,
+        "cost_usd": null,
+        "cost_basis": "estimate at configured rates; not provider invoice",
+        "status": "OK",
+        "duration_ms": 113956.26,
+        "role": "proposer",
+        "strategy": "dual_review"
+      },
+      {
+        "attempt": 1,
+        "model": "geoacceptance-qwen3:4b",
+        "currency": "CNY",
+        "reserved_cost": 0.0,
+        "reserved_usd": null,
+        "usage": {
+          "prompt_tokens": 5983,
+          "completion_tokens": 969,
+          "total_tokens": 6952
+        },
+        "cost": 0.0,
+        "cost_usd": null,
+        "cost_basis": "estimate at configured rates; not provider invoice",
+        "status": "OK",
+        "duration_ms": 21353.15,
+        "role": "reviewer",
+        "strategy": "dual_review"
+      },
+      {
+        "attempt": 1,
+        "model": "geoacceptance-qwen3:4b",
+        "currency": "CNY",
+        "reserved_cost": 0.0,
+        "reserved_usd": null,
+        "usage": {
+          "prompt_tokens": 5536,
+          "completion_tokens": 3076,
+          "total_tokens": 8612
+        },
+        "cost": 0.0,
+        "cost_usd": null,
+        "cost_basis": "estimate at configured rates; not provider invoice",
+        "status": "OK",
+        "duration_ms": 60627.14,
+        "role": "proposer_revision",
+        "strategy": "dual_review"
+      }
+    ],
+    "collaboration": {
+      "strategy": "dual_review",
+      "review": {
+        "action": "FINAL",
+        "requests": [],
+        "checks": [
+          {
+            "source_quote": "A1. 每条记录必须包含全部必填字段。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'required_field_present' rule with fields from the dictionary: ['record_id', 'name', 'category', 'longitude', 'latitude', 'source_time', 'source']",
+            "requirement_id": "A1"
+          },
+          {
+            "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'non_empty' rule with fields from the dictionary and strict missing rate policy",
+            "requirement_id": "A2"
+          },
+          {
+            "source_quote": "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'type_parse' rule with fields from the dictionary and ISO8601 format for datetime",
+            "requirement_id": "A3"
+          },
+          {
+            "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'enum_value' rule with field 'category' and enum values from dictionary",
+            "requirement_id": "A4"
+          },
+          {
+            "source_quote": "A5. record_id 必须唯一，不得重复，也不得为空。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'id_unique' rule with field 'record_id'",
+            "requirement_id": "A5"
+          },
+          {
+            "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'coord_range' rule with lon_range [-180, 180] and lat_range [-90, 90]",
+            "requirement_id": "B1"
+          },
+          {
+            "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'crs_declaration' rule with expected_crs 'EPSG:4326'",
+            "requirement_id": "B2"
+          },
+          {
+            "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'within_project_area' rule with boundary_policy 'inclusive'",
+            "requirement_id": "B3"
+          },
+          {
+            "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+            "status": "NEEDS_CLARIFICATION",
+            "reason": "The rule 'freshness' for 'municipal' source has ambiguity: 'Invalid scope: [{\"code\": \"INPUT_SCHEMA_INVALID\", \"target\": \"R09\", \"detail\": \"Conditional freshness clause requires its explicit scope\"}]'",
+            "requirement_id": "C1"
+          },
+          {
+            "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+            "status": "NEEDS_CLARIFICATION",
+            "reason": "The rule 'freshness' for 'survey' source has ambiguity: 'Rule refers to unresolved or unsupported requirements'",
+            "requirement_id": "C2"
+          },
+          {
+            "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+            "status": "CONFIRMED",
+            "reason": "The requirement matches the 'duplicate_candidate' rule with max_distance_m 30 and name_equal true",
+            "requirement_id": "C3"
+          }
+        ]
+      },
+      "tool_trace": [],
+      "revision": {
+        "before": {
+          "requirements": [
+            {
+              "requirement_id": "A1",
+              "source_line_start": 7,
+              "source_line_end": 7,
+              "source_quote": "A1. 每条记录必须包含全部必填字段。",
+              "description": "每条记录必须包含全部必填字段",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "A2",
+              "source_line_start": 8,
+              "source_line_end": 8,
+              "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+              "description": "必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "A3",
+              "source_line_start": 9,
+              "source_line_end": 9,
+              "source_quote": "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。",
+              "description": "字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "A4",
+              "source_line_start": 10,
+              "source_line_end": 10,
+              "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+              "description": "category 字段取值必须在数据字典给定的枚举范围内",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "A5",
+              "source_line_start": 11,
+              "source_line_end": 11,
+              "source_quote": "A5. record_id 必须唯一，不得重复，也不得为空。",
+              "description": "record_id 必须唯一，不得重复，也不得为空",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "B1",
+              "source_line_start": 15,
+              "source_line_end": 15,
+              "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+              "description": "坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "B2",
+              "source_line_start": 16,
+              "source_line_end": 16,
+              "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+              "description": "坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "B3",
+              "source_line_start": 17,
+              "source_line_end": 17,
+              "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+              "description": "点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "C1",
+              "source_line_start": 21,
+              "source_line_end": 21,
+              "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+              "description": "仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "C2",
+              "source_line_start": 22,
+              "source_line_end": 22,
+              "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+              "description": "仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "C3",
+              "source_line_start": 23,
+              "source_line_end": 23,
+              "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+              "description": "相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据",
+              "required_for_release": false,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            }
+          ],
+          "rules": [
+            {
+              "rule_type": "required_field_present",
+              "requirement_ids": [
+                "A1"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time",
+                  "source"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "non_empty",
+              "requirement_ids": [
+                "A2"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time",
+                  "source"
+                ],
+                "missing_rate_policy": "STRICT",
+                "trim": true
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "type_parse",
+              "requirement_ids": [
+                "A3"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time",
+                  "source"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "enum_value",
+              "requirement_ids": [
+                "A4"
+              ],
+              "parameters": {
+                "field": "category",
+                "allow_alias": false
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "id_unique",
+              "requirement_ids": [
+                "A5"
+              ],
+              "parameters": {
+                "field": "record_id"
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "coord_range",
+              "requirement_ids": [
+                "B1"
+              ],
+              "parameters": {
+                "lon_range": [
+                  -180,
+                  180
+                ],
+                "lat_range": [
+                  -90,
+                  90
+                ]
+              },
+              "parameter_evidence": {
+                "lon_range": {
+                  "requirement_id": "B1",
+                  "source_line_start": 15,
+                  "source_line_end": 15,
+                  "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+                  "interpretation": "经度取值范围 [-180,180]"
+                },
+                "lat_range": {
+                  "requirement_id": "B1",
+                  "source_line_start": 15,
+                  "source_line_end": 15,
+                  "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+                  "interpretation": "纬度取值范围 [-90,90]"
+                }
+              }
+            },
+            {
+              "rule_type": "crs_declaration",
+              "requirement_ids": [
+                "B2"
+              ],
+              "parameters": {
+                "expected_crs": "EPSG:4326"
+              },
+              "parameter_evidence": {
+                "expected_crs": {
+                  "requirement_id": "B2",
+                  "source_line_start": 16,
+                  "source_line_end": 16,
+                  "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+                  "interpretation": "EPSG:4326"
+                }
+              }
+            },
+            {
+              "rule_type": "within_project_area",
+              "requirement_ids": [
+                "B3"
+              ],
+              "parameters": {
+                "boundary_policy": "inclusive"
+              },
+              "parameter_evidence": {
+                "boundary_policy": {
+                  "value_literal": [
+                    "落在边界线上的点视为落在范围内"
+                  ],
+                  "requirement_id": "B3",
+                  "source_line_start": 17,
+                  "source_line_end": 17,
+                  "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+                  "interpretation": "inclusive"
+                }
+              }
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "C1",
+                "C2"
+              ],
+              "parameters": {
+                "reference_time": "2026-10-01T00:00:00Z",
+                "max_age_days": 7
+              },
+              "parameter_evidence": {
+                "reference_time": {
+                  "requirement_id": "C1",
+                  "source_line_start": 21,
+                  "source_line_end": 21,
+                  "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                  "interpretation": "2026-10-01T00:00:00Z"
+                },
+                "max_age_days": {
+                  "requirement_id": "C1",
+                  "source_line_start": 21,
+                  "source_line_end": 21,
+                  "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                  "interpretation": "7"
+                }
+              }
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "C2"
+              ],
+              "parameters": {
+                "reference_time": "2026-10-01T00:00:00Z",
+                "max_age_days": 30
+              },
+              "parameter_evidence": {
+                "reference_time": {
+                  "requirement_id": "C2",
+                  "source_line_start": 22,
+                  "source_line_end": 22,
+                  "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                  "interpretation": "2026-10-01T00:00:00Z"
+                },
+                "max_age_days": {
+                  "requirement_id": "C2",
+                  "source_line_start": 22,
+                  "source_line_end": 22,
+                  "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                  "interpretation": "30"
+                }
+              }
+            },
+            {
+              "rule_type": "duplicate_candidate",
+              "requirement_ids": [
+                "C3"
+              ],
+              "parameters": {
+                "max_distance_m": 30,
+                "name_equal": true
+              },
+              "parameter_evidence": {
+                "max_distance_m": {
+                  "requirement_id": "C3",
+                  "source_line_start": 23,
+                  "source_line_end": 23,
+                  "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+                  "interpretation": "30"
+                }
+              }
+            }
+          ]
+        },
+        "after": {
+          "requirements": [
+            {
+              "requirement_id": "A1",
+              "source_line_start": 7,
+              "source_line_end": 7,
+              "source_quote": "A1. 每条记录必须包含全部必填字段。",
+              "description": "每条记录必须包含全部必填字段",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "A2",
+              "source_line_start": 8,
+              "source_line_end": 8,
+              "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+              "description": "必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "A3",
+              "source_line_start": 9,
+              "source_line_end": 9,
+              "source_quote": "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。",
+              "description": "字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "A4",
+              "source_line_start": 10,
+              "source_line_end": 10,
+              "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+              "description": "category 字段取值必须在数据字典给定的枚举范围内",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "A5",
+              "source_line_start": 11,
+              "source_line_end": 11,
+              "source_quote": "A5. record_id 必须唯一，不得重复，也不得为空。",
+              "description": "record_id 必须唯一，不得重复，也不得为空",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "B1",
+              "source_line_start": 15,
+              "source_line_end": 15,
+              "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+              "description": "坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "B2",
+              "source_line_start": 16,
+              "source_line_end": 16,
+              "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+              "description": "坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "B3",
+              "source_line_start": 17,
+              "source_line_end": 17,
+              "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+              "description": "点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "C1",
+              "source_line_start": 21,
+              "source_line_end": 21,
+              "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+              "description": "仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "C2",
+              "source_line_start": 22,
+              "source_line_end": 22,
+              "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+              "description": "仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z",
+              "required_for_release": true,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            },
+            {
+              "requirement_id": "C3",
+              "source_line_start": 23,
+              "source_line_end": 23,
+              "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+              "description": "相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据",
+              "required_for_release": false,
+              "support_status": "SUPPORTED",
+              "ambiguities": []
+            }
+          ],
+          "rules": [
+            {
+              "rule_type": "required_field_present",
+              "requirement_ids": [
+                "A1"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time",
+                  "source"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "non_empty",
+              "requirement_ids": [
+                "A2"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time",
+                  "source"
+                ],
+                "missing_rate_policy": "STRICT",
+                "trim": true
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "type_parse",
+              "requirement_ids": [
+                "A3"
+              ],
+              "parameters": {
+                "fields": [
+                  "record_id",
+                  "name",
+                  "category",
+                  "longitude",
+                  "latitude",
+                  "source_time",
+                  "source"
+                ]
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "enum_value",
+              "requirement_ids": [
+                "A4"
+              ],
+              "parameters": {
+                "field": "category",
+                "allow_alias": false
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "id_unique",
+              "requirement_ids": [
+                "A5"
+              ],
+              "parameters": {
+                "field": "record_id"
+              },
+              "parameter_evidence": {}
+            },
+            {
+              "rule_type": "coord_range",
+              "requirement_ids": [
+                "B1"
+              ],
+              "parameters": {
+                "lon_range": [
+                  -180,
+                  180
+                ],
+                "lat_range": [
+                  -90,
+                  90
+                ]
+              },
+              "parameter_evidence": {
+                "lon_range": {
+                  "requirement_id": "B1",
+                  "source_line_start": 15,
+                  "source_line_end": 15,
+                  "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+                  "interpretation": "经度取值范围 [-180,180]"
+                },
+                "lat_range": {
+                  "requirement_id": "B1",
+                  "source_line_start": 15,
+                  "source_line_end": 15,
+                  "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+                  "interpretation": "纬度取值范围 [-90,90]"
+                }
+              }
+            },
+            {
+              "rule_type": "crs_declaration",
+              "requirement_ids": [
+                "B2"
+              ],
+              "parameters": {
+                "expected_crs": "EPSG:4326"
+              },
+              "parameter_evidence": {
+                "expected_crs": {
+                  "requirement_id": "B2",
+                  "source_line_start": 16,
+                  "source_line_end": 16,
+                  "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+                  "interpretation": "EPSG:4326"
+                }
+              }
+            },
+            {
+              "rule_type": "within_project_area",
+              "requirement_ids": [
+                "B3"
+              ],
+              "parameters": {
+                "boundary_policy": "inclusive"
+              },
+              "parameter_evidence": {
+                "boundary_policy": {
+                  "value_literal": [
+                    "落在边界线上的点视为落在范围内"
+                  ],
+                  "requirement_id": "B3",
+                  "source_line_start": 17,
+                  "source_line_end": 17,
+                  "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+                  "interpretation": "inclusive"
+                }
+              }
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "C1",
+                "C2"
+              ],
+              "parameters": {
+                "reference_time": "2026-10-01T00:00:00Z",
+                "max_age_days": 7
+              },
+              "parameter_evidence": {
+                "reference_time": {
+                  "requirement_id": "C1",
+                  "source_line_start": 21,
+                  "source_line_end": 21,
+                  "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                  "interpretation": "2026-10-01T00:00:00Z"
+                },
+                "max_age_days": {
+                  "requirement_id": "C1",
+                  "source_line_start": 21,
+                  "source_line_end": 21,
+                  "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                  "interpretation": "7"
+                }
+              }
+            },
+            {
+              "rule_type": "freshness",
+              "requirement_ids": [
+                "C2"
+              ],
+              "parameters": {
+                "reference_time": "2026-10-01T00:00:00Z",
+                "max_age_days": 30
+              },
+              "parameter_evidence": {
+                "reference_time": {
+                  "requirement_id": "C2",
+                  "source_line_start": 22,
+                  "source_line_end": 22,
+                  "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                  "interpretation": "2026-10-01T00:00:00Z"
+                },
+                "max_age_days": {
+                  "requirement_id": "C2",
+                  "source_line_start": 22,
+                  "source_line_end": 22,
+                  "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                  "interpretation": "30"
+                }
+              }
+            },
+            {
+              "rule_type": "duplicate_candidate",
+              "requirement_ids": [
+                "C3"
+              ],
+              "parameters": {
+                "max_distance_m": 30,
+                "name_equal": true
+              },
+              "parameter_evidence": {
+                "max_distance_m": {
+                  "requirement_id": "C3",
+                  "source_line_start": 23,
+                  "source_line_end": 23,
+                  "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+                  "interpretation": "30"
+                }
+              }
+            }
+          ]
+        },
+        "status": "REVISED_REQUIRES_HUMAN_CONFIRMATION",
+        "note": "One revision only; no second model review or human approval of revised output."
+      },
+      "status": "REVISED_HUMAN_REVIEW_REQUIRED",
+      "limits": {
+        "max_model_calls": 4,
+        "max_tool_rounds": 1,
+        "max_revisions": 1
+      },
+      "actual_model_calls": 3,
+      "duration_ms": 196179.5,
+      "original_document_sha256": "8df4e3c1d180c83a9602bd64968d848cbc70215cc0bc953f20d6574542a28dd2",
+      "model_outputs": [
+        {
+          "role": "reviewer",
+          "output": {
+            "action": "FINAL",
+            "requests": [],
+            "checks": {
+              "A1": {
+                "source_quote": "A1. 每条记录必须包含全部必填字段。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'required_field_present' rule with fields from the dictionary: ['record_id', 'name', 'category', 'longitude', 'latitude', 'source_time', 'source']"
+              },
+              "A2": {
+                "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'non_empty' rule with fields from the dictionary and strict missing rate policy"
+              },
+              "A3": {
+                "source_quote": "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'type_parse' rule with fields from the dictionary and ISO8601 format for datetime"
+              },
+              "A4": {
+                "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'enum_value' rule with field 'category' and enum values from dictionary"
+              },
+              "A5": {
+                "source_quote": "A5. record_id 必须唯一，不得重复，也不得为空。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'id_unique' rule with field 'record_id'"
+              },
+              "B1": {
+                "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'coord_range' rule with lon_range [-180, 180] and lat_range [-90, 90]"
+              },
+              "B2": {
+                "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'crs_declaration' rule with expected_crs 'EPSG:4326'"
+              },
+              "B3": {
+                "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'within_project_area' rule with boundary_policy 'inclusive'"
+              },
+              "C1": {
+                "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                "status": "NEEDS_CLARIFICATION",
+                "reason": "The rule 'freshness' for 'municipal' source has ambiguity: 'Invalid scope: [{\"code\": \"INPUT_SCHEMA_INVALID\", \"target\": \"R09\", \"detail\": \"Conditional freshness clause requires its explicit scope\"}]'"
+              },
+              "C2": {
+                "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                "status": "NEEDS_CLARIFICATION",
+                "reason": "The rule 'freshness' for 'survey' source has ambiguity: 'Rule refers to unresolved or unsupported requirements'"
+              },
+              "C3": {
+                "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+                "status": "CONFIRMED",
+                "reason": "The requirement matches the 'duplicate_candidate' rule with max_distance_m 30 and name_equal true"
+              }
+            }
+          }
+        },
+        {
+          "role": "proposer_revision",
+          "output": {
+            "requirements": [
+              {
+                "requirement_id": "A1",
+                "source_line_start": 7,
+                "source_line_end": 7,
+                "source_quote": "A1. 每条记录必须包含全部必填字段。",
+                "description": "每条记录必须包含全部必填字段",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "A2",
+                "source_line_start": 8,
+                "source_line_end": 8,
+                "source_quote": "A2. 必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串。",
+                "description": "必填字段不得为空值；空值指去除首尾空白后长度为 0 的字符串",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "A3",
+                "source_line_start": 9,
+                "source_line_end": 9,
+                "source_quote": "A3. 字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式。",
+                "description": "字段类型必须符合数据字典声明；日期时间字段采用 ISO8601 格式",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "A4",
+                "source_line_start": 10,
+                "source_line_end": 10,
+                "source_quote": "A4. category 字段取值必须在数据字典给定的枚举范围内。",
+                "description": "category 字段取值必须在数据字典给定的枚举范围内",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "A5",
+                "source_line_start": 11,
+                "source_line_end": 11,
+                "source_quote": "A5. record_id 必须唯一，不得重复，也不得为空。",
+                "description": "record_id 必须唯一，不得重复，也不得为空",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "B1",
+                "source_line_start": 15,
+                "source_line_end": 15,
+                "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+                "description": "坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "B2",
+                "source_line_start": 16,
+                "source_line_end": 16,
+                "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+                "description": "坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "B3",
+                "source_line_start": 17,
+                "source_line_end": 17,
+                "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+                "description": "点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "C1",
+                "source_line_start": 21,
+                "source_line_end": 21,
+                "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                "description": "仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "C2",
+                "source_line_start": 22,
+                "source_line_end": 22,
+                "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                "description": "仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z",
+                "required_for_release": true,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              },
+              {
+                "requirement_id": "C3",
+                "source_line_start": 23,
+                "source_line_end": 23,
+                "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+                "description": "相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据",
+                "required_for_release": false,
+                "support_status": "SUPPORTED",
+                "ambiguities": []
+              }
+            ],
+            "rules": [
+              {
+                "rule_type": "required_field_present",
+                "requirement_ids": [
+                  "A1"
+                ],
+                "parameters": {
+                  "fields": [
+                    "record_id",
+                    "name",
+                    "category",
+                    "longitude",
+                    "latitude",
+                    "source_time",
+                    "source"
+                  ]
+                },
+                "parameter_evidence": {}
+              },
+              {
+                "rule_type": "non_empty",
+                "requirement_ids": [
+                  "A2"
+                ],
+                "parameters": {
+                  "fields": [
+                    "record_id",
+                    "name",
+                    "category",
+                    "longitude",
+                    "latitude",
+                    "source_time",
+                    "source"
+                  ],
+                  "missing_rate_policy": "STRICT",
+                  "trim": true
+                },
+                "parameter_evidence": {}
+              },
+              {
+                "rule_type": "type_parse",
+                "requirement_ids": [
+                  "A3"
+                ],
+                "parameters": {
+                  "fields": [
+                    "record_id",
+                    "name",
+                    "category",
+                    "longitude",
+                    "latitude",
+                    "source_time",
+                    "source"
+                  ]
+                },
+                "parameter_evidence": {}
+              },
+              {
+                "rule_type": "enum_value",
+                "requirement_ids": [
+                  "A4"
+                ],
+                "parameters": {
+                  "field": "category",
+                  "allow_alias": false
+                },
+                "parameter_evidence": {}
+              },
+              {
+                "rule_type": "id_unique",
+                "requirement_ids": [
+                  "A5"
+                ],
+                "parameters": {
+                  "field": "record_id"
+                },
+                "parameter_evidence": {}
+              },
+              {
+                "rule_type": "coord_range",
+                "requirement_ids": [
+                  "B1"
+                ],
+                "parameters": {
+                  "lon_range": [
+                    -180,
+                    180
+                  ],
+                  "lat_range": [
+                    -90,
+                    90
+                  ]
+                },
+                "parameter_evidence": {
+                  "lon_range": {
+                    "requirement_id": "B1",
+                    "source_line_start": 15,
+                    "source_line_end": 15,
+                    "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+                    "interpretation": "经度取值范围 [-180,180]"
+                  },
+                  "lat_range": {
+                    "requirement_id": "B1",
+                    "source_line_start": 15,
+                    "source_line_end": 15,
+                    "source_quote": "B1. 坐标必须是有限数值；经度取值范围 [-180,180]，纬度取值范围 [-90,90]。",
+                    "interpretation": "纬度取值范围 [-90,90]"
+                  }
+                }
+              },
+              {
+                "rule_type": "crs_declaration",
+                "requirement_ids": [
+                  "B2"
+                ],
+                "parameters": {
+                  "expected_crs": "EPSG:4326"
+                },
+                "parameter_evidence": {
+                  "expected_crs": {
+                    "requirement_id": "B2",
+                    "source_line_start": 16,
+                    "source_line_end": 16,
+                    "source_quote": "B2. 坐标参考系必须与 crs.json 的声明一致；本批次声明为 EPSG:4326。",
+                    "interpretation": "EPSG:4326"
+                  }
+                }
+              },
+              {
+                "rule_type": "within_project_area",
+                "requirement_ids": [
+                  "B3"
+                ],
+                "parameters": {
+                  "boundary_policy": "inclusive"
+                },
+                "parameter_evidence": {
+                  "boundary_policy": {
+                    "value_literal": [
+                      "落在边界线上的点视为落在范围内"
+                    ],
+                    "requirement_id": "B3",
+                    "source_line_start": 17,
+                    "source_line_end": 17,
+                    "source_quote": "B3. 点位必须落在项目范围 area.geojson 之内，落在边界线上的点视为落在范围内。",
+                    "interpretation": "inclusive"
+                  }
+                }
+              },
+              {
+                "rule_type": "freshness",
+                "requirement_ids": [
+                  "C1",
+                  "C2"
+                ],
+                "parameters": {
+                  "reference_time": "2026-10-01T00:00:00Z",
+                  "max_age_days": 7
+                },
+                "parameter_evidence": {
+                  "reference_time": {
+                    "requirement_id": "C1",
+                    "source_line_start": 21,
+                    "source_line_end": 21,
+                    "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                    "interpretation": "2026-10-01T00:00:00Z"
+                  },
+                  "max_age_days": {
+                    "requirement_id": "C1",
+                    "source_line_start": 21,
+                    "source_line_end": 21,
+                    "source_quote": "C1. 仅对 source=\"municipal\" 的记录，采集时间距基准时间不得超过 7 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                    "interpretation": "7"
+                  }
+                }
+              },
+              {
+                "rule_type": "freshness",
+                "requirement_ids": [
+                  "C2"
+                ],
+                "parameters": {
+                  "reference_time": "2026-10-01T00:00:00Z",
+                  "max_age_days": 30
+                },
+                "parameter_evidence": {
+                  "reference_time": {
+                    "requirement_id": "C2",
+                    "source_line_start": 22,
+                    "source_line_end": 22,
+                    "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                    "interpretation": "2026-10-01T00:00:00Z"
+                  },
+                  "max_age_days": {
+                    "requirement_id": "C2",
+                    "source_line_start": 22,
+                    "source_line_end": 22,
+                    "source_quote": "C2. 仅对 source=\"survey\" 的记录，采集时间距基准时间不得超过 30 天。基准时间固定为 2026-10-01T00:00:00Z。",
+                    "interpretation": "30"
+                  }
+                }
+              },
+              {
+                "rule_type": "duplicate_candidate",
+                "requirement_ids": [
+                  "C3"
+                ],
+                "parameters": {
+                  "max_distance_m": 30,
+                  "name_equal": true
+                },
+                "parameter_evidence": {
+                  "max_distance_m": {
+                    "requirement_id": "C3",
+                    "source_line_start": 23,
+                    "source_line_end": 23,
+                    "source_quote": "C3. 相距不超过 30 米且名称相同的点位，应提交人工确认是否为重复设施。本项仅供参考，不作为放行依据。",
+                    "interpretation": "30"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "scope": "Same local model, isolated role context; NOT independent human audit or automatic acceptance."
+    }
+  },
+  "error": null,
+  "created": "2026-10-28T00:48:11.674121+00:00",
+  "idempotency": "e72fe812539747848a7932894e628a9c:v06-live-scoped",
+  "strategy": "dual_review",
+  "mode": "live"
+}

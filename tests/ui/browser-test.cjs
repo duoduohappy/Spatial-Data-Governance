@@ -3,7 +3,7 @@
 const {chromium}=require('playwright-core');
 const {spawn}=require('node:child_process');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
-const ROOT=path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'acceptance/stage-3/browser');
+const ROOT=path.resolve(__dirname,'../..'),OUT=path.resolve(ROOT,process.env.GA_TEST_EVIDENCE_DIR||'acceptance/stage-3/browser');
 const DEMO=process.argv.includes('--demo');
 const PY=process.env.GA_TEST_PYTHON||path.join(ROOT,'.venv',process.platform==='win32'?'Scripts/python.exe':'bin/python');
 const PORT=Number(process.env.GA_TEST_PORT||8976),URL=`http://127.0.0.1:${PORT}`;
@@ -73,6 +73,17 @@ async function main(){
  await noOverflow('mobile overview has no horizontal overflow');await capture('08-mobile');
  await page.getByLabel('切换交付项目',{exact:true}).selectOption(beforeId);
  await page.waitForFunction(id=>localStorage.getItem('ga-project')===id,beforeId);check('mobile can switch existing projects');await dwell();
+ await page.setViewportSize({width:1360,height:900});
+ await page.locator('#new').click();await page.getByRole('button',{name:'按来源检查时效',exact:true}).click();
+ await page.getByRole('heading',{level:1,name:'示例 · scoped_sources',exact:true}).waitFor();
+ await page.getByRole('button',{name:'离线规则基线',exact:true}).click();await page.locator('#reviewer').waitFor();
+ await page.locator('#reviewer').fill('browser synthetic scoped review');await page.locator('#confirmed').check();
+ await page.getByRole('button',{name:'确认并批准当前版本',exact:true}).click();await page.getByRole('button',{name:'执行检查 →',exact:true}).waitFor();
+ await page.getByRole('button',{name:'执行检查 →',exact:true}).click();await page.getByRole('link',{name:'导出 JSON ↗',exact:true}).waitFor({timeout:30000});
+ assert.equal(await page.locator('.stats .badge').innerText(),'通过');check('scoped source 7/30-day rules execute PASS');
+ const scopes=page.locator('.panel').filter({has:page.getByRole('heading',{name:'规则实例与适用范围',exact:true})});
+ assert.equal(await scopes.locator('tbody tr').count(),2);check('both source scope instances shown');
+ await noOverflow('scoped results have no horizontal overflow');await capture('09-scoped-sources');
  assert.deepEqual(summary.errors,[],'No uncaught page errors');check('no uncaught browser JavaScript errors');summary.status='PASS';
 }
 (async()=>{try{await main();}catch(e){summary.status='FAIL';summary.error=e.stack;if(page)try{await capture('failure');}catch{}}

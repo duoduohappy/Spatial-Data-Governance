@@ -17,9 +17,39 @@ SOURCE_PARAMS={'coord_range':['lon_range','lat_range'],'crs_declaration':['expec
     'duplicate_candidate':['max_distance_m']}
 UNITS={'lon_range':'degree','lat_range':'degree','max_age_days':'day','max_distance_m':'metre'}
 
+def guidance(bundle):
+    from tools.rule_scopes import parse_scope
+    from pathlib import Path
+    if any(parse_scope(line,'q') for line in (Path(bundle)/'delivery_spec.md').read_text(encoding='utf-8').splitlines()):
+        return GUIDANCE+SCOPED_GUIDANCE
+    return GUIDANCE
+
+SCOPED_GUIDANCE='\nScoped freshness extension: this document has explicit positive source selectors. For each distinct selector, output a separate freshness rule with scope={field,equals,requirement_id}. These freshness instances are an exception to the one-rule-per-type limit. Scope field must be a declared string enum in the dictionary. Scope must match exactly the original marker 仅对 field="value" / For field="value". Do not infer aliases, defaults, overlapping scopes, or new columns. Include any declared source column in applicable required/type checks. All other rule types remain one instance.\n'
+
 def output_schema(bundle):
     from .authoring import draft_output_schema
     schema=draft_output_schema(bundle)
+    if guidance(bundle)!=GUIDANCE:
+        from tools.rule_scopes import parse_scope
+        import csv,io,json
+        from pathlib import Path
+        from .authoring import candidate_lines
+        variants=schema['properties']['rules']['items']['anyOf']
+        base=copy.deepcopy(next(v for v in variants if v['properties']['rule_type']['const']=='freshness'))
+        variants[:]=[v for v in variants if v['properties']['rule_type']['const']!='freshness']
+        for line,quote in candidate_lines((Path(bundle)/'delivery_spec.md').read_text(encoding='utf-8')):
+            import re
+            match=re.match(r'^\s*([A-Z]\d+)\.',quote);cid=match.group(1) if match else f'Q{line:03d}'
+            scope=parse_scope(quote,cid)
+            if scope:
+                scoped=copy.deepcopy(base)
+                scoped['properties']['scope']={'type':'object','properties':{k:{'const':v} for k,v in scope.items()},'required':list(scope),'additionalProperties':False}
+                scoped['required'].append('scope')
+                scoped['properties']['requirement_ids']={'const':[cid]}
+                sources=scoped['properties']['parameter_sources']['items']
+                if 'anyOf' in sources:sources['anyOf']=[item for item in sources['anyOf'] if item['properties']['requirement_id'].get('const')==cid]
+                variants.append(scoped)
+        schema['properties']['rules']['maxItems']=24
     for variant in schema['properties']['rules']['items']['anyOf']:
         props=variant['properties'];typ=props['rule_type']['const']
         old=props.pop('parameter_sources');base=old['items']

@@ -1,0 +1,5 @@
+{
+  "declared_crs": "EPSG:4326",
+  "declared_unit": "degree",
+  "note": "示例包：经纬度十进制度。合成数据，非真实测绘成果。"
+}
